@@ -13,3 +13,11 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
+
+// Route::view('/admin', 'admin.dashboard');
