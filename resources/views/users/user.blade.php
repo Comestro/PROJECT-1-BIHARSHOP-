@@ -8,5 +8,4 @@ User page
 
 @section('content')
 
-
 @endsection

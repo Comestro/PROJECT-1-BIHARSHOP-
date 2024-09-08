@@ -34,7 +34,7 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                     Category Slug
                 </label>
                 <input type="text" id="slug" wire:model="slug"
-                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" readonly />
+                    class="w-full rounded border-[1.5px] border-stroke bg-slate-200 px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" readonly />
             </div>
         </div>
 
@@ -43,25 +43,38 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
             <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                 Category Image
             </label>
+            <div class="flex flex-1 md:flex-row flex-col gap-5">
+            <div class="flex-1">
+               
+    
+                <div class="flex items-center justify-center w-full">
+                    <label for="dropzone-file"
+                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2"
+                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                    class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                (MAX. 800x400px)</p>
+                        </div>
+                        <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
+                    </label> 
+                </div>
+            </div>
 
-            <div class="flex items-center justify-center w-full">
-                <label for="dropzone-file"
-                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 20 16">
-                            <path stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2"
-                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                        </svg>
-                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                class="font-semibold">Click to upload</span> or drag and drop</p>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                            (MAX. 800x400px)</p>
-                    </div>
-                    <input id="dropzone-file" type="file" class="hidden" />
-                </label>
+            <div class="flex flex-1 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50dark:bg-gray-700 dark:border-gray-600  overflow-hidden p-3">
+                @if ($photo) 
+                <img src="{{ $photo->temporaryUrl() }}" class="object-cover">
+                @else 
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                    class="font-semibold">Image Preview</span></p>
+            @endif
             </div>
 
         </div>
@@ -69,7 +82,7 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
 
 
 
-        <div class="mb-6">
+        <div class="my-6">
             <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                 Category Description
             </label>

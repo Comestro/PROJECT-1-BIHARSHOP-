@@ -11,6 +11,8 @@
     <link rel="icon" href="favicon.ico">
     <link href="{{ asset('assets/assets_admin/style.css') }}" rel="stylesheet">
     @livewireStyles
+        <script  src="{{ asset('assets/assets_admin/bundle.js') }}"></script>
+
 </head>
 
 <body  x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
@@ -442,7 +444,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
     @livewireScripts
     @livewireScriptConfig
-    {{-- <script defer src="{{ asset('assets/assets_admin/bundle.js') }}"></script> --}}
 
 </body>
 
