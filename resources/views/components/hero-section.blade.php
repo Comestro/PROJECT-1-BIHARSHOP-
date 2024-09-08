@@ -1,6 +1,6 @@
 <div class="bg-white">
     <!-- Main Container -->
-    <div class="container mx-auto px-4 py-12 md:py-20">
+    <div class="container mx-auto px-[6%] py-12 md:py-20">
       <!-- Hero Section -->
       <div class="flex flex-col md:flex-row items-center md:space-x-8">
         <!-- Left Side: Text Content -->

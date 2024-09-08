@@ -128,8 +128,7 @@
         </main>
     </div>
 
-    <!-- Footer -->
-    <x-footer />
+ 
 
     <!-- Mobile Sidebar -->
     <div id="mobileFilters" class="fixed inset-0 bg-white z-50 p-4 transform translate-x-full lg:hidden transition-transform duration-300">
