@@ -4,6 +4,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -35,5 +36,7 @@ Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
 Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('address', AddressController::class);
+    Route::resource('coupon', CouponController::class);
 });
 
