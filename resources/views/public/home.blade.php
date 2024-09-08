@@ -11,5 +11,7 @@ home page
 <x-hero-section/>
 <x-new-arrivals/>
 <x-top-selling/>
+<x-product-category/>
 
+<x-footer/>
 @endsection
