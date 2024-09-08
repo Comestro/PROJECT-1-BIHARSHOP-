@@ -11,7 +11,7 @@
             <!-- ===== Main Content Start ===== -->
             <main>
                 <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 ">
                         <!-- Card Item Start -->
                         <div
                             class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -654,4 +654,4 @@
             </main>
             <!-- ===== Main Content End ===== -->
         <!-- ===== Content Area End ===== -->
-@endsection
+@endsection 
