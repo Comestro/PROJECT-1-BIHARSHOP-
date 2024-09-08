@@ -1,5 +1,9 @@
-@extends('public.layout')
+@extends('users.layout')
+@section('title')
 
+Address Page
+
+@endsection
 @section('content')
     <div class="flex p-5">
         <div class="w-64 xl:w-1/4 lg:mr-6">
@@ -62,7 +66,7 @@
                                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNCAxNiI+CiAgICA8ZyBmaWxsPSIjODc4Nzg3IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIyIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMiIgY3k9IjgiIHI9IjIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIyIiBjeT0iMTQiIHI9IjIiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
                                 alt="Address Icon">
                         </div>
-                    
+
                         <div class="mt-4">
                             <div class="flex items-center justify-between">
                                 <div>
@@ -70,13 +74,14 @@
                                     <p class="text-gray-600 text-md">9117442498</p>
                                 </div>
                             </div>
-                    
+
                             <p class="text-gray-600 mt-4 text-md leading-relaxed">
-                                Purnea, Prabhat colony, donor chowk, Durga mandir, Purnia, Bihar - <span class="font-semibold">854304</span>
+                                Purnea, Prabhat colony, donor chowk, Durga mandir, Purnia, Bihar - <span
+                                    class="font-semibold">854304</span>
                             </p>
                         </div>
                     </div>
-                    
+
 
 
                     <!-- Add more addresses similarly -->
