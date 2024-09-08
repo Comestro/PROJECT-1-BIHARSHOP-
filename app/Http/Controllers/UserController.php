@@ -15,13 +15,11 @@ class UserController extends Controller
    {
       return view('users.wishlist');
    }
+   public function MyOrder(){
+      return view('users.my-order'); 
+     }
 
-   public function MyOrder()
-   {
-      return view('users.my-order');
-   }
-
-   public function MyCoupon(){
+     public function MyCoupon(){
       return view('users.my-coupons');
-   }
+     }
 }
