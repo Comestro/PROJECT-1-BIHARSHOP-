@@ -31,6 +31,16 @@ class DatabaseSeeder extends Seeder
         // Seed Products
     $this->call(ProductSeeder::class);
 
+        // Seed Address
+        $this->call(AddressSeeder::class);
+
+
+        // Seed Coupon
+        $this->call(CouponSeeder::class);
+        
+         // Seed ProductVariationSeeder
+         $this->call(ProductVariationSeeder::class);
+
 }
     
 }

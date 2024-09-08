@@ -2,22 +2,22 @@
 
 namespace Database\Factories;
 
+use App\Models\Coupon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Coupon>
- */
 class CouponFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Coupon::class;
+
+    public function definition()
     {
         return [
-            //
+            'code' => strtoupper(Str::random(10)), 
+            'discount_type' => $this->faker->randomElement(['percentage', 'fixed']),
+            'discount_price' => $this->faker->randomFloat(2, 5, 100), 
+            'expiration_date' => $this->faker->optional()->dateTimeBetween('now', '+1 year'), 
+            'status' => $this->faker->boolean(80), 
         ];
     }
 }
