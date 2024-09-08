@@ -6,7 +6,7 @@ cart
 
 @section('content')
 
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto  py-8 px-[5%]">
     <div class="flex flex-col lg:flex-row gap-8">
 
         <!-- Cart Items Section -->
@@ -76,7 +76,7 @@ cart
 
         <!-- Order Summary Section -->
         <div class="w-full lg:w-1/3">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md">
                 <h3 class="text-xl font-bold mb-6">Order Summary</h3>
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>
