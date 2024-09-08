@@ -14,7 +14,7 @@ cart
             <h2 class="text-4xl font-bold mb-6">Your Cart</h2>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
@@ -34,7 +34,7 @@ cart
             </div>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
@@ -54,7 +54,7 @@ cart
             </div>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
