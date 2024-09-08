@@ -11,11 +11,11 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(4);
-        return view("admin.manageCategory")->with('categories', $categories);
+        return view("admin.category.manageCategory")->with('categories', $categories);
     }
 
     public function create(){
-        return view('admin.insertCategory');
+        return view('admin.category.insertCategory');
     }
 
     public function store(Request $request)
