@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductVariationController;
 
 
 Route::view('/', 'welcome');
@@ -29,6 +31,7 @@ Route::get('/cart',[PublicController::class,"cart"])->name("cart");
 require __DIR__.'/auth.php';
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user-wishlist', [UserController::class, 'wishlist'])->name('user.wishlist');
 Route::get('/user/my-order', [UserController::class, 'MyOrder'])->name('user.my-order');
 
 
@@ -41,5 +44,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
+    Route::resource('product-variations', ProductVariationController::class);
 });
 

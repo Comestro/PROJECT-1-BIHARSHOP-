@@ -10,6 +10,9 @@ class UserController extends Controller
     return view('users.user'); 
    }
 
+   public function wishlist(){
+      return view('users.wishlist');
+   }
    public function MyOrder(){
       return view('users.my-order'); 
      }
