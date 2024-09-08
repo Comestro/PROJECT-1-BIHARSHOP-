@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductVariationController;
 
 
 Route::view('/', 'welcome');
@@ -35,5 +37,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('coupon', CouponController::class);
+    Route::resource('product-variations', ProductVariationController::class);
 });
 
