@@ -10,5 +10,6 @@ home page
 
 <x-new-arrivals/>
 <x-top-selling/>
+<x-product-category/>
 
 @endsection
