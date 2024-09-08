@@ -25,6 +25,7 @@ Route::get('/',[PublicController::class,"index"])->name("index");
 require __DIR__.'/auth.php';
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user/my-order', [UserController::class, 'MyOrder'])->name('user.my-order');
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
