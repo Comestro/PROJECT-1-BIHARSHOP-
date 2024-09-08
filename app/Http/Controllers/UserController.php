@@ -26,4 +26,8 @@ class UserController extends Controller
      public function GiftCard(){
       return view('users.gift-card');
      }
+
+     public function MyAddress(){
+      return view("users.address");
+     }
 }

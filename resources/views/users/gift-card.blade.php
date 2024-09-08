@@ -1,6 +1,9 @@
 @extends('public.layout')
-@section('title', 'wishlist')
+@section('title')
 
+Gift Page
+
+@endsection
 @section('content')
 
     <!-- Main Content Area -->

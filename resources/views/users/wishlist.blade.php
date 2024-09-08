@@ -1,5 +1,9 @@
 @extends('public.layout')
-@section('title', 'wishlist')
+@section('title')
+
+Wishlist Page
+
+@endsection
 
 @section('content')
 
