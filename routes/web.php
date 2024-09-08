@@ -34,5 +34,6 @@ Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
 Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('coupon', CouponController::class);
 });
 
