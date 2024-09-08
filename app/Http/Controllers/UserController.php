@@ -13,4 +13,7 @@ class UserController extends Controller
    public function wishlist(){
       return view('users.wishlist');
    }
+   public function MyOrder(){
+      return view('users.my-order'); 
+     }
 }

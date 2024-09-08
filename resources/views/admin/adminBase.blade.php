@@ -21,32 +21,26 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen">
         <!-- ===== Sidebar Start ===== -->
         @include('admin.includes.sidebar')
-
-
         <!-- ===== Header Start ===== -->
-
-
-        <div class="p-4 sm:ml-64">
+        <div class="sm:ml-64 flex-1">
             @include('admin.includes.adminHeader')
-            @yield('content')
-        @show
+            <div class="p-4 overflow-y-scroll">
+                @yield('content')
+                    @show
+        </div>
     </div>
 
 
 
 </div>
-
-
 <!-- ===== Sidebar End ===== -->
-
 </div>
 <!-- ===== Page Wrapper End ===== -->
-
 @livewireScripts
-@livewireScriptConfig
+
 
 {{-- floabite js linking --}}
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
