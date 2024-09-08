@@ -12,4 +12,5 @@ home page
 <x-top-selling/>
 <x-product-category/>
 
+<x-footer/>
 @endsection
