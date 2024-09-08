@@ -18,4 +18,8 @@ class PublicController extends Controller
     {
         return view('public/cart');
     }
+    public function filter()
+    {
+        return view('/public/filter');
+    }
 }

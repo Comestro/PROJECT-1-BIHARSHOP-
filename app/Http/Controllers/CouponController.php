@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
 
-
-
 class CouponController extends Controller
 {
     //
@@ -15,8 +13,7 @@ class CouponController extends Controller
     {
         // Fetch paginated list of coupons
         $coupons = Coupon::paginate(4);  
-
-        return view('admin.coupon.manageCoupon')->with('coupons', $coupons);
+        return view('admin.coupon.manageCoupon', compact('coupon'));
     }
 
     public function create()

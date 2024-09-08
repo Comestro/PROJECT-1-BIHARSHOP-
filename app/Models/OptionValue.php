@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductVariation extends Model
+class OptionValue extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function orderItems()
+
+    public function variationOption()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->belongsTo(VariationOption::class);
     }
 }

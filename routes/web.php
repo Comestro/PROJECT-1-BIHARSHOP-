@@ -25,6 +25,8 @@ Route::view('profile', 'profile')
 Route::get('/', [PublicController::class, "index"])->name("index");
 Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
+Route::get('/',[PublicController::class,"index"])->name("index");
+Route::get('/filter',[PublicController::class,"filter"])->name("filter");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';

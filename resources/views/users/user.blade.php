@@ -1,12 +1,12 @@
-@extends('public.layout')
+@extends('users.layout')
 @section('title', 'my-profile')
 
 @section('content')
 
     <!-- Main Content Area -->
-    <div class="flex p-5 space-x-6">
+    <div class="flex p-5">
         <!-- Sidebar -->
-        <div class="w-64 xl:w-1/4 lg:mr-6">
+        <div class="w-64 xl:w-1/4 ">
             <aside class="bg-white shadow-md rounded-lg p-6 flex flex-col">
                 <div class="flex flex-col items-center border-b pb-6 mb-6">
                     <!-- Avatar -->
@@ -28,7 +28,7 @@
                         Information</a>
                     <a href="#orders" class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My
                         Orders</a>
-                    <a href="#addresses"
+                    <a href="{{ route('user.address') }}"
                         class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Saved
                         Addresses</a>
                     <a href="#payment"

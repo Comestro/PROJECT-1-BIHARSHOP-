@@ -1,6 +1,6 @@
 <div class="bg-white">
     <!-- Main Container -->
-    <div class="container mx-auto px-4 py-12 md:py-20">
+    <div class="container mx-auto px-[6%] py-12 md:py-20">
       <!-- Hero Section -->
       <div class="flex flex-col md:flex-row items-center md:space-x-8">
         <!-- Left Side: Text Content -->
@@ -23,18 +23,18 @@
       </div>
   
       <!-- Stats Section -->
-      <div class="flex justify-around items-center mt-12 space-y-4 md:space-y-0">
+      <div class="flex justify-around  items-center mt-10">
         <div class="text-center">
-          <h2 class="text-3xl font-bold text-black">200+</h2>
-          <p class="text-gray-600">International Brands</p>
+          <h2 class="text-lg md:text-3xl font-bold text-black">200+</h2>
+          <p class="text-gray-600 text-xs md:text-xl">International Brands</p>
         </div>
         <div class="text-center">
-          <h2 class="text-3xl font-bold text-black">2,000+</h2>
-          <p class="text-gray-600">High-Quality Products</p>
+          <h2 class="text-lg md:text-3xl font-bold text-black">2,000+</h2>
+          <p class="text-gray-600 text-xs md:text-xl">High-Quality Products</p>
         </div>
         <div class="text-center">
-          <h2 class="text-3xl font-bold text-black">30,000+</h2>
-          <p class="text-gray-600">Happy Customers</p>
+          <h2 class="text-lg md:text-3xl font-bold text-black">30,000+</h2>
+          <p class="text-gray-600 text-xs md:text-xl">Happy Customers</p>
         </div>
       </div>
   

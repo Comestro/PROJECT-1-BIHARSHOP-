@@ -6,7 +6,7 @@ cart
 
 @section('content')
 
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto  py-8 px-[5%]">
     <div class="flex flex-col lg:flex-row gap-8">
 
         <!-- Cart Items Section -->
@@ -14,7 +14,7 @@ cart
             <h2 class="text-4xl font-bold mb-6">Your Cart</h2>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
@@ -34,7 +34,7 @@ cart
             </div>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
@@ -54,7 +54,7 @@ cart
             </div>
 
             <!-- Cart Item -->
-            <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex items-center justify-between bg-white p-4 lg:py-10 rounded-lg shadow-md mb-4">
                 <div class="flex items-center">
                     <img src="https://via.placeholder.com/80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
@@ -76,7 +76,7 @@ cart
 
         <!-- Order Summary Section -->
         <div class="w-full lg:w-1/3">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md">
                 <h3 class="text-xl font-bold mb-6">Order Summary</h3>
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>

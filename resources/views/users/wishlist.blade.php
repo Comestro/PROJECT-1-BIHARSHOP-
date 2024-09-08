@@ -1,10 +1,14 @@
-@extends('public.layout')
-@section('title', 'wishlist')
+@extends('users.layout')
+@section('title')
+
+Wishlist Page
+
+@endsection
 
 @section('content')
 
     <!-- Main Content Area -->
-    <div class="flex p-5 space-x-6">
+    <div class="flex">
 
         <!-- Sidebar -->
         <div class="w-64 xl:w-1/4 lg:mr-6">

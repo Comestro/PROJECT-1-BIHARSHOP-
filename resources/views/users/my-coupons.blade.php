@@ -1,5 +1,9 @@
-@extends('public.layout')
-@section('title', 'wishlist')
+@extends('users.layout')
+@section('title')
+
+Coupon Page
+
+@endsection
 
 @section('content')
 

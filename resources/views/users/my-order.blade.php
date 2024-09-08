@@ -1,5 +1,9 @@
-@extends('public.layout')
-@section('title', 'My Orders')
+@extends('users.layout')
+@section('title')
+
+My-Order Page
+
+@endsection
 
 @section('content')
     <div class="flex p-6 space-x-6">
@@ -78,7 +82,7 @@
                             class="w-full py-3 border border-gray-300 rounded-l-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Search your orders here">
                     </div>
-                
+
                     <button
                         class="flex items-center px-6 py-3 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md">
                         <svg width="18" height="18" viewBox="0 0 17 18" xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +99,7 @@
                         <span>Search Orders</span>
                     </button>
                 </div>
-                
+
 
                 <!-- Order List -->
                 <div class="space-y-6">
