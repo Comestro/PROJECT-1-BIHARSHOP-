@@ -3,6 +3,8 @@
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+
 
 Route::view('/', 'welcome');
 
@@ -40,8 +42,14 @@ Route::get('/admin/manage-product', function () {
     return view('admin.manageProduct');
 });
 
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
