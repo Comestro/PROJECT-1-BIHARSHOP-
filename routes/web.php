@@ -19,7 +19,8 @@ Route::view('profile', 'profile')
 
 Route::get('/admin', function () {
     return view('admin.dashboard');
-});
+})->name('admin.dashboard');
+
 Route::get('/',[PublicController::class,"index"])->name("index");
 
 Route::get('/admin/add-category', function () {
