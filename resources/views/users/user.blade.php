@@ -28,7 +28,7 @@
                         Information</a>
                     <a href="#orders" class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My
                         Orders</a>
-                    <a href="#addresses"
+                    <a href="{{ route('user.address') }}"
                         class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Saved
                         Addresses</a>
                     <a href="#payment"

@@ -1,5 +1,9 @@
 @extends('public.layout')
-@section('title', 'My Orders')
+@section('title')
+
+My-Order Page
+
+@endsection
 
 @section('content')
     <div class="flex p-6 space-x-6">
