@@ -80,8 +80,6 @@ class ProductController extends Controller
         if (!$product) {
             return redirect()->route('product.index')->with('error', 'No Product Found');
         }
-
-        // Assuming you have a view named 'products.edit' to display the edit form
         return view('product.edit', compact('product'));
     }
 

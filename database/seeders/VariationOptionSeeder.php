@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\VariationOption;
+
 
 class VariationOptionSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class VariationOptionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        VariationOption::factory()->count(10)->create();
+
     }
 }

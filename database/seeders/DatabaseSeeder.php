@@ -41,6 +41,23 @@ class DatabaseSeeder extends Seeder
          // Seed ProductVariationSeeder
          $this->call(ProductVariationSeeder::class);
 
+         // Seed OptionValueSeeder
+         $this->call(OptionValueSeeder::class);
+
+         // Seed OrderSeeder
+         $this->call(OrderSeeder::class);
+
+         // Seed OrderItemSeeder
+         $this->call(OrderItemSeeder::class);
+
+          // Seed VariationOptionSeeder
+          $this->call(VariationOptionSeeder::class);
+
+           // Seed ProductImageSeeder
+           $this->call(ProductImageSeeder::class);
 }
     
+
+
+
 }

@@ -1,23 +1,19 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\OptionValue;
+use App\Models\VariationOption;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OptionValue>
- */
 class OptionValueFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = OptionValue::class;
+
     public function definition(): array
     {
         return [
-            //
+            'variation_option_id' => VariationOption::factory(), // Assuming you also have a factory for VariationOption
+            'value' => $this->faker->word(),
         ];
     }
 }

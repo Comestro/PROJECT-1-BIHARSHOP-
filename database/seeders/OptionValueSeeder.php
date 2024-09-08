@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\OptionValue;
+
 
 class OptionValueSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class OptionValueSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        OptionValue::factory()->count(10)->create();
+
     }
 }
