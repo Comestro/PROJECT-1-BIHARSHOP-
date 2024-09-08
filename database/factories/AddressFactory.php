@@ -17,7 +17,15 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 2, // Or you can customize logic to create child categories
+            'landmark' => $this->faker->word(5),
+            'street' => $this->faker->word(10),
+            'area' => $this->faker->word(5),
+            'city' => $this->faker->word(5),
+            'state' => $this->faker->word(5),
+            'postal_code' => $this->faker->randomNumber,
+            'country' => $this->faker->sentence(3),
+            'status' => $this->faker->boolean, // Random true/false
         ];
     }
 }
