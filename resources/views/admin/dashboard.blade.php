@@ -1,6 +1,7 @@
 @extends('admin.adminBase')
-
+@section('title', 'Dashboard')
 @section('content')
+
 
         <!-- ===== Content Area Start ===== -->
        

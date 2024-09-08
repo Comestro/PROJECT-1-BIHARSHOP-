@@ -22,6 +22,22 @@ Route::get('/admin', function () {
 });
 Route::get('/',[PublicController::class,"index"])->name("index");
 
+Route::get('/admin/add-category', function () {
+    return view('admin.insertCategory');
+});
+
+Route::get('/admin/manage-category', function () {
+    return view('admin.manageCategory');
+});
+
+Route::get('/admin/add-product', function () {
+    return view('admin.insertProduct');
+});
+
+Route::get('/admin/manage-product', function () {
+    return view('admin.manageProduct');
+});
+
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';
