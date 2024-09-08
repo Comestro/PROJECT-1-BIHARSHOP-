@@ -16,7 +16,7 @@
 
                     <!-- User Info -->
                     <div class="mt-4 text-center">
-                        <h2 class="text-2xl font-semibold text-gray-800">Saurav</h2>
+                        <h2 class="text-2xl font-semibold text-gray-800">Syed Sadique</h2>
                         <p class="text-gray-500 text-sm">Hello!</p>
                     </div>
                 </div>
@@ -34,14 +34,15 @@
                     <a href="#payment"
                         class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Payment
                         Methods</a>
+                    <a href="{{ route('user.my-coupon') }}"
+                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My Coupons</a>
                     <a href="{{ route('user.wishlist') }}"
-                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Wishlist</a>
+                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My Wishlist</a>
                     <a href="#logout"
                         class="block py-3 px-4 rounded-md text-center text-red-600 hover:bg-gray-100">Logout</a>
                 </nav>
             </aside>
         </div>
-
         <!-- Main Content -->
         <div class="flex-1 p-4">
             <div class="bg-white p-6 rounded-lg shadow-md">
