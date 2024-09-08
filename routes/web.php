@@ -21,6 +21,7 @@ Route::view('profile', 'profile')
 
 
 Route::get('/',[PublicController::class,"index"])->name("index");
+Route::get('/view',[PublicController::class,"view"])->name("view");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';

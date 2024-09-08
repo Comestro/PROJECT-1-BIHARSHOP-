@@ -9,4 +9,8 @@ class PublicController extends Controller
     {
         return view('/public/home');
     }
+    public function view()
+    {
+        return view('public/view');
+    }
 }
