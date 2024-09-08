@@ -8,7 +8,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductVariationController;
 
 
