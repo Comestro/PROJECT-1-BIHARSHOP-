@@ -1,4 +1,4 @@
-@extends('public.layout')
+@extends('users.layout')
 @section('title')
 
 Gift Page
