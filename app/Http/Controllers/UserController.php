@@ -9,4 +9,8 @@ class UserController extends Controller
    public function index(){
     return view('users.user'); 
    }
+
+   public function MyOrder(){
+      return view('users.my-order'); 
+     }
 }
