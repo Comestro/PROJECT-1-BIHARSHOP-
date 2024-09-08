@@ -18,49 +18,7 @@ class CategoryController extends Controller
         return view('admin.category.insertCategory');
     }
 
-    public function store(Request $request)
-{
-    // Validate the request data
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
-        'cat_description' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-    ]);
-
-    // Return validation errors if any
-    if ($validator->fails()) {
-        return response()->json([
-            'status' => 422,
-            'errors' => $validator->messages()
-        ], 422);
-    }
-
-    // Handle the file upload
-    if ($request->hasFile('image')) {
-        $image = "C" . time() . "." . $request->image->extension();
-        $request->image->move(public_path("image/category"), $image);
-    } else {
-        $image = null;
-    }
-
-    // Generate the slug
-    $slug = Str::slug($request->name);
-
-    // Create the category
-    $category = Category::create([
-        'name' => $request->name,
-        'cat_description' => $request->cat_description,
-        'cat_slug' => $slug,
-        'image' => $image,
-    ]);
-
-    // Redirect based on the creation result
-    if ($category) {
-        return redirect()->route('category.index')->with('success', 'Category added successfully.');
-    } else {
-        return redirect()->back()->with('error', 'Unable to add category.');
-    }
-}
+    
 
     public function edit(string $id)
     {
