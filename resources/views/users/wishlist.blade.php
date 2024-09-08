@@ -35,8 +35,10 @@
                     <a href="#payment"
                         class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Payment
                         Methods</a>
+                    <a href="{{ route('user.my-coupon') }}"
+                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My Coupons</a>
                     <a href="{{ route('user.wishlist') }}"
-                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">Wishlist</a>
+                        class="block py-3 px-4 rounded-md text-center text-gray-700 mb-2 hover:bg-gray-100">My Wishlist</a>
                     <a href="#logout"
                         class="block py-3 px-4 rounded-md text-center text-red-600 hover:bg-gray-100">Logout</a>
                 </nav>
@@ -54,7 +56,8 @@
 
                     {{-- loop goes here to show the wishlist items --}}
                     <div class="flex items-center gap-4 mb-3 bg-white shadow-sm rounded-md p-4">
-                        <img class="w-24 h-24 object-cover rounded-md" src="https://picsum.photos/500/800" alt="Product Image">
+                        <img class="w-24 h-24 object-cover rounded-md" src="https://picsum.photos/500/800"
+                            alt="Product Image">
                         <div class="flex-1">
                             <div class="font-semibold text-gray-800">Product Name</div>
                             <div class="flex items-center gap-4">
