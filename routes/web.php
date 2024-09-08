@@ -20,6 +20,7 @@ Route::view('profile', 'profile')
 
 
 Route::get('/',[PublicController::class,"index"])->name("index");
+Route::get('/filter',[PublicController::class,"filter"])->name("filter");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';

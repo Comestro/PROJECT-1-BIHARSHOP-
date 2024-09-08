@@ -1,6 +1,6 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="w-full flex flex-wrap items-center justify-between mx-auto  px-[5%] py-4">
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-black whitespace-nowrap dark:text-white">BiharShop</span>
         </a>
         <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none " aria-controls="navbar-dropdown" aria-expanded="false">
