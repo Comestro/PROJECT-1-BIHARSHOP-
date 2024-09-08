@@ -2,13 +2,11 @@
 
 @section('title')
 
-home page
+User page
 
 @endsection
 
 @section('content')
 
-<x-new-arrivals/>
-<x-top-selling/>
 
 @endsection
