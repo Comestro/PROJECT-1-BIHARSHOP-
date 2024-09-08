@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -22,6 +23,7 @@ Route::view('profile', 'profile')
 
 Route::get('/',[PublicController::class,"index"])->name("index");
 Route::get('/view',[PublicController::class,"view"])->name("view");
+Route::get('/cart',[PublicController::class,"cart"])->name("cart");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';
