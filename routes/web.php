@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -41,3 +42,5 @@ Route::get('/admin/manage-product', function () {
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';
+
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
