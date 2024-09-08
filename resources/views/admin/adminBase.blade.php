@@ -10,9 +10,10 @@
     <script src="{{ asset('assets/assets_admin/js/index.js') }}"></script>
     <link rel="icon" href="favicon.ico">
     <link href="{{ asset('assets/assets_admin/style.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
-<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
+<body  x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
 $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{ 'dark text-bodydark bg-boxdark-2': darkMode === true }">
     <!-- ===== Preloader Start ===== -->
     <div x-show="loaded" x-init="window.addEventListener('DOMContentLoaded', () => { setTimeout(() => loaded = false, 500) })"
@@ -438,7 +439,11 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
     </div>
     <!-- ===== Page Wrapper End ===== -->
-    <script defer src="{{ asset('assets/assets_admin/bundle.js') }}"></script>
+
+    @livewireScripts
+    @livewireScriptConfig
+    {{-- <script defer src="{{ asset('assets/assets_admin/bundle.js') }}"></script> --}}
+
 </body>
 
 </html>
