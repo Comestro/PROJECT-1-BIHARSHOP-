@@ -9,6 +9,15 @@ class PublicController extends Controller
     {
         return view('/public/home');
     }
+    public function view()
+    {
+        return view('public/view');
+        
+    }
+    public function cart()
+    {
+        return view('public/cart');
+    }
     public function filter()
     {
         return view('/public/filter');

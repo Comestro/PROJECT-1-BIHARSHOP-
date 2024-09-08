@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Category;  // Import the Category model (if needed)
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;  
 use Illuminate\Database\Seeder;
 
 
