@@ -14,7 +14,7 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                 Parent Category
             </label>
             <select
-                class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">
+                class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-green-500 active:border-green-500 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-green-500">
                 <option value="">Select Main Category</option>
             </select>
         </div>
@@ -25,8 +25,8 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Category name
                 </label>
-                <input type="text" wire:model.blur="title" placeholder="Enter your Category name"
-                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                <input type="text" wire:model.live="title" placeholder="Enter your Category name"
+                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-green-500 active:border-green-500 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-green-500" />
             </div>
 
             <div class="w-full xl:w-1/2">
@@ -34,7 +34,7 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                     Category Slug
                 </label>
                 <input type="text" id="slug" wire:model="slug"
-                    class="w-full rounded border-[1.5px] border-stroke bg-slate-200 px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" readonly />
+                    class="w-full rounded border-[1.5px] border-stroke bg-slate-200 px-5 py-3 font-normal text-black outline-none transition focus:border-green-500 active:border-green-500 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-green-500" readonly />
             </div>
         </div>
 
@@ -87,11 +87,11 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                 Category Description
             </label>
             <textarea rows="6" placeholder="Type your message"
-                class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
+                class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-green-500 active:border-green-500 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-green-500"></textarea>
         </div>
 
         <button
-            class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
+            class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
             Create
         </button>
     </div>
