@@ -32,7 +32,7 @@ class InsertCategory extends Component
     }
 
     // Method to handle the form submission
-    public function store()
+    public function store() 
     {
         // Validate inputs based on the rules set in the class
         $validatedData = $this->validate();
