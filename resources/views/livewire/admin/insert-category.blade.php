@@ -68,7 +68,7 @@ class="rounded-sm border border-stroke bg-white shadow-default dark:border-strok
                 </div>
             </div>
 
-            <div class="flex flex-1 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50dark:bg-gray-700 dark:border-gray-600  overflow-hidden p-3">
+            <div class="flex flex-1 flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50dark:bg-gray-700 dark:border-gray-600  overflow-hidden p-3">
                 @if ($photo) 
                 <img src="{{ $photo->temporaryUrl() }}" class="object-cover">
                 @else 
