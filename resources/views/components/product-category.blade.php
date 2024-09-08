@@ -1,4 +1,4 @@
-<div class="flex flex-1  justify-center items-center px-[5%]">
+<div class="flex flex-1  justify-center mb-10 items-center px-[5%]">
 
     <div class="  w-full  flex flex-col bg-zinc-100 rounded-3xl p-8 ">
         <h1 class="text-center text-3xl font-black mt-4">Browse By Dress Style</h1>
