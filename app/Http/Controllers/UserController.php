@@ -22,4 +22,8 @@ class UserController extends Controller
      public function MyCoupon(){
       return view('users.my-coupons');
      }
+
+     public function GiftCard(){
+      return view('users.gift-card');
+     }
 }
