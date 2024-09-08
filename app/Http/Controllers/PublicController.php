@@ -12,5 +12,10 @@ class PublicController extends Controller
     public function view()
     {
         return view('public/view');
+        
+    }
+    public function cart()
+    {
+        return view('public/cart');
     }
 }
