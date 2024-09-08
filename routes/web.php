@@ -36,5 +36,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('address', AddressController::class);
+    Route::resource('coupon', CouponController::class);
 });
 
