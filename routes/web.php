@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -17,34 +19,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 
-
-
-
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
-
 Route::get('/',[PublicController::class,"index"])->name("index");
-
-Route::get('/admin/add-category', function () {
-    return view('admin.insertCategory');
-});
-
-Route::get('/admin/manage-category', function () {
-    return view('admin.manageCategory');
-});
-
-Route::get('/admin/add-product', function () {
-    return view('admin.insertProduct');
-});
-
-Route::get('/admin/manage-product', function () {
-    return view('admin.manageProduct');
-});
-
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__.'/auth.php';
@@ -52,4 +27,12 @@ require __DIR__.'/auth.php';
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/add-product', [AdminController::class, 'insertProduct']);
+Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
+
+Route::prefix('admin')->group(function () {
+    Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class);
+});
+
