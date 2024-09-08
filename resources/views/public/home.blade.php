@@ -8,5 +8,8 @@ home page
 
 @section('content')
 
+<x-new-arrivals/>
+<x-top-selling/>
+<x-product-category/>
 
 @endsection
