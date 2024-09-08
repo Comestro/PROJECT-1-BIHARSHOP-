@@ -1,6 +1,6 @@
 
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-slate-100 border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
     type="button"
