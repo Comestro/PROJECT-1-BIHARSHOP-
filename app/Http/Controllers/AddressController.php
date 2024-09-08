@@ -68,7 +68,7 @@ class AddressController extends Controller
             return redirect()->route('address.index')->with('error', 'No address Found');
         }
 
-        return view('address.edit', compact('category'));
+        return view('address.edit', compact('address'));
     }
 
     /**

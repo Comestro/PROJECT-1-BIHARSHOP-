@@ -11,7 +11,7 @@ class ProductVariationController extends Controller
     public function index()
     {
         $productVariations = ProductVariation::paginate(4);  
-        return view('admin.manageProductVariation')->with('productVariations', $productVariations);
+        return view('admin.manageProductVariation', compact('productVariation'));
     }
 
    
