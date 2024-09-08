@@ -442,7 +442,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
     @livewireScripts
     @livewireScriptConfig
-    {{-- <script defer src="{{ asset('assets/assets_admin/bundle.js') }}"></script> --}}
+    <script defer src="{{ asset('assets/assets_admin/bundle.js') }}"></script>
 
 </body>
 
