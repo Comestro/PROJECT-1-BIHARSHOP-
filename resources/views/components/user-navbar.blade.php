@@ -40,6 +40,16 @@
                 Addresses
             </button>
 
+            <button onclick="location.href='{{ route('user.gift-card') }}'"
+                class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
+                <i class="fas fa-gift-alt mr-2"></i> Gift-Card
+            </button>
+            
+            <button onclick="location.href='{{ route('user.gift-card') }}'"
+                class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
+                Gift-Card
+            </button>
+
             <button onclick="location.href='#payment'"
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-credit-card mr-2"></i> Payment
@@ -68,11 +78,6 @@
             <button onclick="location.href='{{ route('user.wishlist') }}'"
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Wishlist
-            </button>
-
-            <button onclick="location.href='#logout'"
-                class="block sm:hidden py-3 px-4 rounded-md text-center text-red-600 hover:bg-gray-100 border border-gray-300">
-                <i class="fas fa-sign-out-alt mr-2"></i> Logout
             </button>
 
             <button onclick="location.href='#logout'"
