@@ -11,7 +11,7 @@
         <x-user-navbar />
 
         <!-- Main Content -->
-        <div class="flex-1 px-5">
+        <div class="flex-1 sm:px-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
         
                 <div class="w-full">
@@ -20,18 +20,18 @@
                     </div>
         
                     <!-- Loop starts here to show the wishlist items -->
-                    <div class="relative bg-white shadow-sm rounded-lg p-4 mb-4">
-                        <div class="flex items-center gap-4">
-                            <img class="w-24 h-24 object-cover rounded-lg" src="https://picsum.photos/500/800" alt="Product Image">
+                    <div class="relative bg-white shadow-sm rounded-lg p-4 mb-2">
+                        <div class="w-full flex flex-col sm:flex-row items-center gap-4">
+                            <img class="w-24 h-24 sm:w-24 sm:h-24 object-cover" src="https://picsum.photos/500/800" alt="Product Image">
                             <div class="flex-1">
-                                <div class="text-lg font-semibold text-gray-800 mb-1">Product Name</div>
+                                <div class="text-lg sm:text-base font-semibold text-gray-800 mb-1">Product Name</div>
                                 <div class="flex items-center gap-4 mb-2">
-                                    <div class="text-lg font-bold text-gray-900">₹456
+                                    <div class="text-lg sm:text-base font-bold text-gray-900">₹456
                                         <del class="text-gray-500 text-sm ml-2">₹1400</del>
                                     </div>
                                     <span class="text-green-600 font-medium">62% off</span>
                                 </div>
-                                <div class="text-sm text-gray-600 flex items-center space-x-2">
+                                <div class="text-sm text-gray-600 flex items-center space-x-2 sm:space-x-4">
                                     <a href="#" class="bg-gray-200 text-lg px-3 py-1">-</a>
                                     <span class="text-lg font-medium">2</span>
                                     <a href="#" class="bg-gray-200 text-lg px-3 py-1">+</a>
