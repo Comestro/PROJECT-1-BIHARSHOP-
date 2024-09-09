@@ -45,6 +45,7 @@
                     <li><a href="#" class="hover:text-gray-400">Careers</a></li>
                     <li><a href="#" class="hover:text-gray-400">Blog</a></li>
                     <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
+                    <li><a href="{{ route('public.team') }}" class="hover:text-gray-400">Our Team</a></li>
                 </ul>
             </div>
 
@@ -63,7 +64,8 @@
             <div class="w-full md:w-2/4 mb-8 md:mb-0">
                 <h5 class="text-lg font-semibold mb-4">Legal</h5>
                 <ul class="space-y-2 ext-sm">
-                    <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
+                    <li><a href="{{ route('public.privacy') }}" class="hover:text-gray-400">Privacy Policy</a></li>
+                    <li><a href="{{ route('public.refund') }}" class="hover:text-gray-400">Refund Policy</a></li>
                     <li><a href="#" class="hover:text-gray-400">Terms of Service</a></li>
                     <li><a href="#" class="hover:text-gray-400">Cookie Policy</a></li>
                 </ul>

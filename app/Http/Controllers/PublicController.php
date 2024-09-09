@@ -26,4 +26,12 @@ class PublicController extends Controller
     public function ourTeam(){
         return view('public.team');
     }
+
+    public function privacyPolicy(){
+        return view('public.privacy-policy');
+    }
+
+    public function refundPolicy(){
+        return view('public.refund-policy');
+    }
 }
