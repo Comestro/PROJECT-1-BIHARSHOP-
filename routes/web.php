@@ -28,6 +28,8 @@ Route::get('/cart', [PublicController::class, "cart"])->name("cart");
 Route::get('/',[PublicController::class,"index"])->name("index");
 Route::get('/filter',[PublicController::class,"filter"])->name("filter");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
+Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
+Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';
