@@ -22,4 +22,8 @@ class PublicController extends Controller
     {
         return view('/public/filter');
     }
+
+    public function ourTeam(){
+        return view('public.team');
+    }
 }
