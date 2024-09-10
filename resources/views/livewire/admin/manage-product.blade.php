@@ -1,4 +1,4 @@
-<div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
+<div class="mx-auto w-full p-4 md:p-6 2xl:p-10 ">
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">Manage Products</h2>
         <nav>
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Category Table -->
-    <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+    <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ">
         <div class="grid grid-cols-4 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
             <div class="col-span-1 flex items-center p-4">
                 <p class="font-medium">Product Id</p>
