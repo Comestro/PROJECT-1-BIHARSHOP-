@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->
             <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                <img src="https://via.placeholder.com/150" alt="User Avatar" class="w-full h-full object-cover">
+                <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-full h-full object-cover">
             </div>
 
             <!-- User Info -->
@@ -50,12 +50,12 @@
                 Gift-Card
             </button>
 
-            <button onclick="location.href='#payment'"
+            <button onclick="location.href='{{ route('user.payment') }}'"
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-credit-card mr-2"></i> Payment
             </button>
 
-            <button onclick="location.href='#payment'"
+            <button onclick="location.href='{{ route('user.payment') }}'"
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Payment
             </button>

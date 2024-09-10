@@ -30,4 +30,8 @@ class UserController extends Controller
      public function MyAddress(){
       return view("users.address");
      }
+
+     public function payment(){
+      return view("users.payment");
+     }
 }

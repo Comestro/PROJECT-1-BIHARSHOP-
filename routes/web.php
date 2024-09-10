@@ -45,11 +45,10 @@ Route::prefix("user")->group(function () {
         Route::get('/my-coupon', 'MyCoupon')->name('user.my-coupon');
         Route::get('/address', 'MyAddress')->name('user.address');
         Route::get('/gift-card', 'GiftCard')->name('user.gift-card');
+        Route::get('/payment', 'payment')->name('user.payment');
     });
 });
 
-// Route::get('/user', [UserController::class, 'index'])->name('user.index');
-// Route::get('/user-wishlist', [UserController::class, 'wishlist'])->name('user.wishlist');
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
