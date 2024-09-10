@@ -36,7 +36,7 @@ class InsertProduct extends Component
             'sku' => ['nullable', 'string', 'max:255'],
             'category_id' => ['nullable',],
             'brand' => ['nullable', 'string', 'max:255'],
-            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'photo' => ['nullable'],
         ];
     }
 
@@ -48,14 +48,14 @@ class InsertProduct extends Component
      // Method to handle the form submission
      public function store() 
      {
-         // Validate inputs based on the rules set in the class
+        // Validate inputs based on the rules set in the class
          $validatedData = $this->validate();
  
-         // Debug the validated data to see what's being passed
+        // Debug the validated data to see what's being passed
  
          if ($this->photo) {
             $imageName = "C" . time() . '.' . $this->photo->getClientOriginalExtension();
-            $this->photo->storeAs('public/image/category', $imageName);
+            $this->photo->storeAs('public/image/product', $imageName);
         } else {
             $imageName = null;
         }

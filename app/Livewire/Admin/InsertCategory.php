@@ -22,7 +22,7 @@ class InsertCategory extends Component
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
             'cat_description' => ['required', 'string', 'max:255'],
-            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'photo' => ['nullable'],
         ];
     }
     // Method to update the slug automatically when the title is updated
@@ -37,15 +37,14 @@ class InsertCategory extends Component
         // Validate inputs based on the rules set in the class
         $validatedData = $this->validate();
 
-        // Debug the validated data to see what's being passed
-
-        // Handle file upload (if an image is uploaded)
         if ($this->photo) {
             $imageName = "C" . time() . '.' . $this->photo->getClientOriginalExtension();
             $this->photo->storeAs('public/image/category', $imageName);
         } else {
             $imageName = null;
         }
+
+        // dd($validatedData);
 
         // Insert the category into the database
         $category = Category::create([
