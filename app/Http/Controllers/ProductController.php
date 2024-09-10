@@ -27,7 +27,7 @@ class ProductController extends Controller
         if (!$product) {
             return redirect()->route('product.index')->with('error', 'No Product Found');
         }
-        return view('product.edit', compact('product'));
+        return view('admin.product.editProduct', compact('product'));
     }
 
     /**
