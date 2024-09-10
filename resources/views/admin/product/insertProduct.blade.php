@@ -21,7 +21,7 @@
         </div>
         <!-- Breadcrumb End -->
 
-        <!-- ====== Form Layout Section Start -->
+        {{-- <!-- ====== Form Layout Section Start -->
         <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
             <div class="flex flex-col gap-9">
                 <!-- Contact Form -->
@@ -231,8 +231,14 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+
         <!-- ====== Form Layout Section End -->
+
+
+
+        <livewire:admin.create-product/>
     </div>
 </main>
 

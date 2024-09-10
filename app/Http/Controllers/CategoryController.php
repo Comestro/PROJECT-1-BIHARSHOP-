@@ -102,5 +102,20 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('category.index')->with('error', 'Category deleted successfully.');
     }
+
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $categories = Category::withCount('products')
+            ->when($keyword, function ($query, $keyword) {
+                $query->where('name', 'like', "%$keyword%");
+            })
+            ->get();
+
+        $categoryCount = $categories->count();
+        return view('category.index', compact('categories', 'categoryCount', 'keyword'));
+    }
     
 }

@@ -11,68 +11,15 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(4);
-        return view('admin.manageProduct', compact('product'));
+        // $products = Product::paginate(4);
+        return view('admin.product.manageProduct');
     }
 
     public function create(){
-        return view('admin.insertProduct');
+        return view('admin.product.insertProduct');
     }
     
-    public function store(Request $request)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-            'discount_price' => 'nullable|numeric|min:0|lt:price',
-            'quantity' => 'required|integer|min:0',
-            'sku' => 'nullable|string|max:100',
-            'category_id' => 'required|exists:categories,id',
-            'brand' => 'nullable',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        // Check if validation fails
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'errors' => $validator->messages()
-            ], 422);
-        }
-
-        // Handle the file upload
-        if ($request->hasFile('image')) {
-            $image = "P" . time() . "." . $request->image->extension();
-            $request->image->move(public_path("image/product"), $image);
-        } else {
-           $image = NULL;
-        }
-
-        $slug = Str::slug($request->name);
-
-        $product = Product::create([
-            'name' => $request->name,
-            'slug' => $slug,
-            'description' => $request->description,
-            'price' => $request->price,
-            'discount_price' => $request->discount_price,
-            'quantity' => $request->quantity,
-            'sku' => $request->sku,
-            'category_id' => $request->category_id,
-            'brand' => $request->brand,
-            'image' => $image,           
-        ]);
-
-        if($product){
-            return redirect()->route('product.index')->with('success', 'Product added successfully.');
-        }
-        else{
-            return redirect()->back()->with('error', 'Unable to add Product.');
- 
-        }
-    }
+    // move on live wire admin.create product page
 
     public function edit(string $id)
     {
