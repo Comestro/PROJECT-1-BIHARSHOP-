@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="store"  method="POST" class="bg-white p-6 rounded-lg shadow-md">
+    <form wire:submit.prevent="store"  method="POST" class="bg-white p-6 rounded-lg shadow-md">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
