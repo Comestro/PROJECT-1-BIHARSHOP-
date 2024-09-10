@@ -20,6 +20,12 @@
     </div>
     <!-- Breadcrumb End -->
 
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!-- ====== Form Layout Section Start -->
     <div class="grid grid-cols-1 gap-9">
         <div class="flex flex-col gap-9">

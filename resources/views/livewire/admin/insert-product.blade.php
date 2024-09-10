@@ -24,7 +24,7 @@
                             class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " readonly />
                     </div>
                 </div>
-                <div class="mb-4 flex flex-col gap-6 xl:flex-row">
+                {{-- <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
 
@@ -134,7 +134,7 @@
                     </label>
                     <textarea rows="6" placeholder="Type your message"
                         class="w-full border-slate-200 rounded  border bg-transparent px-5 py-3 " wire:model="description"></textarea>
-                </div>
+                </div> --}}
 
                 <button
                     class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">

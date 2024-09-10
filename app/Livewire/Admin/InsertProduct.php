@@ -75,12 +75,13 @@ class InsertProduct extends Component
          ]);
  
          // Redirect with success or error message
-         if ($product) {
-             session()->flash('success', 'Product added successfully.');
-             return redirect()->route('product.index');
-         } else {
-             session()->flash('error', 'Unable to add product.');
-         }
+        if ($product) {
+            session()->flash('success', 'Product added successfully.');
+            return redirect()->route('product.edit', $product->slug);
+        } else {
+            session()->flash('error', 'Unable to add product.');
+            return redirect()->back();
+        }
      }
 
 

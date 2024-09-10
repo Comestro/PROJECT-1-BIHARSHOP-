@@ -77,19 +77,21 @@ class ProductController extends Controller
     //     }
     // }
 
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        $product = Product::find($id);
+        $product = Product::where('slug', $slug)->first();
+
         if (!$product) {
             return redirect()->route('product.index')->with('error', 'No Product Found');
         }
-        return view('admin.product.editProduct', compact('product'));
+        return view('admin.product.viewProduct', compact('product'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -111,7 +113,7 @@ class ProductController extends Controller
             ], 422);
         }
     
-        $product = Product::find($id);
+        $product = Product::where('slug', $slug)->first();
         if (!$product) {
             return response()->json([
                 'status' => 500,
