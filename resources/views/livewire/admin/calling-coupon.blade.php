@@ -21,7 +21,7 @@
                     <td class="py-2 px-4">{{$coupon->code}}</td>
                     <td class="py-2 px-4">{{$coupon->discount_type}}</td>
                     <td class="py-2 px-4">{{$coupon->discount_value}}</td>
-                    <td class="py-2 px-4">{{$coupon->expriation_date}}</td>
+                    <td class="py-2 px-4">{{$coupon->expiration_date}}</td>
                     <td class="py-2 px-4">
                         <button wire:click="toggleStatus({{ $coupon->id }})" class="text-blue-500 hover:text-blue-700">
                             @if($coupon->status)
