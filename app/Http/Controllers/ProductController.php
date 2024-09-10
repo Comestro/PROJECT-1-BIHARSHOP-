@@ -16,11 +16,11 @@ class ProductController extends Controller
     }
 
     public function create(){
-        
+
         return view('admin.product.insertProduct');
     }
-    
-    // made with livewire 
+
+    // made with livewire
 
     // public function store(Request $request)
     // {
@@ -65,7 +65,7 @@ class ProductController extends Controller
     //         'sku' => $request->sku,
     //         'category_id' => $request->category_id,
     //         'brand' => $request->brand,
-    //         'image' => $image,           
+    //         'image' => $image,
     //     ]);
 
     //     if($product){
@@ -73,18 +73,14 @@ class ProductController extends Controller
     //     }
     //     else{
     //         return redirect()->back()->with('error', 'Unable to add Product.');
- 
+
     //     }
     // }
 
     public function edit(string $slug)
     {
-        $product = Product::where('slug', $slug)->first();
 
-        if (!$product) {
-            return redirect()->route('product.index')->with('error', 'No Product Found');
-        }
-        return view('admin.product.viewProduct', compact('product'));
+        return view('admin.product.viewProduct', ['slug' => $slug]);
     }
 
 
@@ -105,14 +101,14 @@ class ProductController extends Controller
             'brand' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
                 'error' => $validator->messages()
             ], 422);
         }
-    
+
         $product = Product::where('slug', $slug)->first();
         if (!$product) {
             return response()->json([
@@ -120,7 +116,7 @@ class ProductController extends Controller
                 'message' => "No Product Found"
             ], 500);
         }
-    
+
         // Handle the file upload
         $image = $product->image; // Default to current image
         if ($request->hasFile('image')) {
@@ -128,14 +124,14 @@ class ProductController extends Controller
             if ($product->image && file_exists(public_path("image/product/{$product->image}"))) {
                 unlink(public_path("image/product/{$product->image}"));
             }
-    
+
             $image = "P" . time() . "." . $request->image->extension();
             $request->image->move(public_path("image/product"), $image);
         }
-    
+
         // Generate the slug
         $slug = Str::slug($request->name);
-    
+
         // Update the product
         $product->update([
             'name' => $request->name,
@@ -147,16 +143,16 @@ class ProductController extends Controller
             'sku' => $request->sku,
             'category_id' => $request->category_id,
             'brand' => $request->brand,
-            'image' => $image,        
+            'image' => $image,
         ]);
-    
+
         if($product){
             return redirect()->route('product.index')->with('success', 'Product updated successfully.');
         } else {
             return redirect()->back()->with('error', 'Unable to update product.');
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -166,5 +162,5 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')->with('error', 'Product deleted successfully.');
     }
-    
+
 }

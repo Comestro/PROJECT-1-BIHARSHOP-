@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('quantity')->default(0)->nullable();
             $table->string('sku')->nullable();
             $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('brand')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

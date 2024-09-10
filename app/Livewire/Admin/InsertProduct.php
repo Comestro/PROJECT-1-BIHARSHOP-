@@ -29,14 +29,6 @@ class InsertProduct extends Component
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:255'],
-            'price' => ['nullable','numeric','min:0'],
-            'discount_price' => ['nullable','numeric','min:0'],
-            'quantity' => ['nullable','numeric','min:1'],
-            'sku' => ['nullable', 'string', 'max:255'],
-            'category_id' => ['nullable',],
-            'brand' => ['nullable', 'string', 'max:255'],
-            'photo' => ['nullable'],
         ];
     }
 
@@ -46,20 +38,20 @@ class InsertProduct extends Component
     }
 
      // Method to handle the form submission
-     public function store() 
+     public function store()
      {
         // Validate inputs based on the rules set in the class
          $validatedData = $this->validate();
- 
+
         // Debug the validated data to see what's being passed
- 
+
          if ($this->photo) {
             $imageName = "C" . time() . '.' . $this->photo->getClientOriginalExtension();
             $this->photo->storeAs('public/image/product', $imageName);
         } else {
             $imageName = null;
         }
- 
+
          // Insert the category into the database
          $product = Product::create([
              'name' => $this->name,
@@ -73,7 +65,7 @@ class InsertProduct extends Component
              'brand' => $this->brand,
              'image' => $imageName,
          ]);
- 
+
          // Redirect with success or error message
         if ($product) {
             session()->flash('success', 'Product added successfully.');
