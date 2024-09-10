@@ -1,41 +1,95 @@
 <div>
 
-    <div class="rounded-sm border border bg-white shadow-default dark:borderdark dark:bg-boxdark">
+    <div class="rounded-sm  border bg-white shadow-default dark:borderdark dark:bg-boxdark">
 
         <form action="#" wire:submit.prevent="store" method="post">
             <div class="p-6">
-                <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
-                        Parent Category
-                    </label>
-                    <select class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal">
-                        <option value="">Select Main Category</option>
-                    </select>
-                </div>
+
 
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
                         <label class="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Category name
+                            Product name
                         </label>
-                        <input type="text" wire:model.live="title" placeholder="Enter your Category name"
+                        <input type="text" wire:model.live="name" placeholder="Enter your Product name"
                             class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal " />
                     </div>
 
                     <div class="w-full xl:w-1/2">
                         <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Category Slug
+                            Product Slug
                         </label>
                         <input type="text" id="slug" wire:model="slug"
                             class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " readonly />
                     </div>
                 </div>
+                <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
+                    <div class="w-full xl:w-1/2">
+
+                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        Category
+                    </label>
+                    <select class="w-full rounded border border-slate-200  bg-transparent px-5 font-normal py-3" wire:model="category_id" >
+                        <option value="">Select Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+
+                    </div>
+                    <div class="w-full xl:w-1/2">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            Brand Name
+                        </label>
+                        <input type="text" id="brand" wire:model="brand"
+                            class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " />
+                    </div>
+                </div>
 
                 <div class="mb-4">
+                   
+                </div>
+                <div class="mb-4 flex flex-col gap-6 xl:flex-row">
+
+                    <div class="w-full xl:w-1/2">
+                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            Price
+                        </label>
+                        <input type="number" wire:model.live="price" placeholder="Enter Price"
+                            class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal " />
+                    </div>
+
+                    <div class="w-full xl:w-1/2">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            Discount Price
+                        </label>
+                        <input type="number" id="slug" wire:model="discount_price" placeholder="Enter Discount Price"
+                            class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " />
+                    </div>
+                </div>
+                <div class="mb-4 flex flex-col gap-6 xl:flex-row">
+
+                    <div class="w-full xl:w-1/2">
+                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            Quantity
+                        </label>
+                        <input type="number" wire:model.live="quantity" placeholder="Enter Quantity"
+                            class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal " />
+                    </div>
+
+                    <div class="w-full xl:w-1/2">
+                        <label for="sku" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            sku
+                        </label>
+                        <input type="text" id="sku" wire:model="sku" placeholder="Enter SKU"
+                            class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " />
+                    </div>
+                </div>
+                <div class="mb-4">
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
-                        Category Image
+                        Product Image
                     </label>
                     <div class="flex flex-1 md:flex-row flex-col gap-5">
                         <div class="flex-1">
@@ -74,15 +128,12 @@
                     </div>
                 </div>
 
-
-
-
                 <div class="mb-4">
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
-                        Category Description
+                        Product Description
                     </label>
                     <textarea rows="6" placeholder="Type your message"
-                        class="w-full border-slate-200 rounded border border bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
+                        class="w-full border-slate-200 rounded  border bg-transparent px-5 py-3 " wire:model="description"></textarea>
                 </div>
 
                 <button
