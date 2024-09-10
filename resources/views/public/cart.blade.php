@@ -25,10 +25,10 @@ cart
                 </div>
                 <div class="flex items-center">
                     <p class="font-bold mr-4">$145</p>
-                    <div class="flex items-center">
-                        <button class="px-2 py-1 bg-gray-200 rounded">-</button>
-                        <span class="mx-2">1</span>
-                        <button class="px-2 py-1 bg-gray-200 rounded">+</button>
+                    <div class="flex items-center" x-data="{count: 0}">
+                        <button class="px-2 py-1 bg-gray-200 rounded" x-on:click="count--">-</button>
+                        <span class="mx-2" x-text="count"></span>
+                        <button class="px-2 py-1 bg-gray-200 rounded" x-on:click="count++">+</button>
                     </div>
                 </div>
             </div>
