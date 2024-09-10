@@ -26,8 +26,7 @@ class CategoryController extends Controller
         if (!$category) {
             return redirect()->route('category.index')->with('error', 'No category Found');
         }
-
-        // Assuming you have a view named 'products.edit' to display the edit form
+        
         return view('category.edit', compact('category'));
     }
 

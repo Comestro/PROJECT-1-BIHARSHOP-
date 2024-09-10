@@ -12,8 +12,7 @@
                 <select
                     id="discount_type"
                     wire:model="discount_type"
-                    class="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
-                >
+                    class="mt-1 block w-full border border-gray-300 rounded px-3 py-2">
                     <option value="percentage">Percentage</option>
                     <option value="fixed">Fixed Amount</option>
                 </select>
@@ -26,8 +25,7 @@
                     wire:model="discount_value"
                     class="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
                     placeholder="Discount Value"
-                    step="0.01"
-                />
+                    step="0.01" />
             </div>
             <div>
                 <label for="expiration_date" class="block text-gray-700">Expiration Date</label>
