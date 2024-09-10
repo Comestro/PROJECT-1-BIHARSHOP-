@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 
@@ -11,68 +12,70 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(4);
-        return view('admin.manageProduct', compact('product'));
+        return view('admin.product.manageProduct');
     }
 
     public function create(){
-        return view('admin.insertProduct');
+        
+        return view('admin.product.insertProduct');
     }
     
-    public function store(Request $request)
-    {
+    // made with livewire 
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-            'discount_price' => 'nullable|numeric|min:0|lt:price',
-            'quantity' => 'required|integer|min:0',
-            'sku' => 'nullable|string|max:100',
-            'category_id' => 'required|exists:categories,id',
-            'brand' => 'nullable',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+    // public function store(Request $request)
+    // {
 
-        // Check if validation fails
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'errors' => $validator->messages()
-            ], 422);
-        }
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string|max:255',
+    //         'description' => 'nullable|string',
+    //         'price' => 'required|numeric|min:0',
+    //         'discount_price' => 'nullable|numeric|min:0|lt:price',
+    //         'quantity' => 'required|integer|min:0',
+    //         'sku' => 'nullable|string|max:100',
+    //         'category_id' => 'required|exists:categories,id',
+    //         'brand' => 'nullable',
+    //         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+    //     ]);
 
-        // Handle the file upload
-        if ($request->hasFile('image')) {
-            $image = "P" . time() . "." . $request->image->extension();
-            $request->image->move(public_path("image/product"), $image);
-        } else {
-           $image = NULL;
-        }
+    //     // Check if validation fails
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'status' => 422,
+    //             'errors' => $validator->messages()
+    //         ], 422);
+    //     }
 
-        $slug = Str::slug($request->name);
+    //     // Handle the file upload
+    //     if ($request->hasFile('image')) {
+    //         $image = "P" . time() . "." . $request->image->extension();
+    //         $request->image->move(public_path("image/product"), $image);
+    //     } else {
+    //        $image = NULL;
+    //     }
 
-        $product = Product::create([
-            'name' => $request->name,
-            'slug' => $slug,
-            'description' => $request->description,
-            'price' => $request->price,
-            'discount_price' => $request->discount_price,
-            'quantity' => $request->quantity,
-            'sku' => $request->sku,
-            'category_id' => $request->category_id,
-            'brand' => $request->brand,
-            'image' => $image,           
-        ]);
+    //     $slug = Str::slug($request->name);
 
-        if($product){
-            return redirect()->route('product.index')->with('success', 'Product added successfully.');
-        }
-        else{
-            return redirect()->back()->with('error', 'Unable to add Product.');
+    //     $product = Product::create([
+    //         'name' => $request->name,
+    //         'slug' => $slug,
+    //         'description' => $request->description,
+    //         'price' => $request->price,
+    //         'discount_price' => $request->discount_price,
+    //         'quantity' => $request->quantity,
+    //         'sku' => $request->sku,
+    //         'category_id' => $request->category_id,
+    //         'brand' => $request->brand,
+    //         'image' => $image,           
+    //     ]);
+
+    //     if($product){
+    //         return redirect()->route('product.index')->with('success', 'Product added successfully.');
+    //     }
+    //     else{
+    //         return redirect()->back()->with('error', 'Unable to add Product.');
  
-        }
-    }
+    //     }
+    // }
 
     public function edit(string $id)
     {
