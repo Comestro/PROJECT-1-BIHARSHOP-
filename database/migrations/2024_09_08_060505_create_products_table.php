@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->nullable();
             $table->string('brand')->nullable();
-            $table->boolean('status')->default(true); //
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

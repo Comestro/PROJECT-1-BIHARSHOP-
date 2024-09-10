@@ -9,6 +9,8 @@ use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductVariationController;
+use App\Livewire\Admin\EditCoupon;
+
 
 
 Route::view('/', 'welcome');
@@ -51,8 +53,10 @@ Route::prefix("user")->group(function () {
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/add-product', [AdminController::class, 'insertProduct']);
-Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
+// Route::get('/admin/add-product', [AdminController::class, 'insertProduct']);
+// Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
+Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
+Route::get('admin/edit-coupon/{id}', EditCoupon::class)->name('admin.edit-coupon');
 
 Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);

@@ -35,11 +35,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AddressSeeder::class);
 
 
-        // Seed Coupon
-        $this->call(CouponSeeder::class);
+        // // Seed Coupon
+        // $this->call(CouponSeeder::class);
         
-         // Seed ProductVariationSeeder
-         $this->call(ProductVariationSeeder::class);
+        //  // Seed ProductVariationSeeder
+        //  $this->call(ProductVariationSeeder::class);
 
          // Seed OptionValueSeeder
          $this->call(OptionValueSeeder::class);
