@@ -2,6 +2,7 @@
 @section('title', 'Manage Products')
 @section('content')
 
+
 <main>
     <div class="">
         <!-- Breadcrumb Start -->

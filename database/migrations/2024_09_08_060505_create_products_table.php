@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->longText('description')->nullable();
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 10, 2)->nullable();
             $table->decimal('discount_price', 10, 2)->nullable();
-            $table->integer('quantity')->default(0);
+            $table->integer('quantity')->default(0)->nullable();
             $table->string('sku')->nullable();
             $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade')->nullable();
             $table->string('brand')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
