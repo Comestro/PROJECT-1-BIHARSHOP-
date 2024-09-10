@@ -14,4 +14,13 @@ class CallingCoupon extends Component
         $data['coupons'] = Coupon::where('code','LIKE',"%".$this->search."%")->get();
         return view('livewire.admin.calling-coupon',$data);
     }
+    public function toggleStatus($couponId)
+        {
+            $coupon = Coupon::find($couponId);
+            $coupon->status = !$coupon->status;
+            $coupon->save();
+
+            session()->flash('success', 'Coupon status updated successfully.');
+        }
+    
 }
