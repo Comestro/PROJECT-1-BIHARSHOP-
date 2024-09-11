@@ -1,11 +1,13 @@
 <div>
-    <form wire:submit.prevent="store"  method="POST" class="bg-white p-6 rounded-lg shadow-md">
+    <form wire:submit.prevent="store" method="POST" class="bg-white p-6 rounded-lg shadow-md">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label for="code" class="block text-gray-700">Code</label>
-                <input type="text" id="code" wire:model="code" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Coupon Code"
-                />
+                <input type="text" id="code" wire:model="code" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Coupon Code" />
+                @error('code')
+                <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="discount_type" class="block text-gray-700">Discount Type</label>
@@ -16,6 +18,9 @@
                     <option value="percentage">Percentage</option>
                     <option value="fixed">Fixed Amount</option>
                 </select>
+                @error('discount_type')
+                <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="discount_value" class="block text-gray-700">Discount Value</label>
@@ -26,6 +31,9 @@
                     class="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
                     placeholder="Discount Value"
                     step="0.01" />
+                @error('discount_value')
+                <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="expiration_date" class="block text-gray-700">Expiration Date</label>
@@ -33,8 +41,10 @@
                     type="date"
                     id="expiration_date"
                     wire:model="expiration_date"
-                    class="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
-                />
+                    class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+                @error('expiration_date')
+                <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
+                @enderror
             </div>
             <div class="col-span-2">
                 <label for="status" class="block text-gray-700">Status</label>
@@ -44,8 +54,10 @@
                         id="status"
                         wire:model="status"
                         class="mr-2"
-                        checked
-                    />
+                        checked />
+                    @error('status')
+                    <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
+                    @enderror
                     <span>Active</span>
                 </div>
             </div>
@@ -54,8 +66,7 @@
         <div class="mt-6 flex justify-end">
             <button
                 type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                 Save Coupon
             </button>
         </div>
