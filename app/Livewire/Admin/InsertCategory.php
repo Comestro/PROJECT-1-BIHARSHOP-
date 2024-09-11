@@ -66,6 +66,12 @@ class InsertCategory extends Component
     // Render the Livewire view for this component
     public function render()
     {
-        return view('livewire.admin.insert-category');
+        $parentname = Category::all();
+        return view('livewire.admin.insert-category')->with('parentname', $parentname);
     }
+    // public function callingparent(){
+
+    //     $parentname= 
+    //     return route('category.callingparent',$parentname);
+    // }
 }

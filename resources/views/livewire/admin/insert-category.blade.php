@@ -8,8 +8,12 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Parent Category
                     </label>
-                    <select class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal">
+                    <select class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal capitalize">
                         <option value="">Select Main Category</option>
+                        @foreach ($parentname as $parent )
+                        <option value="{{$parent->parent_id}}">{{$parent->name}}</option>
+                        
+                        @endforeach
                     </select>
                 </div>
 
@@ -82,7 +86,7 @@
                         Category Description
                     </label>
                     <textarea rows="6" placeholder="Type your message"
-                        class="w-full border-slate-200 rounded border border bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
+                        class="w-full border-slate-200 rounded border  bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
                 </div>
 
                 <button
