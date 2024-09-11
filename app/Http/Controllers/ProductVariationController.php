@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductVariationController extends Controller
 {
@@ -73,7 +74,7 @@ class ProductVariationController extends Controller
   
     //  * Show the form for editing the specified resource.
     
-    public function edit(ProductVariation $productVariation)
+    public function edit(ProductVariation $productVariation,$id)
     {
         $product = ProductVariation::find($id);
         // Check if the product variation exists
@@ -87,7 +88,7 @@ class ProductVariationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProductVariation $productVariation)
+    public function update(Request $request, ProductVariation $productVariation,$id)
     {
         // Validate the request data
         $validator = Validator::make($request->all(), [
@@ -132,7 +133,7 @@ class ProductVariationController extends Controller
     
     //  * Remove the specified resource from storage.
      
-    public function destroy(ProductVariation $productVariation)
+    public function destroy(ProductVariation $productVariation,$id)
     {
         $productVariation = ProductVariation::find($id);
         $productVariation->delete();
