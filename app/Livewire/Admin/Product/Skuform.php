@@ -31,7 +31,7 @@ class SkuForm extends Component
     public function update()
     {
         $this->validate([
-            'sku' => 'required|numeric|min:0',
+            'sku' => 'required|string',
         ]);
 
         $this->product->update([

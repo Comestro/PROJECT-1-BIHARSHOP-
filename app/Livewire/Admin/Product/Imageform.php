@@ -11,13 +11,13 @@ class ImageForm extends Component
     use WithFileUploads;
 
     public $product;
-    public $image;
+    public $photo;
     public $isEditing = false;
 
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->image = $product->image;
+        $this->photo = $product->photo; // Ensure this points to the correct attribute in the Product model.
     }
 
     public function edit()
@@ -28,24 +28,25 @@ class ImageForm extends Component
     public function cancel()
     {
         $this->isEditing = false;
-        $this->image = $this->product->image;
+        $this->photo = $this->product->photo;
     }
 
     public function update()
     {
         $this->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
+            'photo' => 'nullable|image|max:1024', // Validation rule for image size and type.
         ]);
 
-        if ($this->image) {
-            // Store the uploaded image in 'storage/app/public/images' directory
-            $imagePath = $this->image->store('images', 'public');
-            
-            // Update the product's image path in the database
-            $this->product->update([
-                'image' => $imagePath,
-            ]);
+        if ($this->photo) {
+            $imageName = "p" . time() . '.' . $this->photo->getClientOriginalExtension();
+            $this->photo->storeAs('public/image/product', $imageName);
+        } else {
+            $imageName = $this->product->image; // Retain the existing image if no new image is uploaded.
         }
+
+        $this->product->update([
+            'image' => $imageName,
+        ]);
 
         $this->isEditing = false;
         session()->flash('message', 'Product image updated successfully!');

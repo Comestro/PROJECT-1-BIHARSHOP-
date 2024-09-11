@@ -31,7 +31,7 @@ class StatusForm extends Component
     public function update()
     {
         $this->validate([
-            'status' => 'required|numeric|min:0',
+            'status' => 'required',
         ]);
 
         $this->product->update([

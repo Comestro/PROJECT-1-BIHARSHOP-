@@ -31,7 +31,7 @@ class DiscountPriceForm extends Component
     public function update()
     {
         $this->validate([
-            'discount_price' => 'nullable|numeric|min:0|lt:price',
+            'discount_price' => 'nullable|numeric|min:0',
         ]);
 
         $this->product->update([
@@ -39,7 +39,7 @@ class DiscountPriceForm extends Component
         ]);
 
         $this->isEditing = false;
-        session()->flash('message', 'Product discount_price updated successfully!');
+        session()->flash('message', 'Product Discount Price updated successfully!');
     }
 
     public function render()

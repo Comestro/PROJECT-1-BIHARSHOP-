@@ -5,11 +5,11 @@
 
             @if($isEditing)
                 <div>
-                    <input type="file" wire:model="image" class="w-full px-3 py-2 border rounded-lg">
-                    <div wire:loading wire:target="image" class="mt-2 text-gray-500">Uploading...</div>
+                    <input type="file" wire:model="photo" class="w-full px-3 py-2 border rounded-lg">
+                    <div wire:loading wire:target="photo" class="mt-2 text-gray-500">Uploading...</div>
 
-                    @if ($image)
-                        <img src="{{ $image->temporaryUrl() }}" class="mt-4 w-32 h-32">
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}" class="mt-4 w-32 h-32">
                     @endif
 
                     <div class="mt-2">
@@ -20,7 +20,7 @@
             @else
                 <div class="flex items-center justify-between">
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" class="w-32 h-32">
+                        <img src="{{ asset('storage/image/product/' . $product->image) }}" class="w-32 h-32">
                     @else
                         <span>No Image</span>
                     @endif
