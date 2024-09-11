@@ -8,9 +8,15 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Parent Category
                     </label>
-                    <select class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal">
-                        <option value="">Select Main Category</option>
+                    <select name="parent_category_id" wire:model="parent_category_id" class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal">
+                        <option value="NULL">Select Main Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
+                    @error('parent_category_id')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
@@ -21,6 +27,10 @@
                         </label>
                         <input type="text" wire:model.live="title" placeholder="Enter your Category name"
                             class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal " />
+                            @error('title')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+
                     </div>
 
                     <div class="w-full xl:w-1/2">
@@ -29,6 +39,9 @@
                         </label>
                         <input type="text" id="slug" wire:model="slug"
                             class="w-full rounded border border-slate-200  bg-slate-100 px-5 py-3 " readonly />
+                            @error('slug')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -59,6 +72,9 @@
                                     <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
                                 </label>
                             </div>
+                            @error('photo')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div
@@ -83,12 +99,20 @@
                     </label>
                     <textarea rows="6" placeholder="Type your message"
                         class="w-full border-slate-200 rounded border border bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
-                </div>
+                        @error('cat_description')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror</div>
 
                 <button
                     class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
                     Create
                 </button>
+                 <!-- Success Message -->
+                 @if (session()->has('message'))
+                 <div class="mt-4 p-2 bg-green-500 text-white rounded-md">
+                     {{ session('message') }}
+                 </div>
+             @endif
             </div>
         </form>
     </div>

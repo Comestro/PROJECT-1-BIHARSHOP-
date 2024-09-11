@@ -14,11 +14,13 @@ class InsertCategory extends Component
     public $slug;
     public $cat_description;
     public $photo;  // For image file upload
+    public $parent_category_id;
 
     // Method to define validation rules
     public function rules()
     {
         return [
+            'parent_category_id' => 'nullable|exists:categories,id',
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
             'cat_description' => ['required', 'string', 'max:255'],
@@ -32,7 +34,7 @@ class InsertCategory extends Component
     }
 
     // Method to handle the form submission
-    public function store() 
+    public function store()
     {
         // Validate inputs based on the rules set in the class
         $validatedData = $this->validate();
@@ -48,6 +50,7 @@ class InsertCategory extends Component
 
         // Insert the category into the database
         $category = Category::create([
+            'parent_category_id' =>$this->parent_category_id,
             'name' => $this->title,
             'cat_description' => $this->cat_description,
             'cat_slug' => $this->slug,
@@ -66,6 +69,7 @@ class InsertCategory extends Component
     // Render the Livewire view for this component
     public function render()
     {
-        return view('livewire.admin.insert-category');
+        $data['categories'] = Category::where('parent_category_id',NULL)->get();
+        return view('livewire.admin.insert-category', $data);
     }
 }
