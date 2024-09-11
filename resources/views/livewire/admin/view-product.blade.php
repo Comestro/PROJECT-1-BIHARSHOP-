@@ -2,6 +2,17 @@
     <div class="flex flex-1 w-full gap-3">
         <div class="flex flex-col w-1/2">
             <livewire:admin.product.name-form :product="$product" />
+            <livewire:admin.product.description-form :product="$product" />
+            <livewire:admin.product.price-form :product="$product" />
+            <livewire:admin.product.discount-price-form :product="$product" />
+            
+        </div>
+        <div class="flex flex-col w-1/2">
+            <livewire:admin.product.quantity-form :product="$product" />
+            <livewire:admin.product.brand-form :product="$product" />
+            <livewire:admin.product.image-form :product="$product" />
+            <livewire:admin.product.sku-form :product="$product" />
+            <livewire:admin.product.category-form :product="$product" />
         </div>
 
           {{-- <!-- Box for Product Slug -->
