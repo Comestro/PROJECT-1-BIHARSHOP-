@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
+
 class PublicController extends Controller
-{  public function index()
+{
+    public function index()
     {
-        return view('/public/home');
+        $data['categories'] = Category::all();
+        // $data['mainCategories'] = Category::where('parent_id', null)->get();
+       
+        return view('public/home',$data);
     }
     public function view()
     {
         return view('public/view');
-        
     }
     public function cart()
     {
@@ -23,15 +28,19 @@ class PublicController extends Controller
         return view('/public/filter');
     }
 
-    public function ourTeam(){
+    public function ourTeam()
+    {
         return view('public.team');
     }
 
-    public function privacyPolicy(){
+    public function privacyPolicy()
+    {
         return view('public.privacy-policy');
     }
 
-    public function refundPolicy(){
+    public function refundPolicy()
+    {
         return view('public.refund-policy');
     }
+  
 }

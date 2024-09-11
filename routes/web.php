@@ -13,7 +13,7 @@ use App\Livewire\Admin\EditCoupon;
 
 
 
-Route::view('/', 'welcome');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -27,7 +27,6 @@ Route::view('profile', 'profile')
 Route::get('/', [PublicController::class, "index"])->name("index");
 Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
-Route::get('/',[PublicController::class,"index"])->name("index");
 Route::get('/filter',[PublicController::class,"filter"])->name("filter");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
@@ -64,3 +63,5 @@ Route::prefix('admin')->group(function () {
     Route::resource('coupon', CouponController::class);
     Route::resource('product-variations', ProductVariationController::class);
 });
+
+
