@@ -15,48 +15,63 @@
     </div>
 
     <!-- Category Table -->
-    <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div class="grid grid-cols-4 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
-            <div class="col-span-1 flex items-center p-4">
-                <p class="font-medium">Category Id</p>
-            </div>
-            <div class="col-span-1 flex items-center">
-                <p class="font-medium">Category Image</p>
-            </div><div class="col-span-1 flex items-center">
-                <p class="font-medium">Category Name</p>
-            </div>
-            <div class="col-span-2 flex items-center">
-                <p class="font-medium">Category Slug</p>
-            </div>
-          
-            <div class="col-span-3 hidden items-center sm:flex">
-                <p class="font-medium">Description</p>
-            </div>
-        </div>
 
-        <!-- Category Rows -->
-        @foreach($categories as $category)
-        <div class="grid grid-cols-4 border-t p-4 border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
-            <div class="col-span-1 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $category->id }}</p>
-            </div>
-            <div class="col-span-1 flex items-center">
-                <img src="{{ $category->image ? asset('storage/image/category/' . $category->image) : asset('path/to/default-image.jpg') }}"
-                    alt="Category Image"
-                    class="w-12 h-12 object-cover border border-gray-300 dark:border-strokedark">
-            </div>            
-            
-              <div class="col-span-1 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $category->name }}</p>
-            </div>
-            <div class="col-span-2 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $category->cat_slug }}</p>
-            </div>
-          
-            <div class="col-span-3 hidden items-center sm:flex">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $category->cat_description }}</p>
-            </div>
-        </div>
-        @endforeach
+
+
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        category Id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Category Image
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Category Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Category Slug
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Category Description
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($categories as $category)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$category->id}}
+                    </th>
+                    <td class="px-6 py-4">
+                        <img src="{{ $category->image ? asset('storage/image/category/' . $category->image) : asset('path/to/default-image.jpg') }}"
+                            alt="Category Image"
+                            class="w-12 h-12 object-cover border border-gray-300 dark:border-strokedark">
+                    </td>
+                    
+                    <td class="px-6 py-4">
+                       {{$category->name}}
+                    </td>
+                    <td class="px-6 py-4">
+                       {{$category->cat_slug}}
+                    </td>
+                    <td class="px-6 py-4">
+                       {{$category->cat_description}}
+                    </td>
+                    <td class="px-6 py-4">
+                      
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+
+
+   
 </div>
