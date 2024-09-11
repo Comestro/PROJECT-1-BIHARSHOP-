@@ -72,4 +72,9 @@ class InsertCategory extends Component
         $data['categories'] = Category::where('parent_category_id',NULL)->get();
         return view('livewire.admin.insert-category', $data);
     }
+    // public function callingparent(){
+
+    //     $parentname=
+    //     return route('category.callingparent',$parentname);
+    // }
 }
