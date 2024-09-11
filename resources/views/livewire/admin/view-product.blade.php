@@ -1,23 +1,7 @@
   <!-- Product Box 1 -->
     <div class="flex flex-1 w-full gap-3">
         <div class="flex flex-col w-1/2">
-            <form action="" wire:submit.prevent="update" method="POST">
-                <!-- Box for Product Name -->
-                <div class="p-4 bg-gray-100 rounded-lg mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2">Product Name</label>
-                    <div class="flex items-center justify-between">
-                        <span id="name-text-1">{{ $product->name }}</span>
-                        <button onclick="toggleInput('1', 'name')"
-                            class="bg-black text-white text-xs px-3 py-1 rounded-md">EDIT</button>
-                    </div>
-                    <div id="name-input-section-1" class="hidden mt-2">
-                        <input type="text" wire:model.live="name" id="name-input-1"
-                            class="w-full px-3 py-2 border rounded-lg" value="{{ $product->name }}">
-                        <button onclick="saveInput('1', 'name')"
-                            class="bg-black text-white text-xs px-3 py-1 rounded-md mt-2">SAVE</button>
-                    </div>
-                </div>
-            </form>
+            <livewire:admin.product.name-form :product="$product" />
         </div>
 
           {{-- <!-- Box for Product Slug -->
