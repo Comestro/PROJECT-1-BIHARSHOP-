@@ -98,15 +98,10 @@
                         Category Description
                     </label>
                     <textarea rows="6" placeholder="Type your message"
-<<<<<<< HEAD
-                        class="w-full border-slate-200 rounded border border bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
+                        class="w-full border-slate-200 rounded border  bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
                         @error('cat_description')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror</div>
-=======
-                        class="w-full border-slate-200 rounded border  bg-transparent px-5 py-3 " wire:model="cat_description"></textarea>
-                </div>
->>>>>>> d52d283dc1bcb51de15fdae419fafb3de38872c0
 
                 <button
                     class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
