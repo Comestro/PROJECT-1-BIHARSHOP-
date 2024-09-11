@@ -25,7 +25,7 @@ class ProductImageController extends Controller
         // Validate the request
         $validator = Validator::make($request->all(), [
             'product_id' => 'required|exists:products,id',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  // Limit to image file types
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Check if validation fails

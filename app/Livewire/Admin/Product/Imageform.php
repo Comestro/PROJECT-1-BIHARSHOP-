@@ -17,7 +17,7 @@ class ImageForm extends Component
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->photo = $product->photo; // Ensure this points to the correct attribute in the Product model.
+        $this->photo = $product->photo; 
     }
 
     public function edit()
