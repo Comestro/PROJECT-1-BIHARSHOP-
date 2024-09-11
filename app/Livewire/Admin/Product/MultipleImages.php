@@ -44,27 +44,37 @@ class MultipleImages extends Component
 
     public function update()
     {
+
+        // Validate each image in the photos array
         $this->validate([
             'photos.*' => 'nullable|image|max:1024', // Validate each image
         ]);
 
-        if ($this->photos) {
-            foreach ($this->photos as $photo) {
-                $imageName = "p" . time() . '.' . $photo->getClientOriginalExtension();
-                $photo->storeAs('public/image/product', $imageName);
+        // Ensure photos are not empty
+        if ($this->photos && is_array($this->photos)) {
+            foreach ($this->photos as $index => $photo) {
+                // Ensure you're getting different photos each time
+                if ($photo) {
+                    $imageName = "p" . time() . $index . '.' . $photo->getClientOriginalExtension();
+                    $photo->storeAs('public/image/product', $imageName);
 
-                // Save each image to product_images table
-                ProductImage::create([
-                    'product_id' => $this->product->id,
-                    'image_path' => $imageName,
-                ]);
+                    // Save each image to the product_images table
+                    ProductImage::create([
+                        'product_id' => $this->product->id,
+                        'image_path' => $imageName,
+                    ]);
+                }
             }
         }
 
+        // Reset editing state and flash success message
         $this->isEditing = false;
         session()->flash('message', 'Product images updated successfully!');
-        $this->photos = []; // Clear images after saving
+        $this->photos = []; // Clear the photos array after saving
     }
+
+
+
 
     public function render()
     {
