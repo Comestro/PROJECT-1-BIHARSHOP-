@@ -10,10 +10,10 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $data['categories'] = Category::all();
-        // $data['mainCategories'] = Category::where('parent_id', null)->get();
+        // $data['categories'] = Category::all();
+        // // $data['mainCategories'] = Category::where('parent_id', null)->get();
        
-        return view('public/home',$data);
+        return view('public/home');
     }
     public function view()
     {

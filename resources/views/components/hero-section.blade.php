@@ -46,19 +46,11 @@
           <h2 class="text-center text-2xl md:text-4xl font-bold text-black mb-8">Shop by Categories</h2>
           <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             <!-- Category 1 -->
-
-            {{dd($data['categories']);}}
             
-            <div class="group relative h-36 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <img src="https://images.squarespace-cdn.com/content/v1/665273b60d5c4e3fe76a765e/21acea2c-a526-49f3-ac73-4b5fdd1e1845/Mens+style+app+%281%29.png" alt="Men's Clothing"
-                class="w-full h-36 object-cover object-center group-hover:scale-110 transition-transform duration-300" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 transition-opacity duration-300"></div>
-              <div class="absolute inset-0 flex items-end justify-center p-4">
-                <h3 class="text-white text-lg font-semibold group-hover:opacity-100 transition-opacity duration-300">Men's Clothing</h3>
-              </div>
-            </div>
+            <livewire:public.product.category-header/>
+
         
-            <!-- Category 2 -->
+            {{-- <!-- Category 2 -->
             <div class="group relative h-36 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
               <img src="https://example.com/path-to-category2-image.jpg" alt="Women's Clothing"
                 class="w-full h-36 object-cover object-center group-hover:scale-110 transition-transform duration-300" />
@@ -106,7 +98,7 @@
               <div class="absolute inset-0 flex items-end justify-center p-4">
                 <h3 class="text-white text-lg font-semibold group-hover:opacity-100 transition-opacity duration-300">Kids Clothing</h3>
               </div>
-            </div>
+            </div> --}}
         
             <!-- More categories can be added similarly -->
           </div>
