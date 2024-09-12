@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 
@@ -23,9 +24,17 @@ class PublicController extends Controller
     {
         return view('public/cart');
     }
-    public function filter()
+    public function filter($cat_slug)
     {
-        return view('/public/filter');
+        $category = Category::where('cat_slug', $cat_slug)->first();
+        $products = Product::where('category_id',$category->id)->get();
+
+        if ($products){
+            // dd($product);
+            return view('public.filter', ['category' =>$category,'products'=>$products]);
+        }else{
+            return redirect()->route('public/home')->with('error', 'No Product Found');
+        }
     }
 
     public function ourTeam()
