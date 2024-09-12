@@ -618,7 +618,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $product->category ? $product->category->name : 'No Category' }}
-                        </td> 
+                        </td>
                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             @if($product->image)
                                 <img src="{{ asset('storage/image/product/' . $product->image) }}" alt="Product Image" class="w-16 h-16 object-cover">
@@ -631,8 +631,8 @@
                                 {{ $product->status ? 'Active' : 'Inactive' }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('product.edit', $product->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm gap-3 font-medium">
+                            <a href="{{ route('product.show', $product->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             <button type="button" wire:click="delete({{ $product->id }})" class="text-red-600 hover:text-red-900">Delete</button>
                         </td>
                     </tr>
