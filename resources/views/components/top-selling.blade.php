@@ -5,7 +5,7 @@
 
     <livewire:public.product.top-selling/>
 
-    {{-- <div class="w-full max-w-sm bg-white rounded-lg ">
+     <!-- <div class="w-full max-w-sm bg-white rounded-lg ">
         <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
             <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg" src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486" alt="product image" />
         </a>
@@ -102,8 +102,8 @@
             <div class="flex justify-between">
                 <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">$599</span>
             </div>
-        </div>
-    </div> --}}
+        </div> -->
+    <!-- </div> -->
 </div>
 
 <!-- view all button -->
