@@ -6,75 +6,59 @@ use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 
 class MultipleImages extends Component
 {
     use WithFileUploads;
 
     public $product;
-    public $photos = []; // To hold multiple image files
-    public $inputs = []; // To dynamically track input fields
-    public $i = 1; // To track the number of input fields
-
-    public $isEditing = false;
+    public $photo; // Single image upload
+    public $isEditing = true; // Always in editing mode
 
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->inputs = [0]; // Start with one input field
     }
 
-    // Function to add more image inputs
-    public function addInput()
+    // Function to delete an image from the database and storage
+    public function deleteImage($imageId)
     {
-        $this->i++;
-        array_push($this->inputs, $this->i);
+        $image = ProductImage::find($imageId);
+
+        if ($image) {
+            // Remove the image from storage
+            Storage::delete('public/image/product/' . $image->image_path);
+            // Delete the image record from the database
+            $image->delete();
+            session()->flash('message', 'Image deleted successfully.');
+        }
     }
 
-    public function edit()
-    {
-        $this->isEditing = true;
-    }
-
-    public function cancel()
-    {
-        $this->isEditing = false;
-        $this->photos = []; // Reset images array
-    }
-
+    // Update product images one by one
     public function update()
     {
-
-        // Validate each image in the photos array
+        // Validate the uploaded image
         $this->validate([
-            'photos.*' => 'nullable|image|max:1024', // Validate each image
+            'photo' => 'nullable|image|max:1024', // Validate the image
         ]);
 
-        // Ensure photos are not empty
-        if ($this->photos && is_array($this->photos)) {
-            foreach ($this->photos as $index => $photo) {
-                // Ensure you're getting different photos each time
-                if ($photo) {
-                    $imageName = "p" . time() . $index . '.' . $photo->getClientOriginalExtension();
-                    $photo->storeAs('public/image/product', $imageName);
+        // Ensure photo is not empty
+        if ($this->photo) {
+            $imageName = "p" . time() . '.' . $this->photo->getClientOriginalExtension();
+            $this->photo->storeAs('public/image/product', $imageName);
 
-                    // Save each image to the product_images table
-                    ProductImage::create([
-                        'product_id' => $this->product->id,
-                        'image_path' => $imageName,
-                    ]);
-                }
-            }
+            // Save the image to the product_images table
+            ProductImage::create([
+                'product_id' => $this->product->id,
+                'image_path' => $imageName,
+            ]);
+
+            // Flash success message and reset the photo input
+            session()->flash('message', 'Product image uploaded successfully!');
+            $this->photo = null; // Clear the input after saving
         }
-
-        // Reset editing state and flash success message
-        $this->isEditing = false;
-        session()->flash('message', 'Product images updated successfully!');
-        $this->photos = []; // Clear the photos array after saving
     }
-
-
-
 
     public function render()
     {
