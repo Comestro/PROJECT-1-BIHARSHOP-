@@ -16,7 +16,7 @@ View Page
         <!-- Left Section: Images -->
         <div>
             <!-- Main Image -->
-            <img src="https://via.placeholder.com/500x500" alt="Product Image" class="w-full h-auto mb-4">
+            <img src="{{ asset('storage/image/product/' . $product->image)}}" alt="Product Image" class="w-full h-auto mb-4">
 
             <!-- Thumbnail Images -->
             <div class="grid grid-cols-4 gap-4">

@@ -618,7 +618,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $product->category ? $product->category->name : 'No Category' }}
-                        </td> 
+                        </td>
                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             @if($product->image)
                                 <img src="{{ asset('storage/image/product/' . $product->image) }}" alt="Product Image" class="w-16 h-16 object-cover">
