@@ -16,6 +16,5 @@ class ManageProduct extends Component
             ->orWhere('description', 'like', '%' . $this->searchTerm . '%')
             ->get();
 
-        return view('livewire.admin.manage-product', ['products' => $products,]);
     }
 }

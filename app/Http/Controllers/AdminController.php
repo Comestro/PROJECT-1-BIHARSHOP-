@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     //
     public function index(){
-        return view('admin.dashboard');
+
+        $catCount = Category::all();
+        $proCount = Product::all();
+        $userCount =User::all();
+        return view('admin.dashboard')->with('catCount', $catCount)->with('proCount', $proCount)->with('userCount', $userCount);;
     }
     
-    public function dashboard(){
-        $categoriesCount = Category::count();
+    // public function dashboard(){
+    //     $catCount = Category::all();
+    //     $proCount = Product::all();
+    //     $userCount =User::all();
+        
 
-        return view('admin.dashboard', compact(
-            'categoriesCount',
-        ));
-    }
+    //     return redirect()->route('admin.countDashboard')
+    // }
 }
