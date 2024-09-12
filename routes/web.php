@@ -27,10 +27,12 @@ Route::view('profile', 'profile')
 Route::get('/', [PublicController::class, "index"])->name("index");
 Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
-Route::get('/filter',[PublicController::class,"filter"])->name("filter");
+// Route::get('/filter',[PublicController::class,"filter"])->name("filter");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
+
+Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';

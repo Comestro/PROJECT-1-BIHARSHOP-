@@ -62,7 +62,7 @@
         <!-- Product Grid -->
         <main class="flex-1">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold">Casual</h2>
+                <h2 class="text-2xl font-bold">{{$category->name}}</h2>
 
                 <!-- Mobile Filter Toggle -->
                 <button class="lg:hidden bg-black text-white px-4 py-2 rounded-lg" onclick="toggleFilters()">Filters</button>
@@ -70,7 +70,16 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Product Card -->
-                <div class="bg-white shadow-lg rounded-lg p-4">
+
+                @foreach($products as $item)
+                    <div class="bg-white shadow-lg rounded-lg p-4">
+                        <img src="{{ asset('storage/image/product/' . $item->image)}}" alt="Gradient Graphic T-shirt" class="w-full mb-4 md:h-64">
+                        <h3 class="text-lg font-medium">{{$item->name}}</h3>
+                        <p class="text-sm text-gray-500">Rating: 3.5/5</p>
+                        <p class="text-xl font-bold">Rs. {{ $item->discount_price ? $item->discount_price : $item->price}}</p>
+                    </div>
+                @endforeach
+                {{-- <div class="bg-white shadow-lg rounded-lg p-4">
                     <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
                         alt="Gradient Graphic T-shirt" class="w-full mb-4">
                     <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
@@ -104,14 +113,7 @@
                     <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
                     <p class="text-sm text-gray-500">Rating: 3.5/5</p>
                     <p class="text-xl font-bold">$145</p>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div>
+                </div> --}}
                 <!-- Repeat product cards similarly -->
             </div>
 
