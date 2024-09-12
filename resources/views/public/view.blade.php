@@ -30,17 +30,26 @@ View Page
         <!-- Right Section: Product Info -->
         <div>
             <!-- Product Title and Price -->
-            <h1 class="text-3xl font-bold mb-4">ONE LIFE GRAPHIC T-SHIRT</h1>
+            <div class="flex justify-between">
+                <h1 class="text-3xl font-bold mb-4">{{$product->name}}</h1>
+                <a href="{{route('user.wishlist')}}" class="flex flex-col justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                    </svg>
+                    <p class="text-xs ">Add To Wishlist</p>
+                </a>
 
+
+            </div>
             <!-- Price and Discount -->
             <div class="text-xl font-semibold mb-4">
-                <span class="text-green-500">$260</span>
-                <span class="text-gray-400 line-through ml-2">$300</span>
+                <span class="text-green-500 font-semibold ">₹{{$product->price}}</span>
+                <span class="text-gray-400 line-through ml-2 text-lg">₹{{$product->discount_price}}</span>
             </div>
 
             <!-- Product Description -->
             <p class="text-gray-600 mb-6">
-                This graphic t-shirt is perfect for any capsule. Crafted from a soft and breathable fabric it offers superior comfort and style.
+                {{$product->description}}
             </p>
 
             <!-- Color Options -->
@@ -124,7 +133,7 @@ View Page
 
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-[5%]">
-<div class="w-full max-w-sm bg-white rounded-lg ">
+    <div class="w-full max-w-sm bg-white rounded-lg ">
         <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
             <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg" src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486" alt="product image" />
         </a>
