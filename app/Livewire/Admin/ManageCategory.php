@@ -33,6 +33,8 @@ class ManageCategory extends Component
     public $image;
     public $existingImage;
     public $isModalOpen = false;
+    public $confirmingDelete = false;
+
 
     protected $rules = [
         'name' => 'required|string|max:255',
@@ -97,4 +99,27 @@ class ManageCategory extends Component
         session()->flash('message', 'Category updated successfully.');
     }
 
+    public function deleteCategory()
+    {
+        if ($this->confirmingDelete) {
+            $category = Category::find($this->categoryId);
+
+            // Delete image
+            if ($category->image) {
+                Storage::delete('public/image/category/' . $category->image);
+            }
+
+            // Delete category
+            $category->delete();
+
+            $this->confirmingDelete = false;
+            session()->flash('message', 'Category deleted successfully.');
+        }
+    }
+
+    public function confirmDelete($categoryId)
+    {
+        $this->categoryId = $categoryId;
+        $this->confirmingDelete = true;
+    }
 }

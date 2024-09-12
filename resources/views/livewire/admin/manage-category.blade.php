@@ -1,18 +1,5 @@
 <div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
-    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h2 class="text-title-md2 font-bold text-black dark:text-white">Manage Categories</h2>
-        <nav>
-            <ol class="flex items-center gap-2">
-                <li><a class="font-medium" href="javascript:void(0)">Categories /</a></li>
-                <li class="font-medium text-primary">Manage Categories</li>
-            </ol>
-        </nav>
-    </div>
-
-    <!-- Search Input -->
-    <div class="mb-4">
-        <input type="text" wire:model="searchTerm" class="w-full p-2 border rounded" placeholder="Search categories...">
-    </div>
+    <!-- Other code -->
 
     <!-- Category Table -->
     <div class="relative overflow-x-auto">
@@ -41,9 +28,12 @@
                     <td class="px-6 py-4">{{$category->name}}</td>
                     <td class="px-6 py-4">{{$category->cat_slug}}</td>
                     <td class="px-6 py-4">{{$category->cat_description}}</td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 flex gap-2">
                         <button wire:click="openModal({{ $category->id }})" class="bg-blue-500 hover:bg-blue-800 text-white px-3 py-2 rounded">
                             Edit
+                        </button>
+                        <button wire:click="confirmDelete({{ $category->id }})" class="bg-red-500 hover:bg-red-800 text-white px-3 py-2 rounded">
+                            Delete
                         </button>
                     </td>
                 </tr>
@@ -89,10 +79,32 @@
                     @error('image') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
                 <div class="flex justify-end gap-2">
-                    <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">Cancel</button>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded">Save</button>
+                    <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                        Cancel
+                    </button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded">
+                        Update
+                    </button>
                 </div>
             </form>
+        </div>
+    </div>
+    @endif
+
+    <!-- Delete Confirmation Modal -->
+    @if($confirmingDelete)
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg">
+            <h3 class="text-lg font-semibold mb-4">Confirm Deletion</h3>
+            <p class="mb-4">Are you sure you want to delete this category?</p>
+            <div class="flex justify-end gap-2">
+                <button wire:click="deleteCategory" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded">
+                    Delete
+                </button>
+                <button wire:click="$set('confirmingDelete', false)" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                    Cancel
+                </button>
+            </div>
         </div>
     </div>
     @endif
