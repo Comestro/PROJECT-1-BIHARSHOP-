@@ -64,8 +64,13 @@
                        {{$category->cat_description}}
                     </td>
                     <td class="px-6 py-4">
-                      
-                    </td>
+                      <!-- <form wire:submit.prevent='deletefun' method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="id" wire:model="id" value="{{$category->id}}" class="">
+                        <input type="submit" value="delete" class="bg-red-500 hover:bg-red-800 text-white px-3 py-2 rounded ml-2">
+                        </form>
+                    </td> -->
                 </tr>
                 @endforeach
             </tbody>
