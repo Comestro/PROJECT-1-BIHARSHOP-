@@ -9,7 +9,8 @@
             <livewire:admin.product.brand-form :product="$product" />
             <livewire:admin.product.sku-form :product="$product" />
             <livewire:admin.product.category-form :product="$product" />
-            <livewire:admin.product.status-form :product="$product" />
+              <livewire:admin.product.status-form :product="$product" />
+            {{-- <livewire:admin.product.status-form :product="$product" /> --}}
         </div>
         <livewire:admin.product.image-form :product="$product" />
         <livewire:admin.product.multiple-images :product="$product" />
