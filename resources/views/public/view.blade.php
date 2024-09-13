@@ -16,14 +16,15 @@ View Page
         <!-- Left Section: Images -->
         <div>
             <!-- Main Image -->
-            <img src="https://via.placeholder.com/500x500" alt="Product Image" class="w-full h-auto mb-4">
+            <img src="{{asset('/storage/image/product/'.$product->image)}}" alt="Product Image" class="w-full h-auto mb-4">
 
             <!-- Thumbnail Images -->
             <div class="grid grid-cols-4 gap-4">
-                <img src="https://via.placeholder.com/100x100" alt="Thumb 1" class="w-full h-auto cursor-pointer">
-                <img src="https://via.placeholder.com/100x100" alt="Thumb 2" class="w-full h-auto cursor-pointer">
-                <img src="https://via.placeholder.com/100x100" alt="Thumb 3" class="w-full h-auto cursor-pointer">
-                <img src="https://via.placeholder.com/100x100" alt="Thumb 4" class="w-full h-auto cursor-pointer">
+                @foreach ($product->images as $photos)
+                {{$photos->image_path}}
+                    <img src="{{asset('/storage/image/product/'.$photos->image_path)}}" alt="Thumb 1" class="w-full h-auto cursor-pointer">
+                @endforeach
+               
             </div>
         </div>
 
@@ -38,8 +39,6 @@ View Page
                     </svg>
                     <p class="text-xs ">Add To Wishlist</p>
                 </a>
-
-
             </div>
             <!-- Price and Discount -->
             <div class="text-xl font-semibold mb-4">
@@ -66,7 +65,7 @@ View Page
             <div class="mb-6">
                 <span class="text-gray-600">Choose Size:</span>
                 <div class="mt-2">
-                    <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
+                    <button class=" x-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
                     <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Medium</button>
                     <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Large</button>
                     <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">X-Large</button>

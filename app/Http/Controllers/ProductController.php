@@ -163,11 +163,7 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')->with('error', 'Product deleted successfully.');
     }
-    public function productView($slug){
-        $product = Product::where('slug', $slug)->first();
-        return view('public/view', ['product' => $product]);
-
-    }
+   
     
 
 }
