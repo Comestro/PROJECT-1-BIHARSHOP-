@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OptionValue;
-
+use App\Models\ProductImage;
+use Illuminate\Support\Facades\Validator;
 
 class ProductImageController extends Controller
 {
@@ -117,8 +118,8 @@ class ProductImageController extends Controller
     }
 
     // Delete the image file from the server if it exists
-    if ($productImage->image_path && file_exists(public_path("images/products/{$productImage->image_path}"))) {
-        unlink(public_path("images/products/{$productImage->image_path}"));
+    if ($productImage->image_path && file_exists(public_path("/storage/images/products/{$productImage->image_path}"))) {
+        unlink(public_path("/storage/images/products/{$productImage->image_path}"));
     }
 
     // Delete the product image record from the database

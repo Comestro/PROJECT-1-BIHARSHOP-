@@ -1,4 +1,4 @@
-<div class="bg-white mt-24 md:mt-10">
+<div class="bg-white ">
     <!-- Main Container -->
     <div class="container mx-auto px-[5%] py-12 md:py-20">
         <!-- Hero Section -->

@@ -21,7 +21,6 @@ View Page
             <!-- Thumbnail Images -->
             <div class="grid grid-cols-4 gap-4">
                 @foreach ($product->images as $photos)
-                {{$photos->image_path}}
                     <img src="{{asset('/storage/image/product/'.$photos->image_path)}}" alt="Thumb 1" class="w-full h-auto cursor-pointer">
                 @endforeach
                
