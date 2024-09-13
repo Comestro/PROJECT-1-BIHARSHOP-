@@ -1,7 +1,7 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-[5%]">
     @foreach($topSelling as $item)
     <div class="w-full max-w-sm  rounded-lg ">
-        <a href=" {{route('product.view',$item->slug)}}">
+        <a href=" {{route('product.view',['category'=>$item->category->cat_slug, 'slug' => $item->slug])}}">
             <div class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
                 <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg" src="{{ $item->image ? asset('storage/image/product/' . $item->image) : asset('path/to/default-image.jpg') }}" alt="product image" />
             </div>

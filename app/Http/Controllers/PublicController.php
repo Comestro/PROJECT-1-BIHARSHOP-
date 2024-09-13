@@ -16,9 +16,10 @@ class PublicController extends Controller
        
         return view('public/home');
     }
-    public function view()
-    {
-        return view('public/view');
+    public function productView($category ,$slug){
+        $product = Product::where('slug', $slug)->first();
+        return view('public/view')->with('category', $category)->with('product', $product);
+
     }
     public function cart()
     {

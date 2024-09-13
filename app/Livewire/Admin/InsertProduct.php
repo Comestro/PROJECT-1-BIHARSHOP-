@@ -64,6 +64,7 @@ class InsertProduct extends Component
              'category_id' => $this->category_id,
              'brand' => $this->brand,
              'image' => $imageName,
+             'status' => 0
          ]);
 
          // Redirect with success or error message
