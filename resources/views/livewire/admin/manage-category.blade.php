@@ -8,7 +8,7 @@
         <div class="">
             <div class="relative flex flex-1">
                 <input type="search" 
-                       class="border w-[200px] pl-8 pr-2 py-1 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
+                       class="border w-[300px] pl-8 pr-2 py-2 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
                        placeholder="search here.." 
                        wire:model.live='searchTerm' />
                 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -20,6 +20,14 @@
                 </svg>
               </div>
               
+        </div>
+        <div class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 rounded-full shadow-lg flex items-center">
+            <a href="{{ route('category.create') }}" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Category</span>
+            </a>
         </div>
     </div>
     <!-- Category Table -->

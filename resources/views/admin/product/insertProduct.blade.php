@@ -12,7 +12,7 @@
         <nav>
             <ol class="flex items-center gap-2">
                 <li>
-                    <a class="font-medium" href="javascript:void(0)">Products /</a>
+                    <a href="{{route('product.index')}}" class="font-medium" href="javascript:void(0)">Products /</a>
                 </li>
                 <li class="font-medium text-primary">Add Product</li>
             </ol>

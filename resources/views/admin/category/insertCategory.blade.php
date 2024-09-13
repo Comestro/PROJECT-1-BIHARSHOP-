@@ -12,7 +12,7 @@
                 <nav>
                     <ol class="flex items-center gap-2">
                         <li>
-                            <a class="font-medium" href="javascript:void(0)">Categories /</a>
+                            <a href="{{ route('category.index') }}" class="font-medium" href="javascript:void(0)">Categories /</a>
                         </li>
                         <li class="font-medium text-primary">Add Category</li>
                     </ol>
