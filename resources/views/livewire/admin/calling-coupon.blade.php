@@ -11,7 +11,7 @@
                        wire:model.live='search' />
                 <svg xmlns="http://www.w3.org/2000/svg" 
                      class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" 
-                     width="20" 
+                     width="20"
                      height="20" 
                      viewBox="0 0 48 48">
                   <path d="M 20.5 6 C 12.509634 6 6 12.50964 6 20.5 C 6 28.49036 12.509634 35 20.5 35 C 23.956359 35 27.133709 33.779044 29.628906 31.75 L 39.439453 41.560547 A 1.50015 1.50015 0 1 0 41.560547 39.439453 L 31.75 29.628906 C 33.779044 27.133709 35 23.956357 35 20.5 C 35 12.50964 28.490366 6 20.5 6 z M 20.5 9 C 26.869047 9 32 14.130957 32 20.5 C 32 23.602612 30.776198 26.405717 28.791016 28.470703 A 1.50015 1.50015 0 0 0 28.470703 28.791016 C 26.405717 30.776199 23.602614 32 20.5 32 C 14.130953 32 9 26.869043 9 20.5 C 9 14.130957 14.130953 9 20.5 9 z"></path>
@@ -68,7 +68,7 @@
                         </div>
                     </td>
                     <td class="px-6 py-4 flex gap-2">
-                        <button wire:click="openModal({{ $coupon->id }})" class="flex justify-between border-none ring-1 ring-gray-300 font-bold focus:ring-gray-400 focus:ring-2 bg-white text-blue-500 px-4 py-2 rounded-2xl shadow hover:bg-blue-500 hover:text-white transition duration-300">
+                        <button wire:click="openModal({{ $coupon->id }})" class="flex justify-between border-none ring-1 ring-gray-300 font-bold focus:ring-gray-400 focus:ring-2 bg-white text-blue-500 px-4 py-2 rounded-3xl  hover:bg-blue-500 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z" />
                             </svg>
@@ -76,7 +76,7 @@
                           </button>
                           
                         
-                          <button wire:click="confirmDelete({{ $coupon->id }})" class="flex justify-between bg-white text-red-900 px-4 font-bold py-2 rounded-2xl shadow hover:bg-red-500 hover:text-white transition duration-300 border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2">
+                          <button wire:click="confirmDelete({{ $coupon->id }})" class="flex justify-between bg-white text-red-900 px-4 font-bold py-2 rounded-3xl shadow hover:bg-red-500 hover:text-white transition duration-300 border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-7 h-7 mr-2" fill="none" viewBox="0 0 30 30" stroke="currentColor">
                                 <path d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"></path>
                             </svg>
@@ -136,18 +136,26 @@
     @if($confirmingDelete)
     <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg">
-            <h3 class="text-lg font-semibold mb-4">Confirm Deletion</h3>
+            <div class="flex items-center mb-4">
+                <img width="40" height="40" src="https://img.icons8.com/color-glass/48/error--v1.png" alt="error--v1"/>
+                <h3 class="text-lg font-semibold">Confirm Deletion</h3>
+            </div>
             <p class="mb-4">Are you sure you want to delete this coupon?</p>
             <div class="flex justify-end gap-2">
-                <button wire:click="deleteCoupon" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded">
+                <button wire:click="deleteCoupon" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                     Delete
                 </button>
-                <button wire:click="$set('confirmingDelete', false)" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                <button wire:click="$set('confirmingDelete', false)" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+                   
                     Cancel
                 </button>
             </div>
         </div>
     </div>
+    
     @endif
 </div>
 </div>

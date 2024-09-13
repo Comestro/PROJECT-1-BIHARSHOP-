@@ -672,26 +672,22 @@
                         </span> --}}
                          
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('product.edit', $product->slug) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded flex items-center">
-                                <!-- Edit Icon -->
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex space-x-2">
+                            <a href="{{ route('product.edit', $product->slug) }}" class="flex justify-between border-none ring-1 ring-gray-300 font-bold focus:ring-gray-400 focus:ring-2 bg-white text-blue-500 px-4 py-2 rounded-3xl shadow hover:bg-blue-500 hover:text-white ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z" />
                                   </svg>
                                 Edit
                             </a>
-                            
-                            
-
-                            <button wire:click="openModal({{ $product->id }})" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded flex items-center">
-                                <!-- SVG Icon -->
+                        
+                            <button wire:click="openModal({{ $product->id }})" class="flex justify-between bg-white text-red-900 px-4 font-bold py-2 rounded-3xl shadow hover:bg-red-500 hover:text-white transition duration-300 border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 11v6m4-6v6m-5-6h10M4 7h16M6 7v12a2 2 0 002 2h8a2 2 0 002-2V7H6z" />
                                 </svg>
                                 Delete
                             </button>
-                            
                         </td>
+                        
                     </tr>
                 @endforeach
             </tbody>
@@ -701,7 +697,11 @@
      @if ($isOpen)
      <div class="fixed inset-0 flex items-center justify-center z-50">
          <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <div class="flex items-center mb-4">
+            <img width="40" height="40" src="https://img.icons8.com/color-glass/48/error--v1.png" alt="error--v1"/>
+
              <h2 class="text-lg font-semibold mb-4">Confirm Deletion</h2>
+            </div>
              <p>Are you sure you want to delete this product?</p>
              <div class="flex justify-end mt-4">
                  <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded mr-2">

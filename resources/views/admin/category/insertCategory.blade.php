@@ -6,17 +6,11 @@
             <!-- Breadcrumb Start -->
             <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                    Category Insertion Form
+                    Category Insertion Form /  <a href="{{ route('category.index') }}" class="font-medium hover:text-blue-500 text-xl" href="javascript:void(0)">Categories</a>
+
                 </h2>
 
-                <nav>
-                    <ol class="flex items-center gap-2">
-                        <li>
-                            <a href="{{ route('category.index') }}" class="font-medium" href="javascript:void(0)">Categories /</a>
-                        </li>
-                        <li class="font-medium text-primary">Add Category</li>
-                    </ol>
-                </nav>
+                
             </div>
             <!-- Breadcrumb End -->
 
