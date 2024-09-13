@@ -6,18 +6,56 @@ use Livewire\Component;
 
 class CallingProduct extends Component
 {
-    public function render()
+    public $products;
+    public $isOpen = false;  
+    public $productId;
+    public $search="";
+
+    public function mount()
     {
-        $data['products']=Product::all();
-        return view('livewire.admin.calling-product',$data);
+        $this->products = Product::all();
     }
+
+    public function render()
+{
+    $products = Product::where('name', 'LIKE', "%{$this->search}%")->get();
+    return view('livewire.admin.calling-product', ['products' => $products]);
+}
+
     public function toggleStatus($productId)
     {
         $product = Product::find($productId);
-        $product->status = !$product->status;
-        $product->save();
+        if ($product) {
+            $product->status = !$product->status;
+            $product->save();
 
-        session()->flash('success', 'Product status updated successfully.');
+            $this->products = Product::all();
+
+            session()->flash('success', 'Product status updated successfully.');
+        }
     }
-   
+
+    public function openModal($productId)
+    {
+        $this->productId = $productId;
+        $this->isOpen = true;
+    }
+
+    public function closeModal()
+    {
+        $this->isOpen = false;
+        $this->productId = null; 
+    }
+
+    public function delete()
+    {
+        if ($this->productId) {
+            Product::findOrFail($this->productId)->delete();
+            $this->products = $this->products->filter(function ($product) {
+                return $product->id !== $this->productId;
+            });
+            $this->closeModal();
+            session()->flash('message', 'Product deleted successfully.');
+        }
+    }
 }

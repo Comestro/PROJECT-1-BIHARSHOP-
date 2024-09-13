@@ -591,9 +591,9 @@
          <div class="">
              <div class="relative flex flex-1">
                  <input type="search" 
-                        class="border w-[200px] pl-8 pr-2 py-1 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
+                        class="border w-[300px] pl-8 pr-2 py-2 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
                         placeholder="search here.." 
-                        wire:model.live='searchTerm' />
+                        wire:model.live='search' />
                  <svg xmlns="http://www.w3.org/2000/svg" 
                       class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" 
                       width="20" 
@@ -604,7 +604,16 @@
                </div>
                
          </div>
+         <div class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 rounded-full shadow-lg flex items-center">
+            <a href="{{ route('product.create') }}" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Product</span>
+            </a>
+        </div>
      </div>
+    
     <div>
         @if (session()->has('success'))
             <div class="bg-green-500 text-white p-4 rounded mb-4">
@@ -616,7 +625,7 @@
             </div>
         @endif
 
-        <table class="min-w-full divide-y divide-gray-200">
+        <table class="min-w-full divide-y mt-5 divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -664,14 +673,48 @@
                          
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('product.edit', $product->slug) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <button type="button" class="text-red-600 hover:text-red-900">Delete</button>
+                            <a href="{{ route('product.edit', $product->slug) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded flex items-center">
+                                <!-- Edit Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z" />
+                                  </svg>
+                                Edit
+                            </a>
+                            
+                            
+
+                            <button wire:click="openModal({{ $product->id }})" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded flex items-center">
+                                <!-- SVG Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 11v6m4-6v6m-5-6h10M4 7h16M6 7v12a2 2 0 002 2h8a2 2 0 002-2V7H6z" />
+                                </svg>
+                                Delete
+                            </button>
+                            
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+     <!-- Delete Confirmation Modal -->
+     @if ($isOpen)
+     <div class="fixed inset-0 flex items-center justify-center z-50">
+         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+             <h2 class="text-lg font-semibold mb-4">Confirm Deletion</h2>
+             <p>Are you sure you want to delete this product?</p>
+             <div class="flex justify-end mt-4">
+                 <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded mr-2">
+                     Cancel
+                 </button>
+                 <button type="button" wire:click="delete" class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded">
+                     Delete
+                 </button>
+             </div>
+         </div>
+     </div>
+     <div class="fixed inset-0 bg-black opacity-50"></div>
+ @endif
 
 </div>
 

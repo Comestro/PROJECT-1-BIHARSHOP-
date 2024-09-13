@@ -21,17 +21,17 @@
               </div>
               
         </div>
-        <div class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 rounded-full shadow-lg flex items-center">
+        <div class="bg-blue-500 text-white px-4  hover:bg-blue-600 rounded-full shadow-lg flex items-center">
             <a href="{{ route('category.create') }}" class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
-                <span>Add Category</span>
+                <span class="te text-sm">Add Category</span>
             </a>
         </div>
     </div>
     <!-- Category Table -->
-    <div class="relative overflow-x-auto">
+    <div class="relative overflow-x-auto mt-5">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -58,12 +58,20 @@
                     <td class="px-6 py-4">{{$category->cat_slug}}</td>
                     <td class="px-6 py-4">{{$category->cat_description}}</td>
                     <td class="px-6 py-4 flex gap-2">
-                        <button wire:click="openModal({{ $category->id }})" class="bg-blue-500 hover:bg-blue-800 text-white px-3 py-2 rounded">
-                            Edit
+                        <button wire:click="openModal({{ $category->id }})" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded-3xl flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 4.879a3 3 0 014.242 4.242l-1.5 1.5a3 3 0 01-4.242-4.242l1.5-1.5zM4 16v4h4l9-9-4-4-9 9z"/>
+                            </svg>
+                            <span>Edit</span>
                         </button>
-                        <button wire:click="confirmDelete({{ $category->id }})" class="bg-red-500 hover:bg-red-800 text-white px-3 py-2 rounded">
-                            Delete
+                        
+                        <button wire:click="confirmDelete({{ $category->id }})" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded-3xl flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L6 6M18 18L18 6M6 6L5 4H19L18 6M9 10V16M15 10V16"/>
+                            </svg>
+                            <span>Delete</span>
                         </button>
+                        
                     </td>
                 </tr>
                 @endforeach

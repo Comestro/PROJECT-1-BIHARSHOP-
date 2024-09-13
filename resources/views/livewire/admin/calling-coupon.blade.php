@@ -39,7 +39,7 @@
                     <th class="py-2 px-4 text-left text-gray-600">Discount Value</th>
                     <th class="py-2 px-4 text-left text-gray-600">Expiration Date</th>
                     <th class="py-2 px-4 text-left text-gray-600">Status</th>
-                    <th class="py-2 px-4 text-left text-gray-600">Actions</th>
+                    <th class="py-2 px-4 text-center text-gray-600">Actions</th>
                 </tr>
             </thead>
             <tbody>
