@@ -647,9 +647,21 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <span class="inline-flex items-center px-3 py-1 text-sm font-medium leading-5 {{ $product->status ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} rounded-full">
-                                {{ $product->status ? 'Active' : 'Inactive' }}
-                            </span>
+                            <button 
+                            wire:click="toggleStatus({{ $product->id }})"
+                            class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
+                            {{ $product->status ? 'bg-green-500' : 'bg-red-500' }}"
+                        >
+                            <span class="sr-only">{{ $product->status ? 'Deactivate' : 'Activate' }}</span>
+                            <span
+                                class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
+                                {{ $product->status ? 'translate-x-5' : 'translate-x-0' }}"
+                            ></span>
+                        </button>
+                        {{-- <span class="ml-3 text-sm font-medium {{ $product->status ? 'text-green-700' : 'text-red-700' }}">
+                            {{ $product->status ? 'Active' : 'Inactive' }}
+                        </span> --}}
+                         
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <a href="{{ route('product.edit', $product->slug) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>

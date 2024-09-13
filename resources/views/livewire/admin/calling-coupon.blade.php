@@ -40,18 +40,26 @@
                     <td class="py-2 px-4">{{$coupon->discount_value}}</td>
                     <td class="py-2 px-4">{{$coupon->expiration_date}}</td>
                     <td class="py-2 px-4">
-                        <button wire:click="toggleStatus({{ $coupon->id }})" class="text-blue-500 hover:text-blue-700">
-                            @if($coupon->status)
-                                
-                                <span class="inline-flex items-center px-3 py-1 text-sm font-medium leading-5 bg-green-100 text-green-800 rounded-full">Activate</span>
-
-                            @else
-                            <span class="inline-flex items-center px-3 py-1 text-sm font-medium leading-5 bg-red-100 text-red-800 rounded-full">Deactivate</span>
-                            @endif
-                        </button>
+                        <div class="inline-flex items-center">
+                            <button 
+                                wire:click="toggleStatus({{ $coupon->id }})"
+                                class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
+                                {{ $coupon->status ? 'bg-green-500' : 'bg-red-500' }}"
+                            >
+                                <span class="sr-only">{{ $coupon->status ? 'Deactivate' : 'Activate' }}</span>
+                                <span
+                                    class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
+                                    {{ $coupon->status ? 'translate-x-5' : 'translate-x-0' }}"
+                                ></span>
+                            </button>
+                            {{-- <span class="ml-3 text-sm font-medium {{ $coupon->status ? 'text-green-700' : 'text-red-700' }}">
+                                {{ $coupon->status ? 'Active' : 'Inactive' }}
+                            </span> --}}
+                        </div>
                     </td>
                    <td class="py-2 px-4">
                         <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a>
+                        <a href="#" class="text-blue-500 hover:text-blue-700">Delete</a>
 
                     </td>
                 </tr>
@@ -61,3 +69,4 @@
         </table>
     </div>
 </div>
+
