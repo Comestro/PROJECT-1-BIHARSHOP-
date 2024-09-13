@@ -584,7 +584,27 @@
     </div> --}}
 
 
-
+    <div class="flex flex-1 justify-between">
+        <div>        
+           <h1 class="text-2xl font-bold mb-4">Manage Product</h1>
+         </div>        
+         <div class="">
+             <div class="relative flex flex-1">
+                 <input type="search" 
+                        class="border w-[200px] pl-8 pr-2 py-1 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
+                        placeholder="search here.." 
+                        wire:model.live='searchTerm' />
+                 <svg xmlns="http://www.w3.org/2000/svg" 
+                      class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" 
+                      width="20" 
+                      height="20" 
+                      viewBox="0 0 48 48">
+                   <path d="M 20.5 6 C 12.509634 6 6 12.50964 6 20.5 C 6 28.49036 12.509634 35 20.5 35 C 23.956359 35 27.133709 33.779044 29.628906 31.75 L 39.439453 41.560547 A 1.50015 1.50015 0 1 0 41.560547 39.439453 L 31.75 29.628906 C 33.779044 27.133709 35 23.956357 35 20.5 C 35 12.50964 28.490366 6 20.5 6 z M 20.5 9 C 26.869047 9 32 14.130957 32 20.5 C 32 23.602612 30.776198 26.405717 28.791016 28.470703 A 1.50015 1.50015 0 0 0 28.470703 28.791016 C 26.405717 30.776199 23.602614 32 20.5 32 C 14.130953 32 9 26.869043 9 20.5 C 9 14.130957 14.130953 9 20.5 9 z"></path>
+                 </svg>
+               </div>
+               
+         </div>
+     </div>
     <div>
         @if (session()->has('success'))
             <div class="bg-green-500 text-white p-4 rounded mb-4">
@@ -618,7 +638,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $product->category ? $product->category->name : 'No Category' }}
-                        </td> 
+                        </td>
                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             @if($product->image)
                                 <img src="{{ asset('storage/image/product/' . $product->image) }}" alt="Product Image" class="w-16 h-16 object-cover">
@@ -627,13 +647,25 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <span class="inline-flex items-center px-3 py-1 text-sm font-medium leading-5 {{ $product->status ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} rounded-full">
-                                {{ $product->status ? 'Active' : 'Inactive' }}
-                            </span>
+                            <button 
+                            wire:click="toggleStatus({{ $product->id }})"
+                            class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
+                            {{ $product->status ? 'bg-green-500' : 'bg-red-500' }}"
+                        >
+                            <span class="sr-only">{{ $product->status ? 'Deactivate' : 'Activate' }}</span>
+                            <span
+                                class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
+                                {{ $product->status ? 'translate-x-5' : 'translate-x-0' }}"
+                            ></span>
+                        </button>
+                        {{-- <span class="ml-3 text-sm font-medium {{ $product->status ? 'text-green-700' : 'text-red-700' }}">
+                            {{ $product->status ? 'Active' : 'Inactive' }}
+                        </span> --}}
+                         
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <a href="{{ route('product.edit', $product->slug) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <button type="button" wire:click="delete({{ $product->id }})" class="text-red-600 hover:text-red-900">Delete</button>
+                            <button type="button" wire:click="confirmDelete({{ $product->id }})" class="text-red-600 hover:text-red-900">Delete</button>
                         </td>
                     </tr>
                 @endforeach
@@ -642,3 +674,5 @@
     </div>
 
 </div>
+
+

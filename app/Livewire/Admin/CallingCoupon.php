@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class CallingCoupon extends Component
 {
+    public $confirmingDelete = false;
 
     public $search = "";
     public function render()
@@ -22,5 +23,8 @@ class CallingCoupon extends Component
 
             session()->flash('success', 'Coupon status updated successfully.');
         }
+        
+
+   
     
 }
