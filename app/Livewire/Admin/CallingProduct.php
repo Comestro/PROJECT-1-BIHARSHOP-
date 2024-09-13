@@ -6,21 +6,18 @@ use Livewire\Component;
 
 class CallingProduct extends Component
 {
-    public $products;
-    public $isOpen = false;  
+    public $isOpen = false;
     public $productId;
     public $search="";
 
-    public function mount()
-    {
-        $this->products = Product::all();
-    }
+
 
     public function render()
 {
-    $products = Product::where('name', 'LIKE', "%{$this->search}%")->get();
+    $products = Product::where('name', 'LIKE', "%".$this->search."%")->get();
     return view('livewire.admin.calling-product', ['products' => $products]);
 }
+
 
     public function toggleStatus($productId)
     {
@@ -29,7 +26,7 @@ class CallingProduct extends Component
             $product->status = !$product->status;
             $product->save();
 
-            $this->products = Product::all();
+            $this->render();
 
             session()->flash('success', 'Product status updated successfully.');
         }
@@ -44,16 +41,14 @@ class CallingProduct extends Component
     public function closeModal()
     {
         $this->isOpen = false;
-        $this->productId = null; 
+        $this->productId = null;
     }
 
     public function delete()
     {
         if ($this->productId) {
             Product::findOrFail($this->productId)->delete();
-            $this->products = $this->products->filter(function ($product) {
-                return $product->id !== $this->productId;
-            });
+
             $this->closeModal();
             session()->flash('message', 'Product deleted successfully.');
         }
