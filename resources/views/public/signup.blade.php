@@ -18,7 +18,7 @@
             <h2 class="text-center text-2xl font-bold text-gray-700">Create Your Account</h2>
 
             <!-- Form -->
-            <form action="{{ route('public.register') }}" method="POST" class="space-y-6">
+            <form action="{{ route('register') }}" method="POST" class="space-y-6">
                 @csrf
                 
                 <div class="flex justify-between">
