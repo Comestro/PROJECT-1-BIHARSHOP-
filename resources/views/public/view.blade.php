@@ -106,7 +106,7 @@
                 <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
-               <livewire:product.calling-review/>
+               <livewire:product.calling-review :product="$product"/>
                     <!-- Load More Button -->
                     <div class="flex justify-center mt-10">
                         <button
