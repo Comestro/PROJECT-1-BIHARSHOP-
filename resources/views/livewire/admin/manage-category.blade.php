@@ -22,7 +22,7 @@
               
         </div>
         <div class="bg-blue-500 text-white px-4  hover:bg-blue-600 rounded-full shadow-lg flex items-center">
-            <a href="{{ route('category.create') }}" class="flex items-center space-x-2">
+            <a wire:navigate href="{{ route('category.create') }}" class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
@@ -88,7 +88,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-700">Category Name</label>
-                    <input type="text" id="name" wire:model="name" class="mt-1 block w-full p-2 border rounded">
+                    <input type="text" id="name" wire:model.live="name" class="mt-1 block w-full p-2 border rounded">
                     @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">

@@ -19,6 +19,7 @@ class InsertAttributeValue extends Component
             'value' => 'required|string|max:255',
             'attribute_id' => 'required'
         ]);
+        
 
         $attributeValue = AttributeValue::create($validatedData);
 

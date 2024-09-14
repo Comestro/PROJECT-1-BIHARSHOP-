@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Storage;
+use Str;
 class ManageCategory extends Component
 {
 
@@ -70,6 +71,10 @@ class ManageCategory extends Component
     {
         $this->isModalOpen = false;
         $this->reset(['image', 'existingImage']);
+    }
+    public function updatedName($value)
+    {
+        $this->slug = Str::slug($value);
     }
 
     public function updateCategory()

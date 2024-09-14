@@ -1,10 +1,10 @@
 <form wire:submit.prevent="store" method="POST" class="bg-white p-6 rounded-lg shadow-lg relative">
     @csrf
     <div class="flex items-center mb-6">
-        <svg class="w-6 h-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19l7-7-1.4-1.4L12 16.2 6.4 10.6 5 12z"/>
-            <path d="M19 4H5v14h14V8l4-4z"/>
-        </svg>
+        <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 1 0-18c1.052 0 2.062.18 3 .512M7 9.577l3.923 3.923 8.5-8.5M17 14v6m-3-3h6"/>
+          </svg>
+          
         <h2 class="text-xl font-semibold text-gray-800">Add New Value</h2>
     </div>
     <div class="mb-4">
@@ -31,8 +31,11 @@
     <div class="mt-6 flex justify-end">
         <button
             type="submit"
-            class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
-            Save Value
+            class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-green-600 transition duration-300">
+            <svg class="inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14m7-7H5"/>
+            </svg>
+            Save value
         </button>
     </div>
 

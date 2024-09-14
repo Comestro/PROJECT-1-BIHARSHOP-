@@ -7,6 +7,10 @@
                 <livewire:admin.product.price-form :product="$product" />
                 <livewire:admin.product.discount-price-form :product="$product" />
                 <livewire:admin.product.category-form :product="$product" />
+                <livewire:admin.product.insert-product-variant :product="$product" />
+                <livewire:admin.product.calling-product-variant :product="$product" />
+
+
                 <livewire:product.highlight :product="$product" />
             </div>
             <div class="flex flex-col gap-3">
@@ -16,7 +20,8 @@
                 <livewire:admin.product.quantity-form :product="$product" />
                 <livewire:admin.product.multiple-images :product="$product" />
                 <livewire:admin.product.status-form :product="$product" />
-                <livewire:admin.product.add-attributes-form :product="$product" />
+                {{-- <livewire:admin.product.add-attributes-form :product="$product" /> --}}
+                <livewire:admin.product.product-variant-attribute :product="$product" />
 
             </div>
             {{-- <livewire:admin.product.status-form :product="$product" /> --}}
