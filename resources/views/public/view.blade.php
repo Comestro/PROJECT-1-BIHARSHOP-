@@ -54,43 +54,54 @@
 
 
 
-            <!-- Color Options -->
-            <div class="mb-4">
-                <span class="text-gray-600">Color: </span>
-                <div class="inline-flex space-x-2">
-                    @php
-                        $colors = $product->variants->flatMap->attributeValues->filter(function($value) {
+                <!-- Color Options -->
+                @php
+                    $colors = $product->variants->flatMap->attributeValues
+                        ->filter(function ($value) {
                             return $value->attribute->name == 'color';
-                        })->unique('value');
-                    @endphp
-                    @foreach($colors as $color)
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="radio" name="color" value="{{ $color->value }}" class="sr-only peer">
-                            <div class="w-6 h-6 bg-{{ $color->value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->value }}-500"></div>
-                        </label>
-                    @endforeach
-                </div>
-            </div>
+                        })
+                        ->unique('value');
+                @endphp
+                @if (count($colors))
+                    <div class="mb-4">
+                        <span class="text-gray-600">Color: </span>
+                        <div class="inline-flex space-x-2">
 
-            <!-- Size Options -->
-            <div class="mb-6">
+                            @foreach ($colors as $color)
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="color" value="{{ $color->value }}" class="sr-only peer">
+                                    <div
+                                        class="w-6 h-6 bg-{{ $color->value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->value }}-500">
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+                <!-- Size Options -->
+                @php
+                    $sizes = $product->variants->flatMap->attributeValues
+                        ->filter(function ($value) {
+                            return $value->attribute->name == 'size';
+                        })
+                        ->unique('value');
+                @endphp
+               @if (count($sizes))
+               <div class="mb-6">
                 <span class="text-gray-600">Choose Size:</span>
                 <div class="mt-2">
                     <div class="mt-2 flex gap-2">
-                        @php
-                            $sizes = $product->variants->flatMap->attributeValues->filter(function($value) {
-                                return $value->attribute->name == 'size';
-                            })->unique('value');
-                        @endphp
-                        @foreach($sizes as $size)
+                        @foreach ($sizes as $size)
                             <label class="cursor-pointer">
                                 <input type="radio" name="size" value="{{ $size->value }}" class="hidden peer" />
-                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">{{ $size->value }}</span>
+                                <span
+                                    class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">{{ $size->value }}</span>
                             </label>
                         @endforeach
                     </div>
                 </div>
             </div>
+               @endif
 
 
 
