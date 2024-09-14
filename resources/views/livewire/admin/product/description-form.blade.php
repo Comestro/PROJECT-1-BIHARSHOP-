@@ -13,7 +13,7 @@
                 </div>
             @else
                 <div class="flex items-center justify-between">
-                    <span>{{ $product->description }}</span>
+                    <span class="line-clamp-5 text-xs">{{ $product->description }}</span>
                     <button type="button" wire:click="edit" class="bg-black text-white text-xs px-3 py-1 rounded-md">EDIT</button>
                 </div>
             @endif

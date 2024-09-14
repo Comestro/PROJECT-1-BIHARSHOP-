@@ -30,7 +30,7 @@
                     <span class=" text-xs font-semibold px-2.5 py-0.5 rounded  ms-3">5.0/5</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">Rs.{{$item->discount_price}}</span>
+                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{$item->formattedDiscountPrice}}</span>
                 </div>
             </div>
         </a>

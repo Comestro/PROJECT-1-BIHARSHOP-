@@ -41,8 +41,8 @@
                 </div>
                 <!-- Price and Discount -->
                 <div class="text-xl font-semibold mb-4">
-                    <span class="text-green-500 font-semibold ">₹{{ $product->price }}</span>
-                    <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->discount_price }}</span>
+                    <span class="text-green-500 font-semibold ">₹{{ $product->formatted_price }}</span>
+                    <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->formatted_discount_price }}</span>
                 </div>
 
                 <!-- Product Description -->
@@ -103,27 +103,10 @@
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
                 <h2 class="text-2xl font-semibold mb-6">All Reviews</h2>
+                <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-white p-4 rounded-lg shadow-md">
-                            <div class="flex items-center mb-2">
-                                <span class="text-yellow-500">★★★★★</span>
-                                <span class="ml-2 text-gray-600">Samantha D.</span>
-                            </div>
-                            <p class="text-gray-700 mb-2">Love the design! Unique and comfortable.</p>
-                            <span class="text-sm text-gray-500">Posted on August 29, 2023</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md">
-                            <div class="flex items-center mb-2">
-                                <span class="text-yellow-500">★★★★★</span>
-                                <span class="ml-2 text-gray-600">Samantha D.</span>
-                            </div>
-                            <p class="text-gray-700 mb-2">Love the design! Unique and comfortable.</p>
-                            <span class="text-sm text-gray-500">Posted on August 29, 2023</span>
-                        </div>
-                    </div>
-
+               <livewire:product.calling-review :product="$product"/>
                     <!-- Load More Button -->
                     <div class="flex justify-center mt-10">
                         <button
