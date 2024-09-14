@@ -41,6 +41,8 @@
             <thead>
                 <tr class="bg-gray-100 border-b">
                     <th class="py-2 px-4 text-left text-gray-600">Sr. no.</th>
+                    <th class="py-2 px-4 text-left text-gray-600">Variant Name</th>
+                    <th class="py-2 px-4 text-left text-gray-600">Variant value</th>
                     <th class="py-2 px-4 text-left text-gray-600">Price</th>
                     <th class="py-2 px-4 text-left text-gray-600">Stock</th>
                     <th class="py-2 px-4 text-center text-gray-600">Actions</th>
@@ -50,7 +52,9 @@
                 @foreach ($productVariantAttributes as $item)
                     <tr class="border-b capitalize">
                         <td class="py-2 px-4">{{ $loop->index + 1 }}</td>
-                        <td class="py-2 px-4">{{ $item->product_variant_id }}</td>
+                        <td class="py-2 px-4">{{ $item->attributeValue->attribute->name }}</td>
+                        <td class="py-2 px-4">{{ $item->attributeValue->value }}</td>
+                        <td class="py-2 px-4">{{ $item->attribute }}</td>
                         <td class="py-2 px-4">{{ $item->attribute_value_id }}</td>
                         <td class="px-6 py-4 flex gap-2 ">
                             <button wire:click="openModal({{ $item->id }})"

@@ -21,4 +21,9 @@ class ProductVariantAttribute extends Model
     {
         return $this->belongsTo(AttributeValue::class, 'attribute_value_id');
     }
+
+    public function productVariation()
+    {
+        return $this->hasOne(ProductVariant::class, "id","product_variation_id");
+    }
 }
