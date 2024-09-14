@@ -44,9 +44,6 @@
                     <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
                 </div>
 
-
-
-
                     <!-- Product Description -->
                     <p class="text-gray-600 mb-6 line-clamp-4">
                         {{ $product->description }}
