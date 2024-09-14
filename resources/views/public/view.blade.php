@@ -103,6 +103,7 @@
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
                 <h2 class="text-2xl font-semibold mb-6">All Reviews</h2>
+                <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
