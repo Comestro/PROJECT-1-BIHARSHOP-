@@ -18,7 +18,7 @@
             <h2 class="text-center text-2xl font-bold text-gray-700">Login to Your Account</h2>
 
             <!-- Form -->
-            <form action="{{ route('public.login') }}" method="POST" class="space-y-6">
+            <form action="{{ route('login') }}" method="POST" class="space-y-6">
                 @csrf
                 <!-- Email Field -->
                 <div>
@@ -89,7 +89,7 @@
                 <!-- Register Redirect -->
                 <p class="text-center text-sm text-gray-500 mt-4">
                     Don't have an account?
-                    <a href="{{ route('public.signup') }}" class="text-blue-500 hover:text-blue-700">Sign up</a>
+                    <a href="{{ route('signup') }}" class="text-blue-500 hover:text-blue-700">Sign up</a>
                 </p>
             </form>
         </div>
