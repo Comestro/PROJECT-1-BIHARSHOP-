@@ -52,68 +52,46 @@
                 </p>
 
 
-                @foreach($product->variants as $variant)
-    <div>
-        @foreach($variant->attributeValues as $attributeValue)
-            <p>{{ $attributeValue->attribute->name }}: {{ $attributeValue->value }}</p>
-        @endforeach
-    </div>
-@endforeach
-                <!-- Color Options -->
-                <div class="mb-4">
-                    <span class="text-gray-600">Color: </span>
-                    <div class="inline-flex space-x-2">
-                        <div class="flex space-x-2">
-                            <!-- Small Size -->
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="radio" name="size" value="small" class="sr-only peer">
-                                <div class="w-6 h-6 bg-green-700 rounded-full border peer-checked:ring-2 peer-checked:ring-green-500"></div>
+
+
+            <!-- Color Options -->
+            <div class="mb-4">
+                <span class="text-gray-600">Color: </span>
+                <div class="inline-flex space-x-2">
+                    @php
+                        $colors = $product->variants->flatMap->attributeValues->filter(function($value) {
+                            return $value->attribute->name == 'color';
+                        })->unique('value');
+                    @endphp
+                    @foreach($colors as $color)
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="radio" name="color" value="{{ $color->value }}" class="sr-only peer">
+                            <div class="w-6 h-6 bg-{{ $color->value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->value }}-500"></div>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Size Options -->
+            <div class="mb-6">
+                <span class="text-gray-600">Choose Size:</span>
+                <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
+                        @php
+                            $sizes = $product->variants->flatMap->attributeValues->filter(function($value) {
+                                return $value->attribute->name == 'size';
+                            })->unique('value');
+                        @endphp
+                        @foreach($sizes as $size)
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="{{ $size->value }}" class="hidden peer" />
+                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">{{ $size->value }}</span>
                             </label>
-                        
-                            <!-- Medium Size -->
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="radio" name="size" value="medium" class="sr-only peer">
-                                <div class="w-6 h-6 bg-gray-600 rounded-full border peer-checked:ring-2 peer-checked:ring-gray-500"></div>
-                            </label>
-                        
-                            <!-- Large Size -->
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="radio" name="size" value="large" class="sr-only peer">
-                                <div class="w-6 h-6 bg-blue-900 rounded-full border peer-checked:ring-2 peer-checked:ring-blue-500"></div>
-                            </label>
-                        </div>
-                        
-                        
+                        @endforeach
                     </div>
                 </div>
-                <!-- Size Options -->
-                <div class="mb-6">
-                    <span class="text-gray-600">Choose Size:</span>
-                    <div class="mt-2">
-                        <div class="mt-2 flex gap-2">
-                            <label class="cursor-pointer">
-                                <input type="radio" name="size" value="small" class="hidden peer" />
-                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Small</span>
-                            </label>
-                        
-                            <label class="cursor-pointer">
-                                <input type="radio" name="size" value="medium" class="hidden peer" />
-                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Medium</span>
-                            </label>
-                        
-                            <label class="cursor-pointer">
-                                <input type="radio" name="size" value="large" class="hidden peer" />
-                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Large</span>
-                            </label>
-                        
-                            <label class="cursor-pointer">
-                                <input type="radio" name="size" value="x-large" class="hidden peer" />
-                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">X-Large</span>
-                            </label>
-                        </div>
-                        
-                    </div>
-                </div>
+            </div>
+
 
 
                 <!-- Add to Cart Button -->
