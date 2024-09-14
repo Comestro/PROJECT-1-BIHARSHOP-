@@ -14,7 +14,7 @@
            <livewire:product-image-gallery :product="$product"/>
 
             <!-- Right Section: Product Info -->
-            <div class="flex flex-col justify-between h-full">
+            <div class="flex flex-col justify-start gap-2 h-full">
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-2">
