@@ -35,11 +35,14 @@ Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("p
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
-Route::get('/public-login',[PublicController::class,"login"])->name("public.login");
-Route::get('/public-signup',[PublicController::class,"signup"])->name("public.signup");
+
+Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("login");
+Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("signup");
+Route::post('/public-register',[PublicController::class,"register"])->name("register");
+Route::post('/logout',[PublicController::class,"logout"])->name("logout");
 
 // Route::view('/admin', 'admin.dashboard');
-require __DIR__ . '/auth.php';
+// require __DIR__ . '/auth.php';
 
 // user route's grouping here:
 Route::prefix("user")->group(function () {

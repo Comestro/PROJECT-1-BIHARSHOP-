@@ -7,7 +7,7 @@
                 <livewire:admin.product.price-form :product="$product" />
                 <livewire:admin.product.discount-price-form :product="$product" />
                 <livewire:admin.product.category-form :product="$product" />
-
+                <livewire:product.highlight :product="$product" />
             </div>
             <div class="flex flex-col gap-3">
                 <livewire:admin.product.brand-form :product="$product" />

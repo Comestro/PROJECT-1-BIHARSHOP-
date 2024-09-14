@@ -90,9 +90,12 @@
                                     </a>
                                 </li>
                             </ul>
-                            <button wire:click="logout" class="w-full text-start">
-                              
-                            </button>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="w-full bg-red-500 text-white px-3 py-2 text-center font-bold text-lg">
+                                    Logout
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @endauth
