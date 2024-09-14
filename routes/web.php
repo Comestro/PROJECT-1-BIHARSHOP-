@@ -66,4 +66,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('product-variations', ProductVariationController::class);
 });
 
+Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
+
 

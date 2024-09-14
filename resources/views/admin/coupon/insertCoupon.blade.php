@@ -3,9 +3,9 @@
 @section('title', 'Create Coupon')
 
 @section('content')
-<div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">Create New Coupon</h1>
-
+<div class="container mx-auto p-6 relative ">
+    <h1 class="text-2xl font-bold mb-4">Create New Coupon / <a href="{{ route('coupon.index') }}" class="font-medium hover:text-blue-500 " href="javascript:void(0)">view Coupon</a></h1>
+   
     <!-- Coupon Creation Form -->
     <livewire:admin.create-coupon/>
 </div>

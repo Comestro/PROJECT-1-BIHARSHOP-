@@ -18,9 +18,9 @@
                     <div class="px-4">
                         <div class="text-zinc-600">
                             <h4 class="text-title-md  font-bold text-black dark:text-white">
-                                $3.456K
+                               {{count($proCount)}}
                             </h4>
-                            <span class="text-sm font-medium">Total views</span>
+                            <span class="text-sm font-medium">Total Product</span>
                         </div>
                     </div>
 
@@ -35,9 +35,9 @@
                     <div class="px-4">
                         <div class="text-zinc-600">
                             <h4 class="text-title-md  font-bold text-black dark:text-white">
-                                $3.456K
+                                {{count($userCount)}}
                             </h4>
-                            <span class="text-sm font-medium">Total Profit</span>
+                            <span class="text-sm font-medium">Total User</span>
                         </div>
                     </div>
 
@@ -54,9 +54,9 @@
                     <div class="px-4">
                         <div class="text-zinc-600">
                             <h4 class="text-title-md  font-bold text-black dark:text-white">
-                                324565
+                               {{count($catCount)}}
                             </h4>
-                            <span class="text-sm font-medium">Total Product</span>
+                            <span class="text-sm font-medium">Total Category</span>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@
                             <h4 class="text-title-md  font-bold text-black dark:text-white">
                                 $3.456K
                             </h4>
-                            <span class="text-sm font-medium">Total User</span>
+                            <span class="text-sm font-medium">Total Delivery</span>
                         </div>
                     </div>
 
