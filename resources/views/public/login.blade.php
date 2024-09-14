@@ -7,7 +7,7 @@
 @section('content')
     <!-- Login Page Container -->
     <div class="flex justify-center items-center h-screen">
-        <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-lg shadow-md">
 
             <!-- Logo -->
             <div class="flex justify-center">

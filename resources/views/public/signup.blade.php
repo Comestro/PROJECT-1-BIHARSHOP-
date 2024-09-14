@@ -20,7 +20,7 @@
             <!-- Form -->
             <form action="/register" method="POST" class="space-y-6">
 
-                <div class="flex gap-2">
+                <div class="flex justify-between">
                     <!-- Name Field -->
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="flex gap-2">
+                <div class="flex justify-between">
                     <!-- Password Field -->
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
