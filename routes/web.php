@@ -37,6 +37,7 @@ Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("pub
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 Route::get('/public-login',[PublicController::class,"login"])->name("public.login");
 Route::get('/public-signup',[PublicController::class,"signup"])->name("public.signup");
+Route::post('/public-register',[PublicController::class,"register"])->name("public.register");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';
