@@ -63,19 +63,55 @@
                 <div class="mb-4">
                     <span class="text-gray-600">Color: </span>
                     <div class="inline-flex space-x-2">
-                        <button class="w-6 h-6 bg-green-700 rounded-full border"></button>
-                        <button class="w-6 h-6 bg-gray-600 rounded-full border"></button>
-                        <button class="w-6 h-6 bg-navy-700 rounded-full border"></button>
+                        <div class="flex space-x-2">
+                            <!-- Small Size -->
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="radio" name="size" value="small" class="sr-only peer">
+                                <div class="w-6 h-6 bg-green-700 rounded-full border peer-checked:ring-2 peer-checked:ring-green-500"></div>
+                            </label>
+                        
+                            <!-- Medium Size -->
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="radio" name="size" value="medium" class="sr-only peer">
+                                <div class="w-6 h-6 bg-gray-600 rounded-full border peer-checked:ring-2 peer-checked:ring-gray-500"></div>
+                            </label>
+                        
+                            <!-- Large Size -->
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="radio" name="size" value="large" class="sr-only peer">
+                                <div class="w-6 h-6 bg-blue-900 rounded-full border peer-checked:ring-2 peer-checked:ring-blue-500"></div>
+                            </label>
+                        </div>
+                        
+                        
                     </div>
                 </div>
                 <!-- Size Options -->
                 <div class="mb-6">
                     <span class="text-gray-600">Choose Size:</span>
                     <div class="mt-2">
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Medium</button>
-                        <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Large</button>
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">X-Large</button>
+                        <div class="mt-2 flex gap-2">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="small" class="hidden peer" />
+                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Small</span>
+                            </label>
+                        
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="medium" class="hidden peer" />
+                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Medium</span>
+                            </label>
+                        
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="large" class="hidden peer" />
+                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">Large</span>
+                            </label>
+                        
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="x-large" class="hidden peer" />
+                                <span class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">X-Large</span>
+                            </label>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -86,22 +122,6 @@
                         class="w-16 px-2 py-2 border rounded-lg text-center">
                     <button class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">Add to Cart</button>
                 </div>
-            </div>
-
-            <div class="bg-grey-500 rounded-lg p-6 mt-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Highlights</h2>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    @foreach ($product->highlights as $highlight)
-                        <li class="flex items-center">
-                            <!-- Icon for highlights -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5 text-green-500 mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ $highlight->highlights }}
-                        </li>
-                    @endforeach
-                </ul>
             </div>
 
         </div>
