@@ -16,6 +16,8 @@
                 <livewire:admin.product.quantity-form :product="$product" />
                 <livewire:admin.product.multiple-images :product="$product" />
                 <livewire:admin.product.status-form :product="$product" />
+                <livewire:admin.product.attributes-form :product="$product" />
+
             </div>
             {{-- <livewire:admin.product.status-form :product="$product" /> --}}
         </div>
