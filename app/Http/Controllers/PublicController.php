@@ -15,13 +15,13 @@ class PublicController extends Controller
     {
         // $data['categories'] = Category::all();
         // // $data['mainCategories'] = Category::where('parent_id', null)->get();
-       
+
         return view('public/home');
     }
-    public function productView($category ,$slug){
+    public function productView($category, $slug)
+    {
         $product = Product::where('slug', $slug)->first();
         return view('public/view')->with('category', $category)->with('product', $product);
-
     }
     public function cart()
     {
@@ -30,12 +30,12 @@ class PublicController extends Controller
     public function filter($cat_slug)
     {
         $category = Category::where('cat_slug', $cat_slug)->first();
-        $products = Product::where('category_id',$category->id)->get();
+        $products = Product::where('category_id', $category->id)->get();
 
-        if ($products){
+        if ($products) {
             // dd($product);
-            return view('public.filter', ['category' =>$category,'products'=>$products]);
-        }else{
+            return view('public.filter', ['category' => $category, 'products' => $products]);
+        } else {
             return redirect()->route('public/home')->with('error', 'No Product Found');
         }
     }
@@ -54,38 +54,61 @@ class PublicController extends Controller
     {
         return view('public.refund-policy');
     }
-  
-    public function login(){
+
+    public function login(Request $req)
+    {
+
+        if ($req->isMethod("post")) {
+            $req->validate([
+                'email' => 'required|email',
+                'password' => 'required|min:8',
+            ]);
+
+            $credentials = $req->only('email', 'password');
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('index')->with('success', 'Login successfull');
+            }
+            return back()->withErrors(['email' => 'Invalid credentials']);
+        }
         return view('public.login');
+
     }
 
+
     // show registration form:
-    public function signup(){
+    public function signup()
+    {
         return view('public.signup');
     }
 
-     
-     // Handle the registration logic
-     public function register(Request $request)
-     {
-         // Validation rules
-         $request->validate([
-             'name' => ['required', 'string', 'max:255'],
-             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-             'password' => ['required', 'string', 'min:8','confirmed'],
-         ]);
- 
-         // Create a new user
-         $user = User::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'password' => Hash::make($request->password),
-         ]);
- 
-         // Log in the user after registration
-         Auth::login($user);
- 
-         // Redirect to a desired location
-         return redirect()->route('home')->with('success', 'Registration successful!');
-     }
+
+    // Handle the registration logic
+    public function register(Request $request)
+    {
+        // Validation rules
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        // Create a new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Log in the user after registration
+        Auth::login($user);
+
+        // Redirect to a desired location
+        return redirect()->route('index')->with('success', 'Registration successful!');
+    }
+
+    // logout function here
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success','Logout successfully');
+    }
 }
