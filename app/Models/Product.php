@@ -13,11 +13,22 @@ class Product extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class,"id","category_id");
+        return $this->hasOne(Category::class, "id", "category_id");
     }
 
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class, 'product_attributes')
+            ->withPivot('attribute_value_id');
     }
 }
