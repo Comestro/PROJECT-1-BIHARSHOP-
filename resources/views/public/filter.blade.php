@@ -72,7 +72,7 @@
                 <!-- Product Card -->
 
                 @foreach($products as $item)
-                <a href="{{route('product.view',$item->slug)}}">
+                <a href="{{route('product.view',[$item->category->cat_slug, $item->slug])}}">
                     <div class="bg-white shadow-lg rounded-lg p-4">
                         <img src="{{ asset('storage/image/product/' . $item->image)}}" alt="Gradient Graphic T-shirt" class="w-full mb-4 md:h-64">
                         <h3 class="text-lg font-medium">{{$item->name}}</h3>

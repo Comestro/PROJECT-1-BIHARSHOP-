@@ -1,6 +1,6 @@
   <!-- Product Box 1 -->
     <div class="w-full">
-        <div class="md:grid-cols-2 md:grid gap-2">
+        <div class="md:grid-cols-2 md:grid gap-5">
             <div class="flex flex-col gap-3">
                 <livewire:admin.product.name-form :product="$product" />
                 <livewire:admin.product.description-form :product="$product" />
@@ -11,6 +11,7 @@
                 <livewire:admin.product.calling-product-variant :product="$product" />
 
 
+                <livewire:product.highlight :product="$product" />
             </div>
             <div class="flex flex-col gap-3">
                 <livewire:admin.product.brand-form :product="$product" />
@@ -25,5 +26,6 @@
             </div>
             {{-- <livewire:admin.product.status-form :product="$product" /> --}}
         </div>
+        
 
   </div>

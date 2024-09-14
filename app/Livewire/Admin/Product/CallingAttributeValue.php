@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Product;
 
 use Livewire\Component;
 use App\Models\AttributeValue;
+use App\Models\Attribute; // Include the Attribute model
+
 
 
 class CallingAttributeValue extends Component
@@ -11,17 +13,19 @@ class CallingAttributeValue extends Component
     public $value;
     public $attribute_id;
     public $isModalOpen = false;
+    public $attributeValueId;
     public $confirmingDelete = false;
 
     protected $rules = [
+        'attribute_id' => 'required|exists:attributes,id', // Ensure attribute_id validation
         'value' => 'required|string|max:255',
     ];
-
 
     public function render()
     {
         $attributeValues = AttributeValue::paginate(10);
-        return view('livewire.admin.product.calling-attribute-value')->with('attributeValues', $attributeValues);
+        $attributes = Attribute::all(); 
+        return view('livewire.admin.product.calling-attribute-value', compact('attributeValues', 'attributes'));
     }  
 
     public function openModal($attributeValueId)
@@ -43,20 +47,24 @@ class CallingAttributeValue extends Component
     public function updateAttributeValue()
     {
         $this->validate();
-
+    
         $attributeValue = AttributeValue::find($this->attributeValueId);
-        $attributeValue->code = $this->code;
-        $attributeValue->save();
-
-        $this->closeModal();
-
-        session()->flash('message', 'Attribute Value updated successfully.');
+    
+        if ($attributeValue) {
+            $attributeValue->attribute_id = $this->attribute_id; 
+            $attributeValue->value = $this->value; 
+            $attributeValue->save(); 
+    
+            $this->closeModal(); 
+    
+            session()->flash('message', 'Attribute Value updated successfully.'); 
+        } 
     }
 
     public function deleteAttributeValue()
     {
         if ($this->confirmingDelete) {
-            $attributeValue = Attribute::find($this->attributeValueId);
+            $attributeValue = AttributeValue::find($this->attributeValueId);
 
             $attributeValue->delete();
 
@@ -71,15 +79,7 @@ class CallingAttributeValue extends Component
         $this->confirmingDelete = true;
     }
 
-    public function toggleStatus($attributeValueId)
-        {
-            $attributeValue = Attribute::find($attributeValueId);
-            $attributeValue->status = !$attributeValue->status;
-            $attributeValue->save();
-
-            session()->flash('success', 'Attribute value status updated successfully.');
-        }
-        
+   
 
     
 }

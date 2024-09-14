@@ -11,7 +11,7 @@
        
     </div>
     <div class="flex justify-end">
-        <a href="{{ route('product.index') }}" class="bg-blue-500  hover:bg-blue-700  text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
+        <a wire:navigate href="{{ route('product.index') }}" class="bg-blue-500  hover:bg-blue-700  text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200 ease-in-out">
             Submit
         </a>
     </div>

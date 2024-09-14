@@ -56,7 +56,6 @@ class CallingCoupon extends Component
         $coupon->discount_value = $this->discount_value;
         $coupon->expiration_date = $this->expiration_date;
         $coupon->save();
-
         $this->closeModal();
 
         session()->flash('message', 'Coupon updated successfully.');
