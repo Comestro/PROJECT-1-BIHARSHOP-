@@ -27,7 +27,7 @@
             <div class="flex flex-col justify-between h-full">
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
-                    <h1 class="text-3xl font-bold mb-4">{{ $product->name }}</h1>
+                    <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
                     <a href="{{ route('user.wishlist') }}" class="flex flex-col justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
                             stroke="currentColor" class="size-6">
@@ -38,16 +38,12 @@
                     </a>
                 </div>
                 <!-- Price and Discount -->
-                <div class="text-xl font-semibold mb-4">
-                    <span class="text-green-500 font-semibold ">₹{{ $product->formatted_price }}</span>
-                    <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->formatted_discount_price }}</span>
+                <div class=" font-semibold mb-4">
+                    <span class="text-zinc-800 text-2xl font-bold ">{{ $product->formatted_price }}</span>
+                    <span class="text-gray-400 line-through ml-2 text-normal">{{ $product->formatted_discount_price }}</span>
                 </div>
 
-                    <!-- Price and Discount -->
-                    <div class="text-xl font-semibold mb-4">
-                        <span class="text-green-500 font-semibold">₹{{ $product->price }}</span>
-                        <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->discount_price }}</span>
-                    </div>
+                   
 
                     <!-- Product Description -->
                     <p class="text-gray-600 mb-6">
@@ -125,7 +121,6 @@
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
-                <h2 class="text-2xl font-semibold mb-6">All Reviews</h2>
                 <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
