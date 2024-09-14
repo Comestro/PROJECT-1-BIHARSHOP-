@@ -7,6 +7,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -70,6 +71,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('product-variations', ProductVariationController::class);
     Route::resource('attribute', AttributeController::class);
     Route::resource('attribute-value', AttributeValueController::class);
+    Route::resource('product-variant', ProductVariantController::class);
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
