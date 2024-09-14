@@ -16,12 +16,12 @@ View Page
         <!-- Left Section: Images -->
         <div>
             <!-- Main Image -->
-            <img src="{{asset('/storage/image/product/'.$product->image)}}" alt="Product Image" class="w-full h-auto mb-4">
+            <img src="{{asset('/storage/image/product/'.$product->image)}}" alt="Product Image" class="object-cover object-top w-[500px] h-[500px] mb-4">
 
             <!-- Thumbnail Images -->
             <div class="grid grid-cols-4 gap-4">
                 @foreach ($product->images as $photos)
-                    <img src="{{asset('/storage/image/product/'.$photos->image_path)}}" alt="Thumb 1" class="w-full h-auto cursor-pointer">
+                    <img src="{{asset('/storage/image/product/'.$photos->image_path)}}" alt="Thumb 1" class="w-[90px] object-cover object-top h-[90px] cursor-pointer">
                 @endforeach
                
             </div>
