@@ -3,6 +3,8 @@
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AddressController;
@@ -64,6 +66,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
     Route::resource('product-variations', ProductVariationController::class);
+    Route::resource('attribute', AttributeController::class);
+    Route::resource('attribute-value', AttributeValueController::class);
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
