@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
 
@@ -78,5 +79,11 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
+
+
+// login with google-works here:
+Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
+
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
 
 
