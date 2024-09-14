@@ -2,9 +2,10 @@
     <form wire:submit.prevent="store" method="POST" class="bg-white p-6 rounded-lg shadow-lg relative">
         @csrf
         <div class="flex items-center mb-6">
-            <svg class="w-6 h-6 text-blue-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12l2 2 6-6 4 4 6-6v12H3z"/>
-            </svg>
+            <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207"/>
+              </svg>
+              
             <h2 class="text-xl font-semibold text-gray-800">Add New Attribute</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -18,7 +19,7 @@
         </div>
         <div class="mt-6 flex justify-end">
             <button
-                type="submit"
+                type="submit" 
                 class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-blue-600 transition duration-300">
                 <svg class="inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 5v14m7-7H5"/>

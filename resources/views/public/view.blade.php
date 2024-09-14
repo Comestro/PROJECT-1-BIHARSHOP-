@@ -58,7 +58,6 @@
                         <button class="w-6 h-6 bg-navy-700 rounded-full border"></button>
                     </div>
                 </div>
-
                 <!-- Size Options -->
                 <div class="mb-6">
                     <span class="text-gray-600">Choose Size:</span>
