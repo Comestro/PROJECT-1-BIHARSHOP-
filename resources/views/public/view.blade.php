@@ -11,19 +11,7 @@
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
-            <div>
-                <!-- Main Image -->
-                <img src="{{ asset('/storage/image/product/' . $product->image) }}" alt="Product Image"
-                    class="w-full h-auto mb-4">
-
-                <!-- Thumbnail Images -->
-                <div class="grid grid-cols-4 gap-4">
-                    @foreach ($product->images as $photos)
-                        <img src="{{ asset('/storage/image/product/' . $photos->image_path) }}" alt="Thumb 1"
-                            class="w-full h-auto cursor-pointer">
-                    @endforeach
-                </div>
-            </div>
+           <livewire:product-image-gallery :product="$product"/>
 
             <!-- Right Section: Product Info -->
             <div class="flex flex-col justify-between h-full">
