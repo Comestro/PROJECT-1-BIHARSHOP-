@@ -28,7 +28,7 @@
                 <input type="range" min="50" max="200" class="w-full mb-2">
                 <div class="flex justify-between">
                     <span>$50</span>
-                    <span>$200</span>
+                    <span>$200</span>   
                 </div>
             </div>
 

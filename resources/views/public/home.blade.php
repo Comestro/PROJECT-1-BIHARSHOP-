@@ -9,8 +9,8 @@ home page
 @section('content')
 
 <x-hero-section/>
-<x-new-arrivals/>
-<x-top-selling/>
+<livewire:public.product.new-arrivals/>
+<livewire:public.product.top-selling/>
 <x-product-category/>
 
 
