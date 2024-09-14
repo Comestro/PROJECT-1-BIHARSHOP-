@@ -24,7 +24,21 @@
                             fill="black" />
                     </svg>
                     <span>Cart</span>
+
                 </a>
+
+                @if (!Auth::check())
+                    <a href="{{ route('login') }}"
+                        class="flex border px-3 py-2 rounded-full cursor-pointer item-center gap-1 hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                        </svg>
+                        <span>Login</span>
+                    </a>
+                @endif
+
                 @auth
                     <div id="avatarButton" type="button" data-dropdown-toggle="userDropdown"
                         data-dropdown-placement="bottom-start"
@@ -92,7 +106,8 @@
                             </ul>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="w-full bg-red-500 text-white px-3 py-2 text-center font-bold text-lg">
+                                <button type="submit"
+                                    class="w-full bg-red-500 text-white px-3 py-2 text-center font-bold text-lg">
                                     Logout
                                 </button>
                             </form>
@@ -107,5 +122,3 @@
 <br>
 <br>
 <br>
-
-
