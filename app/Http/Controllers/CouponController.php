@@ -8,11 +8,9 @@ use Illuminate\Support\Facades\Validator;
 
 class CouponController extends Controller
 {
-    //
 
     public function index()
     {
-        // Fetch paginated list of coupons
         return view('admin.coupon.manageCoupon');
     }
 
@@ -25,15 +23,7 @@ class CouponController extends Controller
 
     public function edit(string $id)
         {
-            // Find the coupon by ID
             $coupon = Coupon::find($id);
-
-    //         // Check if the coupon exists
-    //         if (!$coupon) {
-    //             return redirect()->route('coupon.index')->with('error', 'No Coupon Found');
-    //         }
-
-            // Return the edit view with the coupon data
             return view('admin.coupon.editCoupon', compact('coupon'));
         }
 
