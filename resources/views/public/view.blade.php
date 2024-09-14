@@ -4,6 +4,8 @@
 @endsection
 
 @section('content')
+
+
     <!-- Product Section -->
     <section class="max-w-6xl mx-auto p-5">
         <!-- Grid for Images and Info -->
@@ -49,6 +51,14 @@
                     {{ $product->description }}
                 </p>
 
+
+                @foreach($product->variants as $variant)
+    <div>
+        @foreach($variant->attributeValues as $attributeValue)
+            <p>{{ $attributeValue->attribute->name }}: {{ $attributeValue->value }}</p>
+        @endforeach
+    </div>
+@endforeach
                 <!-- Color Options -->
                 <div class="mb-4">
                     <span class="text-gray-600">Color: </span>
