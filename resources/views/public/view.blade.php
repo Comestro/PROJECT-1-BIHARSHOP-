@@ -27,77 +27,74 @@
             <div class="flex flex-col justify-between h-full">
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
-<div class="flex flex-col gap-2">
-<h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
-<livewire:product.average-child-star/>
-</div>
-                    <a href="{{ route('user.wishlist') }}" class="flex flex-col justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                        </svg>
-                        <p class="text-xs ">Add To Wishlist</p>
-                    </a>
+                    <div class="flex flex-col gap-2">
+                        <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
+                        <livewire:product.average-child-star />
+                    </div>
+                    {{-- wishlist --}}
+                    <livewire:wishlist-toggle :productId="$product->id" />
+
                 </div>
                 <!-- Price and Discount -->
                 <div class="text-xl font-semibold mb-4">
-                    <span class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
-                    <span class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
+                    <span
+                        class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
+                    <span
+                        class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
                     <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
                 </div>
 
-                    <!-- Product Description -->
-                    <p class="text-gray-600 mb-6 line-clamp-4">
-                        {{ $product->description }}
-                    </p>
+                <!-- Product Description -->
+                <p class="text-gray-600 mb-6 line-clamp-4">
+                    {{ $product->description }}
+                </p>
 
-                    <!-- Color Options -->
-                    <div class="mb-4">
-                        <span class="text-gray-600">Color: </span>
-                        <div class="inline-flex space-x-2">
-                            <button class="w-6 h-6 bg-green-700 rounded-full border"></button>
-                            <button class="w-6 h-6 bg-gray-600 rounded-full border"></button>
-                            <button class="w-6 h-6 bg-navy-700 rounded-full border"></button>
-                        </div>
-                    </div>
-
-                    <!-- Size Options -->
-                    <div class="mb-6">
-                        <span class="text-gray-600">Choose Size:</span>
-                        <div class="mt-2">
-                            <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
-                            <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Medium</button>
-                            <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Large</button>
-                            <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">X-Large</button>
-                        </div>
-                    </div>
-
-                    <!-- Add to Cart Button -->
-                    <div class="flex items-center space-x-4 mb-6">
-                        <input type="number" value="1" min="1"
-                            class="w-16 px-2 py-2 border rounded-lg text-center">
-                        <button class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">Add to Cart</button>
+                <!-- Color Options -->
+                <div class="mb-4">
+                    <span class="text-gray-600">Color: </span>
+                    <div class="inline-flex space-x-2">
+                        <button class="w-6 h-6 bg-green-700 rounded-full border"></button>
+                        <button class="w-6 h-6 bg-gray-600 rounded-full border"></button>
+                        <button class="w-6 h-6 bg-navy-700 rounded-full border"></button>
                     </div>
                 </div>
 
-                <div class="bg-grey-500 rounded-lg p-6 mt-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Highlights</h2>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        @foreach ($product->highlights as $highlight)
-                            <li class="flex items-center">
-                                <!-- Icon for highlights -->
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-500 mr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{ $highlight->highlights }}
-                            </li>
-                        @endforeach
-                    </ul>
+                <!-- Size Options -->
+                <div class="mb-6">
+                    <span class="text-gray-600">Choose Size:</span>
+                    <div class="mt-2">
+                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
+                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Medium</button>
+                        <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Large</button>
+                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">X-Large</button>
+                    </div>
                 </div>
 
+                <!-- Add to Cart Button -->
+                <div class="flex items-center space-x-4 mb-6">
+                    <input type="number" value="1" min="1"
+                        class="w-16 px-2 py-2 border rounded-lg text-center">
+                    <button class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">Add to Cart</button>
+                </div>
             </div>
+
+            <div class="bg-grey-500 rounded-lg p-6 mt-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Highlights</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    @foreach ($product->highlights as $highlight)
+                        <li class="flex items-center">
+                            <!-- Icon for highlights -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5 text-green-500 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            {{ $highlight->highlights }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+        </div>
         </div>
 
 
@@ -123,11 +120,11 @@
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
-                <livewire:product.average-review/>
-                <livewire:product.review-component :product="$product"/>
+                <livewire:product.average-review />
+                <livewire:product.review-component :product="$product" />
                 <div class="space-y-6">
                     <!-- Review Items -->
-               <livewire:product.calling-review :product="$product"/>
+                    <livewire:product.calling-review :product="$product" />
                     <!-- Load More Button -->
                     <div class="flex justify-center mt-10">
                         <button
