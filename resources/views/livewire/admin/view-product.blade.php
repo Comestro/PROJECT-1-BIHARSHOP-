@@ -21,5 +21,6 @@
             </div>
             {{-- <livewire:admin.product.status-form :product="$product" /> --}}
         </div>
+        
 
   </div>
