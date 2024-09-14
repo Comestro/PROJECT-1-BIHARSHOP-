@@ -10,7 +10,7 @@
         <div class="flex items-center font-semibold text-sm px-6 mb-3">
             <!-- Home -->
             <div class="flex items-center font-semibold">
-                <a href="{{ route('user.index') }}" class="text-gray-700 text-sm sm:text-base">Home</a>
+                <a wire:navigate href="{{ route('user.index') }}" class="text-gray-700 text-sm sm:text-base">Home</a>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-6 sm:h-6 text-gray-400">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
@@ -18,7 +18,7 @@
             
             <!-- My Orders -->
             <div class="flex items-center text-gray-600">
-                <a href="{{ route('user.my-order') }}" class="text-black">My Orders</a>                
+                <a wire:navigate href="{{ route('user.my-order') }}" class="text-black">My Orders</a>                
             </div>
         </div>
         

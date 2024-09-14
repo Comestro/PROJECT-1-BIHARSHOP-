@@ -58,9 +58,7 @@ class CallingAttributeValue extends Component
             $this->closeModal(); 
     
             session()->flash('message', 'Attribute Value updated successfully.'); 
-        } else {
-            session()->flash('error', 'Attribute Value not found.'); 
-        }
+        } 
     }
 
     public function deleteAttributeValue()

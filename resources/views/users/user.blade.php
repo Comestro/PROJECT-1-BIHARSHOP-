@@ -100,7 +100,7 @@
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-lg font-semibold">Address</span>
-                        <button onclick="location.href='{{ route('user.address') }}'" class="text-blue-500 hover:underline">Manage Addresses</button>
+                        <button wire:navigate onclick="location.href='{{ route('user.address') }}'" class="text-blue-500 hover:underline">Manage Addresses</button>
                     </div>
                     <p class="text-gray-700">
                         <span class="block">Noida</span>

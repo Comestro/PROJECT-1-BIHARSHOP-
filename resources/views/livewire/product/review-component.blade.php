@@ -51,7 +51,7 @@
     @endif
     @else
     <div class="mt-4 p-4 py-8 bg-slate-50 text-zinc-800 border border-slate-200 rounded-md">
-        Please <a href="{{ route('login') }}" class="text-blue-500 underline">Login</a> to submit a review.
+        Please <a wire:navigate href="{{ route('login') }}" class="text-blue-500 underline">Login</a> to submit a review.
     </div>
 
     @endauth

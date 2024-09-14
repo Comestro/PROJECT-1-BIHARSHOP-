@@ -35,10 +35,10 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
-    public function attributes()
+    public function attributesWithValues()
     {
-        return $this->belongsToMany(Attribute::class, 'product_attributes')
-            ->withPivot('attribute_value_id');
+        return $this->hasMany(ProductVariant::class)
+                    ->with('attributes');
     }
 
     public function highlights()
