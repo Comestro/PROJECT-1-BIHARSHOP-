@@ -41,8 +41,8 @@
                 </div>
                 <!-- Price and Discount -->
                 <div class="text-xl font-semibold mb-4">
-                    <span class="text-green-500 font-semibold ">₹{{ $product->price }}</span>
-                    <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->discount_price }}</span>
+                    <span class="text-green-500 font-semibold ">₹{{ $product->formatted_price }}</span>
+                    <span class="text-gray-400 line-through ml-2 text-lg">₹{{ $product->formatted_discount_price }}</span>
                 </div>
 
                 <!-- Product Description -->
