@@ -28,7 +28,7 @@
                 <input type="range" min="50" max="200" class="w-full mb-2">
                 <div class="flex justify-between">
                     <span>$50</span>
-                    <span>$200</span>
+                    <span>$200</span>   
                 </div>
             </div>
 
@@ -72,14 +72,15 @@
                 <!-- Product Card -->
 
                 @foreach($products as $item)
-                <a href="{{route('product.view',[$item->category->cat_slug, $item->slug])}}">
+                <livewire:public.product.product-card :item="$item"/>
+                <!-- <a href="{{route('product.view',[$item->category->cat_slug, $item->slug])}}">
                     <div class="bg-white shadow-lg rounded-lg p-4">
                         <img src="{{ asset('storage/image/product/' . $item->image)}}" alt="Gradient Graphic T-shirt" class="w-full mb-4 md:h-64">
                         <h3 class="text-lg font-medium">{{$item->name}}</h3>
                         <p class="text-sm text-gray-500">Rating: 3.5/5</p>
                         <p class="text-xl font-bold">Rs. {{ $item->discount_price ? $item->discount_price : $item->price}}</p>
                     </div>
-                </a>
+                </a> -->
                 @endforeach
                 {{-- <div class="bg-white shadow-lg rounded-lg p-4">
                     <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
