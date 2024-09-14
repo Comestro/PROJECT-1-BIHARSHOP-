@@ -40,14 +40,28 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class, 'product_attributes')
             ->withPivot('attribute_value_id');
     }
-    
+
     public function highlights()
     {
         return $this->hasMany(ProductHighlight::class);
     }
 
     public function reviews(){
-        return $this->hasMany(Review::class);       
+        return $this->hasMany(Review::class);
     }
-    
+
+    public function getSavingPercentageAttribute()
+    {
+        if ($this->price <= 0) {
+            return 0;
+        }
+
+        $discountPrice = $this->discount_price ?? $this->price;
+        $saving = $this->price - $discountPrice;
+        $percentage = ($saving / $this->price) * 100;
+
+        return number_format($percentage, 2);
+    }
+
 }
+

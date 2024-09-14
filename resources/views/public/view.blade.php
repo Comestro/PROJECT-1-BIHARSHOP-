@@ -38,15 +38,17 @@
                     </a>
                 </div>
                 <!-- Price and Discount -->
-                <div class=" font-semibold mb-4">
-                    <span class="text-zinc-800 text-2xl font-bold ">{{ $product->formatted_price }}</span>
-                    <span class="text-gray-400 line-through ml-2 text-normal">{{ $product->formatted_discount_price }}</span>
+                <div class="text-xl font-semibold mb-4">
+                    <span class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
+                    <span class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
+                    <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
                 </div>
 
-                   
+
+
 
                     <!-- Product Description -->
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 line-clamp-4">
                         {{ $product->description }}
                     </p>
 
