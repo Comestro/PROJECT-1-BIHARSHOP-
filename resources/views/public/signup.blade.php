@@ -18,7 +18,7 @@
             <h2 class="text-center text-2xl font-bold text-gray-700">Create Your Account</h2>
 
             <!-- Form -->
-            <form action="{{ route('public.register') }}" method="POST" class="space-y-6">
+            <form action="{{ route('register') }}" method="POST" class="space-y-6">
                 @csrf
                 
                 <div class="flex justify-between">
@@ -110,7 +110,7 @@
                 <!-- Login Redirect -->
                 <p class="text-center text-sm text-gray-500 mt-4">
                     Already have an account?
-                    <a href="{{ route('public.login') }}" class="text-blue-500 hover:text-blue-700">Log in</a>
+                    <a href="{{ route('login') }}" class="text-blue-500 hover:text-blue-700">Log in</a>
                 </p>
             </form>
         </div>

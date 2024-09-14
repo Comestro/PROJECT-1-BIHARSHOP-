@@ -103,6 +103,12 @@ class PublicController extends Controller
         Auth::login($user);
 
         // Redirect to a desired location
-        return redirect()->route('home')->with('success', 'Registration successful!');
+        return redirect()->route('index')->with('success', 'Registration successful!');
+    }
+
+    // logout function here
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success','Logout successfully');
     }
 }

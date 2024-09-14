@@ -36,12 +36,13 @@ Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("pub
 
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
-Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("public.login");
-Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("public.signup");
-Route::post('/public-register',[PublicController::class,"register"])->name("public.register");
+Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("login");
+Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("signup");
+Route::post('/public-register',[PublicController::class,"register"])->name("register");
+Route::post('/logout',[PublicController::class,"logout"])->name("logout");
 
 // Route::view('/admin', 'admin.dashboard');
-require __DIR__ . '/auth.php';
+// require __DIR__ . '/auth.php';
 
 // user route's grouping here:
 Route::prefix("user")->group(function () {

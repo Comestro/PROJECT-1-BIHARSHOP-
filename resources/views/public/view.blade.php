@@ -27,7 +27,10 @@
             <div class="flex flex-col justify-between h-full">
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
-                    <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
+<livewire:product.average-child-star/>
+</div>
                     <a href="{{ route('user.wishlist') }}" class="flex flex-col justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
                             stroke="currentColor" class="size-6">
@@ -43,9 +46,6 @@
                     <span class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
                     <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
                 </div>
-
-
-
 
                     <!-- Product Description -->
                     <p class="text-gray-600 mb-6 line-clamp-4">
@@ -108,6 +108,7 @@
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
+                <livewire:product.average-review/>
                 <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
