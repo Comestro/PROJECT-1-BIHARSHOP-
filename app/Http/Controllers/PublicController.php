@@ -53,4 +53,11 @@ class PublicController extends Controller
         return view('public.refund-policy');
     }
   
+    public function login(){
+        return view('public.login');
+    }
+
+    public function signup(){
+        return view('public.signup');
+    }
 }

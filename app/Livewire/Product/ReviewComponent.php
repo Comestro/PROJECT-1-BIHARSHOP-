@@ -35,6 +35,7 @@ class ReviewComponent extends Component
             'review' => $this->review,
         ]);
 
+        $this->dispatch('Refresh');
 
         session()->flash('message', 'Review submitted successfully.');
         $this->reset('rating', 'review');
@@ -43,9 +44,7 @@ class ReviewComponent extends Component
 
     public function render()
     {
-        $reviews = $this->product->reviews()->with('user')->latest()->get();
-        return view('livewire.product.review-component', [
-            'reviews' => $reviews
-        ]);
+       
+        return view('livewire.product.review-component');
     }
 }

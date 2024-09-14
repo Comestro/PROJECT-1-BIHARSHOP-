@@ -33,6 +33,8 @@ Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("p
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
+Route::get('/public-login',[PublicController::class,"login"])->name("public.login");
+Route::get('/public-signup',[PublicController::class,"signup"])->name("public.signup");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';
