@@ -88,7 +88,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-700">Category Name</label>
-                    <input type="text" id="name" wire:model="name" class="mt-1 block w-full p-2 border rounded">
+                    <input type="text" id="name" wire:model.live="name" class="mt-1 block w-full p-2 border rounded">
                     @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">

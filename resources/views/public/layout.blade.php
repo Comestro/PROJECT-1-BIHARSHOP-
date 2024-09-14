@@ -6,6 +6,8 @@
     <title>@yield('title') {{env('APP_NAME')}}</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"  rel="stylesheet" />
     @vite('resources/css/app.css')
+    @livewireStyles
+
 </head>
 <body >
 
@@ -15,6 +17,9 @@
     @show
     <livewire:public.footer-bar/>
     <x-footer/>
+
+   
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+@livewireScripts
 </body>
 </html>

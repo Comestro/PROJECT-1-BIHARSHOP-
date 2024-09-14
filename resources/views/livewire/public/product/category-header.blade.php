@@ -1,6 +1,6 @@
 <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
     @foreach ($categories as $category)
-    <a href="/category/{{$category->cat_slug}}">
+    <a wire:navigate href="/category/{{$category->cat_slug}}">
         <div
             class="group relative h-32 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
             <img src="{{ $category->image ? asset('storage/image/category/' . $category->image) : asset('path/to/default-image.jpg') }}"
