@@ -44,42 +44,44 @@
         </table>
     </div>
 
-    <!-- Edit Modal -->
-    @if($isModalOpen)
-    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg">
-            <h3 class="text-lg font-semibold mb-4">Edit Attribute</h3>
-            <form wire:submit.prevent="updateAttributeValue">
-                <div class="mb-4">
-                    <label for="attribute_id" class="block text-gray-700 font-semibold mb-2">Attribute Name</label>
-                    <select id="attribute_id" wire:model="attribute_id" class="w-full px-3 py-2 capitalize border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <option value="">Select Attribute</option>
-                        @foreach($attributeValues as $attribute)
-                            <option value="{{ $attribute->attribute_id }}">{{ $attribute->attribute_id }}</option>
-                        @endforeach
-                    </select>
-                    @error('attribute_id')
-                    <p class="text-xs text-red-500 font-semibold mt-1">{{$message}}</p>
-                    @enderror
-                </div>
+ <!-- Edit Modal -->
+@if($isModalOpen)
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg">
+        <h3 class="text-lg font-semibold mb-4">Edit Attribute</h3>
+        <form wire:submit.prevent="updateAttributeValue">
+            <div class="mb-4">
+                <label for="attribute_id" class="block text-gray-700 font-semibold mb-2">Attribute Name</label>
+                <select id="attribute_id" wire:model="attribute_id" class="w-full px-3 py-2 capitalize border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="">Select Attribute</option>
+                    <!-- Loop through the attributes instead of attributeValues -->
+                    @foreach($attributes as $attribute)
+                        <option value="{{ $attribute->id }}" class="text-black">{{ $attribute->name }}</option>
+                    @endforeach
+                </select>
+                @error('attribute_id')
+                <p class="text-xs text-red-500 font-semibold mt-1">{{$message}}</p>
+                @enderror
+            </div>
 
-                <div class="mb-4">
-                    <label for="value" class="block text-sm font-medium text-gray-700">Value</label>
-                    <input type="text" id="value" wire:model="value" class="mt-1 block w-full p-2 border rounded">
-                    @error('value') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-                </div>
-                <div class="flex justify-end gap-2">
-                    <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
-                        Cancel
-                    </button>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded">
-                        Update
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="mb-4">
+                <label for="value" class="block text-sm font-medium text-gray-700">Value</label>
+                <input type="text" id="value" wire:model="value" class="mt-1 block w-full p-2 border rounded">
+                @error('value') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" wire:click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                    Cancel
+                </button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded">
+                    Update
+                </button>
+            </div>
+        </form>
     </div>
-    @endif
+</div>
+@endif
 
 
     <!-- Delete Confirmation Modal -->
