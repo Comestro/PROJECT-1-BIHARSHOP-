@@ -123,6 +123,7 @@
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
+                <livewire:product.average-review/>
                 <livewire:product.review-component :product="$product"/>
                 <div class="space-y-6">
                     <!-- Review Items -->
