@@ -70,6 +70,7 @@
                     </div>
                 </div>
 
+
                 <!-- Add to Cart Button -->
                 <div class="flex items-center space-x-4 mb-6">
                     <input type="number" value="1" min="1"
@@ -115,8 +116,7 @@
 
             <!-- Content Sections -->
             <div id="content-1" class="tab-content mt-8 transition-transform duration-500">
-                <h2 class="text-2xl font-semibold mb-6">Product Details</h2>
-                <p class="text-gray-700">Here are the details of the product...</p>
+                <livewire:product.product-details :product="$product" />
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
