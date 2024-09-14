@@ -3,6 +3,8 @@
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AddressController;
@@ -33,6 +35,9 @@ Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("p
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
+Route::get('/public-login',[PublicController::class,"login"])->name("public.login");
+Route::get('/public-signup',[PublicController::class,"signup"])->name("public.signup");
+Route::post('/public-register',[PublicController::class,"register"])->name("public.register");
 
 // Route::view('/admin', 'admin.dashboard');
 require __DIR__ . '/auth.php';
@@ -64,6 +69,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
     Route::resource('product-variations', ProductVariationController::class);
+    Route::resource('attribute', AttributeController::class);
+    Route::resource('attribute-value', AttributeValueController::class);
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');

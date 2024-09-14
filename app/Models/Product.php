@@ -11,6 +11,15 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function getFormattedDiscountPriceAttribute()
+    {
+        return '₹' . number_format($this->discount_price, 2);
+    }
+    public function getFormattedPriceAttribute()
+    {
+        return '₹' . number_format($this->price, 2);
+    }
+
     public function category()
     {
         return $this->hasOne(Category::class, "id", "category_id");
@@ -31,8 +40,14 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class, 'product_attributes')
             ->withPivot('attribute_value_id');
     }
+    
+    public function highlights()
+    {
+        return $this->hasMany(ProductHighlight::class);
+    }
 
     public function reviews(){
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class);       
     }
+    
 }

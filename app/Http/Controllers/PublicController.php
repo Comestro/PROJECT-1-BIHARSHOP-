@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class PublicController extends Controller
 {
@@ -53,4 +55,37 @@ class PublicController extends Controller
         return view('public.refund-policy');
     }
   
+    public function login(){
+        return view('public.login');
+    }
+
+    // show registration form:
+    public function signup(){
+        return view('public.signup');
+    }
+
+     
+     // Handle the registration logic
+     public function register(Request $request)
+     {
+         // Validation rules
+         $request->validate([
+             'name' => ['required', 'string', 'max:255'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'password' => ['required', 'string', 'min:8','confirmed'],
+         ]);
+ 
+         // Create a new user
+         $user = User::create([
+             'name' => $request->name,
+             'email' => $request->email,
+             'password' => Hash::make($request->password),
+         ]);
+ 
+         // Log in the user after registration
+         Auth::login($user);
+ 
+         // Redirect to a desired location
+         return redirect()->route('home')->with('success', 'Registration successful!');
+     }
 }
