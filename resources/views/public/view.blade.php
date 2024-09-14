@@ -78,22 +78,6 @@
                 </div>
             </div>
 
-            <div class="bg-grey-500 rounded-lg p-6 mt-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Highlights</h2>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    @foreach ($product->highlights as $highlight)
-                        <li class="flex items-center">
-                            <!-- Icon for highlights -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5 text-green-500 mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ $highlight->highlights }}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
         </div>
         </div>
 
