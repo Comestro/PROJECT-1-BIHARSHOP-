@@ -47,6 +47,8 @@ class ReviewComponent extends Component
             'review' => $this->review,
         ]);
 
+        $this->dispatch('update_average_product');
+        $this->dispatch('update_average');
         $this->dispatch('Refresh');
         $this->alreadyRated = true;
 

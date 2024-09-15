@@ -14,13 +14,49 @@
             <div class="mb-6">
                 <h3 class="font-medium mb-2">Categories</h3>
                 <ul class="space-y-2">
-                    <li><label><input type="checkbox" class="mr-2"> T-shirts</label></li>
-                    <li><label><input type="checkbox" class="mr-2"> Shorts</label></li>
-                    <li><label><input type="checkbox" class="mr-2"> Shirts</label></li>
-                    <li><label><input type="checkbox" class="mr-2"> Hoodies</label></li>
-                    <li><label><input type="checkbox" class="mr-2"> Jeans</label></li>
+                    <!-- T-shirts -->
+                    <li>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="category" value="t-shirts"
+                                class="form-radio text-blue-600 mr-2 focus:ring focus:ring-blue-500">
+                            <span>T-shirts</span>
+                        </label>
+                    </li>
+                    <!-- Shorts -->
+                    <li>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="category" value="shorts"
+                                class="form-radio text-blue-600 mr-2 focus:ring focus:ring-blue-500">
+                            <span>Shorts</span>
+                        </label>
+                    </li>
+                    <!-- Shirts -->
+                    <li>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="category" value="shirts"
+                                class="form-radio text-blue-600 mr-2 focus:ring focus:ring-blue-500">
+                            <span>Shirts</span>
+                        </label>
+                    </li>
+                    <!-- Hoodies -->
+                    <li>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="category" value="hoodies"
+                                class="form-radio text-blue-600 mr-2 focus:ring focus:ring-blue-500">
+                            <span>Hoodies</span>
+                        </label>
+                    </li>
+                    <!-- Jeans -->
+                    <li>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="category" value="jeans"
+                                class="form-radio text-blue-600 mr-2 focus:ring focus:ring-blue-500">
+                            <span>Jeans</span>
+                        </label>
+                    </li>
                 </ul>
             </div>
+
 
             <!-- Filter by Price -->
             <div class="mb-6">

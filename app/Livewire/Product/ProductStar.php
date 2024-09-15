@@ -4,6 +4,8 @@ namespace App\Livewire\Product;
 
 use App\Models\Review;
 use Livewire\Component;
+use Livewire\Attributes\On;
+
 
 class ProductStar extends Component
 {
@@ -12,6 +14,7 @@ class ProductStar extends Component
     public $averageRating;
     public $totalReviews;
 
+    #[On('update_average_product')]
     public function mount()
     {
         // Fetch the average rating and the total number of reviews
