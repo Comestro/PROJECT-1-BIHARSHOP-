@@ -22,7 +22,7 @@
                                 class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
                                 here</a></p>
                             </div>
-                            
+
                             <div>
                             <!-- Social Login Options -->
                             <div class="space-y-3 mt-4">
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="mt-5">
-                            <button type="button"
+                            <button type="submit"
                                 class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                                 Sign in
                             </button>
