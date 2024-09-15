@@ -25,7 +25,7 @@
                         <div>
                             <div class="relative flex items-center">
                                 <input name="email" type="text" required
-                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out focus:shadow-blue-400"
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out "
                                     placeholder="Enter email" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
@@ -49,7 +49,7 @@
                         <div class="mt-8">
                             <div class="relative flex items-center">
                                 <input name="password" type="password" required
-                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out focus:shadow-blue-400"
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out"
                                     placeholder="Enter password" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
