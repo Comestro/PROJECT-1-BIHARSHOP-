@@ -22,6 +22,7 @@ class PriceBreakout extends Component
         }
 
         #[On("refreshPriceBreakdown")]
+
         public function calculateSummary()
         {
             $this->subtotal = $this->orders->orderItems->sum(function($item) {

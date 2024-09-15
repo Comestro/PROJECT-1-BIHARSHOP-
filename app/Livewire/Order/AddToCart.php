@@ -73,7 +73,7 @@ class AddToCart extends Component
                     'product_id' => $this->product->id,
                 ]);
             }
-
+            $this->dispatch("refresh_cart_counter");
             return redirect()->route('cart')->with('success', 'Product successfully added to Cart.');
         } else {
             return redirect()->back()->with('error', 'Unable to create order.');

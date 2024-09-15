@@ -28,6 +28,8 @@ class Cart extends Component
             $this->orders = $this->orders->refresh();
         }
         $this->dispatch("refreshPriceBreakdown");
+        $this->dispatch("refresh_cart_counter");
+
     }
 
 
@@ -46,6 +48,7 @@ class Cart extends Component
             $item->delete();
             $this->orders = $this->orders->refresh(); // Refresh order items to reflect the changes in the database
         }
+        $this->dispatch("refresh_cart_counter");
         $this->dispatch("refreshPriceBreakdown");
 
     }
