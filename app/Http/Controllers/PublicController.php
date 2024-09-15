@@ -20,7 +20,7 @@ class PublicController extends Controller
     }
     public function productView($category, $slug)
     {
-        $product = Product::with(['variants.attributeValues.attribute'])->where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->first();
         return view('public/view')->with('category', $category)->with('product', $product);
     }
     public function cart()

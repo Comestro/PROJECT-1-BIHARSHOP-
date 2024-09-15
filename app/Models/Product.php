@@ -29,17 +29,13 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
-
     public function variants()
     {
-        return $this->hasMany(ProductVariant::class);
+        return $this->hasMany(ProductVariantModel::class);
     }
 
-    public function attributesWithValues()
-    {
-        return $this->hasMany(ProductVariant::class)
-                    ->with('attributes');
-    }
+
+
 
     public function highlights()
     {
