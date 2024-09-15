@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class CouponUser extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $table = "coupon_user";
+
     public function user()
-    {
-        return $this->belongsToMany(User::class, 'coupon_user');
-    }
+{
+    return $this->belongsToMany(User::class);
+}
+
 }

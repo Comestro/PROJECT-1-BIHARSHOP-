@@ -84,9 +84,9 @@
                     required>
 
                 <select wire:model="state" name="state"
-                    class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-                    <option value="Bihar">Bihar</option selected>
+                    class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="">Select</option >
+                    <option value="Bihar">Bihar</option >
                 </select>
                 @error('state')
                     <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
