@@ -10,7 +10,7 @@
                 <livewire:product.product-star/>
                 
                 <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{$item->formattedDiscountPrice}}</span>
+                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{$item->formatted_price}}</span>
                 </div>
             </div>
         </a>
