@@ -19,7 +19,11 @@
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-2">
                         <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
-                        <livewire:product.average-child-star />
+                        @if ($product->reviews->count() > 0)
+                        <a href="#content-1">
+                        <livewire:product.average-child-star  :product="$product"/> 
+                        </a>
+                        @endif
                     </div>
                     {{-- wishlist --}}
                     <livewire:wishlist-toggle :productId="$product->id" />
@@ -69,7 +73,9 @@
             </div>
 
             <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
-                <livewire:product.average-review />
+                @if ($product->reviews->count() > 0)
+                    <livewire:product.average-review :product="$product" />
+                @endif
                 <livewire:product.review-component :product="$product" />
                 <div class="space-y-6">
                     <!-- Review Items -->

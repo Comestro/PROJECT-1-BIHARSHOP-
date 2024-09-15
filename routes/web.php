@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
@@ -74,6 +75,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
     Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+    Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
 
 });
 

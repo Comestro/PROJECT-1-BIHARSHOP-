@@ -19,7 +19,7 @@
             </div>
             
         </div>
-        <div>
+        <div class="mt-5">
             <livewire:admin.product.insert-product-variant :product="$product" />
 
         </div>
