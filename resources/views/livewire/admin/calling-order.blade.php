@@ -1,0 +1,60 @@
+<div class="container mx-auto py-8">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Order List</h2>
+        
+        <!-- Search Bar -->
+        <div class="relative">
+            <input type="search" 
+                   class="border w-[300px] pl-8 pr-2 py-2 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2" 
+                   placeholder="Search orders..." 
+                   wire:model.live='search' />
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                 class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" 
+                 width="20"
+                 height="20" 
+                 viewBox="0 0 48 48">
+              <path d="M 20.5 6 C 12.509634 6 6 12.50964 6 20.5 C 6 28.49036 12.509634 35 20.5 35 C 23.956359 35 27.133709 33.779044 29.628906 31.75 L 39.439453 41.560547 A 1.50015 1.50015 0 1 0 41.560547 39.439453 L 31.75 29.628906 C 33.779044 27.133709 35 23.956357 35 20.5 C 35 12.50964 28.490366 6 20.5 6 z M 20.5 9 C 26.869047 9 32 14.130957 32 20.5 C 32 23.602612 30.776198 26.405717 28.791016 28.470703 A 1.50015 1.50015 0 0 0 28.470703 28.791016 C 26.405717 30.776199 23.602614 32 20.5 32 C 14.130953 32 9 26.869043 9 20.5 C 9 14.130957 14.130953 9 20.5 9 z"></path>
+            </svg>
+        </div>
+        
+        <!-- Add Order Button -->
+        
+    </div>
+
+    <!-- Order Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white rounded-lg shadow-lg">
+            <thead>
+                <tr class="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-6 text-center">Order Number</th>
+                    <th class="py-3 px-6 text-center">Status</th>
+                    <th class="py-3 px-6 text-center">Total Amount</th>
+                    <th class="py-3 px-6 text-center">Payment Status</th>
+                    <th class="py-3 px-6 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders as $order)
+                <tr class="border-b">
+                    <td class="py-3 px-6 text-center">{{ $order->order_number }}</td>
+                    <td class="py-3 px-6 text-center">{{ $order->status }}</td>
+                    <td class="py-3 px-6 text-center">  ₹ {{ $order->total_amount }}</td>
+                    <td class="py-3 px-6 text-center">
+                        <div class="flex items-center justify-center space-x-2">
+                            <span class="inline-block w-4 h-4 rounded-full 
+                                @if($order->payment_status === 'paid') bg-green-500 
+                                @else bg-red-500 
+                                @endif">
+                            </span>
+                            <span>{{ $order->payment_status }}</span>
+                        </div>
+                    </td>                    <td class="py-3 px-6 text-center flex justify-center space-x-2">
+                        <button  class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-700 transition duration-300">View</button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>

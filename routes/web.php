@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
@@ -31,10 +32,11 @@ Route::view('profile', 'profile')
 Route::get('/', [PublicController::class, "index"])->name("index");
 Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
-// Route::get('/filter',[PublicController::class,"filter"])->name("filter");
+Route::get('/checkout', [PublicController::class, "checkout"])->name("checkout");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
+
 
 Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
@@ -73,6 +75,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
     Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+    Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
 
 });
 

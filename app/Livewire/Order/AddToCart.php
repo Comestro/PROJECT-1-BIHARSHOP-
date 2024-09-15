@@ -17,7 +17,7 @@ class AddToCart extends Component
     public $coupon_code;
     public $shipping_charge;
     public $product_variant_models_id;
-    public $quantity;
+    public $quantity = 1;
     public $product;
     public $color_variant_id;
     public $size_variant_id;
@@ -27,7 +27,7 @@ class AddToCart extends Component
     }
 
     public function render()
-    {        
+    {
         $productVariants = ProductVariantModel::where('product_id',$this->product->id)->get();
         return view('livewire.order.add-to-cart')->with('productVariants', $productVariants);
     }
@@ -76,5 +76,5 @@ class AddToCart extends Component
 }
 
 
-   
+
 }
