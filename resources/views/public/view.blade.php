@@ -40,10 +40,10 @@
                 </p>
 
 
-
+{{$product->variants}}
 
                 <!-- Color Options -->
-                @php
+                {{-- @php
                     $colors = $product->variants->flatMap->attributeValues
                         ->filter(function ($value) {
                             return $value->attribute->name == 'color';
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-               @endif
+               @endif --}}
 
 
 

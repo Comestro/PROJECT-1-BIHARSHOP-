@@ -72,10 +72,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
-    Route::resource('product-variations', ProductVariationController::class);
-    Route::resource('attribute', AttributeController::class);
-    Route::resource('attribute-value', AttributeValueController::class);
-    Route::resource('product-variant', ProductVariantController::class);
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');

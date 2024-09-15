@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_variants', function (Blueprint $table) {
+        Schema::create('product_variant_models', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->decimal('price', 8, 2)->nullable();  // Price for the specific variant
-            $table->integer('stock')->default(0);  // Inventory for each variant
+            $table->string('variant_type'); // e.g., size, color
+            $table->string('variant_value'); // e.g., XL, Red
+            $table->decimal('price', 10, 2)->nullable(); // Override price
+            $table->integer('stock')->default(0); // Variant quantity
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_variants');
+        Schema::dropIfExists('product_variant_models');
     }
 };
