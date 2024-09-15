@@ -3,14 +3,14 @@
 namespace App\Livewire\Admin\Product;
 
 use Livewire\Component;
-use App\Models\ProductVariant;
-use App\Models\Product;
 use App\Models\ProductVariantModel;
+use App\Models\Product;
 
 class InsertProductVariant extends Component
 {
     public $product;
     public $variants = [];
+    public $showUpdateButton = false; // State variable to control button visibility
 
     protected $rules = [
         'variants.*.type' => 'required|string',
@@ -40,7 +40,11 @@ class InsertProductVariant extends Component
 
     public function addVariant()
     {
+        // Add a new empty variant
         $this->variants[] = ['type' => '', 'value' => '', 'price' => '', 'stock' => ''];
+
+        // Show the Update button after adding a variant
+        $this->showUpdateButton = true;
     }
 
     public function removeVariant($index)
@@ -55,8 +59,6 @@ class InsertProductVariant extends Component
     public function update()
     {
         $this->validate();
-
-
 
         // Update variants
         foreach ($this->variants as $variant) {
@@ -80,11 +82,14 @@ class InsertProductVariant extends Component
             }
         }
 
+        // Reset showUpdateButton to false to show "Add Variant" button
+        $this->showUpdateButton = false;
+
         session()->flash('message', 'Product and variants successfully updated.');
     }
+
     public function render()
     {
         return view('livewire.admin.product.insert-product-variant');
     }
 }
-
