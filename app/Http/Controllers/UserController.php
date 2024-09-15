@@ -11,6 +11,10 @@ class UserController extends Controller
       return view('users.user');
    }
 
+   public function manageUser(){
+      return view('admin.user');
+   }
+
    public function wishlist()
    {
       return view('users.wishlist');

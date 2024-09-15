@@ -8,7 +8,7 @@ Gift Page
 <div class="flex flex-wrap lg:flex-nowrap p-4 lg:p-6 space-y-4 lg:space-y-0 lg:space-x-6">
 
     <!-- Sidebar -->
-    <x-user-navbar/>
+    <livewire:user.user-sidebar/>
 
     <!-- Main Content -->
     <div class="flex-1 sm:px-4 lg:px-5">
