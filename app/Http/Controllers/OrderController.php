@@ -22,6 +22,10 @@ class OrderController extends Controller
         return view('admin.insertOrder');
     }
 
+    public function manageOrder(){
+        return view('admin.callingOrder');
+     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
