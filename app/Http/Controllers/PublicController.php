@@ -59,14 +59,14 @@ class PublicController extends Controller
     {
 
         if ($req->isMethod("post")) {
-            $req->validate([
+            $credentials = $req->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ]);
 
-            $credentials = $req->only('email', 'password');
             if (Auth::attempt($credentials)) {
-                return redirect()->route('index')->with('success', 'Login successfull');
+                $req->session()->regenerate();
+                return redirect()->intended("/user");
             }
             return back()->withErrors(['email' => 'Invalid credentials']);
         }

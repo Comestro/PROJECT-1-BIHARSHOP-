@@ -11,7 +11,7 @@
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
-           <livewire:product-image-gallery :product="$product"/>
+            <livewire:product-image-gallery :product="$product" />
 
             <!-- Right Section: Product Info -->
             <div class="flex flex-col justify-start gap-2 h-full">
@@ -27,8 +27,7 @@
                 </div>
                 <!-- Price and Discount -->
                 <div class="text-xl font-semibold mb-4">
-                    <span
-                        class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
+                    <span class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
                     <span
                         class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
                     <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
@@ -40,106 +39,9 @@
                 </p>
 
 
-<!-- Color Options -->
-@php
-    $colors = $product->variants->where('variant_type', 'color');
-@endphp
-
-@if ($colors->count())
-    <div class="mb-4">
-        <span class="text-gray-600">Color: </span>
-        <div class="inline-flex space-x-2">
-            @foreach ($colors as $color)
-                <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="radio" name="color" value="{{ $color->variant_value }}" class="sr-only peer">
-                    <div class="w-6 h-6 bg-{{ $color->variant_value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->variant_value }}-500"></div>
-                </label>
-            @endforeach
-        </div>
-    </div>
-@endif
-
-<!-- Size Options -->
-@php
-    $sizes = $product->variants->where('variant_type', 'size');
-@endphp
-
-@if ($sizes->count())
-    <div class="mb-6">
-        <span class="text-gray-600">Choose Size:</span>
-        <div class="mt-2">
-            <div class="mt-2 flex gap-2">
-                @foreach ($sizes as $size)
-                    <label class="cursor-pointer">
-                        <input type="radio" name="size" value="{{ $size->variant_value }}" class="hidden peer" />
-                        <span
-                            class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">
-                            {{ $size->variant_value }}
-                        </span>
-                    </label>
-                @endforeach
-            </div>
-        </div>
-    </div>
-@endif
-
                 <!-- Color Options -->
-                {{-- @php
-                    $colors = $product->variants->flatMap->attributeValues
-                        ->filter(function ($value) {
-                            return $value->attribute->name == 'color';
-                        })
-                        ->unique('value');
-                @endphp
-                @if (count($colors))
-                    <div class="mb-4">
-                        <span class="text-gray-600">Color: </span>
-                        <div class="inline-flex space-x-2">
-
-                            @foreach ($colors as $color)
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="color" value="{{ $color->value }}" class="sr-only peer">
-                                    <div
-                                        class="w-6 h-6 bg-{{ $color->value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->value }}-500">
-                                    </div>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                <!-- Size Options -->
-                @php
-                    $sizes = $product->variants->flatMap->attributeValues
-                        ->filter(function ($value) {
-                            return $value->attribute->name == 'size';
-                        })
-                        ->unique('value');
-                @endphp
-               @if (count($sizes))
-               <div class="mb-6">
-                <span class="text-gray-600">Choose Size:</span>
-                <div class="mt-2">
-                    <div class="mt-2 flex gap-2">
-                        @foreach ($sizes as $size)
-                            <label class="cursor-pointer">
-                                <input type="radio" name="size" value="{{ $size->value }}" class="hidden peer" />
-                                <span
-                                    class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">{{ $size->value }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-               @endif --}}
-
-
-
-                <!-- Add to Cart Button -->
-                <div class="flex items-center space-x-4 mb-6">
-                    <input type="number" value="1" min="1"
-                        class="w-16 px-2 py-2 border rounded-lg text-center">
-                    <button class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">Add to Cart</button>
-                </div>
+                <livewire:order.add-to-cart :product="$product" />
+               
             </div>
 
         </div>
@@ -190,197 +92,6 @@
 
     <h1 class="text-4xl font-black text-center mb-8">You Might Also Like</h1>
 
-
-    {{-- <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-[5%]">
-        <div class="w-full max-w-sm bg-white rounded-lg ">
-            <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
-                <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                    src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486"
-                    alt="product image" />
-            </a>
-            <div class="px-3 mt-2 pb-5">
-                <a href="#">
-                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7
-                        GPS, Aluminium Case, Starlight Sport</h5>
-                </a>
-                <div class="flex items-center mt-2.5 mb-2">
-                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                    </div>
-                    <span class=" text-xs font-semibold px-2.5 py-0.5 rounded  ms-3">5.0/5</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">$599</span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full max-w-sm bg-white rounded-lg ">
-            <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
-                <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                    src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486"
-                    alt="product image" />
-            </a>
-            <div class="px-3 mt-2 pb-5">
-                <a href="#">
-                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7
-                        GPS, Aluminium Case, Starlight Sport</h5>
-                </a>
-                <div class="flex items-center mt-2.5 mb-2">
-                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                    </div>
-                    <span class=" text-xs font-semibold px-2.5 py-0.5 rounded  ms-3">5.0/5</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">$599</span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full max-w-sm bg-white rounded-lg ">
-            <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
-                <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                    src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486"
-                    alt="product image" />
-            </a>
-            <div class="px-3 mt-2 pb-5">
-                <a href="#">
-                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7
-                        GPS, Aluminium Case, Starlight Sport</h5>
-                </a>
-                <div class="flex items-center mt-2.5 mb-2">
-                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                    </div>
-                    <span class=" text-xs font-semibold px-2.5 py-0.5 rounded  ms-3">5.0/5</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">$599</span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full max-w-sm bg-white rounded-lg ">
-            <a href="#" class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
-                <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                    src="https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-26_at_14.20.50.jpg?v=1724663486"
-                    alt="product image" />
-            </a>
-            <div class="px-3 mt-2 pb-5">
-                <a href="#">
-                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7
-                        GPS, Aluminium Case, Starlight Sport</h5>
-                </a>
-                <div class="flex items-center mt-2.5 mb-2">
-                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                            <path
-                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                    </div>
-                    <span class=" text-xs font-semibold px-2.5 py-0.5 rounded  ms-3">5.0/5</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">$599</span>
-                </div>
-            </div>
-        </div>
-
-
-    </div> --}}
-
-    <!-- view all button -->
     <div class="flex flex-1 justify-center mt-10 px-[5%]">
         <button class=" w-full md:w-40 px-2  py-2 rounded-full text-sm font-semibold ring-1 ring-slate-300">View
             All</button>

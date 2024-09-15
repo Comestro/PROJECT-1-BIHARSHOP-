@@ -5,93 +5,101 @@
 @endsection
 
 @section('content')
-    <!-- Login Page Container -->
-    <div class="flex justify-center items-center h-screen">
-        <div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-lg shadow-md">
+    <div class="font-[sans-serif]">
+        <div class="h-screen flex flex-col items-center justify-center md:px-[15%]">
+            <div
+                class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+                <div class="md:h-full bg-[#000842] rounded-xl lg:p-12 p-8 flex items-center justify-center">
+                    <img src="https://readymadeui.com/signin-image.webp" class="md:w-full w-[50%] md:h-full h-[50%] object-contain"
+                        alt="login-image" />
+                </div>
+                <div class="md:max-w-md w-full px-4 py-4">
+                    <form>
+                        <div class="mb-5">
+                            <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
+                            <p class="text-sm mt-4 text-gray-800">Don't have an account <a href="{{ route('signup') }}"
+                                    class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
+                                    here</a></p>
+                        </div>
 
-            <!-- Logo -->
-            <div class="flex justify-center">
-                <img src="/logo.png" alt="Bihar-shop Logo" class="h-16 w-16">
+                        <div>
+                            <div class="relative flex items-center">
+                                <input name="email" type="text" required
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out "
+                                    placeholder="Enter email" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
+                                    class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
+                                    <defs>
+                                        <clipPath id="a" clipPathUnits="userSpaceOnUse">
+                                            <path d="M0 512h512V0H0Z" data-original="#000000"></path>
+                                        </clipPath>
+                                    </defs>
+                                    <g clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
+                                        <path fill="none" stroke-miterlimit="10" stroke-width="40"
+                                            d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z"
+                                            data-original="#000000"></path>
+                                        <path
+                                            d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z"
+                                            data-original="#000000"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <div class="relative flex items-center">
+                                <input name="password" type="password" required
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out"
+                                    placeholder="Enter password" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
+                                    class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
+                                    <path
+                                        d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z"
+                                        data-original="#000000"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
+                            <div class="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox"
+                                    class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                                <label for="remember-me" class="ml-3 block text-sm text-gray-800">
+                                    Remember me
+                                </label>
+                            </div>
+                            <div>
+                                <a href="javascript:void(0);" class="text-blue-600 font-semibold text-sm hover:underline">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <button type="button"
+                                class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                                Sign in
+                            </button>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="flex items-center justify-center mt-4">
+                            <span class="border-b w-full border-gray-300"></span>
+                            <span class="px-3 text-sm text-gray-500">or</span>
+                            <span class="border-b w-full border-gray-300"></span>
+                        </div>
+
+                        <!-- Social Login Options -->
+                        <div class="space-y-3 mt-4">
+                            <a href="{{ route('google.login') }}" type="button"
+                                class="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-100">
+                                <img src="/google-logo.png" alt="" class="h-6 w-6 mr-1">
+                                Continue with Google
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <!-- Page Title -->
-            <h2 class="text-center text-2xl font-bold text-gray-700">Login to Your Account</h2>
-
-            <!-- Form -->
-            <form action="{{ route('login') }}" method="POST" class="space-y-6">
-                @csrf
-                <!-- Email Field -->
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input type="email" id="email" name="email"
-                        class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-                        placeholder="Enter your email" required>
-                </div>
-
-                <!-- Password Field -->
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="password" name="password"
-                        class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-                        placeholder="Enter your password" required>
-                </div>
-
-                <!-- Remember Me & Forgot Password -->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember" type="checkbox"
-                            class="h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300 rounded">
-                        <label for="remember" class="ml-2 block text-sm text-gray-900">Remember me</label>
-                    </div>
-
-                    <div class="text-sm">
-                        <a href="#" class="text-blue-500 hover:text-blue-700">Forgot your password?</a>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div>
-                    <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Sign
-                        in</button>
-                </div>
-
-                <!-- Divider -->
-                <div class="flex items-center justify-center">
-                    <span class="border-b w-full border-gray-300"></span>
-                    <span class="px-3 text-sm text-gray-500">or</span>
-                    <span class="border-b w-full border-gray-300"></span>
-                </div>
-
-                <!-- Social Login Options -->
-                <div class="space-y-3">
-                    <a href="{{ route('google.login') }}" type="button"
-                        class="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-100">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M21.805 10.023h-9.982v3.974h6.537c-.285 1.47-1.242 2.718-2.566 3.554v2.89h4.148c2.422-2.22 3.814-5.487 3.814-9.277 0-.83-.075-1.64-.21-2.414z">
-                            </path>
-                            <path
-                                d="M12 22.638c2.362 0 4.337-.763 5.784-2.068l-2.742-2.118c-.832.583-1.884.923-3.042.923-2.338 0-4.316-1.577-5.023-3.69H4.007v2.307c1.436 2.77 4.35 4.646 7.993 4.646z">
-                            </path>
-                            <path
-                                d="M6.977 13.685c-.19-.58-.3-1.195-.3-1.835s.11-1.255.3-1.835V7.708H4.007C3.367 9.017 3 10.473 3 12s.367 2.983 1.007 4.292l2.97-2.607z">
-                            </path>
-                            <path
-                                d="M12 5.368c1.304 0 2.47.448 3.389 1.321l2.542-2.542C16.335 2.496 14.36 1.362 12 1.362c-3.644 0-6.557 1.876-7.993 4.646l2.97 2.606C7.683 6.945 9.661 5.368 12 5.368z">
-                            </path>
-                        </svg>
-                        Continue with Google
-                    </a>
-                </div>
-
-                <!-- Register Redirect -->
-                <p class="text-center text-sm text-gray-500 mt-4">
-                    Don't have an account?
-                    <a href="{{ route('signup') }}" class="text-blue-500 hover:text-blue-700">Sign up</a>
-                </p>
-            </form>
         </div>
     </div>
 @endsection
