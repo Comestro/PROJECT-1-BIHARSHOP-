@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Product;
 use App\Models\Review;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -11,15 +12,17 @@ class ProductStar extends Component
 {
     public $rating = 0;
     public $review;
+    public $product;
     public $averageRating;
     public $totalReviews;
 
     #[On('update_average_product')]
-    public function mount()
+    public function mount(Product $product)
     {
         // Fetch the average rating and the total number of reviews
-        $this->averageRating = Review::average('rating');
-        $this->totalReviews = Review::count();
+        $this->averageRating = $this->product->reviews()->average('rating');
+        $this->totalReviews = $this->product->reviews()->count();
+        $this->product = $product;
     }
 
     public function submitReview()
@@ -33,8 +36,8 @@ class ProductStar extends Component
         ]);
 
         // Recalculate the average rating and total reviews
-        $this->averageRating = Review::average('rating');
-        $this->totalReviews = Review::count();
+        $this->averageRating = $this->product->reviews()->average('rating');
+        $this->totalReviews = $this->product->reviews()->count();
 
         // Clear the form
         $this->reset(['rating', 'review']);

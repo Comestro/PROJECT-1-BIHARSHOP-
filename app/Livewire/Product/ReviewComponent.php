@@ -19,7 +19,7 @@ class ReviewComponent extends Component
 
     protected $rules = [
         'rating' => 'required|integer|between:1,5',
-        'review' => 'required|string|max:500',
+
     ];
 
     public function mount(Product $product)
