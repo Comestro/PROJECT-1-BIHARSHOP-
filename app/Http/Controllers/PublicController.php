@@ -23,10 +23,17 @@ class PublicController extends Controller
         $product = Product::where('slug', $slug)->first();
         return view('public/view')->with('category', $category)->with('product', $product);
     }
+    
     public function cart()
     {
         return view('public/cart');
     }
+
+    public function checkout()
+    {
+        return view('public.checkout');
+    }
+
     public function filter($cat_slug)
     {
         $category = Category::where('cat_slug', $cat_slug)->first();
