@@ -19,6 +19,8 @@ class AddToCart extends Component
     public $product_variant_models_id;
     public $quantity;
     public $product;
+    public $color_variant_id;
+    public $size_variant_id;
 
     public function mount(Product $product){
         $this->product = $product;
@@ -31,35 +33,48 @@ class AddToCart extends Component
     }
 
     public function store()
-    {
-        $orderPrefix = 'OD'; 
-        $validatedData = $this->validate([
-            'product_variant_models_id' => 'required|integer',
-            'quantity' => 'required|integer|min:1'
-        ]);
+{
+    $orderPrefix = 'OD';
+    $validatedData = $this->validate([
+        'color_variant_id' => 'nullable|integer',
+        'size_variant_id' => 'nullable|integer',
+        'quantity' => 'required|integer|min:1',
+    ]);
 
-        // Create the order
-        $order = Order::create([
-            'user_id' => Auth::id(),
-            'order_number' => $orderPrefix . rand(1000, 9999),  
-        ]);
+    // Find or create an order
+    $order = Order::firstOrCreate(
+        ['user_id' => Auth::id()],
+        ['order_number' => $orderPrefix . rand(1000, 9999)]
+    );
 
-        if ($order) {
-            $orderItem = OrderItem::create([
-                'order_id' => $order->id,
-                'product_variant_models_id' => $this->product_variant_models_id,
-                'quantity' => $this->quantity,
-            ]);
+    if ($order) {
+        // Check if the product with the same color and size already exists in the order
+        $existingOrderItem = OrderItem::where('order_id', $order->id)
+            ->where('color_variant_id', $validatedData['color_variant_id'])
+            ->where('size_variant_id', $validatedData['size_variant_id'])
+            ->first();
 
-            if ($orderItem) {
-                return redirect()->route('cart')->with('success', 'Product successfully added to Cart.');
-            } else {
-                return redirect()->back()->with('error', 'Unable to add product to Cart.');
-            }
+        if ($existingOrderItem) {
+            // If the item exists, increase the quantity
+            $existingOrderItem->quantity = $validatedData['quantity'];
+            $existingOrderItem->save();
         } else {
-            return redirect()->back()->with('error', 'Unable to create order.');
+            // Otherwise, create a new OrderItem
+            OrderItem::create([
+                'color_variant_id' => $validatedData['color_variant_id'],
+                'size_variant_id' => $validatedData['size_variant_id'],
+                'quantity' => $validatedData['quantity'],
+                'order_id' => $order->id,
+                'product_id' => $this->product->id,
+            ]);
         }
+
+        return redirect()->route('cart')->with('success', 'Product successfully added to Cart.');
+    } else {
+        return redirect()->back()->with('error', 'Unable to create order.');
     }
+}
+
 
    
 }
