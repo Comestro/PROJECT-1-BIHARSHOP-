@@ -14,9 +14,7 @@ class WishlistToggle extends Component
     public function mount($productId)
     {
         $this->productId = $productId;
-        if (!Auth::check()) {
-            return redirect()->route('login'); // Redirect to login if not authenticated
-        }
+
         $this->inWishlist = Wishlist::where('user_id', Auth::id())
                                     ->where('product_id', $productId)
                                     ->exists();
@@ -24,6 +22,10 @@ class WishlistToggle extends Component
 
     public function toggleWishlist()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login'); // Redirect to login if not authenticated
+        }
+
         if ($this->inWishlist) {
             // Remove from wishlist
             Wishlist::where('user_id', Auth::id())

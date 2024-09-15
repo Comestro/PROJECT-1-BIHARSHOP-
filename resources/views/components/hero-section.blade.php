@@ -20,7 +20,7 @@
 
             <!-- Right Side: Image -->
             <div class="w-full md:w-1/2">
-                <img src="https://www.pngplay.com/wp-content/uploads/7/Grocery-Items-PNG-Clipart-Background.png"
+                <img src="/mainhero.png"
                     alt="Hero Image" class="w-full h-auto " />
             </div>
         </div>

@@ -32,17 +32,48 @@
                 </div>
             </div>
 
-            <!-- Filter by Color -->
+            <!-- Color Filter Component -->
             <div class="mb-6">
-                <h3 class="font-medium mb-2">Colors</h3>
-                <div class="flex space-x-2">
-                    <button class="w-6 h-6 rounded-full bg-blue-500"></button>
-                    <button class="w-6 h-6 rounded-full bg-red-500"></button>
-                    <button class="w-6 h-6 rounded-full bg-green-500"></button>
-                    <button class="w-6 h-6 rounded-full bg-yellow-500"></button>
-                    <button class="w-6 h-6 rounded-full bg-gray-500"></button>
+                <h3 class="font-medium mb-2">Select Color</h3>
+                <div class="flex space-x-4">
+                    <!-- Blue -->
+                    <div>
+                        <input type="radio" id="blue" name="color" value="blue" class="hidden peer" />
+                        <label for="blue"
+                            class="w-6 h-6 block rounded-full bg-blue-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-500"></label>
+                    </div>
+
+                    <!-- Red -->
+                    <div>
+                        <input type="radio" id="red" name="color" value="red" class="hidden peer" />
+                        <label for="red"
+                            class="w-6 h-6 block rounded-full bg-red-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-red-500"></label>
+                    </div>
+
+                    <!-- Green -->
+                    <div>
+                        <input type="radio" id="green" name="color" value="green" class="hidden peer" />
+                        <label for="green"
+                            class="w-6 h-6 block rounded-full bg-green-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-green-500"></label>
+                    </div>
+
+                    <!-- Yellow -->
+                    <div>
+                        <input type="radio" id="yellow" name="color" value="yellow" class="hidden peer" />
+                        <label for="yellow"
+                            class="w-6 h-6 block rounded-full bg-yellow-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-yellow-500"></label>
+                    </div>
+
+                    <!-- Gray -->
+                    <div>
+                        <input type="radio" id="gray" name="color" value="gray" class="hidden peer" />
+                        <label for="gray"
+                            class="w-6 h-6 block rounded-full bg-gray-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-gray-500"></label>
+                    </div>
                 </div>
             </div>
+
+
 
             <!-- Filter by Size -->
             <div class="mb-6">
@@ -62,61 +93,20 @@
         <!-- Product Grid -->
         <main class="flex-1">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold">{{$category->name}}</h2>
+                <h2 class="text-2xl font-bold">{{ $category->name }}</h2>
 
                 <!-- Mobile Filter Toggle -->
-                <button class="lg:hidden bg-black text-white px-4 py-2 rounded-lg" onclick="toggleFilters()">Filters</button>
+                <button class="lg:hidden bg-black text-white px-4 py-2 rounded-lg"
+                    onclick="toggleFilters()">Filters</button>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Product Card -->
 
-                @foreach($products as $item)
-                <a href="{{route('product.view',[$item->category->cat_slug, $item->slug])}}">
-                    <div class="bg-white shadow-lg rounded-lg p-4">
-                        <img src="{{ asset('storage/image/product/' . $item->image)}}" alt="Gradient Graphic T-shirt" class="w-full mb-4 md:h-64">
-                        <h3 class="text-lg font-medium">{{$item->name}}</h3>
-                        <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                        <p class="text-xl font-bold">Rs. {{ $item->discount_price ? $item->discount_price : $item->price}}</p>
-                    </div>
-                </a>
+                @foreach ($products as $item)
+                    <livewire:public.product.product-card :item="$item" />
                 @endforeach
-                {{-- <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <img src="https://ttbazaar.com/cdn/shop/files/GoldenYellow_3918318f-ad40-4019-9a96-5a0f71591d39.jpg?v=1706872703"
-                        alt="Gradient Graphic T-shirt" class="w-full mb-4">
-                    <h3 class="text-lg font-medium">Gradient Graphic T-shirt</h3>
-                    <p class="text-sm text-gray-500">Rating: 3.5/5</p>
-                    <p class="text-xl font-bold">$145</p>
-                </div> --}}
-                <!-- Repeat product cards similarly -->
+
             </div>
 
             <!-- Pagination -->
@@ -132,10 +122,11 @@
         </main>
     </div>
 
- 
+
 
     <!-- Mobile Sidebar -->
-    <div id="mobileFilters" class="fixed inset-0 bg-white z-50 p-4 transform translate-x-full lg:hidden transition-transform duration-300">
+    <div id="mobileFilters"
+        class="fixed inset-0 bg-white z-50 p-4 transform translate-x-full lg:hidden transition-transform duration-300">
         <button class="bg-black text-white px-4 py-2 rounded-lg mb-4" onclick="toggleFilters()">Close</button>
         <!-- Same filter content as the sidebar -->
         <aside class="bg-white p-6 shadow-lg rounded-lg border border-slate-100">

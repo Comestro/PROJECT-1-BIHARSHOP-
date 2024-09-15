@@ -4,27 +4,17 @@
 @endsection
 
 @section('content')
+
+
     <!-- Product Section -->
     <section class="max-w-6xl mx-auto p-5">
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
-            <div>
-                <!-- Main Image -->
-                <img src="{{ asset('/storage/image/product/' . $product->image) }}" alt="Product Image"
-                    class="w-full h-auto mb-4">
-
-                <!-- Thumbnail Images -->
-                <div class="grid grid-cols-4 gap-4">
-                    @foreach ($product->images as $photos)
-                        <img src="{{ asset('/storage/image/product/' . $photos->image_path) }}" alt="Thumb 1"
-                            class="w-full h-auto cursor-pointer">
-                    @endforeach
-                </div>
-            </div>
+           <livewire:product-image-gallery :product="$product"/>
 
             <!-- Right Section: Product Info -->
-            <div class="flex flex-col justify-between h-full">
+            <div class="flex flex-col justify-start gap-2 h-full">
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-2">
@@ -49,26 +39,58 @@
                     {{ $product->description }}
                 </p>
 
-                <!-- Color Options -->
-                <div class="mb-4">
-                    <span class="text-gray-600">Color: </span>
-                    <div class="inline-flex space-x-2">
-                        <button class="w-6 h-6 bg-green-700 rounded-full border"></button>
-                        <button class="w-6 h-6 bg-gray-600 rounded-full border"></button>
-                        <button class="w-6 h-6 bg-navy-700 rounded-full border"></button>
-                    </div>
-                </div>
 
+{{$product->variants}}
+
+                <!-- Color Options -->
+                {{-- @php
+                    $colors = $product->variants->flatMap->attributeValues
+                        ->filter(function ($value) {
+                            return $value->attribute->name == 'color';
+                        })
+                        ->unique('value');
+                @endphp
+                @if (count($colors))
+                    <div class="mb-4">
+                        <span class="text-gray-600">Color: </span>
+                        <div class="inline-flex space-x-2">
+
+                            @foreach ($colors as $color)
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="color" value="{{ $color->value }}" class="sr-only peer">
+                                    <div
+                                        class="w-6 h-6 bg-{{ $color->value }}-500 rounded-full border peer-checked:ring-2 peer-checked:ring-{{ $color->value }}-500">
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
                 <!-- Size Options -->
-                <div class="mb-6">
-                    <span class="text-gray-600">Choose Size:</span>
-                    <div class="mt-2">
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Small</button>
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Medium</button>
-                        <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Large</button>
-                        <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">X-Large</button>
+                @php
+                    $sizes = $product->variants->flatMap->attributeValues
+                        ->filter(function ($value) {
+                            return $value->attribute->name == 'size';
+                        })
+                        ->unique('value');
+                @endphp
+               @if (count($sizes))
+               <div class="mb-6">
+                <span class="text-gray-600">Choose Size:</span>
+                <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
+                        @foreach ($sizes as $size)
+                            <label class="cursor-pointer">
+                                <input type="radio" name="size" value="{{ $size->value }}" class="hidden peer" />
+                                <span
+                                    class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 peer-checked:bg-gray-800 peer-checked:text-white transition duration-300">{{ $size->value }}</span>
+                            </label>
+                        @endforeach
                     </div>
                 </div>
+            </div>
+               @endif --}}
+
 
 
                 <!-- Add to Cart Button -->
@@ -77,22 +99,6 @@
                         class="w-16 px-2 py-2 border rounded-lg text-center">
                     <button class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">Add to Cart</button>
                 </div>
-            </div>
-
-            <div class="bg-grey-500 rounded-lg p-6 mt-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Highlights</h2>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    @foreach ($product->highlights as $highlight)
-                        <li class="flex items-center">
-                            <!-- Icon for highlights -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5 text-green-500 mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ $highlight->highlights }}
-                        </li>
-                    @endforeach
-                </ul>
             </div>
 
         </div>
