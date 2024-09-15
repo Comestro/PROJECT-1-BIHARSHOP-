@@ -45,10 +45,7 @@
 
                         <livewire:order.price-breakout />
 
-                        <div class="mb-6">
-                            <input type="text" placeholder="Add promo code" class="w-full p-2 border border-gray-300 rounded">
-                            <button class="w-full mt-2 bg-black text-white py-2 rounded">Apply</button>
-                        </div>
+                        <livewire:order.promo-code/>
 
                         <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
                     </div>
