@@ -5,14 +5,13 @@
 @endsection
 
 @section('content')
-    <div class="w-full py-8 px-[5%]">
+    <div class="w-full py-8 px-[5%] h-screen">
         <h2 class="text-4xl font-semobold mb-6">Your Cart</h2>
         <hr class="mb-3">
         <div class="flex flex-col lg:flex-row gap-8 ">
 
 <div class=" mx-auto  py-8 px-[5%]">
     <div class="flex flex-col lg:flex-row gap-8 ">
-
         <!-- Cart Items Section -->
         @guest
                 <!-- Not Logged In Message -->
@@ -50,7 +49,6 @@
                             <button class="w-full mt-2 bg-black text-white py-2 rounded">Apply</button>
                         </div>
 
-                        <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
                     </div>
                     <!-- Check if user is authenticated -->
 
