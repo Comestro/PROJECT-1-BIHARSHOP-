@@ -11,7 +11,7 @@ class CreateCoupon extends Component
     public $discount_type;
     public $discount_value;
     public $expiration_date;
-    public $status = false; // Set default value to false
+    public $status = false;
 
     public function store()
     {
