@@ -10,7 +10,10 @@ class CallingUser extends Component
     public function render()
     {
         
-        $data['users'] = User::where('name', 'LIKE', "%".$this->search."%")->get();
+        $data['users'] = User::where('name', 'LIKE', "%".$this->search."%")
+        ->orWhere('email', 'like', '%' . $this->search . '%')
+
+        ->get();
         return view('livewire.admin.calling-user', $data);
     }
 }
