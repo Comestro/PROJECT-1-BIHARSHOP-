@@ -1,8 +1,7 @@
-<div class="flex flex-col min-h-screen ">
-    <div class="flex-1  overflow-y-scroll">
-        <!-- Cart Item -->
+<div class="flex flex-col overflow-y-auto">
+    <div class="flex-1 overflow-y-auto">
+        <!-- Cart Items -->
         @foreach($orders->orderItems as $item)
-        <!-- Cart Item -->
         <div class="flex items-center justify-between p-5 lg:py-10 rounded-lg bg-gray-100 mb-4">
             <div class="flex items-center">
                 <img src="{{ $item->products->image ? asset('storage/image/product/' . $item->products->image) : asset('path/to/default-image.jpg') }}" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
@@ -41,15 +40,19 @@
                 <div class="flex items-baseline gap-2">
                     <div class="flex items-center space-x-2 bg-gray-100 p-2 rounded-lg">
                         <!-- Decrement Button -->
-                        <button wire:click="decrementQuantity({{ $item->id }})"
-                            class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-red-500 text-white rounded-full hover:bg-red-600">
+                        <button
+                            wire:click="decrementQuantity({{ $item->id }})"
+                            class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-red-500 text-white rounded-full hover:bg-red-600"
+                            wire:loading.attr="disabled">
                             -
                         </button>
                         <!-- Quantity Display -->
                         <span class="text-xl font-medium text-gray-800">{{ $item->quantity }}</span>
                         <!-- Increment Button -->
-                        <button wire:click="incrementQuantity({{ $item->id }})"
-                            class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-green-500 text-white rounded-full hover:bg-green-600">
+                        <button
+                            wire:click="incrementQuantity({{ $item->id }})"
+                            class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-green-500 text-white rounded-full hover:bg-green-600"
+                            wire:loading.attr="disabled">
                             +
                         </button>
                     </div>
@@ -57,9 +60,5 @@
             </div>
         </div>
         @endforeach
-    </div>
-
-    <div class="bg-red-500 w-full py-3 mt-auto">
-        <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
     </div>
 </div>
