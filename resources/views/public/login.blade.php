@@ -14,7 +14,8 @@
                         alt="login-image" />
                 </div>
                 <div class="md:max-w-md w-full px-4 py-4">
-                    <form>
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
                         <div class="mb-5">
                             <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
                             <p class="text-sm mt-4 text-gray-800">Don't have an account <a href="{{ route('signup') }}"
