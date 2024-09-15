@@ -6,7 +6,7 @@
     <!-- Main Content Area -->
     <div class="flex flex-wrap lg:flex-nowrap p-6">
         <!-- Sidebar -->
-      <x-user-navbar/>
+        <livewire:user.user-sidebar />
 
         <!-- Main Content -->
         <div class="flex-1 w-full sm:px-4 gap-4"> <!-- Adjusted padding here -->

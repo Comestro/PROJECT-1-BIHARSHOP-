@@ -16,74 +16,74 @@
         <!-- Navigation Buttons (Mobile Friendly) -->
         <nav class="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 sm:flex lg:flex-col">
             <!-- Personal Information -->
-            <button onclick="location.href='{{ route('user.index') }}'"
+            <a wire:navigate href='{{ route('user.index') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center bg-blue-600 text-white font-semibold hover:bg-blue-700 border border-gray-300">
                 Personal Information
-            </button>                    
-            <button onclick="location.href='{{ route('user.my-order') }}'"
+            </a>                    
+            <a wire:navigate href='{{ route('user.my-order') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-box mr-2"></i> Orders
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.my-order') }}'"
+            <a wire:navigate href='{{ route('user.my-order') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Orders
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.address') }}'"
+            <a wire:navigate href='{{ route('user.address') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-map-marker-alt mr-2"></i> Addresses
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.address') }}'"
+            <a wire:navigate href='{{ route('user.address') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Addresses
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.gift-card') }}'"
+            <a wire:navigate href='{{ route('user.gift-card') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-gift-alt mr-2"></i> Gift-Card
-            </button>
+            </a>
             
-            <button onclick="location.href='{{ route('user.gift-card') }}'"
+            <a wire:navigate href='{{ route('user.gift-card') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Gift-Card
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.payment') }}'"
+            <a wire:navigate href='{{ route('user.payment') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-credit-card mr-2"></i> Payment
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.payment') }}'"
+            <a wire:navigate href='{{ route('user.payment') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Payment
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.my-coupon') }}'"
+            <a wire:navigate href='{{ route('user.my-coupon') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-ticket-alt mr-2"></i> Coupons
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.my-coupon') }}'"
+            <a wire:navigate href='{{ route('user.my-coupon') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Coupons
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.wishlist') }}'"
+            <a wire:navigate href='{{ route('user.wishlist') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300">
                 <i class="fas fa-heart mr-2"></i> Wishlist
-            </button>
+            </a>
 
-            <button onclick="location.href='{{ route('user.wishlist') }}'"
+            <a wire:navigate href='{{ route('user.wishlist') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Wishlist
-            </button>
+            </a>
 
-            <button onclick="location.href='#logout'"
+            <a wire:navigate onclick="location.href='#logout'"
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-red-600 hover:bg-gray-100 border-none sm:border-none">
                 Logout
-            </button>
+            </a>
 
         </nav>
     </aside>

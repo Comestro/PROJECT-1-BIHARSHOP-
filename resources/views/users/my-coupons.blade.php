@@ -8,7 +8,7 @@ Coupon Page
 <!-- Main Content Area -->
 <div class="flex flex-wrap lg:flex-nowrap p-6">
     <!-- Sidebar -->
-    <x-user-navbar/>
+    <livewire:user.user-sidebar/>
 
     <!-- Main Content -->
     <div class="flex-1 sm:px-5 lg:px-6">

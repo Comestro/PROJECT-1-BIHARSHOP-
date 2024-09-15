@@ -4,8 +4,8 @@
 @endsection
 @section('content')
     <div class="flex flex-wrap lg:flex-nowrap p-6">
-        <x-user-navbar />
-        <div class="flex-1 sm:px-5">
+    <livewire:user.user-sidebar/>
+    <div class="flex-1 sm:px-5">
             <div class="bg-white p-4 sm:p-6 rounded-md shadow-lg max-w-full sm:max-w-4xl mx-auto">
                 <!-- Title and Add Address Button -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
