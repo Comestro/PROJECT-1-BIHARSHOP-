@@ -14,18 +14,33 @@
                         alt="login-image" />
                 </div>
                 <div class="md:max-w-md w-full px-4 py-4">
-                    <form>
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
                         <div class="mb-5">
                             <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
                             <p class="text-sm mt-4 text-gray-800">Don't have an account <a href="{{ route('signup') }}"
-                                    class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
-                                    here</a></p>
-                        </div>
-
-                        <div>
+                                class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
+                                here</a></p>
+                            </div>
+                            
+                            <div>
+                            <!-- Social Login Options -->
+                            <div class="space-y-3 mt-4">
+                                <a href="{{ route('google.login') }}" type="button"
+                                    class="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-100">
+                                    <img src="/google-logo.png" alt="" class="h-6 w-6 mr-1">
+                                    Continue with Google
+                                </a>
+                            </div>
+                            <!-- Divider -->
+                            <div class="flex items-center justify-center mt-4 mb-4">
+                                <span class="border-b w-full border-gray-300"></span>
+                                <span class="px-3 text-sm text-gray-500">or</span>
+                                <span class="border-b w-full border-gray-300"></span>
+                            </div>
                             <div class="relative flex items-center">
                                 <input name="email" type="text" required
-                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out "
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none hover:shadow-lg  transition-all duration-200 ease-in-out "
                                     placeholder="Enter email" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
@@ -49,7 +64,7 @@
                         <div class="mt-8">
                             <div class="relative flex items-center">
                                 <input name="password" type="password" required
-                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none shadow-lg hover:shadow-xl transition-all duration-200 ease-in-out"
+                                    class="w-full rounded-md text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none hover:shadow-lg transition-all duration-200 ease-in-out"
                                     placeholder="Enter password" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
@@ -82,21 +97,7 @@
                             </button>
                         </div>
 
-                        <!-- Divider -->
-                        <div class="flex items-center justify-center mt-4">
-                            <span class="border-b w-full border-gray-300"></span>
-                            <span class="px-3 text-sm text-gray-500">or</span>
-                            <span class="border-b w-full border-gray-300"></span>
-                        </div>
 
-                        <!-- Social Login Options -->
-                        <div class="space-y-3 mt-4">
-                            <a href="{{ route('google.login') }}" type="button"
-                                class="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-100">
-                                <img src="/google-logo.png" alt="" class="h-6 w-6 mr-1">
-                                Continue with Google
-                            </a>
-                        </div>
                     </form>
                 </div>
             </div>

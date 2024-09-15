@@ -72,6 +72,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('address', AddressController::class);
     Route::resource('coupon', CouponController::class);
+    Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+
 });
 
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');

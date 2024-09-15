@@ -10,7 +10,7 @@ class InsertProductVariant extends Component
 {
     public $product;
     public $variants = [];
-    public $showUpdateButton = false; // State variable to control button visibility
+    public $showUpdateButton = false; 
 
     protected $rules = [
         'variants.*.type' => 'required|string',
@@ -21,10 +21,8 @@ class InsertProductVariant extends Component
 
     public function mount(Product $product)
     {
-        // Load the product details for editing
         $this->product = $product;
 
-        // Load product variants
         $this->variants = ProductVariantModel::where('product_id', $this->product->id)
             ->get()
             ->map(function ($variant) {
@@ -40,10 +38,8 @@ class InsertProductVariant extends Component
 
     public function addVariant()
     {
-        // Add a new empty variant
         $this->variants[] = ['type' => '', 'value' => '', 'price' => '', 'stock' => ''];
 
-        // Show the Update button after adding a variant
         $this->showUpdateButton = true;
     }
 
@@ -63,7 +59,6 @@ class InsertProductVariant extends Component
         // Update variants
         foreach ($this->variants as $variant) {
             if (isset($variant['id'])) {
-                // Update existing variant
                 ProductVariantModel::find($variant['id'])->update([
                     'variant_type' => $variant['type'],
                     'variant_value' => $variant['value'],
@@ -82,7 +77,6 @@ class InsertProductVariant extends Component
             }
         }
 
-        // Reset showUpdateButton to false to show "Add Variant" button
         $this->showUpdateButton = false;
 
         session()->flash('message', 'Product and variants successfully updated.');
