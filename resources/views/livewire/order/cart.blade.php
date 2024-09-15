@@ -1,5 +1,4 @@
 <div class="flex-1">
-    <h2 class="text-4xl font-bold mb-6">Your Cart</h2>
 
 
     <!-- Cart Item -->

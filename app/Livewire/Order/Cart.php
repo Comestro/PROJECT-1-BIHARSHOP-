@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class Cart extends Component
 {
+    public $orders;
+    public function mount(Order $orders){
+        $this->orders = $orders;
+    }
     public function render()
     {
-        $orders = Order::where('user_id',Auth::id())->with('orderItems')->first();
-        return view('livewire.order.cart')->with('orders', $orders);
+        return view('livewire.order.cart');
     }
 }

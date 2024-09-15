@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,8 @@ class PublicController extends Controller
     }
     public function cart()
     {
-        return view('public/cart');
+        $order = Order::where('user_id',Auth::id())->with('orderItems')->first();
+        return view('public/cart', ['order' => $order]);
     }
     public function filter($cat_slug)
     {
