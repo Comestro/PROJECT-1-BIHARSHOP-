@@ -23,8 +23,8 @@ class PriceBreakout extends Component
         public function mount(Order $orders)
         {
             $this->orders = $orders;
-            public $couponPrice = 0;
-            public $errorMessage = '';
+            $couponPrice = 0;
+            $errorMessage = '';
 
     public function mount(Order $orders)
     {
