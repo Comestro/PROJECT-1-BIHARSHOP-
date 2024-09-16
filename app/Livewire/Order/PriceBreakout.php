@@ -15,8 +15,8 @@ class PriceBreakout extends Component
     public $deliveryFee = 15; // Example delivery fee
     public $total = 0;
     public $promoCode;
-    public $discountAmount = 0;
-    public $couponPrice = 0; 
+    public $discountAmount = 0; // General store discount
+    public $couponPrice = 0; // For applied coupon discount
     public $isCouponApplied = false;
 
     public $errorMessage = '';
@@ -24,6 +24,14 @@ class PriceBreakout extends Component
     public function mount(Order $orders)
     {
         $this->orders = $orders;
+
+        // Check if a coupon was applied in a previous session
+        if (session()->has('appliedCoupon')) {
+            $this->promoCode = session('appliedCoupon');
+            $this->couponPrice = session('couponPrice');
+            $this->isCouponApplied = true;
+        }
+
         $this->calculateSummary();
     }
 
@@ -45,6 +53,10 @@ class PriceBreakout extends Component
                 $this->isCouponApplied = true;
                 $this->couponPrice = $this->calculateCouponDiscount($coupon);
                 $user->coupons()->attach($coupon);
+
+                // Store the coupon information in the session to persist after refresh
+                session(['appliedCoupon' => $this->promoCode, 'couponPrice' => $this->couponPrice]);
+
                 session()->flash('success', 'Promo code applied successfully!');
                 $this->errorMessage = '';
                 $this->calculateSummary(); // Recalculate to include coupon discount
@@ -53,6 +65,7 @@ class PriceBreakout extends Component
             $this->isCouponApplied = false;
             $this->couponPrice = 0;
             $this->errorMessage = 'Invalid promo code.';
+            session()->forget(['appliedCoupon', 'couponPrice']); // Remove coupon from session if invalid
         }
     }
 
@@ -71,13 +84,15 @@ class PriceBreakout extends Component
 
     public function calculateSummary()
     {
-
+        // Calculate subtotal based on order items
         $this->subtotal = $this->orders->orderItems->sum(function ($item) {
             return $item->products->discount_price * $item->quantity;
         });
 
+        // Calculate general store discount
         $this->discountAmount = ($this->subtotal * $this->discountPercentage) / 100;
 
+        // Calculate total by applying both general and coupon discounts
         $this->total = $this->subtotal - $this->discountAmount - $this->couponPrice + $this->deliveryFee;
     }
 
