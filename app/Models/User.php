@@ -57,7 +57,8 @@ class User extends Authenticatable
 
     public function coupons()
     {
-        return $this->belongsToMany(Coupon::class, 'coupon_user');
+        return $this->belongsToMany(Coupon::class, 'coupon_user')->withTimestamps();
     }
+
 
 }

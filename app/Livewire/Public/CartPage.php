@@ -10,7 +10,7 @@ class CartPage extends Component
 {
     public $order;
 
-    public function mount(Order $order){
+    public function mount($order){
         $this->order = $order;
     }
     #[On('refresh_cart_counter')]
