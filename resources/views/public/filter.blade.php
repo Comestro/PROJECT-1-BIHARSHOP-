@@ -5,36 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-col lg:flex-row min-h-screen bg-gray-50 px-4 md:px-10 py-2 gap-5 mb-5">
         <!-- Sidebar Filters -->
-     <livewire:public.filter.product-filters :category="$category"/>
+        <livewire:public.filter.product-filters :category="$category"/>
         <!-- Product Grid -->
-        <main class="flex-1">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold">{{ $category->name }}</h2>
-
-                <!-- Mobile Filter Toggle -->
-                <button class="lg:hidden bg-black text-white px-4 py-2 rounded-lg"
-                    onclick="toggleFilters()">Filters</button>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Product Card -->
-
-                @foreach ($products as $item)
-                    <livewire:public.product.product-card :item="$item" />
-                @endforeach
-
-            </div>
-
-
-        </main>
-    </div>
-
-
 
     <!-- Mobile Sidebar -->
-    <div id="mobileFilters"
+    {{-- <div id="mobileFilters"
         class="fixed inset-0 bg-white z-50 p-4 transform translate-x-full lg:hidden transition-transform duration-300">
         <button class="bg-black text-white px-4 py-2 rounded-lg mb-4" onclick="toggleFilters()">Close</button>
         <!-- Same filter content as the sidebar -->
@@ -66,10 +42,10 @@
             <!-- Apply Filter Button -->
             <button class="w-full py-2 mt-4 bg-black text-white rounded-lg">Apply Filter</button>
         </aside>
-    </div>
+    </div> --}}
 
     <!-- Toggle Script -->
-    <script>
+    {{-- <script>
         function toggleFilters() {
             const mobileFilters = document.getElementById('mobileFilters');
             if (mobileFilters.classList.contains('translate-x-full')) {
@@ -78,5 +54,5 @@
                 mobileFilters.classList.add('translate-x-full');
             }
         }
-    </script>
+    </script> --}}
 @endsection

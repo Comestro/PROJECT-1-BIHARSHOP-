@@ -10,9 +10,9 @@
                 @if ($item->reviews->count() > 0)
                 <livewire:product.product-star :product="$item"/>
                 @endif
-                
+
                 <div class="flex justify-between">
-                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{$item->formatted_price}}</span>
+                    <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{$item->formattedDiscountPrice}}</span>
                 </div>
             </div>
         </a>
