@@ -11,27 +11,19 @@ class PriceBreakout extends Component
 {
     public $orders;
     public $subtotal = 0;
-    public $discountPercentage = 20; // Default discount percentage (store-wide discount)
+    public $discountPercentage = 20; // Default discount percentage
     public $deliveryFee = 15; // Example delivery fee
     public $total = 0;
     public $promoCode;
-    public $discountAmount = 0; // General store discount
-    public $couponPrice = 0; // For applied coupon discount
+    public $discountAmount = 0;
     public $isCouponApplied = false;
 
+    public $couponPrice = 0; // Fixed typo here from couponPirce to couponPrice
     public $errorMessage = '';
 
     public function mount(Order $orders)
     {
         $this->orders = $orders;
-
-        // Check if a coupon was applied in a previous session
-        if (session()->has('appliedCoupon')) {
-            $this->promoCode = session('appliedCoupon');
-            $this->couponPrice = session('couponPrice');
-            $this->isCouponApplied = true;
-        }
-
         $this->calculateSummary();
     }
 
@@ -48,28 +40,23 @@ class PriceBreakout extends Component
             if ($user->coupons->contains($coupon)) {
                 $this->errorMessage = 'You have already used this promo code.';
                 $this->isCouponApplied = false;
-                $this->couponPrice = 0;
+                $this->couponPrice = 0; // Reset coupon discount if already applied
             } else {
                 $this->isCouponApplied = true;
-                $this->couponPrice = $this->calculateCouponDiscount($coupon);
+                $this->couponPrice = $this->calculateDiscount($coupon); // Store the coupon discount separately
                 $user->coupons()->attach($coupon);
-
-                // Store the coupon information in the session to persist after refresh
-                session(['appliedCoupon' => $this->promoCode, 'couponPrice' => $this->couponPrice]);
-
                 session()->flash('success', 'Promo code applied successfully!');
                 $this->errorMessage = '';
-                $this->calculateSummary(); // Recalculate to include coupon discount
+                $this->calculateSummary(); // Recalculate the summary to include the discount
             }
         } else {
             $this->isCouponApplied = false;
-            $this->couponPrice = 0;
+            $this->couponPrice = 0; // Reset coupon price on invalid coupon
             $this->errorMessage = 'Invalid promo code.';
-            session()->forget(['appliedCoupon', 'couponPrice']); // Remove coupon from session if invalid
         }
     }
 
-    private function calculateCouponDiscount($coupon)
+    private function calculateDiscount($coupon)
     {
         $originalPrice = $this->subtotal;
 
