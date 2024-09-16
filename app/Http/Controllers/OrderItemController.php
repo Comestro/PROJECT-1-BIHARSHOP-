@@ -16,6 +16,7 @@ class OrderItemController extends Controller
         return view('admin.manageOrderItem', compact('orderItem'));
     }
 
+   
     public function create()
     {
         return view('admin.insertOrderItem');
