@@ -20,39 +20,11 @@
            <livewire:user.edit-user/>
 
 
-            <div class="mb-6">
-                <span class="block text-sm font-medium text-gray-700 mb-2">Your Gender</span>
-                <div class="flex space-x-4">
-                    <label for="Male" class="flex items-center">
-                        <input type="radio" id="Male" name="gender"
-                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <span class="ml-2 text-gray-700">Male</span>
-                    </label>
-                    <label for="Female" class="flex items-center">
-                        <input type="radio" id="Female" name="gender"
-                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <span class="ml-2 text-gray-700">Female</span>
-                    </label>
-                </div>
-            </div>
-            <!-- Email Section -->
-            <div class="mb-6">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-lg font-semibold">Email Address</span>
-                    <button class="text-blue-500 hover:underline">Edit</button>
-                </div>
-                <form>
-                    <input type="email" name="email"
-                        class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                        autocomplete="email" required value="{{ Auth::user()->email }}">
-                </form>
-            </div>
-
+           
+                     
             <!-- Mobile Section -->
-
-
             <!-- FAQs (hidden on mobile, visible on larger screens) -->
-            <div class="hidden sm:block bg-gray-100 p-4 rounded-lg mb-6">
+            <div class="hidden sm:block bg-gray-100 p-4 rounded-lg mb-6 mt-5">
                 <div class="text-lg font-semibold mb-2">FAQs</div>
                 <div class="space-y-4">
                     <div>

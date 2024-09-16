@@ -4,34 +4,36 @@ namespace App\Livewire\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class EditUser extends Component
 {
     public $isOpen = false;
-    public $lastName;
     public $firstName;
+    public $email;
 
     public function mount()
     {
         $user = Auth::user();
 
-        // Check if the user is authenticated
+        // Redirect if the user is not authenticated
         if (!$user) {
-            return redirect()->route('login'); // Redirect if not authenticated
+            return redirect()->route('login');
         }
 
+        // Populate the form fields with user's data
         $this->firstName = $user->name;
-        $this->lastName = $user->last_name ?? ''; // Load last name if available
+        $this->email = $user->email;
     }
 
-    // Function to open modal
+    // Function to open the modal
     public function openModal()
     {
         $this->isOpen = true;
     }
 
-    // Function to close modal
+    // Function to close the modal
     public function closeModal()
     {
         $this->isOpen = false;
@@ -42,25 +44,31 @@ class EditUser extends Component
     {
         $this->validate([
             'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(), // Ensure unique email
         ]);
-
+    
         $user = User::find(Auth::id());
-
-        // Check if the user is authenticated
+    
+        // Redirect if the user is not found
         if (!$user) {
-            return redirect()->route('login'); // Redirect if not authenticated
+            return redirect()->route('login');
         }
-
+    
+        // Update user details
         $user->name = $this->firstName;
-        // Assuming you store the last name separately
-        $user->last_name = $this->lastName;
+        $user->email = $this->email;
+    
         $user->save();
-
+    
+        // Flash message to notify the user of success
         session()->flash('message', 'Profile updated successfully!');
-        $this->closeModal(); // Close the modal after saving
+    
+        // Close the modal after saving
+        $this->closeModal();
     }
-       public function render()
+    
+
+    public function render()
     {
         return view('livewire.user.edit-user');
     }
