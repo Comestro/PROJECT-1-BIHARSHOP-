@@ -35,7 +35,15 @@ class PublicController extends Controller
     public function checkout()
     {
         $order = Order::where('user_id',Auth::id())->where('status','pending')->with('orderItems')->first();
+        // dd($order);
         return view('public.checkout',['order' => $order]);
+    }
+
+    public function confirmOrder()
+    {
+        // $order = Order::where('user_id',Auth::id())->where('payment_status','paid')->with('orderItems')->first();
+        // dd($order);
+        return view('public.confirm-order');
     }
 
     public function filter($cat_slug, $cat_id)

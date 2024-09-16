@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
-        public function saveOnlinePayment(Request $request)
+    public function saveOnlinePayment(Request $request)
     {
         try {
             $input = $request->all();
@@ -71,7 +71,7 @@ class PaymentController extends Controller
                         'payment_method' => $response->method
                     ]);
 
-                    return redirect('/user')->with('success', 'Payment done successfully.');
+                    return redirect('/confirm-order')->with('success', 'Payment done successfully.');
                 } else {
                     return redirect()->back()->with('error', 'Unable to add payment.');
                 }

@@ -35,6 +35,7 @@ Route::get('/', [PublicController::class, "index"])->name("index");
 Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
 Route::get('/checkout', [PublicController::class, "checkout"])->name("checkout");
+Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("confirm.order");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
