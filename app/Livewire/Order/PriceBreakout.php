@@ -7,6 +7,7 @@ use App\Models\Order;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 class PriceBreakout extends Component
 {
@@ -16,25 +17,19 @@ class PriceBreakout extends Component
     public $deliveryFee = 15; // Example delivery fee
     public $total = 0;
     public $promoCode;
-    public $discountAmount = 0; // General store discount
-    public $couponPrice = 0; // For applied coupon discount
+    public $discountAmount = 0;
     public $isCouponApplied = false;
 
+    public $couponPrice = 0;
     public $errorMessage = '';
 
     public function mount(Order $orders)
     {
         $this->orders = $orders;
-
-        // Check if a coupon was applied in a previous session
-        if (session()->has('appliedCoupon')) {
-            $this->promoCode = session('appliedCoupon');
-            $this->couponPrice = session('couponPrice');
-            $this->isCouponApplied = true;
-        }
-
         $this->calculateSummary();
     }
+
+
 
     public function applyPromoCode()
     {
@@ -84,6 +79,7 @@ class PriceBreakout extends Component
     }
     #[On("refreshPriceBreakdown")]
 
+    #[On('refreshPriceBreakdown')]
     public function calculateSummary()
     {
         // Calculate subtotal based on order items
