@@ -30,7 +30,10 @@ public function colorVariant()
     return $this->belongsTo(ProductVariantModel::class, 'color_variant_id');
 }
 
-
+public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
 
 }
