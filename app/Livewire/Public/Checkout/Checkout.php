@@ -87,6 +87,14 @@ class Checkout extends Component
         $this->order= $order;
         $this->address= Auth::user()->addresses;
 
+        if($this->order->address_id != null){
+            $this->selectedAddress = Address::find($this->order->address_id);
+        }
+
+    }
+
+    public function changeAddressToggle(){
+        $this->selectedAddress = null;
     }
   
     public function updateAddressId()

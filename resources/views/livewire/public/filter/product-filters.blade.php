@@ -1,4 +1,5 @@
-<aside class="lg:w-1/5 bg-white p-6 shadow-lg rounded-lg border border-slate-100 hidden lg:block">
+<div class="flex flex-col lg:flex-row min-h-screen bg-gray-50 px-4 md:px-10 py-2 gap-5 mb-5">
+    <aside class="lg:w-1/5 bg-white p-6 shadow-lg rounded-lg border border-slate-100 hidden lg:block">
     <h2 class="text-lg font-semibold mb-4">Filters</h2>
 
     <!-- Filter by Category -->
@@ -36,12 +37,23 @@
 
     <!-- Filter by Price -->
     <div class="mb-6">
-        <h3 class="font-medium mb-2">Price</h3>
-        <input type="range" min="50" max="200" class="w-full mb-2">
-        <div class="flex justify-between">
-            <span>$50</span>
-            <span>$200</span>
-        </div>
+        <h3 class="font-medium mb-4">Price</h3>
+
+        <!-- Loop through the defined price ranges -->
+        @foreach ($priceRanges as $key => $range)
+            <div class="mb-2">
+                <label class="flex items-center">
+                    <input type="checkbox" wire:model.live="selectedPriceRanges" value="{{ $key }}" class="mr-2">
+                    @if($key == 'below_500')
+                        Below Rs.500 ({{ \App\Models\Product::whereBetween('discount_price', $range)->count() }})
+                    @elseif($key == 'above_2500')
+                        Above Rs.2500 ({{ \App\Models\Product::where('discount_price', '>=', 2501)->count() }})
+                    @else
+                        Rs.{{ $range[0] }}-{{ $range[1] }} ({{ \App\Models\Product::whereBetween('discount_price', $range)->count() }})
+                    @endif
+                </label>
+            </div>
+        @endforeach
     </div>
 
     <!-- Color Filter Component -->
@@ -101,3 +113,25 @@
     <!-- Apply Filter Button -->
     <button class="w-full py-2 mt-4 bg-black text-white rounded-lg">Apply Filter</button>
 </aside>
+
+<main class="flex-1">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">{{ $category->name }}</h2>
+
+        <!-- Mobile Filter Toggle -->
+        <button class="lg:hidden bg-black text-white px-4 py-2 rounded-lg"
+            onclick="toggleFilters()">Filters</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Product Card -->
+
+        @foreach ($products as $item)
+            <livewire:public.product.product-card :item="$item" />
+        @endforeach
+
+    </div>
+
+
+</main>
+</div>
