@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -33,7 +34,8 @@ class PublicController extends Controller
 
     public function checkout()
     {
-        return view('public.checkout');
+        $order = Order::where('user_id',Auth::id())->where('status','pending')->with('orderItems')->first();
+        return view('public.checkout',['order' => $order]);
     }
 
     public function filter($cat_slug)
