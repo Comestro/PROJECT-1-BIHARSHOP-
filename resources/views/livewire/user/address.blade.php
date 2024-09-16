@@ -4,7 +4,7 @@
         <button wire:click="toggleAddress" class="flex items-center text-blue-600 font-medium hover:text-blue-800 mt-4 sm:mt-0">
             <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMyMTc1RkYiIGQ9Ik0xMS4yNSA2Ljc1aC00LjV2NC41aC0xLjV2LTQuNUguNzV2LTEuNWg0LjVWLjc1aDEuNXY0LjVoNC41Ii8+PHBhdGggZD0iTS0zLTNoMTh2MThILTMiLz48L2c+PC9zdmc+" alt="Add Icon" class="h-4 w-4 mr-2">ADD NEW ADDRESS
         </button>
-    </div>
+</div>
 
     <div class="space-y-4 sm:space-y-6">
         @foreach($addresses as $address)
