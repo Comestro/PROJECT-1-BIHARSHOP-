@@ -25,7 +25,7 @@ class PublicController extends Controller
         $product = Product::where('slug', $slug)->first();
         return view('public/view')->with('category', $category)->with('product', $product);
     }
-    
+
     public function cart()
     {
         $order = Order::where('user_id',Auth::id())->with('orderItems')->first();
@@ -38,10 +38,33 @@ class PublicController extends Controller
         return view('public.checkout',['order' => $order]);
     }
 
-    public function filter($cat_slug)
+    public function filter($cat_slug, $cat_id)
     {
         $category = Category::where('cat_slug', $cat_slug)->first();
-        $products = Product::where('category_id', $category->id)->get();
+
+        if ($category) {
+            // Check if it's a main category (i.e., has no parent_category_id)
+            if (is_null($category->parent_category_id)) {
+                // Get all subcategories of this main category
+                $subCategoryIds = Category::where('parent_category_id', $category->id)->pluck('id')->toArray();
+
+                // Include the main category ID as well
+                $categoryIds = array_merge([$category->id], $subCategoryIds);
+
+                // Fetch products belonging to the main category or its subcategories and only with status = 1
+                $products = Product::whereIn('category_id', $categoryIds)
+                                   ->where('status', 1)  // Filter for status 1
+                                   ->get();
+            } else {
+                // It's a subcategory, so fetch only the products in this subcategory and only with status = 1
+                $products = Product::where('category_id', $category->id)
+                                   ->where('status', 1)  // Filter for status 1
+                                   ->get();
+            }
+        } else {
+            $products = collect(); // Return an empty collection if no category is found
+        }
+
 
         if ($products) {
             // dd($product);

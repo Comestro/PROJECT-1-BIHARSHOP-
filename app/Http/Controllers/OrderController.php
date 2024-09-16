@@ -26,6 +26,13 @@ class OrderController extends Controller
         return view('admin.callingOrder');
      }
 
+     
+     public function viewOrder($orderId){
+        $data['order']=Order::find($orderId);
+        return view('admin.callingOrderItem',$data);
+     }
+     
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -10,7 +10,7 @@ class CategoryHeader extends Component
     public function render()
     {
         return view('livewire.public.product.category-header', [
-            'categories' => Category::all() // Load categories for dropdown
+            'categories' => Category::where('parent_category_id', null)->get() // Load categories for dropdown
         ]);
     }
 }

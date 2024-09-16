@@ -8,3 +8,6 @@
 @section('content')
 <livewire:public.checkout.checkout :order="$order" />
 @endsection
+
+
+
