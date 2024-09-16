@@ -22,7 +22,7 @@ class AverageReview extends Component
     public function getData(){
         $this->averageRating = $this->product->reviews()->average('rating');
         $this->totalReviews = $this->product->reviews()->where('review',"<>","")->count();
-        $this->totalRating = $this->product->reviews()->where('review',null)->count();
+        $this->totalRating = $this->product->reviews()->count();
     }
     public function mount(Product $product)
     {
