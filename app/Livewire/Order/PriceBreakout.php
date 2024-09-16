@@ -15,7 +15,7 @@ class PriceBreakout extends Component
         public $total = 0;
 
         public function mount(Order $orders)
-        {
+        { 
             $this->orders = $orders;
 
             $this->calculateSummary();
