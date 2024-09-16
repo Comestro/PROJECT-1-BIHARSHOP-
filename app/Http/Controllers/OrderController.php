@@ -25,6 +25,8 @@ class OrderController extends Controller
     public function manageOrder(){
         return view('admin.callingOrder');
      }
+
+     
      public function viewOrder($orderId){
         $data['order']=Order::find($orderId);
         return view('admin.callingOrderItem',$data);

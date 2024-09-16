@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,6 +14,12 @@ class UserController extends Controller
    public function manageUser(){
       return view('admin.user');
    }
+
+   public function viewUser($userId){
+      $data['user']=User::find($userId);
+      return view('admin.wishList',$data);
+   }
+
 
    public function wishlist()
    {
