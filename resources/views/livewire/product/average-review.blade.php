@@ -12,7 +12,7 @@
                 @endfor
             </div>
             <span class="text-xl font-bold">{{ number_format($averageRating, 1) }} / 5</span>
-            <span class="text-gray-600">({{ $totalReviews }} reviews & {{$totalRating}} Rating)</span>
+            <span class="text-gray-600">({{ $totalReviews }} reviews & {{$totalRating}} rating)</span>
         </div>
     </div>
 

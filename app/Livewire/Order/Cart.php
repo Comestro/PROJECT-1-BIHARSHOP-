@@ -27,7 +27,11 @@ class Cart extends Component
             // Refresh order items
             $this->orders = $this->orders->refresh();
         }
+        $this->dispatch("refreshPriceBreakdown");
+        $this->dispatch("refresh_cart_counter");
+
     }
+
 
     public function decrementQuantity($itemId)
     {
@@ -39,6 +43,14 @@ class Cart extends Component
             // Refresh order items
             $this->orders = $this->orders->refresh();
         }
+        else{
+            // Remove item from cart if quantity is zero
+            $item->delete();
+            $this->orders = $this->orders->refresh(); // Refresh order items to reflect the changes in the database
+        }
+        $this->dispatch("refresh_cart_counter");
+        $this->dispatch("refreshPriceBreakdown");
+
     }
 
     public function render()

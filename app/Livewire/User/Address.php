@@ -21,6 +21,20 @@ class Address extends Component
     public $address_type;  
     public $status = false;
 
+    public $showAddress=false;
+
+    public function toggleAddress()
+    {
+        if($this->showAddress){
+            
+            $this->showAddress=false;
+        }
+        else{
+            $this->showAddress=true;
+        }
+
+    }
+
     public function store()
     {
         $validatedData = $this->validate([

@@ -9,4 +9,9 @@ class Coupon extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function users()
+{
+    return $this->belongsToMany(User::class, 'coupon_user')->withTimestamps();
+}
+
 }
