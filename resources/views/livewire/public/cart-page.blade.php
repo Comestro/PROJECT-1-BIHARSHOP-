@@ -41,9 +41,7 @@
                                 <livewire:order.price-breakout :orders="$order" />
 
                                 <div class="mb-6">
-                                    <input type="text" placeholder="Add promo code"
-                                        class="w-full p-2 border border-gray-300 rounded">
-                                    <button class="w-full mt-2 bg-black text-white py-2 rounded">Apply</button>
+                                    {{-- <livewire:order.promo-code/> --}}
                                 </div>
 
 
