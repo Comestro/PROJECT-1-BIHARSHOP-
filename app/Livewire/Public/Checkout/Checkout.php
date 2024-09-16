@@ -27,6 +27,8 @@ class Checkout extends Component
     public $showAddress=false;
 
     public $addressId;
+    public $selectedAddress;
+
 
     public function toggleAddress()
     {
@@ -86,13 +88,21 @@ class Checkout extends Component
         $this->address= Auth::user()->addresses;
 
     }
+  
     public function updateAddressId()
-    {
-        dd($this->addressId);
-        $order = Order::where('user_id',Auth::id());
-        $order->address_id = $this->addressId;
-        $order->save();
-    }
+{
+    // Your logic to handle the addressId, e.g., saving it to the database
+    $this->selectedAddress = Address::find($this->addressId);
+
+    
+    $order = Order::where('user_id',Auth::id())->first();
+    $order->address_id = $this->selectedAddress->id;
+    $order->save();
+    // Perform the necessary actions with the $selectedAddressId
+    
+    // Optionally, provide some feedback or redirect
+    session()->flash('message', 'Address updated successfully.');
+}
 
     public function render()
     {
