@@ -6,6 +6,7 @@ use App\Models\Coupon;
 use App\Models\Order;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 class PriceBreakout extends Component
 {
@@ -28,7 +29,7 @@ class PriceBreakout extends Component
             $errorMessage = '';
         }
 
- 
+
 
     public function applyPromoCode()
     {
@@ -80,6 +81,7 @@ class PriceBreakout extends Component
         return 0;
     }
 
+    #[On('refreshPriceBreakdown')]
     public function calculateSummary()
     {
         // Calculate subtotal based on order items
