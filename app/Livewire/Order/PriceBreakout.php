@@ -4,6 +4,7 @@ namespace App\Livewire\Order;
 
 use App\Models\Coupon;
 use App\Models\Order;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,19 +12,27 @@ class PriceBreakout extends Component
 {
     public $orders;
     public $subtotal = 0;
-    public $discountPercentage = 20; // Default discount percentage
+    public $discountPercentage = 20; // Default discount percentage (store-wide discount)
     public $deliveryFee = 15; // Example delivery fee
     public $total = 0;
     public $promoCode;
-    public $discountAmount = 0;
+    public $discountAmount = 0; // General store discount
+    public $couponPrice = 0; // For applied coupon discount
     public $isCouponApplied = false;
 
-    public $couponPrice = 0;
     public $errorMessage = '';
 
     public function mount(Order $orders)
     {
         $this->orders = $orders;
+
+        // Check if a coupon was applied in a previous session
+        if (session()->has('appliedCoupon')) {
+            $this->promoCode = session('appliedCoupon');
+            $this->couponPrice = session('couponPrice');
+            $this->isCouponApplied = true;
+        }
+
         $this->calculateSummary();
     }
 
@@ -37,34 +46,31 @@ class PriceBreakout extends Component
         $coupon = Coupon::where('code', $this->promoCode)->first();
 
         if ($coupon) {
-            // Check if any user has used this coupon
-            $isUsedByAnyUser = $coupon->users()->wherePivot('coupon_id', $coupon->id)->exists();
-
-            if ($isUsedByAnyUser) {
-                $this->errorMessage = 'This promo code has already been used by another user.';
-                $this->isCouponApplied = false;
-                $this->couponPrice = 0; // Reset coupon discount if already applied
-            } elseif ($user->coupons->contains($coupon)) {
+            if ($user->coupons->contains($coupon)) {
                 $this->errorMessage = 'You have already used this promo code.';
                 $this->isCouponApplied = false;
-                $this->couponPrice = 0; // Reset coupon discount if already applied
+                $this->couponPrice = 0;
             } else {
                 $this->isCouponApplied = true;
-                $this->couponPrice = $this->calculateDiscount($coupon); // Store the coupon discount separately
-                $user->coupons()->attach($coupon); // Attach the coupon to the current user
+                $this->couponPrice = $this->calculateCouponDiscount($coupon);
+                $user->coupons()->attach($coupon);
+
+                // Store the coupon information in the session to persist after refresh
+                session(['appliedCoupon' => $this->promoCode, 'couponPrice' => $this->couponPrice]);
+
                 session()->flash('success', 'Promo code applied successfully!');
                 $this->errorMessage = '';
-                $this->calculateSummary(); // Recalculate the summary to include the discount
+                $this->calculateSummary(); // Recalculate to include coupon discount
             }
         } else {
             $this->isCouponApplied = false;
-            $this->couponPrice = 0; // Reset coupon price on invalid coupon
+            $this->couponPrice = 0;
             $this->errorMessage = 'Invalid promo code.';
+            session()->forget(['appliedCoupon', 'couponPrice']); // Remove coupon from session if invalid
         }
     }
 
-
-    private function calculateDiscount($coupon)
+    private function calculateCouponDiscount($coupon)
     {
         $originalPrice = $this->subtotal;
 
@@ -76,6 +82,7 @@ class PriceBreakout extends Component
 
         return 0;
     }
+    #[On("refreshPriceBreakdown")]
 
     public function calculateSummary()
     {
