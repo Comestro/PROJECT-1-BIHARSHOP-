@@ -40,7 +40,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($user->wishlists as $key => $wishlist)
-                                    <tr class="border-b">
+          k                          <tr class="border-b">
                                         <td class="px-4 py-2">{{ $key+1 }}</td>
                                         <td class="px-4 py-2">{{ $wishlist->product->name }}</td>
                                         <td class="px-4 py-2">{{ Str::limit($wishlist->product->description, 50) }}</td>

@@ -15,9 +15,21 @@ class UserController extends Controller
       return view('admin.user');
    }
 
-   public function viewUser($userId){
+   
+   public function viewUserWishlist($userId){
       $data['user']=User::find($userId);
       return view('admin.wishList',$data);
+   }
+   
+   public function viewUserOrder($userId){
+      $data['user']=User::find($userId);
+      return view('admin.userOrder',$data);
+   }
+
+    
+   public function viewUserAddress($userId){
+      $data['user']=User::find($userId);
+      return view('admin.userAddress',$data);
    }
 
 

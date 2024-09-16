@@ -55,11 +55,15 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->format('d M Y') }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{-- <a href="">View Wishlist</a> --}}
-                            <a href="{{ route('user.view', ['userId' => $user->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <a href="{{ route('user.wishlist.view', ['userId' => $user->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
                                 <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                               </svg>
                               View Wishlist </a>
+                              <a href="{{ route('user.order.view', ['userId' => $user->id]) }}" class="bg-green-400 mt-3 hover:bg-green-600 flex px-3 gap-1 py-2 text-white rounded-lg">
+                              View Order </a>
+                              <a href="{{ route('user.address.view', ['userId' => $user->id]) }}" class="bg-rose-400 mt-3 hover:bg-rose-600 flex px-3 gap-1 py-2 text-white rounded-lg">
+                              View Address </a>
                         </td>
 
                     </tr>
