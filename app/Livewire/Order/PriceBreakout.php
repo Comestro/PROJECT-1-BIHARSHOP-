@@ -18,7 +18,7 @@ class PriceBreakout extends Component
     public $discountAmount = 0;
     public $isCouponApplied = false;
 
-    public $couponPrice = 0; // Fixed typo here from couponPirce to couponPrice
+    public $couponPrice = 0;
     public $errorMessage = '';
 
     public function mount(Order $orders)
@@ -37,14 +37,21 @@ class PriceBreakout extends Component
         $coupon = Coupon::where('code', $this->promoCode)->first();
 
         if ($coupon) {
-            if ($user->coupons->contains($coupon)) {
+            // Check if any user has used this coupon
+            $isUsedByAnyUser = $coupon->users()->wherePivot('coupon_id', $coupon->id)->exists();
+
+            if ($isUsedByAnyUser) {
+                $this->errorMessage = 'This promo code has already been used by another user.';
+                $this->isCouponApplied = false;
+                $this->couponPrice = 0; // Reset coupon discount if already applied
+            } elseif ($user->coupons->contains($coupon)) {
                 $this->errorMessage = 'You have already used this promo code.';
                 $this->isCouponApplied = false;
                 $this->couponPrice = 0; // Reset coupon discount if already applied
             } else {
                 $this->isCouponApplied = true;
                 $this->couponPrice = $this->calculateDiscount($coupon); // Store the coupon discount separately
-                $user->coupons()->attach($coupon);
+                $user->coupons()->attach($coupon); // Attach the coupon to the current user
                 session()->flash('success', 'Promo code applied successfully!');
                 $this->errorMessage = '';
                 $this->calculateSummary(); // Recalculate the summary to include the discount
@@ -55,6 +62,7 @@ class PriceBreakout extends Component
             $this->errorMessage = 'Invalid promo code.';
         }
     }
+
 
     private function calculateDiscount($coupon)
     {
