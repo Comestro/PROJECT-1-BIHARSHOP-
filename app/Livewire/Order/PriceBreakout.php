@@ -4,7 +4,6 @@ namespace App\Livewire\Order;
 
 use App\Models\Coupon;
 use App\Models\Order;
-use Livewire\Attributes\On;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
@@ -76,8 +75,7 @@ class PriceBreakout extends Component
         }
 
         return 0;
-    }
-    #[On("refreshPriceBreakdown")]
+    }    
 
     #[On('refreshPriceBreakdown')]
     public function calculateSummary()
