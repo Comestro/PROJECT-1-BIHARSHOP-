@@ -28,50 +28,29 @@ class PublicController extends Controller
 
     public function cart()
     {
-        $order = Order::where('user_id',Auth::id())->with('orderItems')->first();
+        $order = Order::where('user_id', Auth::id())->with('orderItems')->first();
         return view('public/cart', ['order' => $order]);
     }
 
     public function checkout()
     {
         $order = Order::where('user_id',Auth::id())->where('status','pending')->with('orderItems')->first();
+        // dd($order);
         return view('public.checkout',['order' => $order]);
+    }
+
+    public function confirmOrder()
+    {
+        // $order = Order::where('user_id',Auth::id())->where('payment_status','paid')->with('orderItems')->first();
+        // dd($order);
+        return view('public.confirm-order');
     }
 
     public function filter($cat_slug, $cat_id)
     {
         $category = Category::where('cat_slug', $cat_slug)->first();
-
-        if ($category) {
-            // Check if it's a main category (i.e., has no parent_category_id)
-            if (is_null($category->parent_category_id)) {
-                // Get all subcategories of this main category
-                $subCategoryIds = Category::where('parent_category_id', $category->id)->pluck('id')->toArray();
-
-                // Include the main category ID as well
-                $categoryIds = array_merge([$category->id], $subCategoryIds);
-
-                // Fetch products belonging to the main category or its subcategories and only with status = 1
-                $products = Product::whereIn('category_id', $categoryIds)
-                                   ->where('status', 1)  // Filter for status 1
-                                   ->get();
-            } else {
-                // It's a subcategory, so fetch only the products in this subcategory and only with status = 1
-                $products = Product::where('category_id', $category->id)
-                                   ->where('status', 1)  // Filter for status 1
-                                   ->get();
-            }
-        } else {
-            $products = collect(); // Return an empty collection if no category is found
-        }
-
-
-        if ($products) {
-            // dd($product);
-            return view('public.filter', ['category' => $category, 'products' => $products]);
-        } else {
-            return redirect()->route('public/home')->with('error', 'No Product Found');
-        }
+        // dd($product);
+        return view('public.filter', ['category' => $category]);
     }
 
     public function ourTeam()
@@ -105,7 +84,6 @@ class PublicController extends Controller
             return back()->withErrors(['email' => 'Invalid credentials']);
         }
         return view('public.login');
-
     }
 
 
@@ -141,8 +119,9 @@ class PublicController extends Controller
     }
 
     // logout function here
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect()->route('login')->with('success','Logout successfully');
+        return redirect()->route('login')->with('success', 'Logout successfully');
     }
 }

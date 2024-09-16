@@ -45,7 +45,9 @@
                                 </div>
 
 
+                                <a href="{{ route('checkout') }}">
                                 <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
+                            </a>
                             </div>
                             <!-- Check if user is authenticated -->
                         </div>
