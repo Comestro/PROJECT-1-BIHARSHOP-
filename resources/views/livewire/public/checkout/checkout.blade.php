@@ -157,8 +157,9 @@
     </div>
     <div class="w-full lg:w-1/3">
         <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md">
-            <livewire:order.price-breakout />
-            <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Proceed to Payment</button>
+            <livewire:order.price-breakout :orders="$order" />
+            <livewire:order.payment :orders="$order" />
+            {{-- <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Proceed to Payment</button> --}}
         </div>
     </div>
 </div>
