@@ -14,24 +14,15 @@ class AdminController extends Controller
     //
     public function index(){
 
-        $catCount = Category::all();
-        $proCount = Product::all();
-        $userCount =User::all();
-        $orderCount=Order::all();
-        $orderItems = OrderItem::select('order_items.*')
-        ->join('orders', 'orders.id', '=', 'order_items.order_id')
-        ->orderByRaw("CASE WHEN orders.status = 'completed' THEN 3 WHEN orders.status = 'processing' THEN 2 WHEN orders.status = 'pending' THEN 1 ELSE 4 END")
-        ->orderBy('order_items.created_at', 'asc')
-        ->take(10)
-        ->get();
-        return view('admin.dashboard')
-        ->with('catCount', $catCount)
-        ->with('proCount', $proCount)
-        ->with('userCount', $userCount)
-        ->with('orderCount',$orderCount)
-        ->with('orderItems', $orderItems);
+        
+        
+        // $users=User::all();
+        return view('admin.dashboard');
+        
+        // ->with('users',$users);
     
     }
+
 
    
     

@@ -41,10 +41,8 @@
                                 <livewire:order.price-breakout :orders="$order" />
 
                                 <div class="mb-6">  
-                                    {{-- <livewire:order.promo-code/> --}}
+                                    <livewire:order.coupon-form :orders="$order"/>
                                 </div>
-
-
                                 <a href="{{ route('checkout') }}">
                                 <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
                             </a>
