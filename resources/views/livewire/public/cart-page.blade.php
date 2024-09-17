@@ -40,7 +40,7 @@
 
                                 <livewire:order.price-breakout :orders="$order" />
 
-                                <div class="mb-6">
+                                <div class="mb-6">  
                                     {{-- <livewire:order.promo-code/> --}}
                                 </div>
 
