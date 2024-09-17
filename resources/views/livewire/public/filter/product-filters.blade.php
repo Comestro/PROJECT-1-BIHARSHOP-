@@ -24,19 +24,18 @@
         <!-- Parent Category (if applicable) -->
         @if ($category->parent_category_id)
             <!-- Go Back to Parent Category Link -->
-            <a wire:navigate href="{{ route('filter', ['cat_id' => $category->parentCategory->id, 'cat_slug' => $category->parentCategory->cat_slug]) }}" class="flex items-center mb-4 inline-block text-gray-700 dark:text-gray-200 hover:underline">
-                <svg class="w-5 h-5 text-gray-800 dark:text-white mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m17 16-4-4 4-4m-6 8-4-4 4-4"/>
-                </svg>
+            <a wire:navigate href="{{ route('filter', ['cat_id' => $category->parentCategory->id, 'cat_slug' => $category->parentCategory->cat_slug]) }}" class="flex  pl-4 gap-2 items-center mb-4 inline-block text-black font-semibold dark:text-black hover:underline text-sm">
+                <svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="rotate-[270deg] zyl78N"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="grey" class="S6zWo2"></path></svg>
                 {{ $category->parentCategory->name }}
             </a>
         @endif
 
         <!-- Current Category -->
         <ul class="space-y-2 border-l-2 border-gray-300 pl-4">
-            <li>
+            <li class="">
                 <!-- Current Category Name -->
-                <span class="block font-semibold text-lg text-gray-900 dark:text-gray-100">
+                <span class="block text-sm font-semibold text-black flex gap-2 items-center  dark:text-black hover:underline">
+                    <svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="rotate-[270deg] zyl78N"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="grey" class="S6zWo2"></path></svg>
                     {{ $category->name }}
                 </span>
 
@@ -92,40 +91,46 @@
         <div class="flex space-x-4">
             <!-- Blue -->
             <div>
-                <input type="radio" id="blue" name="color" value="blue" class="hidden peer" />
+                <input type="radio" id="blue" name="color" value="blue" wire:model.live="selectedColor" class="hidden peer" />
                 <label for="blue"
                     class="w-6 h-6 block rounded-full bg-blue-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-500"></label>
             </div>
 
             <!-- Red -->
             <div>
-                <input type="radio" id="red" name="color" value="red" class="hidden peer" />
+                <input type="radio" id="red" name="color" value="red" wire:model.live="selectedColor" class="hidden peer" />
                 <label for="red"
                     class="w-6 h-6 block rounded-full bg-red-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-red-500"></label>
             </div>
 
             <!-- Green -->
             <div>
-                <input type="radio" id="green" name="color" value="green" class="hidden peer" />
+                <input type="radio" id="green" name="color" value="green" wire:model.live="selectedColor" class="hidden peer" />
                 <label for="green"
                     class="w-6 h-6 block rounded-full bg-green-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-green-500"></label>
             </div>
 
             <!-- Yellow -->
             <div>
-                <input type="radio" id="yellow" name="color" value="yellow" class="hidden peer" />
+                <input type="radio" id="yellow" name="color" value="yellow" wire:model.live="selectedColor" class="hidden peer" />
                 <label for="yellow"
                     class="w-6 h-6 block rounded-full bg-yellow-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-yellow-500"></label>
             </div>
 
             <!-- Gray -->
             <div>
-                <input type="radio" id="gray" name="color" value="gray" class="hidden peer" />
+                <input type="radio" id="gray" name="color" value="gray" wire:model.live="selectedColor" class="hidden peer" />
                 <label for="gray"
                     class="w-6 h-6 block rounded-full bg-gray-500 cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-gray-500"></label>
             </div>
+            <div>
+                <input type="radio" id="black" name="color" value="black" wire:model.live="selectedColor" class="hidden peer" />
+                <label for="black"
+                    class="w-6 h-6 block rounded-full bg-black cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-gray-500"></label>
+            </div>
         </div>
     </div>
+
 
 
 
@@ -133,15 +138,13 @@
     <div class="mb-6">
         <h3 class="font-medium mb-2">Size</h3>
         <div class="space-y-2">
-            <button class="px-4 py-2 border rounded">Small</button>
-            <button class="px-4 py-2 border rounded">Medium</button>
-            <button class="px-4 py-2 border rounded">Large</button>
-            <button class="px-4 py-2 border rounded">X-Large</button>
+            <button wire:click="$set('selectedSize', 's')" class="px-4 py-2 border rounded">Small</button>
+            <button wire:click="$set('selectedSize', 'm')" class="px-4 py-2 border rounded">Medium</button>
+            <button wire:click="$set('selectedSize', 'l')" class="px-4 py-2 border rounded">Large</button>
+            <button wire:click="$set('selectedSize', 'xl')" class="px-4 py-2 border rounded">X-Large</button>
         </div>
     </div>
 
-    <!-- Apply Filter Button -->
-    <button class="w-full py-2 mt-4 bg-black text-white rounded-lg">Apply Filter</button>
 </aside>
 
 <main class="flex-1">
@@ -154,9 +157,9 @@
     </div>
 
 
-    <div class="relative mt-6">
+    <div class="relative mt-6 w-full">
         <!-- Loader Overlay (absolute) -->
-        <div class="absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-10" wire:loading>
+        <div class="absolute inset-0 w-full flex justify-center items-center bg-white bg-opacity-75 z-10" wire:loading>
             <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
             <p class="ml-3 text-indigo-600">Loading products...</p>
         </div>

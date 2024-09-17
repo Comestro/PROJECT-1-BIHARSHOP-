@@ -11,6 +11,8 @@ class ProductFilters extends Component
     public $products;
     public $selectedPriceRanges = []; // Selected price ranges for filtering
     public $moreCategories = []; // Store additional categories
+    public $selectedColor = ''; // Store selected color
+    public $selectedSize = ''; // Holds the selected size
 
 
     public $priceRanges = [
@@ -32,6 +34,8 @@ class ProductFilters extends Component
         $this->loadMoreCategories();
     }
 
+
+
     public function filterProducts()
     {
         $productsQuery = Product::query();
@@ -50,6 +54,22 @@ class ProductFilters extends Component
 
             // Filter products by category
             $productsQuery->whereIn('category_id', $categoryIds);
+
+            // Filter by selected color
+            if (!empty($this->selectedColor)) {
+                $productsQuery->whereHas('variants', function ($query) {
+                    $query->where('variant_type', 'color')
+                          ->where('variant_value', $this->selectedColor);
+                });
+            }
+
+             // Filter by selected size
+            if (!empty($this->selectedSize)) {
+                $productsQuery->whereHas('variants', function ($query) {
+                    $query->where('variant_type', 'size')
+                        ->where('variant_value', $this->selectedSize);
+                });
+            }
         }
 
         // Filter by selected price ranges if any are selected
@@ -89,7 +109,23 @@ class ProductFilters extends Component
 
     public function updatedSelectedPriceRanges()
     {
+        // Reset selected color when price ranges are updated
+        $this->reset('selectedColor');
+        $this->reset('selectedSize'); // Reset selected size when price ranges are updated
         $this->filterProducts(); // Re-filter when a price range is selected or deselected
+    }
+
+    public function updatedSelectedSize()
+    {
+        $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
+        $this->reset('selectedColor');         // Reset selected color when size is updated
+        $this->filterProducts();
+    }
+
+    public function updatedSelectedColor(){
+        $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
+        
+        $this->filterProducts(); // Filter products based on color
     }
 
     public function render()
