@@ -14,7 +14,10 @@
 
 <body class="bg-slate-100">
 
-    <x-public-header />
+    <livewire:public.public-header />
+    <br>
+    <br>
+    <br>
     @section('content')
 
     @show

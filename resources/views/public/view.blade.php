@@ -4,8 +4,6 @@
 @endsection
 
 @section('content')
-
-
     <!-- Product Section -->
     <section class="max-w-6xl mx-auto p-5">
         <!-- Grid for Images and Info -->
@@ -20,9 +18,9 @@
                     <div class="flex flex-col gap-2">
                         <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
                         @if ($product->reviews->count() > 0)
-                        <a href="#content-1">
-                        <livewire:product.average-child-star  :product="$product"/> 
-                        </a>
+                            <a href="#content-1">
+                                <livewire:product.average-child-star :product="$product" />
+                            </a>
                         @endif
                     </div>
                     {{-- wishlist --}}
@@ -45,7 +43,7 @@
 
                 <!-- Color Options -->
                 <livewire:order.add-to-cart :product="$product" />
-               
+
             </div>
 
         </div>
@@ -53,26 +51,34 @@
 
 
         <!-- Tabs for Description, Reviews, FAQs -->
-        <div class="mt-12">
+        <div class="mt-12" x-data="{ activeTab: 2 }">
             <!-- Tab Navigation -->
             <div class="border-b">
                 <nav class="flex justify-around mr-12">
-                    <a href="#" id="tab-1"
-                        class="py-2 px-5 text-gray-700 border-b-2 border-black font-semibold hover:text-black"
-                        onclick="showTab(event, 1)">Product Details</a>
-                    <a href="#" id="tab-2" class="py-2 px-5 text-gray-600 hover:text-black"
-                        onclick="showTab(event, 2)">Rating & Reviews</a>
-                    <a href="#" id="tab-3" class="py-2 px-5 text-gray-600 hover:text-black"
-                        onclick="showTab(event, 3)">FAQs</a>
+                    <a href="#" :class="{'border-b-2 border-black font-semibold text-gray-700': activeTab === 1, 'text-gray-600 hover:text-black': activeTab !== 1}"
+                       class="py-2 px-5"
+                       @click.prevent="activeTab = 1">
+                        Product Details
+                    </a>
+                    <a href="#" :class="{'border-b-2 border-black font-semibold text-gray-700': activeTab === 2, 'text-gray-600 hover:text-black': activeTab !== 2}"
+                       class="py-2 px-5"
+                       @click.prevent="activeTab = 2">
+                        Rating & Reviews
+                    </a>
+                    <a href="#" :class="{'border-b-2 border-black font-semibold text-gray-700': activeTab === 3, 'text-gray-600 hover:text-black': activeTab !== 3}"
+                       class="py-2 px-5"
+                       @click.prevent="activeTab = 3">
+                        FAQs
+                    </a>
                 </nav>
             </div>
 
             <!-- Content Sections -->
-            <div id="content-1" class="tab-content mt-8 transition-transform duration-500">
+            <div  x-show="activeTab === 1" class="tab-content mt-8 transition-transform duration-500" x-transition>
                 <livewire:product.product-details :product="$product" />
             </div>
 
-            <div id="content-2" class="tab-content mt-8 hidden transition-transform duration-500">
+            <div  x-show="activeTab === 2" class="tab-content mt-8 transition-transform duration-500" x-transition>
                 @if ($product->reviews->count() > 0)
                     <livewire:product.average-review :product="$product" />
                 @endif
@@ -89,7 +95,7 @@
                 </div>
             </div>
 
-            <div id="content-3" class="tab-content mt-8 hidden transition-transform duration-500">
+            <div  x-show="activeTab === 3" class="tab-content mt-8 transition-transform duration-500" x-transition>
                 <h2 class="text-2xl font-semibold mb-6">FAQs</h2>
                 <p class="text-gray-700">Here are the frequently asked questions...</p>
             </div>
@@ -104,25 +110,4 @@
     </div>
 
     <div class="border border-b-0 bg-slate-200 my-12 mx-[5%]"></div>
-
-    <script>
-        function showTab(event, tabNumber) {
-            event.preventDefault(); // Prevent page refresh
-
-            // Hide all content divs
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-
-            // Remove active class from all tabs
-            document.querySelectorAll('nav a').forEach(tab => {
-                tab.classList.remove('text-gray-700', 'border-b-2', 'border-black');
-                tab.classList.add('text-gray-600');
-            });
-
-            // Show the selected content
-            document.getElementById(`content-${tabNumber}`).classList.remove('hidden');
-
-            // Add active class to the clicked tab
-            document.getElementById(`tab-${tabNumber}`).classList.add('text-gray-700', 'border-b-2', 'border-black');
-        }
-    </script>
 @endsection
