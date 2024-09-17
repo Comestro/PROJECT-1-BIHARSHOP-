@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -22,8 +23,7 @@ class UserController extends Controller
    }
    
    public function viewUserOrder($userId){
-      $data['user']=User::find($userId);
-      return view('admin.userOrder',$data);
+      return view('admin.callingOrder',['userId' => $userId]);
    }
 
     

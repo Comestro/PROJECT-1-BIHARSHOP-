@@ -10,7 +10,8 @@
                 <button class="font-semibold hover:underline">CHANGE</button>
             </div>
             <div class="mt-2">
-                <p class="font-semibold">{{ $order->user->name }} <span class="text-sm text-gray-500">{{ $order->user->email }}</span></p>
+                <p class="font-semibold">{{ $order->user->name }} <span
+                        class="text-sm text-gray-500">{{ $order->user->email }}</span></p>
             </div>
         </div>
 
@@ -24,28 +25,54 @@
                 @if ($selectedAddress)
                 <button class="font-semibold hover:underline" wire:click="changeAddressToggle">Change</button>
                 @endif
+
             </div>
             <div class="mt-2 bg-gray-50 px-3 py-2 ">
                 <!-- Show the selected address if it exists -->
                 @if ($selectedAddress)
-                <div class="my-3 bg-white border px-3 py-2">
-                    <div class="py-4 ">
-                        <p class="font-semibold ">{{ $selectedAddress->name }}<span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded ml-2">{{ $selectedAddress->address_type }}</span></p>
-                        <p class="text-sm text-gray-600">{{ $selectedAddress->phone }}</p>
-                        <p class="text-sm text-gray-600">{{ $selectedAddress->area }}, {{ $selectedAddress->address_line }}, {{ $selectedAddress->landmark }}, {{ $selectedAddress->street }}, {{ $selectedAddress->city }}, {{ $selectedAddress->state }} - <span class="font-semibold">{{ $selectedAddress->postal_code }}</span></p>
+                    <div class="my-5">
+                        <div>
+                            <p class="font-semibold">{{ $selectedAddress->name }}<span
+                                    class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded ml-2">{{ $selectedAddress->address_type }}</span>
+                            </p>
+                            <p class="text-sm text-gray-600">{{ $selectedAddress->phone }}</p>
+                            <p class="text-sm text-gray-600">{{ $selectedAddress->area }},
+                                {{ $selectedAddress->address_line }}, {{ $selectedAddress->landmark }},
+                                {{ $selectedAddress->street }}, {{ $selectedAddress->city }},
+                                {{ $selectedAddress->state }} - <span
+                                    class="font-semibold">{{ $selectedAddress->postal_code }}</span></p>
+                        </div>
                     </div>
                 </div>
                 @else
-                <!-- Show the address selection form if no address is selected -->
-                <form wire:submit.prevent="updateAddressId">
-                    @foreach ($address as $add)
-                    <div class="my-5">
-                        <div class="flex items-center bg-white p-5 space-y-3 space-x-4 flex-col sm:flex-row">
-                            <input type="radio" wire:model.live="addressId" value="{{ $add->id }}" name="address" class="w-4 h-4 text-slate-500 focus:ring-slate-500">
-                            <div>
-                                <p class="font-semibold">{{ $add->name }}<span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded ml-2">{{ $add->address_type }}</span></p>
-                                <p class="text-sm text-gray-600">{{ $add->phone }}</p>
-                                <p class="text-sm text-gray-600">{{ $add->area }}, {{ $add->address_line }}, {{ $add->landmark }}, {{ $add->street }}, {{ $add->city }}, {{ $add->state }} - <span class="font-semibold">{{ $add->postal_code }}</span></p>
+                    <!-- Show the address selection form if no address is selected -->
+                    <form wire:submit.prevent="updateAddressId">
+                        @foreach ($address as $add)
+                            <div class="my-5">
+                                <div class="flex items-center bg-white p-5 space-y-3 space-x-4">
+                                    <input type="radio" wire:model.live="addressId" value="{{ $add->id }}"
+                                        name="address" class="w-4 h-4 text-blue-500 focus:ring-blue-500">
+                                    <div>
+                                        <p class="font-semibold">{{ $add->name }}<span
+                                                class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded ml-2">{{ $add->address_type }}</span>
+                                        </p>
+                                        <p class="text-sm text-gray-600">{{ $add->phone }}</p>
+                                        <p class="text-sm text-gray-600">{{ $add->area }},
+                                            {{ $add->address_line }}, {{ $add->landmark }}, {{ $add->street }},
+                                            {{ $add->city }}, {{ $add->state }} - <span
+                                                class="font-semibold">{{ $add->postal_code }}</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- Conditionally render the submit button below the selected address -->
+                                @if ($addressId == $add->id)
+                                    <div class="mt-4">
+                                        <input type="submit" value="Submit"
+                                            class="px-4 py-2 bg-blue-500 text-white rounded">
+                                    </div>
+                                @endif
+
+                                <div class="border border-slate-100 border-b-0 mt-1 mx-3"></div>
                             </div>
                         </div>
 
@@ -126,6 +153,10 @@
             </form>
             @endif
         </div>
+
+        <livewire:order.order-summary />
+        <livewire:order.payment :orders="$order" />
+
 
         <!-- Order Summary and Payment Options go here -->
     </div>
