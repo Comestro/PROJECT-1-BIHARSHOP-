@@ -35,6 +35,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($orders as $order)
                 <tr class="border-b">
                     <td class="py-3 px-6 text-center">{{ $order->order_number }}</td>

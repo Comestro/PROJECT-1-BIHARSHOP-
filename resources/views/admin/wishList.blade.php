@@ -14,13 +14,16 @@
             {{ session('error') }}
         </div>
     @endif
+    <div class="flex flex-1 justify-between items-center">
+        <h2 class="text-2xl font-bold mb-4">{{ $user->name }}'s Wishlist</h2>
+     <a href="{{route('users.index')}}" class="px-3 py-2 text-white rounded-lg  bg-blue-400">Manage User</a>
+    </div>
 
     <!-- ====== Form Layout Section Start -->
     <div class="grid grid-cols-1 gap-9">
         <div class="flex flex-col gap-9">
             <!-- Contact Form -->
             <div class="container mx-auto px-4 py-8">
-                <h1 class="text-2xl font-bold mb-6">{{ $user->name }}'s Wishlist</h1>
             
                 @if($user->wishlists->isEmpty())
                     <p class="text-gray-600">No products in the wishlist.</p>
@@ -35,7 +38,6 @@
                                     <th class="px-4 py-2">Price</th>
                                     <th class="px-4 py-2">Brand</th>
                                     <th class="px-4 py-2">Image</th>
-                                    <th class="px-4 py-2">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,10 +52,7 @@
                                             <img src="{{ asset('storage/image/product/' . $wishlist->product->image) }}" alt="{{ $wishlist->product->name }}" class="w-16 h-16 object-cover rounded-md">
                                         </td>
 
-                                        <td class="px-4 py-2">
-                                            <a href="" class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600">View</a>
-                                            <a href="#" class="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600">Remove</a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,9 +16,20 @@ class UserController extends Controller
       return view('admin.user');
    }
 
-   public function viewUser($userId){
+   
+   public function viewUserWishlist($userId){
       $data['user']=User::find($userId);
       return view('admin.wishList',$data);
+   }
+   
+   public function viewUserOrder($userId){
+      return view('admin.callingOrder',['userId' => $userId]);
+   }
+
+    
+   public function viewUserAddress($userId){
+      $data['user']=User::find($userId);
+      return view('admin.userAddress',$data);
    }
 
 

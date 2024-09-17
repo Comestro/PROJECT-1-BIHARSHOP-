@@ -1,13 +1,13 @@
-<div class="w-full mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 flex">
-    <div class="w-full lg:w-2/3 px-10">
+<div class="w-full mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6">
+    <div class="w-full lg:w-2/3 px-4 lg:px-10">
         <!-- Login Section -->
         <div class="mb-4">
-            <div class="flex justify-between items-center border-b pb-2">
+            <div class="flex justify-between bg-slate-100 p-2 items-center border-b pb-2">
                 <div class="flex items-center space-x-2">
-                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex justify-center items-center">1</span>
+                    <span class="bg-zinc-800 text-white rounded-full w-6 h-6 flex justify-center items-center">1</span>
                     <h3 class="text-lg font-semibold">LOGIN</h3>
                 </div>
-                <button class="text-blue-500 hover:underline">CHANGE</button>
+                <button class="font-semibold hover:underline">CHANGE</button>
             </div>
             <div class="mt-2">
                 <p class="font-semibold">{{ $order->user->name }} <span
@@ -17,18 +17,17 @@
 
         <!-- Delivery Address Section -->
         <div class="mb-4">
-            <div class="flex justify-between items-center border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex justify-center items-center">2</span>
+            <div class="flex justify-between bg-slate-100 items-center p-2 border-b pb-2">
+                <div class="flex items-center  space-x-4">
+                    <span class="bg-zinc-800 text-white rounded-full w-6 h-6 flex justify-center items-center">2</span>
                     <h3 class="text-lg font-semibold">DELIVERY ADDRESS</h3>
                 </div>
-
                 @if ($selectedAddress)
-                    <button class="text-blue-500 hover:underline" wire:click="changeAddressToggle">Change</button>
+                <button class="font-semibold hover:underline" wire:click="changeAddressToggle">Change</button>
                 @endif
 
             </div>
-            <div class="mt-2 bg-gray-50 p-4 rounded-lg">
+            <div class="mt-2 bg-gray-50 px-3 py-2 ">
                 <!-- Show the selected address if it exists -->
                 @if ($selectedAddress)
                     <div class="my-5">
@@ -44,6 +43,7 @@
                                     class="font-semibold">{{ $selectedAddress->postal_code }}</span></p>
                         </div>
                     </div>
+                </div>
                 @else
                     <!-- Show the address selection form if no address is selected -->
                     <form wire:submit.prevent="updateAddressId">
@@ -74,97 +74,83 @@
 
                                 <div class="border border-slate-100 border-b-0 mt-1 mx-3"></div>
                             </div>
-                        @endforeach
-                    </form>
+                        </div>
+
+                        <!-- Conditionally render the submit button below the selected address -->
+                        @if ($addressId == $add->id)
+                        <div class="mt-4">
+                            <input type="submit" value="Select Address" class="px-3 py-2 bg-black text-sm text-white rounded">
+                        </div>
+                        @endif
+
+                        <div class="border border-slate-100 border-b-0 mt-1 mx-3"></div>
+                    </div>
+                    @endforeach
+                </form>
                 @endif
-
-
             </div>
 
             <!-- Button to Add a New Address -->
-            <button wire:click="toggleAddress" class="mt-2 text-blue-500 text-center">+ Add a new address</button>
+            <button wire:click="toggleAddress" class="mt-2 text-slate-500 text-center">+ Add a new address</button>
             @if ($showAddress == true)
-                <!-- Your existing form to add a new address goes here -->
-                <!-- Form Fields -->
-                <form wire:submit.prevent="store" method="POST">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <input type="text" wire:model="name" name="name" placeholder="Name"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-                        @error('name')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
+            <!-- Form to add a new address -->
+            <form wire:submit.prevent="store" method="POST">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" wire:model="name" name="name" placeholder="Name" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
+                    @error('name')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
-                        <input type="tel" wire:model="phone" name="phone" placeholder="10-digit mobile number"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-                        @error('phone')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
-                        <input type="text" placeholder="Area" wire:model="area" name="area"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="tel" wire:model="phone" name="phone" placeholder="10-digit mobile number" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
+                    @error('phone')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
-                        <input type="text" placeholder="Landmark" wire:model="landmark" name="landmark"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-                        @error('landmark')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
+                    <input type="text" placeholder="Area" wire:model="area" name="area" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500">
 
-                        <textarea placeholder="Address (Area and Street)" rows="3" wire:model="address_line" name="address_line"
-                            class="col-span-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required></textarea>
-                        @error('address_line')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
+                    <input type="text" placeholder="Landmark" wire:model="landmark" name="landmark" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
+                    @error('landmark')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
-                        <input type="text" placeholder="City/District/Town" wire:model="city" name="city"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
+                    <textarea placeholder="Address (Area and Street)" rows="3" wire:model="address_line" name="address_line" class="col-span-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required></textarea>
+                    @error('address_line')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
-                        <select wire:model="state" name="state"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-                            <option value="">Select</option>
-                            <option value="Bihar">Bihar</option>
-                        </select>
-                        @error('state')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
+                    <input type="text" placeholder="City/District/Town" wire:model="city" name="city" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
 
-                        <input type="number" placeholder="Pincode" wire:model="postal_code" name="postal_code"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required>
-                        @error('postal_code')
-                            <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                        @enderror
+                    <select wire:model="state" name="state" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
+                        <option value="">Select</option>
+                        <option value="Bihar">Bihar</option>
+                    </select>
+                    @error('state')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
+                    <input type="number" placeholder="Pincode" wire:model="postal_code" name="postal_code" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500" required>
+                    @error('postal_code')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
 
-                        <input type="text" placeholder="Alternate Phone (Optional)" wire:model="alt_phone"
-                            name="alt_phone"
-                            class="col-span-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
+                    <input type="text" placeholder="Alternate Phone (Optional)" wire:model="alt_phone" name="alt_phone" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500">
+                </div>
 
-                    <div class="flex items-center space-x-4 mb-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="radio" wire:model="address_type" name="address_type" value="Home"
-                                class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-                            <span>Home</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="radio" wire:model="address_type" name="address_type" value="Work"
-                                class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-                            <span>Work</span>
-                        </label>
-                    </div>
+                <div class="flex items-center space-x-4 mb-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" wire:model="address_type" name="address_type" value="Home" class="w-4 h-4  focus:ring-slate-500">
+                        <span>Home</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" wire:model="address_type" name="address_type" value="Work" class="w-4 h-4  focus:ring-slate-500">
+                        <span>Work</span>
+                    </label>
+                </div>
 
-                    <div class="flex space-x-4">
-                        <button type="submit"
-                            class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">SAVE</button>
-                        {{-- <button type="button"
-                    class="w-full bg-gray-200 text-gray-600 py-2 rounded-lg hover:bg-gray-300">CANCEL</button> --}}
-                    </div>
-                </form>
+                <div class="flex space-x-4">
+                    <button type="submit" class="w-full bg-zinc-950 text-white py-2 rounded-lg hover:bg-zinc-800">SAVE</button>
+                </div>
+            </form>
             @endif
         </div>
 
@@ -173,12 +159,26 @@
 
 
         <!-- Order Summary and Payment Options go here -->
-
     </div>
+
+    <!-- Sidebar for Order Summary -->
     <div class="w-full lg:w-1/3">
         <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md">
             <livewire:order.price-breakout :orders="$order" />
-            {{-- <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Proceed to Payment</button> --}}
+            <livewire:order.payment :orders="$order" />
+        </div>
+        <div class="flex gap-2 mt-6 justify-center">
+          <div class="mt-1">
+          <svg  xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+            </svg>
+          </div>
+           <div class="flex flex-col font-bold text-lg">
+           <p class="text-balance text-zinc-400">Safe and Secure Payment.easy return</p>
+           <p class="text-balance text-zinc-400">100% Authentic products</p>
+           </div>
+
         </div>
     </div>
+    
 </div>
