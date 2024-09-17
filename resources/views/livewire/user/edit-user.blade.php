@@ -10,7 +10,7 @@
                 <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
                 <input type="text" id="firstName" name="firstName" wire:model="firstName"
                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                       required autocomplete="name">
+                       required disabled autocomplete="name">
                 @error('firstName') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
             <div class="flex-1">
