@@ -14,14 +14,18 @@
         </p>
 
         <div class="mt-6 flex justify-center space-x-4 animate-slide-in-up">
+            <a href="{{route('user.my-order')}}">
             <button
                 class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 ease-in-out">
                 View Order
             </button>
+        </a>
+            <a href="{{route('index')}}">
             <button
                 class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
                 Go to Homepage
             </button>
+        </a>
         </div>
     </div>
 </div>

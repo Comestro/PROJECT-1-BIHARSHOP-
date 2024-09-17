@@ -68,6 +68,7 @@ class PaymentController extends Controller
                         'total_amount' => $request->input('amount'),
                         'status' => 'processing',
                         'payment_status' => 'paid',
+                        'isOrdered' => 1,
                         'payment_method' => $response->method
                     ]);
 
