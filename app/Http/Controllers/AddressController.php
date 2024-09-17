@@ -9,10 +9,9 @@ class AddressController extends Controller
 {
     public function index()
     {
-        $address = Address::all();
-        return view('admin.address.index', compact('address'));
+        // $address = Address::all();
+        return view('admin.callingAddress');
     }
-
     public function create(){
         return view('admin.insertAddress');
     }
