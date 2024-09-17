@@ -16,15 +16,11 @@
     @auth
         <x-public-header />
 
-        @section('content')
-        @show
-
-        <x-footer />
-    @else
-        <script>
-            window.location.href = '{{ route('login') }}';
-        </script>
-    @endauth
+    <livewire:public.public-header />
+    <br>
+    <br>
+    <br>
+    @section('content')
 
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
