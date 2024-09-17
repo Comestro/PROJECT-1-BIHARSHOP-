@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 gap-9">
         <div class="flex flex-col gap-9">
             <!-- Contact Form -->
-          <livewire:admin.calling-order/>
+          <livewire:admin.calling-order :userId="$userId"/>
         </div>
 
 

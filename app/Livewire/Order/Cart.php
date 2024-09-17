@@ -53,6 +53,14 @@ class Cart extends Component
 
     }
 
+    // destroy the card or delete the card:
+    public function destroy($id){
+        $orderItem = OrderItem::find($id);
+        $orderItem->delete();
+        $this->dispatch('refresh_cart_counter');
+        $this->dispatch('refreshPriceBreakdown');
+    }
+
     public function render()
     {
         return view('livewire.order.cart', ['orders' => $this->orders]);

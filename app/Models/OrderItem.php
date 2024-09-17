@@ -17,23 +17,16 @@ class OrderItem extends Model
 
     public function products()
     {
-        return $this->hasOne(Product::class,"id",'product_id');
+        return $this->hasOne(Product::class, "id", 'product_id');
     }
 
     public function sizeVariant()
-{
-    return $this->belongsTo(ProductVariantModel::class, 'size_variant_id');
-}
-
-public function colorVariant()
-{
-    return $this->belongsTo(ProductVariantModel::class, 'color_variant_id');
-}
-
-public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(ProductVariantModel::class, 'size_variant_id');
     }
 
-
+    public function colorVariant()
+    {
+        return $this->belongsTo(ProductVariantModel::class, 'color_variant_id');
+    }
 }
