@@ -74,14 +74,6 @@
 
                                 <div class="border border-slate-100 border-b-0 mt-1 mx-3"></div>
                             </div>
-
-                            <!-- Conditionally render the submit button below the selected address -->
-                            @if ($addressId == $add->id)
-                                <div class="mt-4">
-                                    <input type="submit" value="Select Address"
-                                        class="px-3 py-2 bg-black text-sm text-white rounded">
-                                </div>
-                            @endif
                         @endforeach
                     </form>
                 @endif

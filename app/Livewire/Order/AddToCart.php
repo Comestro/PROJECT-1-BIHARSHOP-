@@ -47,14 +47,21 @@ class AddToCart extends Component
         ]);
 
         // Find or create an order
-        $order = Order::firstOrCreate(
-            ['user_id' => Auth::id()],
-            ['order_number' => $orderPrefix . rand(1000, 9999)]
-        );
 
-        if ($order) {
-            // Check if the product with the same color and size already exists in the order
-            $existingOrderItem = OrderItem::where('order_id', $order->id)
+        // $order = Order::firstOrCreate(
+        //     ['user_id' => Auth::id()],
+        //     ['order_number' => $orderPrefix . rand(1000, 9999)]
+        // );
+
+        $order = Order::where('user_id',Auth::id())->where('isOrdered',0)->first();
+        if(!$order){
+            Order::create([
+                'user_id' => Auth::id(),
+                'order_number' => $orderPrefix . rand(1000, 9999)]);
+        }
+        else{
+
+          $existingOrderItem = OrderItem::where('order_id', $order->id)
                 ->where('color_variant_id', $validatedData['color_variant_id'])
                 ->where('size_variant_id', $validatedData['size_variant_id'])
                 ->first();
@@ -75,8 +82,6 @@ class AddToCart extends Component
             }
             $this->dispatch("refresh_cart_counter");
             return redirect()->route('cart')->with('success', 'Product successfully added to Cart.');
-        } else {
-            return redirect()->back()->with('error', 'Unable to create order.');
         }
     }
 }
