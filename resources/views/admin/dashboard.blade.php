@@ -10,7 +10,7 @@
 
 <!-- ===== Main Content Start ===== -->
 <main>
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+<div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
        <div class="flex flex-wrap justify-between gap-4">
     <!-- Card Item Start -->
     <div class="w-full md:w-[48%] lg:w-[23%] shadow-md rounded-lg bg-gradient-to-r from-green-400 to-green-600 text-white px-5 py-6">
@@ -54,6 +54,8 @@
     </div>
     <!-- Card Item End -->
 
+
+
     <!-- Card Item Start -->
     <div class="w-full md:w-[48%] lg:w-[23%] shadow-md rounded-lg bg-gradient-to-r from-blue-400 to-blue-600 text-white px-5 py-6">
         <div class="flex items-center justify-between">
@@ -96,7 +98,71 @@
     <!-- Card Item End -->
 </div>
 
-        <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+
+{{-- order table form --}}
+<div class="container mx-auto p-4">
+    <h3 class="text-xl font-bold mb-4">Recent Orders</h3>
+
+    <!-- Recent Orders -->
+    <div class="bg-white shadow-md rounded p-4">
+
+        @if($orderItems->isEmpty())
+            <p>No recent orders available.</p>
+        @else
+            <table class="min-w-full bg-white border border-gray-200">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Order ID</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Customer Name</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Product</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Qty</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Total Price</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Status</th>
+                        <th class="px-6 py-2 text-left text-gray-600 font-medium border border-gray-200">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orderItems as $order)
+                        <tr class="border-b">
+                            <td class="px-6 py-4">{{ $order->order->order_number }}</td>
+                            <td class="px-6 py-4">{{ $order->order->user->name }}</td>
+                            <td class="px-6 py-4">{{ $order->products->name }}</td>
+                            <td class="px-6 py-4">{{ $order->quantity }}</td>
+                            <td class="px-6 py-4">                                      
+                                  ₹{{ number_format($order->quantity * $order->products->discount_price, 2) }}
+                            </td>
+                            <td class="px-6 py-2 border border-gray-200">
+                                @if($order->order->status === 'completed')
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Completed</span>
+                                @elseif($order->order->status === 'pending')
+                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">Pending</span>
+                                @elseif($order->order->status === 'processing')
+                                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Processing</span>
+                                @elseif($order->order->status === 'canceled')
+                                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full">Canceled</span>
+                                @endif
+                            </td>
+                            <td class="py-3 px-6 text-center flex justify-center space-x-2">
+                                <a href="{{ route('order.view', ['orderId' => $order->order_id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
+                                    <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                  </svg>
+                                   Order </a>
+                             </td>
+
+                            
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
+</div>
+    
+    
+
+
+     <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
             <!-- ====== Chart One Start -->
             <div
                 class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8  py-4">

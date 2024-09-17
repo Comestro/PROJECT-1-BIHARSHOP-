@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\OrderItem;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,17 @@ class AdminController extends Controller
         $proCount = Product::all();
         $userCount =User::all();
         $orderCount=Order::all();
-        return view('admin.dashboard')->with('catCount', $catCount)->with('proCount', $proCount)->with('userCount', $userCount)->with('orderCount',$orderCount);
+        $orderItems = OrderItem::oldest()->take(10)->get();
+        return view('admin.dashboard')
+        ->with('catCount', $catCount)
+        ->with('proCount', $proCount)
+        ->with('userCount', $userCount)
+        ->with('orderCount',$orderCount)
+        ->with('orderItems', $orderItems);
+    
     }
+
+   
     
     // public function dashboard(){
     //     $catCount = Category::all();
