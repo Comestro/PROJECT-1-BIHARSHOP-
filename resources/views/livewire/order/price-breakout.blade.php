@@ -1,11 +1,6 @@
 <div>
     <!-- Apply Promo Code Form -->
-    <form wire:submit.prevent="applyPromoCode">
-        <input type="text" wire:model="promoCode" placeholder="Enter promo code"
-            class="w-full p-2 border border-gray-300 rounded">
-        <button wire:click="applyPromoCode"
-            class="w-full mt-2 bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">Apply</button>
-    </form>
+ 
     @if ($errorMessage)
         <div class="bg-red-500 text-white p-2 mt-2">
             {{ $errorMessage }}
