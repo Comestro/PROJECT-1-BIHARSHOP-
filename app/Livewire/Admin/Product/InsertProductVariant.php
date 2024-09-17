@@ -23,6 +23,7 @@ class InsertProductVariant extends Component
     {
         $this->product = $product;
 
+
         $this->variants = ProductVariantModel::where('product_id', $this->product->id)
             ->get()
             ->map(function ($variant) {
@@ -38,7 +39,7 @@ class InsertProductVariant extends Component
 
     public function addVariant()
     {
-        $this->variants[] = ['type' => '', 'value' => '', 'price' => '', 'stock' => ''];
+        $this->variants[] = ['type' => '', 'value' => '', 'price' => $this->product->discount_price, 'stock' => ''];
 
         $this->showUpdateButton = true;
     }

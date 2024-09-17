@@ -180,9 +180,66 @@
         <!-- Order Summary and Payment Options go here -->
     </div>
 
-    <div class="w-full lg:w-1/3">
-        <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md">
-            <livewire:order.price-breakout :orders="$order" />
+                    <input type="text" placeholder="Landmark" wire:model="landmark" name="landmark"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500"
+                        required>
+                    @error('landmark')
+                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
+
+                    <textarea placeholder="Address (Area and Street)" rows="3" wire:model="address_line" name="address_line"
+                        class="col-span-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500"
+                        required></textarea>
+                    @error('address_line')
+                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
+
+                    <input type="text" placeholder="City/District/Town" wire:model="city" name="city"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500"
+                        required>
+
+                    <select wire:model="state" name="state"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500"
+                        required>
+                        <option value="">Select</option>
+                        <option value="Bihar">Bihar</option>
+                    </select>
+                    @error('state')
+                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
+
+                    <input type="number" placeholder="Pincode" wire:model="postal_code" name="postal_code"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500"
+                        required>
+                    @error('postal_code')
+                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                    @enderror
+
+                    <input type="text" placeholder="Alternate Phone (Optional)" wire:model="alt_phone"
+                        name="alt_phone"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500">
+                </div>
+
+                <div class="flex items-center space-x-4 mb-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" wire:model="address_type" name="address_type" value="Home"
+                            class="w-4 h-4  focus:ring-slate-500">
+                        <span>Home</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" wire:model="address_type" name="address_type" value="Work"
+                            class="w-4 h-4  focus:ring-slate-500">
+                        <span>Work</span>
+                    </label>
+                </div>
+
+                <div class="flex space-x-4">
+                    <button type="submit"
+                        class="w-full bg-zinc-950 text-white py-2 rounded-lg hover:bg-zinc-800">SAVE</button>
+                </div>
+            </form>
+            @endif
+            <livewire:order.order-summary />
             <livewire:order.payment :orders="$order" />
         </div>
         <div class="flex gap-2 mt-6 justify-center">
