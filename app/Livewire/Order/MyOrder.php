@@ -14,15 +14,16 @@ class MyOrder extends Component
 
     public function render()
     {
-    
+        $user = auth()->user();        
         $orders = Order::with(['orderItems.products'])
+            ->where('isOrdered', 1)
+            ->where('user_id', $user->id)
             ->whereHas('orderItems.products', function ($query) {
                 if (!empty($this->searchTerm)) {
                     $query->where('name', 'like', '%' . $this->searchTerm . '%');
                 }
             })
-            ->paginate(10); // Adjust pagination as needed
-
+            ->paginate(10); 
         return view('livewire.order.my-order', [
             'orders' => $orders,
         ]);

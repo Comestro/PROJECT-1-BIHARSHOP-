@@ -14,14 +14,12 @@
 
 <body class="bg-slate-100">
 
-    <livewire:public.public-header />
+    <livewire:public.public-header/>
     <br>
     <br>
     <br>
     @section('content')
-
-    @show
-    <x-footer/>
+        @show
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
