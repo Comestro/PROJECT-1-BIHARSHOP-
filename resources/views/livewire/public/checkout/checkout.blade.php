@@ -118,7 +118,7 @@
                         <input type="radio" wire:model="address_type" name="address_type" value="Work" class="w-4 h-4  focus:ring-slate-500">
                         <span>Work</span>
                     </label>
-                </div>
+                </div>  
 
                 <div class="flex space-x-4">
                     <button type="submit" class="w-full bg-zinc-950 text-white py-2 rounded-lg hover:bg-zinc-800">SAVE</button>
