@@ -6,7 +6,7 @@
 
 
 @section('content')
-    <livewire:order.confirm-order"/>
+    <livewire:order.confirm-order/>
 @endsection
 
 

@@ -53,18 +53,37 @@
                             @endif
                         </td> 
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->format('d M Y') }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{-- <a href="">View Wishlist</a> --}}
-                            <a href="{{ route('user.wishlist.view', ['userId' => $user->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
-                                <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                              </svg>
-                              View Wishlist </a>
-                              <a href="{{ route('user.order.view', ['userId' => $user->id]) }}" class="bg-green-400 mt-3 hover:bg-green-600 flex px-3 gap-1 py-2 text-white rounded-lg">
-                              View Order </a>
-                              <a href="{{ route('user.address.view', ['userId' => $user->id]) }}" class="bg-rose-400 mt-3 hover:bg-rose-600 flex px-3 gap-1 py-2 text-white rounded-lg">
-                              View Address </a>
-                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-3">
+                              <a href="{{ route('user.wishlist.view', ['userId' => $user->id]) }}" 
+                                 class="bg-rose-400 hover:bg-rose-600 flex items-center px-3 gap-2 py-2 text-white rounded-lg">
+                                 <svg class="w-[22px] h-[22px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
+                                  </svg>
+                                  
+                                 Wishlist
+                              </a>
+                              
+                              <a href="{{ route('user.order.view', ['userId' => $user->id]) }}" 
+                                 class="bg-green-400 hover:bg-green-600 flex items-center px-3 gap-2 py-2 text-white rounded-lg">
+                                 <svg class="w-[24px] h-[24px] text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"/>
+                                  </svg>
+                                  
+                                 Order
+                              </a>
+                              
+                              <a href="{{ route('user.address.view', ['userId' => $user->id]) }}" 
+                                 class="bg bg-purple-500 hover:bg-green-600 flex items-center px-3 gap-2 py-2 text-white rounded-lg">
+                                 <svg class="w-[22px] h-[22px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 6H5m2 3H5m2 3H5m2 3H5m2 3H5m11-1a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2M7 3h11a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm8 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                                  </svg>
+                                  
+                                 Address
+                              </a>
+                            </div>
+                          </td>
+                          
 
                     </tr>
                 @endforeach

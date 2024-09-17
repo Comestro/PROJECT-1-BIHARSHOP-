@@ -10,6 +10,10 @@ class ProductFilters extends Component
     public $category;
     public $products;
     public $selectedPriceRanges = []; // Selected price ranges for filtering
+    public $moreCategories = []; // Store additional categories
+    public $selectedColor = ''; // Store selected color
+    public $selectedSize = ''; // Holds the selected size
+
 
     public $priceRanges = [
         'below_500' => [0, 500],
@@ -24,7 +28,13 @@ class ProductFilters extends Component
     {
         $this->category = $category;
         $this->filterProducts(); // Initial product filter
+
+
+        // Load more categories, excluding the current category and its subcategories
+        $this->loadMoreCategories();
     }
+
+
 
     public function filterProducts()
     {
@@ -44,6 +54,22 @@ class ProductFilters extends Component
 
             // Filter products by category
             $productsQuery->whereIn('category_id', $categoryIds);
+
+            // Filter by selected color
+            if (!empty($this->selectedColor)) {
+                $productsQuery->whereHas('variants', function ($query) {
+                    $query->where('variant_type', 'color')
+                          ->where('variant_value', $this->selectedColor);
+                });
+            }
+
+             // Filter by selected size
+            if (!empty($this->selectedSize)) {
+                $productsQuery->whereHas('variants', function ($query) {
+                    $query->where('variant_type', 'size')
+                        ->where('variant_value', $this->selectedSize);
+                });
+            }
         }
 
         // Filter by selected price ranges if any are selected
@@ -59,15 +85,47 @@ class ProductFilters extends Component
                     }
                 }
             });
+            $this->dispatch("update_average_product");
         }
 
         // Fetch products with status 1
         $this->products = $productsQuery->where('status', 1)->get();
     }
 
+    public function loadMoreCategories()
+    {
+        // Load additional categories that are not related to the current category
+        $excludedCategoryIds = [$this->category->id];
+
+        if (!is_null($this->category->parent_category_id)) {
+            $excludedCategoryIds[] = $this->category->parent_category_id;
+        }
+
+        $this->moreCategories = Category::where('parent_category_id',null)->whereNotIn('id', $excludedCategoryIds)->take(10)->get();
+
+    }
+
+
+
     public function updatedSelectedPriceRanges()
     {
+        // Reset selected color when price ranges are updated
+        $this->reset('selectedColor');
+        $this->reset('selectedSize'); // Reset selected size when price ranges are updated
         $this->filterProducts(); // Re-filter when a price range is selected or deselected
+    }
+
+    public function updatedSelectedSize()
+    {
+        $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
+        $this->reset('selectedColor');         // Reset selected color when size is updated
+        $this->filterProducts();
+    }
+
+    public function updatedSelectedColor(){
+        $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
+        
+        $this->filterProducts(); // Filter products based on color
     }
 
     public function render()

@@ -98,19 +98,15 @@ class Checkout extends Component
     }
   
     public function updateAddressId()
-{
-    // Your logic to handle the addressId, e.g., saving it to the database
-    $this->selectedAddress = Address::find($this->addressId);
+    {
+        $this->selectedAddress = Address::find($this->addressId);
+        
+        $order = Order::where('user_id',Auth::id())->first();
+        $order->address_id = $this->selectedAddress->id;
+        $order->save();
 
-    
-    $order = Order::where('user_id',Auth::id())->first();
-    $order->address_id = $this->selectedAddress->id;
-    $order->save();
-    // Perform the necessary actions with the $selectedAddressId
-    
-    // Optionally, provide some feedback or redirect
-    session()->flash('message', 'Address updated successfully.');
-}
+        session()->flash('message', 'Address updated successfully.');
+    }
 
     public function render()
     {

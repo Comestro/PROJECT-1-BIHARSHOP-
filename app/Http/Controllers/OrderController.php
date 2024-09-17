@@ -23,7 +23,7 @@ class OrderController extends Controller
     }
 
     public function manageOrder(){
-        return view('admin.callingOrder');
+        return view('admin.callingOrder', ['userId' => null]);
      }
 
      

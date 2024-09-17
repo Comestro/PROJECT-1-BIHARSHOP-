@@ -20,8 +20,10 @@
 
 
 <div class="container mx-auto p-4">
-    <h2 class="text-2xl font-bold mb-4">Address for {{ $user->name }}</h2>
-
+    <div class="flex flex-1 justify-between items-center">
+        <h2 class="text-2xl font-bold mb-4">Address for {{ $user->name }}</h2>
+     <a href="{{route('users.index')}}" class="px-3 py-2 text-white rounded-lg  bg-blue-400">Manage User</a>
+    </div>
     @if($user->addresses->isEmpty())
         <p class="text-gray-600">No addresses found for this user.</p>
     @else
@@ -36,7 +38,6 @@
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">State</th>
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Postal Code</th>
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,16 +51,19 @@
                         <td class="px-6 py-4">{{ $address->state }}</td>
                         <td class="px-6 py-4">{{ $address->postal_code }}</td>
                         <td class="px-6 py-4">
-                            @if($address->status)
-                                <span class="text-green-500">Active</span>
-                            @else
-                                <span class="text-red-500">Inactive</span>
-                            @endif
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" {{ $address->status ? 'checked' : '' }} disabled>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 rounded-full peer 
+                                    peer-checked:bg-green-500 peer-checked:after:translate-x-full peer-checked:after:border-white 
+                                    after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 
+                                    after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                                {{-- <span class="ml-3 text-sm font-medium {{ $address->status ? 'text-green-500' : 'text-red-500' }}">
+                                    {{ $address->status ? 'Active' : 'Inactive' }}
+                                </span> --}}
+                            </label>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="text-blue-500 hover:underline">Edit</a>
-                            <a href="#" class="text-red-500 hover:underline ml-4">Delete</a>
-                        </td>
+                        
+                       
                     </tr>
                 @endforeach
             </tbody>
