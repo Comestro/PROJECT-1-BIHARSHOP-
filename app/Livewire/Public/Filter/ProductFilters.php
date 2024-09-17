@@ -10,6 +10,8 @@ class ProductFilters extends Component
     public $category;
     public $products;
     public $selectedPriceRanges = []; // Selected price ranges for filtering
+    public $moreCategories = []; // Store additional categories
+
 
     public $priceRanges = [
         'below_500' => [0, 500],
@@ -24,6 +26,10 @@ class ProductFilters extends Component
     {
         $this->category = $category;
         $this->filterProducts(); // Initial product filter
+
+
+        // Load more categories, excluding the current category and its subcategories
+        $this->loadMoreCategories();
     }
 
     public function filterProducts()
@@ -59,11 +65,27 @@ class ProductFilters extends Component
                     }
                 }
             });
+            $this->dispatch("update_average_product");
         }
 
         // Fetch products with status 1
         $this->products = $productsQuery->where('status', 1)->get();
     }
+
+    public function loadMoreCategories()
+    {
+        // Load additional categories that are not related to the current category
+        $excludedCategoryIds = [$this->category->id];
+
+        if (!is_null($this->category->parent_category_id)) {
+            $excludedCategoryIds[] = $this->category->parent_category_id;
+        }
+
+        $this->moreCategories = Category::where('parent_category_id',null)->whereNotIn('id', $excludedCategoryIds)->take(10)->get();
+
+    }
+
+
 
     public function updatedSelectedPriceRanges()
     {
