@@ -39,10 +39,13 @@
                             <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md ">
 
                                 <livewire:order.price-breakout :orders="$order" />
+                            
+@if (!$order->coupon_code)
+<div class="mb-6">  
+    <livewire:order.coupon-form :orders="$order"/>
+</div>
 
-                                <div class="mb-6">  
-                                    <livewire:order.coupon-form :orders="$order"/>
-                                </div>
+@endif
                                 <a href="{{ route('checkout') }}">
                                 <button class="w-full bg-black text-white py-3 rounded-lg font-bold">Go to Checkout</button>
                             </a>
