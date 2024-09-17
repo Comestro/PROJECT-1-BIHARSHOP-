@@ -173,10 +173,6 @@
             <livewire:order.order-summary />
             <livewire:order.payment :orders="$order" />
             @endif
-           @if ($selectedAddress)
-           <livewire:order.order-summary />
-           <livewire:order.payment :orders="$order" />
-           @endif
         </div>
 
 

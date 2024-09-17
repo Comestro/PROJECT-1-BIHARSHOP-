@@ -13,15 +13,13 @@
 </head>
 
 <body class="bg-slate-100">
-    @auth
-        <x-public-header />
 
-    <livewire:public.public-header />
+    <livewire:public.public-header/>
     <br>
     <br>
     <br>
     @section('content')
-
+        @show
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
