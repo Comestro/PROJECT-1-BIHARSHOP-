@@ -28,7 +28,7 @@ class PublicController extends Controller
 
     public function cart()
     {
-        $order = Order::where('user_id', Auth::id())->with('orderItems')->first();
+        $order = Order::where('user_id', Auth::id())->where('isOrdered',0)->with('orderItems')->first();
         return view('public/cart', ['order' => $order]);
     }
 
