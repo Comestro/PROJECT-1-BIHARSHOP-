@@ -13,12 +13,19 @@
 </head>
 
 <body class="bg-slate-100">
+    @auth
+        <x-public-header />
 
-    <x-public-header />
-    @section('content')
+        @section('content')
+        @show
 
-    @show
-    <x-footer/>
+        <x-footer />
+    @else
+        <script>
+            window.location.href = '{{ route('login') }}';
+        </script>
+    @endauth
+
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
