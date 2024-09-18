@@ -7,22 +7,29 @@ use App\Models\Product;
 
 class SearchProduct extends Component
 {
-    public $search = "";
-    public function showProduct($productId)
-    {        
-        return redirect()->route('public.show', ['id' => $productId]);
-    }
-    public function render()
-    {
-        $products = [];
+    public $search = '';
+    public $products = [];
 
+    public function updatedSearch()
+    {
         if (!empty($this->search)) {
-            $products = Product::where('name', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('brand', 'LIKE', '%' . $this->search . '%')
+            $this->products = Product::where('name', 'like', '%' . $this->search . '%')
+                ->orWhere('brand', 'like', '%' . $this->search . '%')
                 ->limit(5)
                 ->get();
+        } else {
+            $this->products = [];
         }
+    }
 
-        return view('livewire.public.product.search-product', ['products' => $products]);
+    public function showProduct($productSlug)
+    {
+        // Redirect using the product's slug
+        return redirect()->route('public.show', ['slug' => $productSlug]);
+    }
+
+    public function render()
+    {
+        return view('livewire.public.product.search-product', ['products' => $this->products]);
     }
 }

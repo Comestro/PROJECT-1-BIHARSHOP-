@@ -11,7 +11,7 @@
         @if(!empty($search) && $products->isNotEmpty())
             <ul class="absolute z-10 w-full bg-white border border-gray-300 rounded-lg mt-1">
                 @foreach($products as $product)
-                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center" wire:click="showProduct({{ $product->id }})">
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center" wire:click="showProduct('{{ $product->slug }}')">
                         {{-- Product Image --}}
                         <img src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
                              alt="{{ $product->name }}"
