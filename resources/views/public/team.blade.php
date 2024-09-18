@@ -17,12 +17,13 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-8">
-                <!-- Team Member 1 -->
-                <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img class="w-full h-56 object-cover" src="https://via.placeholder.com/300" alt="Team Member 1">
+            {{-- team members images with given details here --}}
+            <div class="grid gap-4">
+                <!-- First Row: One Image -->
+                <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                    <img class="w-full h-56 object-cover" src="/team-mates/person1.jpg" alt="Team Member 1">
                     <div class="p-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Sadique Hussain</h3>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Rupesh Kumar Ranjan</h3>
                         <p class="mt-1 text-sm text-gray-500">CEO & Founder</p>
                         <div class="mt-4">
                             <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
@@ -30,42 +31,65 @@
                     </div>
                 </div>
 
-                <!-- Team Member 2 -->
-                <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img class="w-full h-56 object-cover" src="https://via.placeholder.com/300" alt="Team Member 2">
-                    <div class="p-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Sarita Roni</h3>
-                        <p class="mt-1 text-sm text-gray-500">CTO</p>
-                        <div class="mt-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700">GitHub</a>
+                <!-- Second Row: Two Images -->
+                <div class="flex justify-center gap-4">
+                    <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                        <img class="w-full h-56 object-cover" src="/team-mates/person2.jpg" alt="Team Member 2">
+                        <div class="p-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Ranjeet kumar Ray</h3>
+                            <p class="mt-1 text-sm text-gray-500">Team Developer</p>
+                            <div class="mt-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                        <img class="w-full h-56 object-cover" src="/team-mates/person3.jpg" alt="Team Member 3">
+                        <div class="p-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Subir Kumar dey</h3>
+                            <p class="mt-1 text-sm text-gray-500">Team Developer</p>
+                            <div class="mt-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Team Member 3 -->
-                <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img class="w-full h-56 object-cover" src="https://via.placeholder.com/300" alt="Team Member 3">
-                    <div class="p-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Gorav Saumya</h3>
-                        <p class="mt-1 text-sm text-gray-500">Head of Marketing</p>
-                        <div class="mt-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700">Twitter</a>
+                <!-- Third Row: Three Images -->
+                <div class="flex justify-center gap-4">
+                    <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                        <img class="w-full h-56 object-cover" src="/team-mates/person4.jpg" alt="Team Member 4">
+                        <div class="p-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Sadique Hussain</h3>
+                            <p class="mt-1 text-sm text-gray-500">CEO & Founder</p>
+                            <div class="mt-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Team Member 4 -->
-                <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img class="w-full h-56 object-cover" src="https://via.placeholder.com/300" alt="Team Member 4">
-                    <div class="p-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Rahul Saurav</h3>
-                        <p class="mt-1 text-sm text-gray-500">Lead Developer</p>
-                        <div class="mt-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700">GitHub</a>
+                    <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                        <img class="w-full h-56 object-cover" src="/team-mates/person5.jpg" alt="Team Member 5">
+                        <div class="p-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Sadique Hussain</h3>
+                            <p class="mt-1 text-sm text-gray-500">CEO & Founder</p>
+                            <div class="mt-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+                        <img class="w-full h-56 object-cover" src="/team-mates/person6.jpg" alt="Team Member 6">
+                        <div class="p-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Sadique Hussain</h3>
+                            <p class="mt-1 text-sm text-gray-500">CEO & Founder</p>
+                            <div class="mt-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 @endsection
