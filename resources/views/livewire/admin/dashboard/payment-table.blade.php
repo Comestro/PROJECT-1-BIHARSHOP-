@@ -173,8 +173,8 @@
                     <thead>
                         <tr>
                             <th class="px-4 py-2">ID</th>
-                            <th class="px-4 py-2">Order ID</th>
-                            <th class="px-4 py-2">User ID</th>
+                            <th class="px-6 py-2 ">Order ID</th>
+                            <th class="px-4 py-2 text-sm">User ID</th>
                             <th class="px-4 py-2">Amount</th>
                             <th class="px-4 py-2">Currency</th>
                             <th class="px-4 py-2">Payment Status</th>
@@ -185,12 +185,20 @@
                         @foreach ($payments as $payment)
                             <tr>
                                 <td class="border px-4 py-2">{{ $payment->id }}</td>
-                                <td class="border px-4 py-2">{{ $payment->order_id }}</td>
-                                <td class="border px-4 py-2">{{ $payment->user_id }}</td>
+                                <td class="border px-4 py-2">{{ $payment->order->order_number }}</td>
+                                <td class="border px-4 py-2">{{ $payment->user->name }}</td>
                                 <td class="border px-4 py-2">{{ $payment->amount }}</td>
                                 <td class="border px-4 py-2">{{ $payment->currency }}</td>
                                 <td class="border px-4 py-2">{{ $payment->payment_status }}</td>
-                                <td class="border px-4 py-2">{{ $payment->status }}</td>
+                                <td class="border px-4 py-2">
+                                    @if ($payment->status==1)
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Paid</span>
+                                    @elseif($payment->status==0)
+                                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full">UnPaid</span>
+
+                                    @endif
+                                </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>
