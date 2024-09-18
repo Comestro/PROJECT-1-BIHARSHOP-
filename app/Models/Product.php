@@ -58,6 +58,5 @@ class Product extends Model
 
         return number_format($percentage, 2);
     }
-
 }
 

@@ -16,9 +16,21 @@ class ProductController extends Controller
         return view('admin.product.manageProduct');
     }
 
-    public function create(){
+    public function create()
+    {
 
         return view('admin.product.insertProduct');
+    }
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $relatedProducts = Product::where('brand', $product->brand)
+            ->where('id', '!=', $product->id)
+            ->limit(4)
+            ->get();
+
+        return view('public.show', compact('product', 'relatedProducts'));
     }
 
     // made with livewire
@@ -163,7 +175,7 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')->with('error', 'Product deleted successfully.');
     }
-   
-    
+
+
 
 }
