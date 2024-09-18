@@ -95,7 +95,7 @@
                     </div>
                 </div> --}}
 
-                <div class="p-4 md:p-6 bg-white rounded-lg shadow-md">
+                <div class="  mr pr-5">
                     <!-- Title -->
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-lg md:text-xl font-semibold text-gray-700">Total Order</h2>
@@ -109,7 +109,7 @@
                     <!-- Chart -->
                     <div class="relative h-64">
                         <!-- Y-axis labels (Date values on the left side) -->
-                        <div class="absolute left-0 top-0 flex flex-col justify-between h-full text-xs md:text-sm text-gray-500">
+                        <div class="absolute left-0 top-0 mt-2 flex flex-col justify-between h-full text-xs md:text-sm text-gray-500">
                             <span>25</span>
                             <span>20</span>
                             <span>15</span>
@@ -151,8 +151,8 @@
                         <span>August</span>
                         <span>September</span>
                         <span>October</span>
-                        <span>October</span>
-                        <span>October</span>
+                        <span>November</span>
+                        <span>December</span>
                     </div>
                 
                     <!-- Legend -->
