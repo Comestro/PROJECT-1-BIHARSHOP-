@@ -88,9 +88,9 @@
                     <livewire:product.calling-review :product="$product" />
                     <!-- Load More Button -->
                     <div class="flex justify-center mt-10">
-                        <button
+                        <!-- <button
                             class="w-full md:w-40 px-2 py-2 rounded-full text-sm font-semibold ring-1 ring-slate-300">Load
-                            More</button>
+                            More</button> -->
                     </div>
                 </div>
             </div>

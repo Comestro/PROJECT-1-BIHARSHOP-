@@ -1,41 +1,68 @@
 @extends('public.layout')
 
 @section('content')
-<main class="flex-1">
-    <div class="bg-gray-50 px-4 py-6 md:px-10">
-        <!-- Product Details Section -->
-        <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col md:flex-row md:space-x-8">
-            <!-- Product Image -->
-            <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center mb-4 md:mb-0">
-                <img class="object-cover h-80 w-full md:h-96 lg:h-[500px] rounded-lg shadow-md"
-                     src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
-                     alt="{{ $product->name }}">
-            </div>
-
-            <!-- Product Info -->
-            <div class="flex-1">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2">{{ $product->name }}</h1>
-                <p class="text-lg text-gray-600 mb-4"><strong>Brand:</strong> {{ $product->brand }}</p>
-                <p class="text-3xl font-semibold text-gray-900 mb-4">${{ $product->price }}</p>
-            </div>
-        </div>
-
-        <!-- Related Products Section -->
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            @foreach($relatedProducts as $related)
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <a href="{{ route('public.show', $related->id) }}" class="block">
-                        <img class="w-full h-48 object-cover bg-gray-100"
-                             src="{{ $related->image ? asset('storage/image/product/' . $related->image) : asset('path/to/default-image.jpg') }}"
-                             alt="{{ $related->name }}">
-                        <div class="p-4">
-                            <h3 class="text-lg font-medium text-gray-800 mb-1">{{ $related->name }}</h3>
-                            <p class="text-gray-600">${{ $related->price }}</p>
+    <main class="flex-1">
+        <div class="container mx-auto p-4">
+            <!-- Product Detail Card -->
+            <a wire:navigate href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
+                <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <!-- Product Image Carousel -->
+                    <div class="w-full md:w-96 h-64 flex-shrink-0">
+                        <div class="relative">
+                            <img src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
+                                 alt="{{ $product->name }}" class="rounded-md object-cover w-full h-full">
+                            @if ($product->discount_price)
+                                <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span>
+                            @endif
                         </div>
-                    </a>
+                    </div>
+                    <!-- Product Info -->
+                    <div class="flex-grow">
+                        <!-- Product Title and Brand -->
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-3xl font-semibold text-gray-900">{{ $product->name }}</h2>                           
+                        </div>
+                        <p class="text-lg text-gray-700 mb-2"><strong>Brand:</strong> {{ $product->brand }}</p>
+                        <p class="text-sm text-gray-600 mb-4">{{ $product->description }}</p>
+                        <!-- Price Section -->
+                        <div class="mb-4">
+                            @if ($product->discount_price)
+                                <p class="text-3xl font-bold text-green-600">₹{{ $product->discount_price }}</p>
+                                <p class="text-lg font-semibold text-gray-500 line-through">₹{{ $product->price }}</p>
+                            @else
+                                <p class="text-3xl font-bold text-gray-900">₹{{ $product->price }}</p>
+                            @endif
+                        </div>                   
+                    </div>
                 </div>
-            @endforeach
+            </a>
+
+            <!-- Related Products Section -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Related Products</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    @foreach ($relatedProducts as $related)
+                        <a href="{{ route('product.view', ['category' => $related->category->cat_slug, 'slug' => $related->slug]) }}"
+                           class="block bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+                            <div class="relative">
+                                <img class="w-full h-48 object-cover bg-gray-100"
+                                     src="{{ $related->image ? asset('storage/image/product/' . $related->image) : asset('path/to/default-image.jpg') }}"
+                                     alt="{{ $related->name }}">
+                                @if ($related->discount_price)
+                                    <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span>
+                                @endif
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-medium text-gray-800 mb-1">{{ $related->name }}</h3>                                
+                                @if ($related->discount_price)
+                                    <p class="text-base font-bold text-green-600">₹{{ $related->discount_price }}</p>
+                                    <p class="text-sm font-semibold text-gray-500 line-through">₹{{ $related->price }}</p>
+                                @endif
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 @endsection
