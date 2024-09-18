@@ -1,4 +1,4 @@
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col mt-5">
     <div class="w-full py-8 px-[5%] ">
         <h2 class="text-4xl font-semobold mb-6">Your Cart</h2>
         <hr class="mb-3">
