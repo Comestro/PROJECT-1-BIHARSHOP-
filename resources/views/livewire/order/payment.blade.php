@@ -7,58 +7,15 @@
     </div>
 
     <div class="container my-5">
-    <div class="form-check mb-3">
-        <input class="form-check-input custom-radio" type="radio" name="payment_method" id="upi" value="UPI" checked>
+    <div class="form-check mb-3 flex items-center gap-2">
+        <input class="w-4 h-4 text-slate-500 focus:ring-slate-500" type="radio" name="payment_method" id="upi" value="UPI" checked>
         <label class="form-check-label" for="upi">UPI</label>
     </div>
-    <div class="form-check mb-3">
-        <input class="form-check-input custom-radio" type="radio" name="payment_method" id="cod" value="COD">
+    <div class="form-check mb-3 flex items-center gap-2">
+        <input class="w-4 h-4 text-slate-500 focus:ring-slate-500" type="radio" name="payment_method" id="cod" value="COD">
         <label class="form-check-label" for="cod">Cash On Delivery</label>
     </div>
 
-    <!-- Add custom CSS -->
-    <style>
-        /* Hide the default radio button */
-        .custom-radio {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        /* Create a custom radio button */
-        .form-check {
-            display: flex;
-            align-items: center;
-            position: relative;
-            cursor: pointer;
-            margin-left: 0; /* Align the container to the left */
-        }
-
-        /* Align the label next to the custom radio button */
-        .form-check-label {
-            margin-left: 30px; /* Space between the custom radio and label */
-        }
-
-        /* Style for the custom radio button circle */
-        .form-check-label::before {
-            content: "";
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #000; /* Black border */
-            background-color: #fff; /* White background */
-            box-sizing: border-box;
-            transition: background-color 0.3s ease;
-            position: absolute;
-            left: 0; /* Align the custom radio button */
-        }
-
-        /* Style for the selected radio button */
-        .custom-radio:checked + .form-check-label::before {
-            background-color: #000; /* Black fill when selected */
-        }
-    </style>
 
 
         

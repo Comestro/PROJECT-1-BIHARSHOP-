@@ -68,13 +68,13 @@
 
                         <!-- Conditionally render the submit button below the selected address -->
                         @if ($addressId == $add->id)
-                        <div class="mt-4">
+                        <div class="mt-4 flex justify-end">
                             <input type="submit" value="deliver Here"
                                 class="px-4 py-1.5 bg-zinc-800 text-slate-100 rounded">
                         </div>
                         @endif
 
-                        <div class="border border-slate-100 border-b-0 mt-1 mx-3"></div>
+                        <div class="border border-slate-100 border-b-0 mt-2 mx-3"></div>
                     </div>
                     @endforeach
                 </form>
@@ -148,53 +148,19 @@
                     <div class="flex items-center space-x-4  mb-2">
                         <div class="flex items-center space-x-4 mb-2">
                             <label class="flex items-center space-x-2">
-                                <input type="radio" wire:model="address_type" name="address_type" value="Home" class="custom-radio">
+                                <input type="radio" wire:model="address_type" name="address_type" value="Home" class="w-4 h-4 text-slate-500 focus:ring-slate-500">
                                 <span>Home</span>
                             </label>
                             <label class="flex items-center space-x-2">
-                                <input type="radio" wire:model="address_type" name="address_type" value="Work" class="custom-radio">
+                                <input type="radio" wire:model="address_type" name="address_type" value="Work" class="w-4 h-4 text-slate-500 focus:ring-slate-500">
                                 <span>Work</span>
                             </label>
                         </div>
 
 
 
-                        <!-- Add custom CSS -->
-                        <style>
-                            /* Hide the default radio button */
-                            .custom-radio {
-                                position: absolute;
-                                opacity: 0;
-                                cursor: pointer;
-                            }
-
-                            /* Create a custom radio button */
-                            .flex.items-center {
-                                position: relative;
-                            }
-
-                            /* Style for the custom radio button circle */
-                            .custom-radio+span::before {
-                                content: "";
-                                display: inline-block;
-                                width: 16px;
-                                height: 16px;
-                                border-radius: 50%;
-                                border: 2px solid #000;
-                                /* Black border */
-                                background-color: #fff;
-                                /* White background */
-                                margin-right: 8px;
-                                box-sizing: border-box;
-                                transition: background-color 0.3s ease;
-                            }
-
-                            /* Style for the selected radio button */
-                            .custom-radio:checked+span::before {
-                                background-color: #000;
-                                /* Black fill when selected */
-                            }
-                        </style>
+                   
+                         
                     </div>
 
                     <div class="flex space-x-4">
