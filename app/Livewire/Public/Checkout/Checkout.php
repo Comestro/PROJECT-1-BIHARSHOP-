@@ -101,7 +101,7 @@ class Checkout extends Component
     {
         $this->selectedAddress = Address::find($this->addressId);
         
-        $order = Order::where('user_id',Auth::id())->first();
+        $order = Order::where('user_id',Auth::id())->where('isOrdered',0)->first();
         $order->address_id = $this->selectedAddress->id;
         $order->save();
 
