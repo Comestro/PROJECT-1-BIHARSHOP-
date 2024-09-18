@@ -67,28 +67,24 @@ Route::prefix("user")->group(function () {
 });
 
 
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-// Route::get('/admin/add-product', [AdminController::class, 'insertProduct']);
-// Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
-Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
-Route::get('admin/edit-coupon/{id}', EditCoupon::class)->name('admin.edit-coupon');
-
-Route::prefix('admin')->group(function () {
-    Route::resource('category', CategoryController::class);
-    Route::resource('product', ProductController::class);
-    Route::resource('address', AddressController::class);
-    Route::resource('coupon', CouponController::class);
-    Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
-    Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
-    Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
-    Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
-    Route::get('/users/order/{userId}', [UserController::class, 'viewUserOrder'])->name('user.order.view');
-    Route::get('/users/address/{userId}', [UserController::class, 'viewUserAddress'])->name('user.address.view');
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::resource('category', CategoryController::class);
+        Route::resource('product', ProductController::class);
+        Route::resource('address', AddressController::class);
+        Route::resource('coupon', CouponController::class);
+        Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+        Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
+        Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
+        Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
+        Route::get('/users/order/{userId}', [UserController::class, 'viewUserOrder'])->name('user.order.view');
+        Route::get('/users/address/{userId}', [UserController::class, 'viewUserAddress'])->name('user.address.view');
+        Route::get('/edit-coupon/{id}', EditCoupon::class)->name('admin.edit-coupon');
+    });
 });
 
-
+Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
 
 

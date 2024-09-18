@@ -76,11 +76,17 @@ class PublicController extends Controller
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ]);
-
+        
             if (Auth::attempt($credentials)) {
                 $req->session()->regenerate();
-                return redirect()->intended("/user");
+        
+                if (Auth::user()->isAdmin == 1) {
+                    return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+                } else {
+                    return redirect()->intended("/");
+                }
             }
+        
             return back()->withErrors(['email' => 'Invalid credentials']);
         }
         return view('public.login');
@@ -97,25 +103,28 @@ class PublicController extends Controller
     // Handle the registration logic
     public function register(Request $request)
     {
-        // Validation rules
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        // Create a new user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'isAdmin'=> 0,
             'password' => Hash::make($request->password),
         ]);
 
-        // Log in the user after registration
-        Auth::login($user);
+        if($user){
+            Auth::login($user);
+            return redirect()->route('index')->with('success', 'Registration successful!');
+        }
+        else{
+            return redirect()->route('login')->with('error', 'Unable to login. Please try again.');
+        }
 
-        // Redirect to a desired location
-        return redirect()->route('index')->with('success', 'Registration successful!');
+       
     }
 
     // logout function here
