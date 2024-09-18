@@ -159,8 +159,8 @@
 
 
 
-                   
-                         
+
+
                     </div>
 
                     <div class="flex space-x-4">
@@ -171,14 +171,18 @@
             </div>
             @endif
             @if($selectedAddress)
-            <livewire:order.order-summary />
-            <livewire:order.payment :orders="$order" />
+
+            <div x-data="{ showPayment: false }">
+
+                <livewire:order.order-summary />
+                <div x-show="showPayment">
+                    <livewire:order.payment :orders="$order" />
+                </div>
+
+            </div>
             @endif
         </div>
 
-
-
-        <!-- Order Summary and Payment Options go here -->
     </div>
 
     <div class="w-full lg:w-1/3">

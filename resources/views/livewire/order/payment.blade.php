@@ -1,4 +1,4 @@
-<div class="mb-4">
+<div class="mb-4" >
     <div class="flex justify-between items-center border-b pb-2">
         <div class="flex items-center space-x-2">
             <span class="text-slate-100 bg-zinc-800 rounded-full w-6 h-6 flex justify-center items-center">4</span>

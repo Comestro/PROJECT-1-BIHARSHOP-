@@ -21,7 +21,11 @@
                 <div class="col-md-3 text-end">
                     <p><strong>Delivery within {{ \Carbon\Carbon::parse($item->updated_at)->addDays(4)->diffForHumans()  }}</strong> | <span class="text-success">Free</span></p>
                 </div>
+               
             </div>
+           <div class="flex justify-end"  @click.prevent="showPayment = true">
+           <button class="bg-zinc-900 text-white px-3 py-2 self-start mt-4 rounded-md">Continue</button>
+           </div>
         </div>
     </div>
     @endforeach
