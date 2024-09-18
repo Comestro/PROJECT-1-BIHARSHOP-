@@ -1,62 +1,68 @@
 @extends('public.layout')
 
 @section('content')
-<main class="flex-1">
-    <div class="container mx-auto p-4">
-        <!-- Card Container -->
-        <div class="bg-white shadow-md rounded-lg p-4 flex items-center">
-            <!-- Product Image -->
-            <div class="w-36 h-24 flex-shrink-0">
-                <img src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}" alt="{{ $product->name }}" class="rounded-md">
-            </div>
-            <!-- Product Info -->
-            <div class="ml-4 flex-grow">
-                <!-- Product Title and Rating -->
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-800">{{ $product->name }}</h2>
-                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Bestseller</span>
+    <main class="flex-1">
+        <div class="container mx-auto p-4">
+            <!-- Product Detail Card -->
+            <a wire:navigate href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
+                <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <!-- Product Image Carousel -->
+                    <div class="w-full md:w-96 h-64 flex-shrink-0">
+                        <div class="relative">
+                            <img src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
+                                 alt="{{ $product->name }}" class="rounded-md object-cover w-full h-full">
+                            @if ($product->discount_price)
+                                <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span>
+                            @endif
+                        </div>
+                    </div>
+                    <!-- Product Info -->
+                    <div class="flex-grow">
+                        <!-- Product Title and Brand -->
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-3xl font-semibold text-gray-900">{{ $product->name }}</h2>                           
+                        </div>
+                        <p class="text-lg text-gray-700 mb-2"><strong>Brand:</strong> {{ $product->brand }}</p>
+                        <p class="text-sm text-gray-600 mb-4">{{ $product->description }}</p>
+                        <!-- Price Section -->
+                        <div class="mb-4">
+                            @if ($product->discount_price)
+                                <p class="text-3xl font-bold text-green-600">₹{{ $product->discount_price }}</p>
+                                <p class="text-lg font-semibold text-gray-500 line-through">₹{{ $product->price }}</p>
+                            @else
+                                <p class="text-3xl font-bold text-gray-900">₹{{ $product->price }}</p>
+                            @endif
+                        </div>                   
+                    </div>
                 </div>
-                <p class="text-lg text-gray-600 mb-4"><strong>Brand:</strong> {{ $product->brand }}</p>
-                <!-- Rating and Reviews -->
-                <div class="flex items-center text-sm text-gray-600 mt-2">
-                    <span class="bg-green-500 text-white px-2 py-0.5 rounded mr-2">4.6</span>
-                    <span>50 Ratings & 27 Reviews</span>
+            </a>
+
+            <!-- Related Products Section -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Related Products</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    @foreach ($relatedProducts as $related)
+                        <a href="{{ route('product.view', ['category' => $related->category->cat_slug, 'slug' => $related->slug]) }}"
+                           class="block bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+                            <div class="relative">
+                                <img class="w-full h-48 object-cover bg-gray-100"
+                                     src="{{ $related->image ? asset('storage/image/product/' . $related->image) : asset('path/to/default-image.jpg') }}"
+                                     alt="{{ $related->name }}">
+                                @if ($related->discount_price)
+                                    <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span>
+                                @endif
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-medium text-gray-800 mb-1">{{ $related->name }}</h3>                                
+                                @if ($related->discount_price)
+                                    <p class="text-base font-bold text-green-600">₹{{ $related->discount_price }}</p>
+                                    <p class="text-sm font-semibold text-gray-500 line-through">₹{{ $related->price }}</p>
+                                @endif
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
-                <!-- Product Details -->
-                <ul class="text-sm text-gray-600 mt-2">
-                    <li>128 GB ROM</li>
-                    <li>15.49 cm (6.1 inch) Super Retina XDR Display</li>
-                    <li>48MP + 12MP | 12MP Front Camera</li>
-                    <li>A16 Bionic Chip, 6 Core Processor</li>
-                    <li>1 Year Warranty for Phone and 6 Months for Accessories</li>
-                </ul>
-            </div>
-            <!-- Price and Offer Section -->
-            <div class="ml-6 text-right">
-                <p class="text-xl font-semibold text-gray-800">${{ $product->price }}</p>
-                <p class="text-gray-500 line-through">${{ $product->price }}</p>
-                <p class="text-green-500">7% off</p>
-                <p class="text-gray-500 text-sm">Free delivery by <span class="font-medium">22nd Sep</span></p>
-                <p class="text-green-500 text-sm mt-2">Upto ₹46,100 Off on Exchange</p>
             </div>
         </div>
-    </div>
-
-    <!-- Related Products Section -->
-    <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-        @foreach($relatedProducts as $related)
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                <a href="{{ route('public.show', $related->id) }}" class="block">
-                    <img class="w-full h-48 object-cover bg-gray-100"
-                         src="{{ $related->image ? asset('storage/image/product/' . $related->image) : asset('path/to/default-image.jpg') }}"
-                         alt="{{ $related->name }}">
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 mb-1">{{ $related->name }}</h3>
-                        <p class="text-gray-600">${{ $related->price }}</p>
-                    </div>
-                </a>
-            </div>
-        @endforeach
-    </div>
-</main>
+    </main>
 @endsection
