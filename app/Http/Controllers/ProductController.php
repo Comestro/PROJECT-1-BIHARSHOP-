@@ -21,16 +21,18 @@ class ProductController extends Controller
 
         return view('admin.product.insertProduct');
     }
-    public function show($id)
+    public function show($slug)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('slug', $slug)->firstOrFail();
 
+        // Get related products based on brand, excluding the current product
         $relatedProducts = Product::where('brand', $product->brand)
             ->where('id', '!=', $product->id)
             ->limit(4)
             ->get();
-
+    
         return view('public.show', compact('product', 'relatedProducts'));
+    
     }
 
     // made with livewire

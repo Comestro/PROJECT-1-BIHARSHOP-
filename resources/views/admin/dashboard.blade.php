@@ -40,7 +40,7 @@
             <div
                 class="col-span-12 md:col-span-4 rounded-md shadow-md border border-stroke bg-white py-6  px-4 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
                 <h4 class="mb-6 px-7.5 text-xl font-bold text-black dark:text-white">
-                    Chats
+                 Recent User
                 </h4>
 
                 <livewire:admin.dashboard.calling-user/>
@@ -57,11 +57,11 @@
                     <div class="flex w-full flex-wrap gap-3 sm:gap-5 px-2 py-2 ">
                         <div class="flex min-w-47.5 ">
                             <span
-                                class="mr-2 mt-1 flex h-4 w-full max-w-4 items-center justify-center rounded-full bg-purple-500 border border-primary">
+                                class="mr-2 mt-1 flex h-4 w-full max-w-4 items-center justify-center rounded-full bg-green-500 border border-primary">
                                 <span class="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
                             </span>
                             <div class="w-full">
-                                <p class="font-semibold text-primary">Total Revenue</p>
+                                <p class="font-semibold text-primary">Total Order</p>
                                 <p class="text-sm font-medium">12.04.2022 - 12.05.2022</p>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                     <div class="mb-4 justify-between gap-4 sm:flex px-4 py-3">
                         <div>
                             <h4 class="text-xl font-bold text-zinc-800  dark:text-white ">
-                                Profit this week
+                                Premium User
                             </h4>
                         </div>
                         <div>
@@ -132,7 +132,7 @@
         <!-- ====== Chart Two End -->
 
         <!-- ====== Chart Three Start -->
-        <div
+        {{-- <div
             class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5 py-5">
             <div class="mb-3 justify-between gap-4 sm:flex">
                 <div>
@@ -196,16 +196,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- ====== Chart Three End -->
          <!-- ====== Map One Start -->
-         <div
+         {{-- <div
          class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-7">
          <h4 class="mb-2 text-xl font-bold px-4 py-2 text-black dark:text-white">
              Region labels
          </h4>
-         <div id="mapOne" class="mapOne map-btn h-90"></div>
+         <div id="mapOne" class="mapOne map-btn h-90"></div> --}}
      </div>
 
      <!-- ====== Map One End -->

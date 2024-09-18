@@ -93,7 +93,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="slug" class="block text-sm font-medium text-gray-700">Category Slug</label>
-                    <input type="text" id="slug" wire:model="slug" class="mt-1 block w-full p-2 border rounded">
+                    <input type="text" id="slug" wire:model="slug" class="mt-1 block w-full p-2 border rounded bg-gray-100" readonly>
                     @error('slug') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">

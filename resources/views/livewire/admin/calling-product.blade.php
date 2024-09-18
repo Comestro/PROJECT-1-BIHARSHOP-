@@ -57,7 +57,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach($products as $product)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $product->name }}</td>
+                        <td class="px-6 py-4 whitespace-wrap text-sm  text-gray-900">{{ $product->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->formattedPrice }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->quantity }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>

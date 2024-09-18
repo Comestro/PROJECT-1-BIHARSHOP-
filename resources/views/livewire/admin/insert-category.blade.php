@@ -71,22 +71,35 @@
                                     </div>
                                     <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
                                 </label>
+                                
                             </div>
                             @error('photo')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>
-
-                        <div
-                            class="flex flex-1 flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50dark:bg-gray-700 dark:border-gray-600  overflow-hidden p-3">
-                            @if ($photo)
-                                <img src="{{ $photo->temporaryUrl() }}" class="object-cover">
-                            @else
-                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                        class="font-semibold">Image Preview</span></p>
-                            @endif
+                        
+                        <div class="flex flex-1 flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-hidden p-3">
+    
+                            <!-- Loading state -->
+                            <div wire:loading wire:target="photo" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
+                                <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                                </svg>
+                                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p>
+                            </div>
+                        
+                            <!-- Image preview -->
+                            <div wire:loading.remove wire:target="photo" class="w-full h-full flex items-center justify-center">
+                                @if ($photo)
+                                    <img src="{{ $photo->temporaryUrl() }}" class="object-cover">
+                                @else
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Image Preview</span></p>
+                                @endif
+                            </div>
+                        
                         </div>
-
+                        
                     </div>
                 </div>
 
