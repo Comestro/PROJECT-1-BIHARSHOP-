@@ -3,12 +3,12 @@
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->
             <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-full h-full object-cover">
+                <img src="{{ Auth::user()->image }}" alt="User Avatar" class="w-full h-full object-cover">
             </div>
 
             <!-- User Info -->
             <div class="mt-4 text-center">
-                <h2 class="text-2xl font-semibold text-gray-800">Syed Sadique</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
                 <p class="text-gray-500 text-sm">Hello!</p>
             </div>
         </div>
