@@ -39,8 +39,8 @@ Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("c
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
-
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('public.show');
 // Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
 Route::get('/category/{cat_slug}/{cat_id}',[PublicController::class,"filter"])->name("filter");
@@ -67,28 +67,24 @@ Route::prefix("user")->group(function () {
 });
 
 
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-// Route::get('/admin/add-product', [AdminController::class, 'insertProduct']);
-// Route::get('/admin/manage-product', [AdminController::class, 'manageProduct']);
-Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
-Route::get('admin/edit-coupon/{id}', EditCoupon::class)->name('admin.edit-coupon');
-
-Route::prefix('admin')->group(function () {
-    Route::resource('category', CategoryController::class);
-    Route::resource('product', ProductController::class);
-    Route::resource('address', AddressController::class);
-    Route::resource('coupon', CouponController::class);
-    Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
-    Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
-    Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
-    Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
-    Route::get('/users/order/{userId}', [UserController::class, 'viewUserOrder'])->name('user.order.view');
-    Route::get('/users/address/{userId}', [UserController::class, 'viewUserAddress'])->name('user.address.view');
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::resource('category', CategoryController::class);
+        Route::resource('product', ProductController::class);
+        Route::resource('address', AddressController::class);
+        Route::resource('coupon', CouponController::class);
+        Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+        Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
+        Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
+        Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
+        Route::get('/users/order/{userId}', [UserController::class, 'viewUserOrder'])->name('user.order.view');
+        Route::get('/users/address/{userId}', [UserController::class, 'viewUserAddress'])->name('user.address.view');
+        Route::get('/edit-coupon/{id}', EditCoupon::class)->name('admin.edit-coupon');
+    });
 });
 
-
+Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
 Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
 
 

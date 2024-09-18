@@ -2,7 +2,7 @@
     <div class="flex-1 overflow-y-auto">
         <!-- Cart Items -->
         @foreach ($orders->orderItems as $item)
-            <div class="flex items-center justify-between p-5 lg:py-10 rounded-lg bg-gray-100 mb-4">
+            <div class="flex items-center justify-between p-5 lg:py-10 rounded-lg bg-slate-50 mb-4">
                 <div class="flex items-center">
                     <img src="{{ $item->products->image ? asset('storage/image/product/' . $item->products->image) : asset('path/to/default-image.jpg') }}"
                         alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
@@ -50,18 +50,18 @@
                         </button>
                     </div>
                     <div class="flex items-baseline gap-2">
-                        <div class="flex items-center space-x-2 bg-gray-100 p-2 rounded-lg">
+                        <div class="flex items-center space-x-2  p-2 rounded-lg">
                             <!-- Decrement Button -->
                             <button wire:click="decrementQuantity({{ $item->id }})"
-                                class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-red-500 text-white rounded-full hover:bg-red-600"
+                                class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-slate-200 text-slate-700   rounded-full hover:bg-slate-100"
                                 wire:loading.attr="disabled">
                                 -
                             </button>
                             <!-- Quantity Display -->
-                            <span class="text-xl font-medium text-gray-800">{{ $item->quantity }}</span>
+                            <span class="text-xl font-medium text-slate-700">{{ $item->quantity }}</span>
                             <!-- Increment Button -->
                             <button wire:click="incrementQuantity({{ $item->id }})"
-                                class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-green-500 text-white rounded-full hover:bg-green-600"
+                                class="flex justify-center items-center w-8 h-8 text-lg font-semibold bg-slate-200 text-slate-700  rounded-full hover:bg-slate-100"
                                 wire:loading.attr="disabled">
                                 +
                             </button>

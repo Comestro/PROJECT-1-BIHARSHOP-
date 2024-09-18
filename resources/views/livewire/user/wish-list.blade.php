@@ -11,7 +11,7 @@
             <!-- Loop starts here to show the wishlist items -->
             <div class="relative bg-white shadow-sm rounded-lg p-4 mb-2">
                 <div class="w-full flex flex-col sm:flex-row items-center gap-4">
-                    <img class="w-24 h-24 sm:w-24 sm:h-24 object-cover" src="https://picsum.photos/500/800" alt="Product Image">
+                    <img class="w-24 h-24 sm:w-24 sm:h-24 object-cover" src="{{ $wish->product->image ? asset('storage/image/product/' . $wish->product->image) : asset('path/to/default-image.jpg') }}" alt="Product Image">
                     <div class="flex-1">
                         <div class="text-lg sm:text-base font-semibold text-gray-800 mb-1">{{$wish->product->name}}</div>
                         <div class="flex items-center gap-4 mb-2">

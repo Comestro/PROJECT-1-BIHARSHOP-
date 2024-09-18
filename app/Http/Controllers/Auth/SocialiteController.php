@@ -14,36 +14,72 @@ class SocialiteController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+    // public function handleGoogleCallback()
+    // {
+    //     try {
+    //         $googleUser = Socialite::driver('google')->stateless()->user();
+    //         $existingUser = User::where('email', $googleUser->getEmail())->first();
+
+    //         if ($existingUser) {
+    //             Auth::login($existingUser);
+    //         } else {
+    //             $newUser = User::create([
+    //                 'name' => $googleUser->getName(),
+    //                 'email' => $googleUser->getEmail(),
+    //                 'image' => $googleUser->getAvatar(),
+    //                 'google_id' => $googleUser->getId(),
+    //                 'password' => encrypt('123456dummy'),
+    //             ]);
+    //             if( $newUser){
+    //                 Auth::login($newUser);
+    //             }
+    //             else{
+    //                 return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
+    //             }                
+    //         }
+
+    //         return redirect()->intended('/'); // Adjust this based on your app
+    //     } catch (\Exception $e) {
+    //         return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
+    //     }
+    // }
+
     public function handleGoogleCallback()
-    {
-        try {
-            // Retrieve the user's information from Google
-            $googleUser = Socialite::driver('google')->stateless()->user();
+{
+    try {
+        $googleUser = Socialite::driver('google')->stateless()->user();
+        $existingUser = User::where('email', $googleUser->getEmail())->first();
 
-            // Check if the user already exists in your database
-            $existingUser = User::where('email', $googleUser->getEmail())->first();
+        if ($existingUser) {
+            Auth::login($existingUser);
+        } else {
+            $newUser = User::create([
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'image' => $googleUser->getAvatar(),
+                'isAdmin' => 0,
+                'google_id' => $googleUser->getId(),
+                'password' => encrypt('123456dummy'),
+            ]);
 
-            if ($existingUser) {
-                // Log the user in if they exist
-                Auth::login($existingUser);
-            } else {
-                // If the user doesn't exist, create a new user
-                $newUser = User::create([
-                    'name' => $googleUser->getName(),
-                    'email' => $googleUser->getEmail(),
-                    'google_id' => $googleUser->getId(),
-                    'password' => encrypt('123456dummy'), // Use a dummy password or improve security
-                ]);
-
-                // Log the new user in
+            if ($newUser) {
                 Auth::login($newUser);
+            } else {
+                return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
             }
-
-            // Redirect to the homepage or another appropriate page for your e-commerce site
-            return redirect()->intended('/'); // Adjust this based on your app
-        } catch (\Exception $e) {
-            // In case of error, redirect back to the login page with an error message
-            return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
         }
+
+        // Check if the user is an admin
+        if (Auth::user()->isAdmin == 1) {
+            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+        }
+        else{
+            return redirect()->intended('/');
+        } 
+    } catch (\Exception $e) {
+        return redirect()->route('login')->with('error', 'Unable to login with Google, please try again.');
     }
+}
+
+
 }

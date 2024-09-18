@@ -19,6 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'image',
+        'isAdmin',
         'password',
     ];
 
@@ -64,5 +66,9 @@ class User extends Authenticatable
         return $this->hasMany(Wishlist::class);
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 
 }

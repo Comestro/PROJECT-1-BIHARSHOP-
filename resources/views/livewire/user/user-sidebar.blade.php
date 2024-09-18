@@ -3,12 +3,24 @@
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->
             <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-full h-full object-cover">
+                @if (Auth::user() && Auth::user()->image)
+                    <!-- Show user's profile image -->
+                    <img src="{{ Auth::user()->image }}" alt="User Avatar" class="w-full h-full object-cover">
+                @elseif (Auth::user() && Auth::user()->email)
+                    <!-- Show a default avatar for email login if no profile image is available -->
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="Default Avatar" class="w-full h-full object-cover">
+                @else
+                    <!-- Show an online default avatar -->
+                    <img src="" alt="Online Default Avatar" class="w-full h-full object-cover">
+                @endif
             </div>
+            
+            
+            
 
             <!-- User Info -->
             <div class="mt-4 text-center">
-                <h2 class="text-2xl font-semibold text-gray-800">Syed Sadique</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
                 <p class="text-gray-500 text-sm">Hello!</p>
             </div>
         </div>
