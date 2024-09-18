@@ -7,13 +7,22 @@ use App\Models\Product;
 
 class SearchProduct extends Component
 {
-    public $search ="";
+    public $search = "";
+    public function showProduct($productId)
+    {        
+        return redirect()->route('public.show', ['id' => $productId]);
+    }
     public function render()
-   
     {
-        $data['products'] =Product::where('name', 'LIKE', '%' . $this->search . '%')
-        ->orWhere('brand', 'like', '%' . $this->search . '%')
-        ->get();
-        return view('livewire.public.product.search-product', $data);
+        $products = [];
+
+        if (!empty($this->search)) {
+            $products = Product::where('name', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('brand', 'LIKE', '%' . $this->search . '%')
+                ->limit(5)
+                ->get();
+        }
+
+        return view('livewire.public.product.search-product', ['products' => $products]);
     }
 }

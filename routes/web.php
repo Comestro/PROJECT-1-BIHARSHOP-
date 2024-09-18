@@ -39,8 +39,8 @@ Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("c
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
-
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('public.show');
 // Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
 Route::get('/category/{cat_slug}/{cat_id}',[PublicController::class,"filter"])->name("filter");
