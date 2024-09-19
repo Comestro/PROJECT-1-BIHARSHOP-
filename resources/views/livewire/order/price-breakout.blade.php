@@ -1,14 +1,14 @@
 <div>
     <!-- Apply Promo Code Form -->
- 
+
     @if ($errorMessage)
-        <div class="bg-red-500 text-white p-2 mt-2">
+        <div class="bg-red-500 text-white p-2">
             {{ $errorMessage }}
         </div>
     @endif
 
     @if (session()->has('success'))
-        <div class="bg-green-500 text-white p-2 mt-2">
+        <div class="bg-green-500 text-white p-2">
             {{ session('success') }}
         </div>
     @endif
@@ -16,24 +16,27 @@
     <h3 class="text-xl font-bold mb-6">Order Summary</h3>
 
     <!-- Subtotal -->
-    <div class="flex justify-between mb-2">
+    <div class="flex justify-between">
         <span>Subtotal</span>
         <span>₹{{ number_format($subtotal, 2) }}</span>
     </div>
 
     <!-- Discount -->
-    <div class="flex justify-between mb-2">
+    <div class="flex justify-between">
         <span>Discount</span>
         <span class="text-green-500">- ₹{{ number_format($discountAmount, 2) }}</span>
     </div>
 
     <!-- Promo Code Applied -->
-    
+
     @if ($isCouponApplied)
-        <div class="flex justify-between mb-4">
-            <span>Promo Code Applied</span>
-           
-            <span>₹{{ number_format($couponPrice, 2) }}</span>
+        <div class="flex justify-between">
+            <span>Promo Code  <span class="font-semibold text-green-600">({{$orders->coupon->code }})</span> Applied</span>
+            @if ($orders->coupon->discount_type == 'percentage')
+            <span>₹{{ number_format($couponPrice, 2) }} ({{$orders->coupon->discount_value}}%)</span>
+            @else
+                <span class="text-green-600 font-semibold">₹{{ number_format($couponPrice, 2) }}</span>
+            @endif
         </div>
     @endif
 
