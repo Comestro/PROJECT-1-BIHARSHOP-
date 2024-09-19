@@ -111,46 +111,57 @@
                     </div>
                 </div>
                 <!-- Order List -->
-                <div>            
+                <div>
                     <!-- Orders List -->
                     <div class="space-y-6">
                         @forelse ($orders as $order)
                             @foreach ($order->orderItems as $orderItem)
                                 @if ($orderItem->products->name && stripos($orderItem->products->name, $searchTerm) !== false)
-                                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 p-4 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
-                                        <!-- Product Image -->
-                                        <img src="{{ $orderItem->products->image ? asset('storage/image/product/' . $orderItem->products->image) : asset('path/to/default-image.jpg') }}" class="w-24 h-24 object-cover rounded-lg mx-auto sm:mx-0">
-                
-                                        <!-- Product Details -->
-                                        <div class="flex flex-col sm:flex-row flex-grow space-y-4 sm:space-y-0 sm:space-x-6 justify-between">
-                                            <!-- Product Info -->
-                                            <div class="flex-1">
-                                                <h2 class="text-xl font-semibold text-gray-800">{{ $orderItem->products->name }}</h2>
-                                                <p class="text-sm text-gray-500">{{ $orderItem->colorVariant ? 'Color: ' . $orderItem->colorVariant->variant_value : 'Color: N/A' }}</p>
-                                            </div>
-                
-                                            <!-- Price -->
-                                            <div class="text-lg font-bold text-gray-900">₹{{ $orderItem->products->price }}</div>
-                
-                                            <!-- Cancellation Info -->
-                                            <div class="flex flex-col text-red-500 text-sm space-y-2">
-                                                {{-- Cancellation info if needed --}}
+                                    <a wire:navigate
+                                        href="{{ route('product.view', ['category' => $orderItem->products->category->cat_slug, 'slug' => $orderItem->products->slug]) }}">
+                                        <div
+                                            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 p-4 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                                            <!-- Product Image -->
+                                            <img src="{{ $orderItem->products->image ? asset('storage/image/product/' . $orderItem->products->image) : asset('path/to/default-image.jpg') }}"
+                                                class="w-24 h-24 object-cover rounded-lg mx-auto sm:mx-0">
+                    
+                                            <!-- Product Details -->
+                                            <div
+                                                class="flex flex-col sm:flex-row flex-grow space-y-4 sm:space-y-0 sm:space-x-6 justify-between">
+                                                <!-- Product Info -->
+                                                <div class="flex-1">
+                                                    <h2 class="text-xl font-semibold text-gray-800">
+                                                        {{ $orderItem->products->name }}</h2>
+                                                    <p class="text-sm text-gray-500">
+                                                        {{ $orderItem->colorVariant ? 'Color: ' . $orderItem->colorVariant->variant_value : 'Color: N/A' }}
+                                                    </p>
+                                                </div>
+                    
+                                                <!-- Price -->
+                                                <div class="text-lg font-bold text-gray-900">
+                                                    ₹{{ $orderItem->products->price }}</div>
+                    
+                                                <!-- Cancellation Info -->
+                                                <div class="flex flex-col text-red-500 text-sm space-y-2">
+                                                    {{-- Cancellation info if needed --}}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 @endif
                             @endforeach
                         @empty
                             <p>No orders found.</p>
                         @endforelse
                     </div>
-                
+                    
+
                     <!-- Pagination Links -->
                     <div class="mt-6">
                         {{ $orders->links() }}
                     </div>
                 </div>
-                
+
 
 
             </div>
