@@ -20,7 +20,7 @@
 
             <!-- Right Side: Image -->
             <div class="w-full md:w-1/2">
-                <img src="/mainhero.png"
+                <img src="{{asset('mainhero.png')}}"
                     alt="Hero Image" class="w-full h-auto " />
             </div>
         </div>
@@ -45,11 +45,11 @@
         <div class="mt-12">
           <h2 class="text-center text-2xl md:text-4xl font-bold text-black mb-8">Shop by Categories</h2>
           <div class="">
-            
+
             <livewire:public.product.category-header/>
 
           </div>
         </div>
-        
+
     </div>
 </div>

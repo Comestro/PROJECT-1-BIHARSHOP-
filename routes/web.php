@@ -17,7 +17,7 @@ use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
-
+use Illuminate\Support\Facades\Artisan;
 
 
 
@@ -94,3 +94,9 @@ Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->na
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
 
 
+
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link has been created!';
+});
