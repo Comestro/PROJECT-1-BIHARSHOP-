@@ -13,7 +13,14 @@ class ProductFilters extends Component
     public $moreCategories = []; // Store additional categories
     public $selectedColor = ''; // Store selected color
     public $selectedSize = ''; // Holds the selected size
+    public $filterVisible = false;
+    public $sortBy = 'default'; // Default sort criteria
 
+
+    public function toggleFilter()
+    {
+        $this->filterVisible = !$this->filterVisible;
+    }
 
     public $priceRanges = [
         'below_500' => [0, 500],
@@ -38,6 +45,7 @@ class ProductFilters extends Component
 
     public function filterProducts()
     {
+        $this->filterVisible = false;
         $productsQuery = Product::query();
 
         if ($this->category) {
@@ -88,8 +96,25 @@ class ProductFilters extends Component
             $this->dispatch("update_average_product");
         }
 
+        // Apply sorting
+        if ($this->sortBy == 'price_asc') {
+            $productsQuery->orderBy('price', 'asc');
+        } elseif ($this->sortBy == 'price_desc') {
+            $productsQuery->orderBy('price', 'desc');
+        } elseif ($this->sortBy == 'name_asc') {
+            $productsQuery->orderBy('name', 'asc');
+        } elseif ($this->sortBy == 'name_desc') {
+            $productsQuery->orderBy('name', 'desc');
+        }
+
+
         // Fetch products with status 1
         $this->products = $productsQuery->where('status', 1)->get();
+    }
+
+    public function updatedSortBy()
+    {
+        $this->filterProducts(); // Re-filter products when the sort option changes
     }
 
     public function loadMoreCategories()
@@ -122,9 +147,14 @@ class ProductFilters extends Component
         $this->filterProducts();
     }
 
+    public function clearFilter(){
+        $this->reset(['selectedPriceRanges','selectedColor','selectedSize']);
+        $this->filterProducts(); // Reset all filters and re-filter the products
+    }
+
     public function updatedSelectedColor(){
         $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
-        
+
         $this->filterProducts(); // Filter products based on color
     }
 
