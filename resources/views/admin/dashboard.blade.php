@@ -95,7 +95,7 @@
                     </div>
                 </div> --}}
 
-                <div class="  mr pr-5">
+                {{-- <div class="  mr pr-5">
                     <!-- Title -->
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-lg md:text-xl font-semibold text-gray-700">Total Order</h2>
@@ -166,7 +166,137 @@
                             <span class="text-xs md:text-sm text-gray-600">Canceled Orders</span>
                         </div>
                     </div>
+                </div> --}}
+
+                {{-- <div class="mr pr-5">
+                    <!-- Title -->
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg md:text-xl font-semibold text-gray-700">Total Order</h2>
+                        <div>
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18"></path>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <!-- Chart -->
+                    <div class="relative h-64">
+                        <!-- Y-axis labels -->
+                        <div class="absolute left-0 top-0 mt-2 flex flex-col justify-between h-full text-xs md:text-sm text-gray-500">
+                            <span>25</span>
+                            <span>20</span>
+                            <span>15</span>
+                            <span>10</span>
+                            <span>5</span>
+                            <span>0</span>
+                        </div>
+                
+                        <!-- SVG Chart Area -->
+                        <svg class="absolute inset-0 w-full h-full ml-6" viewBox="0 0 100 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Horizontal Grid Lines -->
+                            <line x1="0" y1="10" x2="100" y2="10" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="20" x2="100" y2="20" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="30" x2="100" y2="30" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="40" x2="100" y2="40" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="50" x2="100" y2="50" stroke="#e5e7eb" stroke-width="0.5"></line>
+                
+                            <!-- Orders Line -->
+                            <path d="M {{ collect(range(1, 12))->map(function($month) use ($salesData) {
+                                $y = isset($salesData[$month]) ? 50 - ($salesData[$month] / 1000 * 50) : 50;
+                                return (($month - 1) * 10) . ' ' . $y;
+                            })->implode(' L ') }}" 
+                            fill="rgba(59, 130, 246, 0.2)" stroke="rgba(59, 130, 246, 1)" stroke-width="1" />
+                
+                            <!-- Canceled Orders Line -->
+                            <path d="M {{ collect(range(1, 12))->map(function($month) use ($canceledOrdersData) {
+                                $y = isset($canceledOrdersData[$month]) ? 50 - ($canceledOrdersData[$month] * 2) : 50;
+                                return (($month - 1) * 10) . ' ' . $y;
+                            })->implode(' L ') }}" 
+                            fill="rgba(34, 197, 94, 0.2)" stroke="rgba(34, 197, 94, 1)" stroke-width="1" />
+                        </svg>
+                    </div>
+                
+                    <!-- X-axis labels (Months) -->
+                    <div class="flex justify-between mt-4 md:ml-5 text-xs md:text-sm text-gray-500">
+                        <span>May</span>
+                        <span>June</span>
+                        <span>July</span>
+                        <span>August</span>
+                        <span>September</span>
+                        <span>October</span>
+                        <span>November</span>
+                        <span>December</span>
+                    </div>
+                
+                    <!-- Legend -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">Total Sales</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-green-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">Canceled Orders</span>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="chart-container">
+                    <h2 class="text-xl font-bold">Total Orders</h2>
+                
+                    <!-- Chart background (bottom fill) -->
+                    <svg width="100%" height="300px" class="mt-9" viewBox="0 0 600 300" preserveAspectRatio="none">
+                        <!-- Background rectangle -->
+                        <rect width="600" height="300" fill="rgba(240, 240, 240, 0.5)" />
+                
+                        <!-- Grid lines -->
+                        @for ($i = 0; $i <= 5; $i++)
+                            <line x1="0" y1="{{ $i * 60 }}" x2="600" y2="{{ $i * 60 }}" stroke="rgba(200, 200, 200, 0.8)" stroke-width="1" />
+                        @endfor
+                
+                        {{-- Total Orders path (blue) --}}
+                        <path d="
+                            M 0 {{ 300 - $data['total_orders'][0] * 10 }} 
+                            @for ($i = 1; $i < count($data['total_orders']); $i++)
+                                L {{ $i * 100 }} {{ 300 - $data['total_orders'][$i] * 10 }}
+                            @endfor
+                            L {{ ($i - 1) * 100 }} 300 L 0 300 Z
+                            " fill="rgba(59, 130, 246, 0.2)"
+                            stroke="rgba(59, 130, 246, 1)"
+                            stroke-width="2" />
+                
+                        {{-- New Users path (green) --}}
+                        <path d="
+                            M 0 {{ 300 - $data['new_users'][0] * 10 }} 
+                            @for ($i = 1; $i < count($data['new_users']); $i++)
+                                L {{ $i * 100 }} {{ 300 - $data['new_users'][$i] * 10 }}
+                            @endfor
+                            L {{ ($i - 1) * 100 }} 300 L 0 300 Z
+                            " fill="rgba(16, 185, 129, 0.2)"
+                            stroke="rgba(16, 185, 129, 1)"
+                            stroke-width="2" />
+                        
+                       
+                    </svg>
+                
+                    <div class="flex justify-between mt-4">
+                        {{-- Display months --}}
+                        @foreach ($data['months'] as $month)
+                            <span class="text-xs">{{ $month }}</span>
+                        @endforeach
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">Total Orders</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-green-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">New Users</span>
+                        </div>
+                    </div>
                 </div>
+                
                 
                 <div>
                     <div id="chartOne" class="-ml-5"></div>

@@ -171,8 +171,8 @@
                 <h2 class="text-lg font-bold mb-4">Payment Table</h2>
                 <table class="table-auto w-full">
                     <thead>
-                        <tr>
-                            <th class="px-4 py-2">ID</th>
+                        <tr class="bg-gray-100">
+                            {{-- <th class="px-4 py-2">ID</th> --}}
                             <th class="px-6 py-2 ">Order ID</th>
                             <th class="px-4 py-2 text-sm">User ID</th>
                             <th class="px-4 py-2">Amount</th>
@@ -184,7 +184,7 @@
                     <tbody>
                         @foreach ($payments as $payment)
                             <tr>
-                                <td class="border px-4 py-2">{{ $payment->id }}</td>
+                                {{-- <td class="border px-4 py-2">{{ $payment->id }}</td> --}}
                                 <td class="border px-4 py-2">{{ $payment->order->order_number }}</td>
                                 <td class="border px-4 py-2">{{ $payment->user->name }}</td>
                                 <td class="border px-4 py-2">{{ $payment->amount }}</td>

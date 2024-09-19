@@ -28,7 +28,9 @@ class PriceBreakout extends Component
         $this->isCouponApplied = ($this->orders->coupon_code) ? true : false;
         $this->calculateSummary();
         $this->calculateCouponDiscount($this->orders->coupon);
-        $this->couponPrice = $this->orders->coupon->discount_value;
+        if($orders->coupon !== NULL){
+            $this->couponPrice = $this->orders->coupon->discount_value;
+        }
     }
 
 
@@ -75,14 +77,19 @@ class PriceBreakout extends Component
 
     private function calculateCouponDiscount($coupon)
     {
-        $originalPrice = $this->subtotal;
-
-        if ($coupon->discount_type === 'fixed') {
-            return $coupon->discount_value;
-        } elseif ($coupon->discount_type === 'percentage') {
-            return ($coupon->discount_value / 100) * $originalPrice;
-        }
-    }    
+        if ($coupon !== null) {
+            $originalPrice = $this->subtotal;
+        
+            if ($coupon->discount_type === 'fixed') {
+                return $coupon->discount_value;
+            } elseif ($coupon->discount_type === 'percentage') {
+                return ($coupon->discount_value / 100) * $originalPrice;
+            }
+        } else {
+            return null;
+        }        
+    }
+   
 
     #[On('refreshPriceBreakdown')]
     public function calculateSummary()
