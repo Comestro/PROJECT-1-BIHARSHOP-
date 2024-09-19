@@ -11,7 +11,7 @@
     @endif
 
     @if (session('success'))
-    <div class="text-green-500 text-xs">{{session('success')}}</div>
+    <div class="text-black text-xs">{{session('success')}}</div>
     
     @endif
 </div>
