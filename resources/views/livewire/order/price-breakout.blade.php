@@ -28,9 +28,11 @@
     </div>
 
     <!-- Promo Code Applied -->
+    
     @if ($isCouponApplied)
         <div class="flex justify-between mb-4">
             <span>Promo Code Applied</span>
+           
             <span>₹{{ number_format($couponPrice, 2) }}</span>
         </div>
     @endif
