@@ -40,7 +40,9 @@
                 <tr class="border-b">
                     <td class="py-3 px-6 text-center">{{ $order->order_number }}</td>
                     <td class="py-3 px-6 text-center">{{ $order->status }}</td>
-                    <td class="py-3 px-6 text-center">  ₹ {{ $order->quantity * $order->discount_price }}</td>
+                    <td class="py-3 px-6 text-center">  ₹ 
+                        {{ $order->total_amount }}
+                    </td>
 
                     <td class="py-3 px-6 text-center">
                         <div class="flex items-center justify-center space-x-2">
@@ -51,7 +53,6 @@
                             </span>
                             <span>{{ $order->payment_status }}</span>
                         </div>
-
                     </td>           
                              <td class="py-3 px-6 text-center flex justify-center space-x-2">
                                 <a href="{{ route('order.view', ['orderId' => $order->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
