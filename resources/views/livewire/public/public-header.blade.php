@@ -1,6 +1,6 @@
 <nav class="bg-white fixed  top-0  w-full border-gray-200 dark:bg-gray-900 dark:border-gray-700 z-50">
     <div class="w-full  flex-col md:flex-row gap-3 flex flex-wrap md:items-center justify-between mx-auto  px-[5%] py-4">
-        <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a wire:navigate href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-black whitespace-nowrap dark:text-white">BiharShop</span>
             {{-- <img class="w-auto h-24 object-cover" src="{{asset('logo.png')}}" alt=""> --}}
         </a>
@@ -34,7 +34,7 @@
                     <!-- Avatar Button -->
                     <div @mouseenter="open = true" @mouseleave="open = false" class="rounded-full cursor-pointer flex items-center gap-1 border px-3 py-2">
                         <!-- Avatar button content -->
-                       
+
                         <span>{{ Auth::user()->name }}</span>
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />

@@ -9,7 +9,7 @@
     <div class="mt-2 rounded-lg">
         <div class=" flex flex-col gap-5 divide-y">
             @foreach($orderItems as $item)
-            <div class="flex pt-3 pb-0">
+            <div class="flex pt-3 flex-col md:flex-row pb-0">
                 <div>
                     <img src="{{asset('storage/image/product/' . $item->products->image)}}" alt="{{$item->products->name}}" class="size-32 overflow-hidden">
                 </div>

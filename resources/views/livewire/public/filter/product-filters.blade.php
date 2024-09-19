@@ -1,6 +1,6 @@
 <div class="flex flex-col lg:flex-row min-h-screen bg-gray-50 px-4 md:px-10 py-2 gap-5 mb-5  mt-10 md:mt-4">
     <!-- Sidebar for desktop (hidden on mobile) -->
-    <aside class="lg:w-1/5 bg-white p-6 shadow-lg rounded-lg border border-slate-100 hidden lg:block">
+    <aside class="lg:w-1/5 self-start bg-white p-6 shadow-lg rounded-lg border border-slate-100 hidden lg:block">
         <div class="flex flex-1 items-center mb-4 w-full justify-between">
             <h2 class="text-lg font-semibold ">Filters</h2>
             @if ($selectedPriceRanges || $selectedColor || $selectedSize)
@@ -93,7 +93,7 @@
                 <div class="mb-2">
                     <label class="flex items-center">
                         <input type="checkbox" wire:model.live="selectedPriceRanges" value="{{ $key }}"
-                            class="mr-2">
+                            class="mr-2 size-4">
                         @if ($key == 'below_500')
                             Below Rs.500 ({{ \App\Models\Product::whereBetween('discount_price', $range)->count() }})
                         @elseif($key == 'above_2500')
@@ -161,12 +161,37 @@
         <div class="mb-6">
             <h3 class="font-medium mb-2">Size</h3>
             <div class="space-y-2">
-                <button wire:click="$set('selectedSize', 's')" class="px-4 py-2 border rounded">Small</button>
-                <button wire:click="$set('selectedSize', 'm')" class="px-4 py-2 border rounded">Medium</button>
-                <button wire:click="$set('selectedSize', 'l')" class="px-4 py-2 border rounded">Large</button>
-                <button wire:click="$set('selectedSize', 'xl')" class="px-4 py-2 border rounded">X-Large</button>
+                <button wire:click="$set('selectedSize', 's')"
+                        class="px-4 py-2 border rounded
+                        {{ $selectedSize === 's' ? 'bg-slate-500 text-white' : '' }}">
+                    Small
+                </button>
+
+                <button wire:click="$set('selectedSize', 'm')"
+                        class="px-4 py-2 border rounded
+                        {{ $selectedSize === 'm' ? 'bg-slate-500 text-white' : '' }}">
+                    Medium
+                </button>
+
+                <button wire:click="$set('selectedSize', 'l')"
+                        class="px-4 py-2 border rounded
+                        {{ $selectedSize === 'l' ? 'bg-slate-500 text-white' : '' }}">
+                    Large
+                </button>
+
+                <button wire:click="$set('selectedSize', 'xl')"
+                        class="px-4 py-2 border rounded
+                        {{ $selectedSize === 'xl' ? 'bg-slate-500 text-white' : '' }}">
+                    X-Large
+                </button>
+                <button wire:click="$set('selectedSize', 'xxl')"
+                        class="px-4 py-2 border rounded
+                        {{ $selectedSize === 'xxl' ? 'bg-slate-500 text-white' : '' }}">
+                    XX-Large
+                </button>
             </div>
         </div>
+
     </aside>
 
     <!-- Sidebar for mobile (toggleable) -->
@@ -374,75 +399,72 @@
         </div>
   </div>
 
-        <div class="relative mt-6 w-full">
-            <!-- Loader Overlay (absolute) -->
-            <div class="absolute inset-0 w-full flex justify-center items-center bg-white bg-opacity-75 z-10"
-                wire:loading>
-                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
-                <p class="ml-3 text-indigo-600">Loading products...</p>
-            </div>
-
-            <!-- Products Grid (disabled while loading) -->
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 transition-opacity duration-300"
-                wire:loading.class="opacity-50 pointer-events-none">
-                @if ($products->isEmpty())
-                    <p class="col-span-full text-center text-gray-500">No products found in the selected price range.
-                    </p>
-                @else
-                    @foreach ($products as $product)
-                        <div class="w-full max-w-sm  rounded-lg " wire:key="product-{{ $product->id }}">
-                            <a wire:navigate
-                                href=" {{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
-                                <div class="rounded-2xl flex  bg-zinc-100 overflow-hidden">
-                                    <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                                        src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
-                                        alt="product image" />
-                                </div>
-                                <div class="px-3 mt-2 pb-5">
-                                    <div>
-                                        <h5
-                                            class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2">
-                                            {{ $product->name }}</h5>
-                                    </div>
-                                    @if ($product->reviews->count() > 0)
-                                        @php
-                                            $averageRating = $product->reviews->average('rating');
-                                            $totalReviews = $product->reviews->count();
-                                        @endphp
-                                        <div class="flex items-center gap-2" wire:key="{{ $product->id }}">
-                                            <div class="flex flex-col md:flex gap-1 items-center">
-                                                <div class="flex items-center ">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="w-4 h-4 fill-current {{ $i <= $averageRating ? 'text-yellow-500' : 'text-gray-300' }}"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round">
-                                                            <path
-                                                                d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-8.24-.69L12 2 10.24 8.55 2 9.24l5.46 4.73L5.82 21z" />
-                                                        </svg>
-                                                    @endfor
-                                                    <span
-                                                        class="text-normal font-semibold ml-1 text-zinc-800 ">{{ number_format($averageRating, 1) }}</span>
-
-                                                </div>
-                                            </div>
-                                            <span class="text-xs md:text-normal text-gray-600">({{ $totalReviews }}
-                                                {{ $totalReviews == 1 ? 'review' : 'reviews' }})</span>
-                                        </div>
-                                    @endif
-
-                                    <div class="flex justify-between">
-                                        <span
-                                            class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{ $product->formattedDiscountPrice }}</span>
-                                    </div>
-                                </div>
-                            </a>
+  <div class="relative mt-6 w-full">
+    <!-- Products Grid (disabled while loading) -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 transition-opacity duration-300"
+        wire:loading.class="opacity-50 pointer-events-none">
+        @if ($products->isEmpty())
+            <p class="col-span-full text-center text-gray-500">No products found in the selected price range.</p>
+        @else
+            @foreach ($products as $product)
+                <div class="w-full max-w-sm rounded-lg " wire:key="product-{{ $product->id }}">
+                    <a wire:navigate href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
+                        <div class="rounded-2xl flex bg-zinc-100 overflow-hidden">
+                            <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
+                                src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
+                                alt="product image" />
                         </div>
-                    @endforeach
-                @endif
-            </div>
+                        <div class="px-3 mt-2 pb-5">
+                            <div>
+                                <h5 class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2">
+                                    {{ $product->name }}
+                                </h5>
+                            </div>
+                            @if ($product->reviews->count() > 0)
+                                @php
+                                    $averageRating = $product->reviews->average('rating');
+                                    $totalReviews = $product->reviews->count();
+                                @endphp
+                                <div class="flex items-center gap-2" wire:key="{{ $product->id }}">
+                                    <div class="flex flex-col md:flex gap-1 items-center">
+                                        <div class="flex items-center ">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="w-4 h-4 fill-current {{ $i <= $averageRating ? 'text-yellow-500' : 'text-gray-300' }}"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-8.24-.69L12 2 10.24 8.55 2 9.24l5.46 4.73L5.82 21z" />
+                                                </svg>
+                                            @endfor
+                                            <span class="text-normal font-semibold ml-1 text-zinc-800">
+                                                {{ number_format($averageRating, 1) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs md:text-normal text-gray-600">({{ $totalReviews }} {{ $totalReviews == 1 ? 'review' : 'reviews' }})</span>
+                                </div>
+                            @endif
+
+                            <div class="flex justify-between">
+                                <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{ $product->formattedDiscountPrice }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        @endif
+    </div>
+
+    <!-- Loader Overlay (absolute) -->
+    <div class="absolute inset-0 w-full flex h-screen justify-center items-center bg-white bg-opacity-75 z-10"
+        wire:loading>
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+            <p class="mt-3 text-indigo-600">Loading products...</p>
         </div>
+    </div>
+</div>
+
     </main>
 </div>
 

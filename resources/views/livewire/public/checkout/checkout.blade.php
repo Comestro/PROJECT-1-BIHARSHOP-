@@ -1,5 +1,5 @@
-<div class="w-full md:px-[5%] p-6 bg-slate-100 shadow-lg rounded-lg mt-10 flex flex-col lg:flex-row">
-    <div class="w-full lg:w-2/3 px-4 lg:px-10">
+<div class="w-full md:px-[5%] p-4 bg-slate-100 shadow-lg rounded-lg mt-10 md:mt-0 flex flex-col lg:flex-row">
+    <div class="w-full lg:w-2/3 px-0 lg:px-10">
         <!-- Login Section -->
         <div class="mb-4 bg-white px-5 py-2 border-slate-200 border ">
             <div class="flex justify-between gap-3  items-center">
