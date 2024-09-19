@@ -5,7 +5,7 @@
             <label for="voice-search" class="sr-only">Search</label>
             <div class="relative w-full">
                 <input type="search" wire:model.live="search" id="voice-search"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-slate-500 focus:border-slate-500 rounded-full block w-full ps-10 p-2.5"
                     placeholder="Search Products..." required />
             </div>
             <button type="submit"
