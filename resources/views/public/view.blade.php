@@ -29,9 +29,9 @@
                 </div>
                 <!-- Price and Discount -->
                 <div class="text-xl font-semibold mb-4">
-                    <span class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_price }}</span>
+                    <span class="text-gray-700 text-4xl font-semibold hover:underline">{{ $product->formatted_discount_price }}</span>
                     <span
-                        class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_discount_price }}</span>
+                        class="text-gray-400 line-through ml-2 font-light text-lg">{{ $product->formatted_price }}</span>
                     <span class="text-green-500 ml-2 text-sm">{{ $product->saving_percentage }}% Off</span>
                 </div>
 
