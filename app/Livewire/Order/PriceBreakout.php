@@ -25,7 +25,10 @@ class PriceBreakout extends Component
     public function mount(Order $orders)
     {
         $this->orders = $orders;
+        $this->isCouponApplied = ($this->orders->coupon_code) ? true : false;
         $this->calculateSummary();
+        $this->calculateCouponDiscount($this->orders->coupon);
+        $this->couponPrice = $this->orders->coupon->discount_value;
     }
 
 
@@ -37,11 +40,12 @@ class PriceBreakout extends Component
         ]);
 
         $CouponinOrder = Order::where('user_id',Auth::id())->where('coupon_code',$this->couponcode)->first();
-        $coupon = Coupon::where('code', $this->coupon)->first();
+        $coupon = Coupon::where('code', operator: $this->coupon)->first();
 
         if ($coupon) {
             if ($CouponinOrder)
             {
+                
                 $this->errorMessage = 'You have already used this coupon code.';
                 $this->isCouponApplied = false;
                 $this->couponPrice = 0;
@@ -78,8 +82,6 @@ class PriceBreakout extends Component
         } elseif ($coupon->discount_type === 'percentage') {
             return ($coupon->discount_value / 100) * $originalPrice;
         }
-
-        return 0;
     }    
 
     #[On('refreshPriceBreakdown')]

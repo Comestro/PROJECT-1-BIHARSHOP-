@@ -25,4 +25,8 @@ class Order extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function coupon(){
+        return $this->hasOne(Coupon::class, "id","coupon_code");
+    }
+
 }
