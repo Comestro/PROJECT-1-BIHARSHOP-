@@ -7,10 +7,10 @@
             <a wire:navigate href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
                 <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
                     <!-- Product Image Carousel -->
-                    <div class="w-full md:w-96 h-64 flex-shrink-0">
+                    <div class="flex w-full md:w-96 h-64 flex-shrink-0 items-center justify-center">
                         <div class="relative">
                             <img src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
-                                 alt="{{ $product->name }}" class="rounded-md object-cover w-full h-full">
+                                 alt="{{ $product->name }}" class="rounded-md object-cover w-72 object-center">
                             @if ($product->discount_price)
                                 <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span>
                             @endif
@@ -20,10 +20,10 @@
                     <div class="flex-grow">
                         <!-- Product Title and Brand -->
                         <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-3xl font-semibold text-gray-900">{{ $product->name }}</h2>                           
+                            <h2 class="text-3xl font-semibold text-gray-900 line-clamp-2 overflow-hidden">{{ $product->name }}</h2>                           
                         </div>
                         <p class="text-lg text-gray-700 mb-2"><strong>Brand:</strong> {{ $product->brand }}</p>
-                        <p class="text-sm text-gray-600 mb-4">{{ $product->description }}</p>
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3 overflow-hidden">{{ $product->description }}</p>
                         <!-- Price Section -->
                         <div class="mb-4">
                             @if ($product->discount_price)
