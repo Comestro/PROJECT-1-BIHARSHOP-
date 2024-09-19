@@ -23,18 +23,21 @@ class ProductController extends Controller
     }
     public function show($slug)
     {
-        // Retrieve the main product
+        // Retrieve the main product with its category
         $product = Product::with('category')->where('slug', $slug)->firstOrFail();
-    
-        // Retrieve related products by the same category, excluding the current product
-        $relatedProducts = Product::where('category_id', $product->category_id)
-            ->where('slug', '!=', $product->slug)
+
+        $relatedProducts = Product::where(function ($query) use ($product) {
+            $query->where('category_id', $product->category_id)  // Same category
+                ->orWhere('category_id', $product->category->parent_category_id); // Parent category
+        })
+            ->where('slug', '!=', $product->slug) // Exclude the current product
             ->limit(8)
             ->get();
-    
+
         return view('public.show', compact('product', 'relatedProducts'));
     }
-    
+
+
 
     // made with livewire
 
