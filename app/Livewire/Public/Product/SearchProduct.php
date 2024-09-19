@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Public\Product;
 
+use App\Models\Category;
 use Livewire\Component;
 use App\Models\Product;
 
@@ -15,6 +16,7 @@ class SearchProduct extends Component
         if (!empty($this->search)) {
             $this->products = Product::where('name', 'like', '%' . $this->search . '%')
                 ->orWhere('brand', 'like', '%' . $this->search . '%')
+                ->with('category') // Eager load category
                 ->limit(5)
                 ->get();
         } else {
@@ -30,6 +32,9 @@ class SearchProduct extends Component
 
     public function render()
     {
-        return view('livewire.public.product.search-product', ['products' => $this->products]);
+        return view('livewire.public.product.search-product', [
+            'products' => $this->products,
+        ]);
     }
+
 }

@@ -5,7 +5,7 @@
             </div>
             <div class="px-3 mt-2 pb-5">
                 <div>
-                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{{$item->name}}</h5>
+                    <h5 class="lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2 overflow-hidden">{{$item->name}}</h5>
                 </div>
                 @if ($item->reviews->count() > 0)
                 <livewire:product.product-star :product="$item"/>

@@ -53,7 +53,7 @@
    
             <div
                 class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8  py-4">
-                <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap ">
+                {{-- <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap ">
                     <div class="flex w-full flex-wrap gap-3 sm:gap-5 px-2 py-2 ">
                         <div class="flex min-w-47.5 ">
                             <span
@@ -93,7 +93,81 @@
                             </button>
                         </div>
                     </div>
+                </div> --}}
+
+                <div class="  mr pr-5">
+                    <!-- Title -->
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg md:text-xl font-semibold text-gray-700">Total Order</h2>
+                        <div>
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18"></path>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <!-- Chart -->
+                    <div class="relative h-64">
+                        <!-- Y-axis labels (Date values on the left side) -->
+                        <div class="absolute left-0 top-0 mt-2 flex flex-col justify-between h-full text-xs md:text-sm text-gray-500">
+                            <span>25</span>
+                            <span>20</span>
+                            <span>15</span>
+                            <span>10</span>
+                            <span>5</span>
+                            <span>0</span>
+                        </div>
+                
+                        <!-- SVG Chart Area -->
+                        <svg class="absolute inset-0 w-full h-full ml-6" viewBox="0 0 100 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Grid lines -->
+                            <line x1="0" y1="10" x2="100" y2="10" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="20" x2="100" y2="20" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="30" x2="100" y2="30" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="40" x2="100" y2="40" stroke="#e5e7eb" stroke-width="0.5"></line>
+                            <line x1="0" y1="50" x2="100" y2="50" stroke="#e5e7eb" stroke-width="0.5"></line>
+                
+                            <!-- Orders Line -->
+                            <path d="M 0 50 Q 10 40, 20 30 Q 30 20, 40 15 Q 50 10, 60 15 Q 70 20, 80 30 Q 90 40, 100 60 
+                                     L 100 100 L 0 100 " 
+                                  fill="rgba(59, 130, 246, 0.2)" 
+                                  stroke="rgba(59, 130, 246, 1)" 
+                                  stroke-width="1" />
+                
+                            <!-- Canceled Orders Line -->
+                            <path d="M 0 50 Q 10 40, 20 32 Q 30 15, 40 10 Q 50 5, 60 10 Q 70 15, 80 18 Q 90 24, 100 50 
+                                     L 100 100 L 0 100 Z" 
+                                  fill="rgba(34, 197, 94, 0.2)" 
+                                  stroke="rgba(34, 197, 94, 1)" 
+                                  stroke-width="1" />
+                        </svg>
+                    </div>
+                
+                    <!-- X-axis labels (Months on the bottom) -->
+                    <div class="flex justify-between mt-4  md:ml-5 text-xs md:text-sm text-gray-500">
+                        <span>May</span>
+                        <span>June</span>
+                        <span>July</span>
+                        <span>August</span>
+                        <span>September</span>
+                        <span>October</span>
+                        <span>November</span>
+                        <span>December</span>
+                    </div>
+                
+                    <!-- Legend -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">Total Sales</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-green-500 rounded-full"></span>
+                            <span class="text-xs md:text-sm text-gray-600">Canceled Orders</span>
+                        </div>
+                    </div>
                 </div>
+                
                 <div>
                     <div id="chartOne" class="-ml-5"></div>
                 </div>
@@ -109,7 +183,7 @@
                             </h4>
                         </div>
                         <div>
-                            <div class="relative z-20 inline-block mb-8 rounded-md">
+                            {{-- <div class="relative z-20 inline-block mb-8 rounded-md">
                                 <select name="#" id="#"
                                     class="relative z-20 inline-flex appearance-none rounded-md border-slate-400 bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none">
                                     <option value="">This Week</option>
@@ -120,7 +194,7 @@
                                         
                                         
                                 </span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
