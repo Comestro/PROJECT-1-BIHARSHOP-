@@ -1,0 +1,32 @@
+<div class="chart-container">
+                    <h2 class="text-xl font-bold">Course Engagement</h2>
+                
+                    <svg width="100%" height="300px" viewBox="0 0 600 300" preserveAspectRatio="none">
+                        {{-- Logins path --}}
+                        <path d="
+                            M 0 {{ 300 - $data['logins'][0] * 10 }}
+                            @for ($i = 1; $i < count($data['logins']); $i++)
+                                L {{ $i * 100 }} {{ 300 - $data['logins'][$i] * 10 }}
+                            @endfor
+                            " fill="rgba(59, 130, 246, 0.2)"
+                            stroke="rgba(59, 130, 246, 1)"
+                            stroke-width="2" />
+                
+                        {{-- Contents Viewed path --}}
+                        <path d="
+                            M 0 {{ 300 - $data['contents_viewed'][0] * 10 }}
+                            @for ($i = 1; $i < count($data['contents_viewed']); $i++)
+                                L {{ $i * 100 }} {{ 300 - $data['contents_viewed'][$i] * 10 }}
+                            @endfor
+                            " fill="rgba(16, 185, 129, 0.2)"
+                            stroke="rgba(16, 185, 129, 1)"
+                            stroke-width="2" />
+                    </svg>
+                
+                    <div class="flex justify-between mt-4">
+                        {{-- Display months --}}
+                        @foreach ($data['months'] as $month)
+                            <span class="text-xs">{{ $month }}</span>
+                        @endforeach
+                    </div>
+                </div>
