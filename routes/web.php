@@ -38,6 +38,7 @@ Route::get('/checkout', [PublicController::class, "checkout"])->name("checkout")
 Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("confirm.order");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
+Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('public.show');
