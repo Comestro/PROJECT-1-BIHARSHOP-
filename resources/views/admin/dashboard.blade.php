@@ -240,62 +240,25 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="chart-container">
-                    <h2 class="text-xl font-bold">Total Orders</h2>
+
+             
+                <livewire:admin.dashboard.graph-chart/>
                 
-                    <!-- Chart background (bottom fill) -->
-                    <svg width="100%" height="300px" class="mt-9" viewBox="0 0 600 300" preserveAspectRatio="none">
-                        <!-- Background rectangle -->
-                        <rect width="600" height="300" fill="rgba(240, 240, 240, 0.5)" />
+                <style>
+                    /* Hide tooltips by default */
+                    .tooltip {
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                    }
                 
-                        <!-- Grid lines -->
-                        @for ($i = 0; $i <= 5; $i++)
-                            <line x1="0" y1="{{ $i * 60 }}" x2="600" y2="{{ $i * 60 }}" stroke="rgba(200, 200, 200, 0.8)" stroke-width="1" />
-                        @endfor
+                    /* Show tooltip on hover */
+                    .hover-group:hover .tooltip {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                </style>
                 
-                        {{-- Total Orders path (blue) --}}
-                        <path d="
-                            M 0 {{ 300 - $data['total_orders'][0] * 10 }} 
-                            @for ($i = 1; $i < count($data['total_orders']); $i++)
-                                L {{ $i * 100 }} {{ 300 - $data['total_orders'][$i] * 10 }}
-                            @endfor
-                            L {{ ($i - 1) * 100 }} 300 L 0 300 Z
-                            " fill="rgba(59, 130, 246, 0.2)"
-                            stroke="rgba(59, 130, 246, 1)"
-                            stroke-width="2" />
-                
-                        {{-- New Users path (green) --}}
-                        <path d="
-                            M 0 {{ 300 - $data['new_users'][0] * 10 }} 
-                            @for ($i = 1; $i < count($data['new_users']); $i++)
-                                L {{ $i * 100 }} {{ 300 - $data['new_users'][$i] * 10 }}
-                            @endfor
-                            L {{ ($i - 1) * 100 }} 300 L 0 300 Z
-                            " fill="rgba(16, 185, 129, 0.2)"
-                            stroke="rgba(16, 185, 129, 1)"
-                            stroke-width="2" />
-                        
-                       
-                    </svg>
-                
-                    <div class="flex justify-between mt-4">
-                        {{-- Display months --}}
-                        @foreach ($data['months'] as $month)
-                            <span class="text-xs">{{ $month }}</span>
-                        @endforeach
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                        <div class="flex items-center">
-                            <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
-                            <span class="text-xs md:text-sm text-gray-600">Total Orders</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="inline-block w-3 h-3 mr-1 bg-green-500 rounded-full"></span>
-                            <span class="text-xs md:text-sm text-gray-600">New Users</span>
-                        </div>
-                    </div>
-                </div>
                 
                 
                 <div>
