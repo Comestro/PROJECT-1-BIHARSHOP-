@@ -19,7 +19,7 @@
                 with ease. We focus on innovation, customer satisfaction, and reliable service to make online shopping
                 accessible for everyone.
             </p>
-            <img src="/team-mates/person1.jpg"  alt="About Us" class="mt-8 mx-auto rounded-lg shadow-lg max-w-3xl">
+            <img src="/team-mates/person1.jpg"  alt="About Us" class="mt-8 mx-auto rounded-lg shadow-lg md:max-w-3xl">
         </div>
     </section>
 
