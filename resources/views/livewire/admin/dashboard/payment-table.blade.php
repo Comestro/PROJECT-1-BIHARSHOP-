@@ -167,43 +167,41 @@
             </div> --}}
 
 
-            <div class="p-4">
-                <h2 class="text-lg font-bold mb-4">Payment Table</h2>
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            {{-- <th class="px-4 py-2">ID</th> --}}
-                            <th class="px-6 py-2 ">Order ID</th>
-                            <th class="px-4 py-2 text-sm">User ID</th>
-                            <th class="px-4 py-2">Amount</th>
-                            <th class="px-4 py-2">Currency</th>
-                            <th class="px-4 py-2">Payment Status</th>
-                            <th class="px-4 py-2">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($payments as $payment)
-                            <tr>
-                                {{-- <td class="border px-4 py-2">{{ $payment->id }}</td> --}}
-                                <td class="border px-4 py-2">{{ $payment->order->order_number }}</td>
-                                <td class="border px-4 py-2">{{ $payment->user->name }}</td>
-                                <td class="border px-4 py-2">{{ $payment->amount }}</td>
-                                <td class="border px-4 py-2">{{ $payment->currency }}</td>
-                                <td class="border px-4 py-2">{{ $payment->payment_status }}</td>
-                                <td class="border px-4 py-2">
-                                    @if ($payment->status==1)
-                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Paid</span>
-                                    @elseif($payment->status==0)
-                                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full">UnPaid</span>
+            <div class="p-2">
+    <h2 class="text-lg font-bold mb-4">Payment Table</h2>
+    <div class="overflow-x-auto">
+        <table class="table-auto w-full">
+            <thead>
+                <tr class="bg-gray-100 text-sm truncate">
+                    <th class="px-6 py-2 ">Order ID</th>
+                    <th class="px-4 py-2 text-sm">User ID</th>
+                    <th class="px-4 py-2">Amount</th>
+                    <th class="px-4 py-2">Currency</th>
+                    <th class="px-4 py-2">Payment Status</th>
+                    <th class="px-4 py-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($payments as $payment)
+                    <tr class="text-sm sm:text-base">
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">{{ $payment->order->order_number }}</td>
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">{{ $payment->user->name }}</td>
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">{{ $payment->amount }}</td>
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">{{ $payment->currency }}</td>
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">{{ $payment->payment_status }}</td>
+                        <td class="border px-2 py-1 sm:px-4 sm:py-2">
+                            @if ($payment->status==1)
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs sm:text-sm">Paid</span>
+                            @elseif($payment->status==0)
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs sm:text-sm">UnPaid</span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 
-                                    @endif
-                                </td>
-                                
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            
 
 </div>
