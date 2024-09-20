@@ -18,9 +18,12 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
 use Illuminate\Support\Facades\Artisan;
+use Livewire\Livewire;
 
 
-
+Livewire::setUpdateRoute(function ($handle) {
+    return Route::post('/bihar-shop/public/livewire/update', $handle);
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -101,3 +104,6 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'Storage link has been created!';
 });
+
+
+
