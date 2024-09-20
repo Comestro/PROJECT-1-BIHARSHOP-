@@ -1,4 +1,4 @@
-<div class="w-full lg:w-64 xl:w-1/4 mb-4 ">
+<div class="w-full lg:w-64 xl:w-1/4 mb-4 sm:mt-0  mt-10">
     <aside class="bg-white shadow-md rounded-lg p-6 lg:p-8 flex flex-col "> <!-- Adjusted padding here -->
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->
@@ -68,10 +68,6 @@
                 Gift-Card
             </a>    
 
-            <a wire:navigate href='{{ route('user.payment') }}'
-                class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
-                Payment
-            </a>
 
             <a wire:navigate href='{{ route('user.my-coupon') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300 flex gap-2 items-center">

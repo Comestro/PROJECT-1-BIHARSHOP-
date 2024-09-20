@@ -44,7 +44,7 @@
             </div>
 
             <!-- Address Section -->
-            <div class="mb-6">
+            <div class="mb-4 mt-4">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-lg font-semibold">Address</span>
                     <button
@@ -76,7 +76,7 @@
             <div>
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-lg font-semibold">Deactivate Account</span>
-                    <button class="text-blue-500 hover:underline">Deactivate</button>
+                    <button class="text-red-500 font-semibold hover:underline">Deactivate</button>
                 </div>
             </div>
         </div>
