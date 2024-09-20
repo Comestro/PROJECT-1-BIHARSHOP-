@@ -3,7 +3,7 @@
   <div class="bg-white shadow-md rounded-md">
 
     @if($orderItems->isEmpty())
-        <p>No recent orders available.</p>
+        <p class="p-4">No recent orders available.</p>
     @else
         <table class="min-w-full bg-white border border-gray-200">
             <thead>
