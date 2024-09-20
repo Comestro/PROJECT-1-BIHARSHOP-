@@ -17,10 +17,10 @@ class Checkout extends Component
     public $address_line;
     public $city;
     public $state;
-    public $postal_code;  
-    public $user_id;  
-    public $alt_phone;  
-    public $address_type;  
+    public $postal_code;
+    public $user_id;
+    public $alt_phone;
+    public $address_type;
     public $status = false;
     public $order;
     public $address;
@@ -32,8 +32,9 @@ class Checkout extends Component
 
     public function toggleAddress()
     {
+
         if($this->showAddress){
-            
+
             $this->showAddress=false;
         }
         else{
@@ -43,7 +44,7 @@ class Checkout extends Component
     }
 
 
-    
+
 
     public function store()
     {
@@ -57,7 +58,7 @@ class Checkout extends Component
             'status' => 'nullable|boolean',
         ]);
 
-    
+
         $data = Address::create([
             'landmark' => $this->landmark,
             'name' => $this->name,
@@ -70,7 +71,7 @@ class Checkout extends Component
             'postal_code' => $this->postal_code,
             'alt_phone' => $this->alt_phone,
             'address_type' => $this->address_type,
-            'user_id' => Auth::id(),          
+            'user_id' => Auth::id(),
             'status' => 0
         ]);
 
@@ -80,7 +81,7 @@ class Checkout extends Component
     } else {
         return redirect()->back()->with('error', 'Unable to add address.');
     }
-       
+
     }
 
     public function mount(Order $order){
@@ -96,11 +97,12 @@ class Checkout extends Component
     public function changeAddressToggle(){
         $this->selectedAddress = null;
     }
-  
+
     public function updateAddressId()
     {
+        $this->showAddress=false;
         $this->selectedAddress = Address::find($this->addressId);
-        
+
         $order = Order::where('user_id',Auth::id())->where('isOrdered',0)->first();
         $order->address_id = $this->selectedAddress->id;
         $order->save();

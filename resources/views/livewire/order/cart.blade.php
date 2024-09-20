@@ -2,18 +2,18 @@
     <div class="flex-1 overflow-y-auto">
         <!-- Cart Items -->
         @foreach ($orders->orderItems as $item)
-            <div class="flex items-center justify-between p-5 lg:py-10 rounded-lg bg-slate-50 mb-4">
+            <div class="flex items-center justify-between p-5 lg:py-10 rounded-lg bg-white border border-slate-200 mb-4">
                 <div class="flex items-center">
                     <img src="{{ $item->products->image ? asset('storage/image/product/' . $item->products->image) : asset('path/to/default-image.jpg') }}"
                         alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
                     <div class="ml-4">
                         <p class="font-semibold">{{ $item->products->name }}</p>
-                        
+
                             @php echo $item->sizeVariant ? "<p class='text-sm text-gray-500'>Size: " . $item->sizeVariant->variant_value . "</p>" : '' @endphp
-                        
-                        
+
+
                             @php echo $item->colorVariant ? ' <p class="text-sm text-gray-500"> Color: ' . $item->colorVariant->variant_value . "</p>" : "" @endphp
-                        
+
                         <div class="flex items-baseline gap-2">
                             <!-- Original Price (multiplied by quantity) -->
                             <p class="text-slate-500 text-md line-through">

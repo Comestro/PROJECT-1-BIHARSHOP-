@@ -41,7 +41,7 @@
             <div class="w-full  md:w-2/4 mb-8 md:mb-0">
                 <h5 class="text-lg  font-semibold mb-4">Company</h5>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-gray-400">About Us</a></li>
+                    <li><a href="{{ route('public.about') }}" class="hover:text-gray-400">About Us</a></li>
                     <li><a href="#" class="hover:text-gray-400">Careers</a></li>
                     <li><a href="#" class="hover:text-gray-400">Blog</a></li>
                     <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
