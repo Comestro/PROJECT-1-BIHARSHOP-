@@ -132,7 +132,6 @@
                 </div>
             @endif
             @if ($showAddress == true && !$selectedAddress)
-                <!-- Form to add a new address -->
                 <div class="p-5 bg-white">
                     <form wire:submit.prevent="store" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -206,11 +205,6 @@
                                     <span>Work</span>
                                 </label>
                             </div>
-
-
-
-
-
                         </div>
 
                         <div class="flex space-x-4">

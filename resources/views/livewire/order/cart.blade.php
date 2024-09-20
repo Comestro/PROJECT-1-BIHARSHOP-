@@ -11,7 +11,6 @@
 
                             @php echo $item->sizeVariant ? "<p class='text-sm text-gray-500'>Size: " . $item->sizeVariant->variant_value . "</p>" : '' @endphp
 
-
                             @php echo $item->colorVariant ? ' <p class="text-sm text-gray-500"> Color: ' . $item->colorVariant->variant_value . "</p>" : "" @endphp
 
                         <div class="flex items-baseline gap-2">
