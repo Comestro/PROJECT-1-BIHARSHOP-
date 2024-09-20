@@ -1,11 +1,11 @@
 @extends('public.layout')
 @section('title')
-    View Page
+{{ $product->name }}
 @endsection
 
 @section('content')
     <!-- Product Section -->
-    <section class="max-w-6xl mx-auto p-5">
+    <section class="max-w-6xl mx-auto p-5 mt-10">
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
@@ -16,7 +16,8 @@
                 <!-- Product Title and Price -->
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-2">
-                        <h1 class="text-3xl font-thin mb-4">{{ $product->name }}</h1>
+                        <h1 class="text-3xl font-thin mb-1">{{ $product->name }}</h1>
+                        <span class="text-sm">{{ $product->category->name }}</span>
                         @if ($product->reviews->count() > 0)
                             <a href="#content-1">
                                 <livewire:product.average-child-star :product="$product" />

@@ -133,4 +133,8 @@ class PublicController extends Controller
         Auth::logout();
         return redirect()->route('login')->with('success', 'Logout successfully');
     }
+
+    public function AboutUs(){
+        return view('public.about-us');
+    }
 }

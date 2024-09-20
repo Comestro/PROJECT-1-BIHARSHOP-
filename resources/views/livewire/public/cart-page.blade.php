@@ -1,11 +1,11 @@
-<div class="min-h-screen flex flex-col mt-5">
-    <div class="w-full py-8 px-[5%] ">
-        <h2 class="text-4xl font-semobold mb-6">Your Cart</h2>
+<div class="min-h-screen flex bg-slate-50 flex-col mt-5">
+    <div class="w-full py-0 px-[5%] ">
+        <h2 class="text-4xl font-semobold mt-6 mb-3">Your Cart</h2>
         <hr class="mb-3">
     </div>
     <div class="flex flex-col lg:flex-row gap-8 ">
 
-        <div class=" w-full mx-auto  py-8 px-[5%]">
+        <div class=" w-full mx-auto  pb-8 px-[5%]">
             <div class="flex flex-col lg:flex-row gap-8 ">
                 <!-- Cart Items Section -->
                 @guest
@@ -36,7 +36,7 @@
                 <!-- Order Summary Section -->
                 @if ($order && $order->orderItems->count())
                 <div class="w-full lg:w-1/3">
-                    <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4 shadow-md ">
+                    <div class="bg-white p-6 rounded-lg space-y-3 md:space-y-4  border border-slate-200">
 
                         <livewire:order.price-breakout :orders="$order" />
 

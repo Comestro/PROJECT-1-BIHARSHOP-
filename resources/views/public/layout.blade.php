@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') {{env('APP_NAME')}}</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"  rel="stylesheet" />
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('livewire/livewire.js') }}"></script>
     @livewireStyles
+
 
 
     <style>
@@ -58,5 +59,6 @@
 
 
 @livewireScripts
+@livewireScriptConfig()
 </body>
 </html>
