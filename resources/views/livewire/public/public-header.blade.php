@@ -1,4 +1,4 @@
-<nav class="bg-white fixed  top-0  w-full border-gray-200 dark:bg-gray-900 dark:border-gray-700 z-50">
+<nav class="bg-white fixed  top-0  w-full border-gray-200  z-50">
     <div class="w-full  flex-col md:flex-row gap-3 flex flex-wrap md:items-center justify-between mx-auto  px-[5%] py-4">
         <a wire:navigate href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-black whitespace-nowrap dark:text-white">BiharShop</span>
@@ -9,7 +9,7 @@
         <div class="flex flex-1">
             <form class="md:max-w-xl mx-auto  w-full ">
                 <label for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
                 <livewire:public.product.search-product />
             </form>
         </div>
