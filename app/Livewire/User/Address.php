@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\User;
+
 use App\Models\Address as AddAddress;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -15,26 +16,22 @@ class Address extends Component
     public $address_line;
     public $city;
     public $state;
-    public $postal_code;  
-    public $user_id;  
-    public $alt_phone;  
-    public $address_type;  
+    public $postal_code;
+    public $user_id;
+    public $alt_phone;
+    public $address_type;
     public $status = false;
 
-    public $showAddress=false;
+    public $showAddress = false;
+    public $addresses; // Add this to store the address list
 
+    // Toggle Address form
     public function toggleAddress()
     {
-        if($this->showAddress){
-            
-            $this->showAddress=false;
-        }
-        else{
-            $this->showAddress=true;
-        }
-
+        $this->showAddress = !$this->showAddress;
     }
 
+    // Store a new address
     public function store()
     {
         $validatedData = $this->validate([
@@ -47,7 +44,6 @@ class Address extends Component
             'status' => 'nullable|boolean',
         ]);
 
-    
         $data = AddAddress::create([
             'landmark' => $this->landmark,
             'name' => $this->name,
@@ -60,21 +56,35 @@ class Address extends Component
             'postal_code' => $this->postal_code,
             'alt_phone' => $this->alt_phone,
             'address_type' => $this->address_type,
-            'user_id' => Auth::id(),          
+            'user_id' => Auth::id(),
             'status' => 0
         ]);
 
         // Redirect with a success or error message
         if ($data) {
-            return redirect('/user')->with('success', 'Address added successfully.');
+            return redirect('/user/address')->with('success', 'Address added successfully.');
         } else {
             return redirect()->back()->with('error', 'Unable to add address.');
         }
     }
 
+    // Delete an address
+    public function deleteAddress($addressId)
+    {
+        $address = AddAddress::findOrFail($addressId); // Use AddAddress here
+        $address->delete();
+
+        // Fetch the updated address list
+        $this->addresses = AddAddress::where('user_id', Auth::id())->get();
+
+        // Optionally display a success message
+        session()->flash('message', 'Address deleted successfully.');
+    }
+
+    // Fetch addresses and render view
     public function render()
     {
-        $addresses = AddAddress::where('user_id',Auth::id())->get();
-        return view('livewire.user.address',['addresses' =>$addresses]);
+        $this->addresses = AddAddress::where('user_id', Auth::id())->get();
+        return view('livewire.user.address', ['addresses' => $this->addresses]);
     }
 }
