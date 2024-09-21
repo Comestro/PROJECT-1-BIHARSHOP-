@@ -32,8 +32,8 @@
     </div>
     <!-- Category Table -->
     <div class="relative overflow-x-auto mt-5">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                 <tr>
                     <th scope="col" class="px-6 py-3">Category Id</th>
                     <th scope="col" class="px-6 py-3">Category Image</th>
@@ -45,14 +45,14 @@
             </thead>
             <tbody>
                 @foreach($categories as $category)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                         {{$category->id}}
                     </th>
                     <td class="px-6 py-4">
                         <img src="{{ $category->image ? asset('storage/image/category/' . $category->image) : asset('path/to/default-image.jpg') }}"
                             alt="Category Image"
-                            class="w-12 h-12 object-cover border border-gray-300 dark:border-strokedark">
+                            class="w-12 h-12 object-cover border border-gray-300 ">
                     </td>
                     <td class="px-6 py-4">{{$category->name}}</td>
                     <td class="px-6 py-4">{{$category->cat_slug}}</td>
