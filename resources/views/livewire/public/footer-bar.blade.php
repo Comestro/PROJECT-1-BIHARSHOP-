@@ -36,7 +36,7 @@
       </svg>
 
 
-      <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Cart(3)</span>
+      <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Cart({{$cartCount}})</span>
     </a>
     @auth
     <a wire:navigate href="{{route('user.index')}}"  type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group">
