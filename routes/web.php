@@ -40,6 +40,7 @@ Route::get('/cart', [PublicController::class, "cart"])->name("cart");
 Route::get('/checkout', [PublicController::class, "checkout"])->name("checkout");
 Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("confirm.order");
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
+Route::get('/gallery',[PublicController::class,"gallery"])->name("public.gallery");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
 Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");

@@ -46,6 +46,7 @@
                     <li><a href="#" class="hover:text-gray-400">Blog</a></li>
                     <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
                     <li><a href="{{ route('public.team') }}" class="hover:text-gray-400">Our Team</a></li>
+                    <li><a href="{{ route('public.gallery') }}" class="hover:text-gray-400">Gallery</a></li>
                 </ul>
             </div>
 
