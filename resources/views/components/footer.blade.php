@@ -68,6 +68,7 @@
                     <li><a href="{{ route('public.privacy') }}" class="hover:text-gray-400">Privacy Policy</a></li>
                     <li><a href="{{ route('public.refund') }}" class="hover:text-gray-400">Refund Policy</a></li>
                     <li><a href="#" class="hover:text-gray-400">Terms of Service</a></li>
+                    <li><a href="{{ route('public.terms') }}" class="hover:text-gray-400">Terms & Conditions</a></li>
                     <li><a href="#" class="hover:text-gray-400">Cookie Policy</a></li>
                 </ul>
             </div>
