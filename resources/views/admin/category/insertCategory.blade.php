@@ -4,8 +4,8 @@
 
         <div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
-            <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h2 class="text-title-md2 font-bold text-black ">
+            <div class="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                <h2 class="text-title-md2 font-bold text-black text-sm lg:text-xl ">
                     Categories Insertion Form /  <a wire:navigate href="{{ route('category.index') }}" class="font-medium hover:text-blue-500 text-xl" href="javascript:void(0)">Categories</a>
 
                 </h2>

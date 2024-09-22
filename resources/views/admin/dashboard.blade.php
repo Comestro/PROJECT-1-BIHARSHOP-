@@ -271,7 +271,7 @@
                     class="col-span-12 rounded-md shadow-md border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
                     <div class="mb-4 justify-between gap-4 sm:flex px-4 py-3">
                         <div>
-                            <h4 class="text-xl font-bold mb-4 text-zinc-800  dark:text-white ">
+                            <h4 class="text-xl font-bold mb-4 text-zinc-800  ">
                                 Premium User
                             </h4>
                         </div>
