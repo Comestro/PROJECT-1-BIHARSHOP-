@@ -2,7 +2,7 @@
     <div>
         @foreach($users as $user)
         <a href=""
-            class="flex items-center gap-5 px-7.5 py-3 hover:bg-gray-3 dark:hover:bg-meta-4">
+            class="flex items-center gap-5 px-7.5 py-3 hover:bg-gray-3">
             <div class="relative h-14 w-14 rounded-full">
                 @if($user->image) 
                     <img src="{{ $user->image }}" alt="" class="h-full w-full object-cover rounded-full">
@@ -16,11 +16,11 @@
     
             <div class="flex flex-1 items-center justify-between">
                 <div>
-                    <h5 class="font-medium text-black dark:text-white">
+                    <h5 class="font-medium text-black ">
                         {{ $user->name }}
                     </h5>
                     <p>
-                        <span class="text-sm font-medium text-black dark:text-white"></span>
+                        <span class="text-sm font-medium text-black "></span>
                         <span class="text-xs">{{$user->email}}</span>
                     </p>
                 </div>
