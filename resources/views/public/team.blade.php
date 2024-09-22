@@ -21,7 +21,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- First Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person3.jpg') }}" alt="Team Member 3">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person3.jpg') }}" alt="Team Member 3">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">SANJAY KUMAR</h3>
                         <p class="mt-2 text-sm text-gray-500">( C.E.O. & FOUNDER)</p>
@@ -33,7 +33,7 @@
 
                 <!-- Second Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person5.jpg') }}" alt="Team Member 5">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person5.jpg') }}" alt="Team Member 5">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">Mithun Lakshman</h3>
                         <p class="mt-2 text-sm text-gray-500">Marketing Head & C.O.O.</p>
@@ -45,7 +45,7 @@
 
                 <!-- Third Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person6.jpg') }}" alt="Team Member 1">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person6.jpg') }}" alt="Team Member 1">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">Samit Kumar Das</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
@@ -57,7 +57,7 @@
 
                 <!-- Fourth Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person1.jpg') }}" alt="Team Member 4">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person1.jpg') }}" alt="Team Member 4">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">Rupesh Kumar Ranjan</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
@@ -69,7 +69,7 @@
 
                 <!-- Fifth Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person4.jpg') }}" alt="Team Member 2">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person4.jpg') }}" alt="Team Member 2">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">Subir Kumar Dey</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
@@ -81,7 +81,7 @@
 
                 <!-- Sixth Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full h-72 object-cover object-top" src="{{ asset('team-mates/person2.jpg') }}" alt="Team Member 6">
+                    <img class="w-full md:md:h-72 object-cover object-top" src="{{ asset('team-mates/person2.jpg') }}" alt="Team Member 6">
                     <div class="p-6 text-center">
                         <h3 class="text-lg font-bold text-gray-900">Ranjeet Kumar Ray</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
