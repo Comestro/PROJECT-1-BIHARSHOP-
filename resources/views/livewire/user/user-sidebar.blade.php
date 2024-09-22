@@ -24,8 +24,13 @@
                 <h2 class="text-2xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
                 <p class="text-gray-500 text-sm">Hello!</p>
             </div>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full bg-red-500 text-white px-4 rounded mt-2 py-1 flex text-center font-bold text-lg md:hidden">Logout</button>
+            </form>
+    
         </div>
-
+     
         <!-- Navigation Buttons (Mobile Friendly) -->
         <nav class="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 sm:flex lg:flex-col">
             <!-- Personal Information -->
