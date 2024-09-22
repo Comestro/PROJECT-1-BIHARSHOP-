@@ -57,6 +57,10 @@ class PublicController extends Controller
     {
         return view('public.team');
     }
+    public function gallery()
+    {
+        return view('public.gallery');
+    }
 
     public function privacyPolicy()
     {
@@ -76,17 +80,17 @@ class PublicController extends Controller
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ]);
-        
+
             if (Auth::attempt($credentials)) {
                 $req->session()->regenerate();
-        
+
                 if (Auth::user()->isAdmin == 1) {
                     return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
                 } else {
                     return redirect()->intended("/");
                 }
             }
-        
+
             return back()->withErrors(['email' => 'Invalid credentials']);
         }
         return view('public.login');
@@ -124,7 +128,7 @@ class PublicController extends Controller
             return redirect()->route('login')->with('error', 'Unable to login. Please try again.');
         }
 
-       
+
     }
 
     // logout function here
