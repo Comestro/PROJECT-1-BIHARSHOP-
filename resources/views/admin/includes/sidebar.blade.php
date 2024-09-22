@@ -310,6 +310,9 @@
                 </li>
 
                 {{-- order (Dropdown) --}}
+                @php
+                $totalOrders = App\Models\Order::count(); 
+            @endphp
                 <li>
                     <a  wire:navigate href="{{ route('orders.index') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
@@ -321,12 +324,17 @@
                         </svg>
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Order</span>
+                       
                         <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">3</span>
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">{{ $totalOrders }}</span>
                     </a>
                 </li>
+              
 
                 {{-- Address (Dropdown) --}}
+                @php
+                $totalAddress = App\Models\Address::count(); 
+            @endphp
                 <li>
                     <a href="{{ route('address.index') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
@@ -340,7 +348,7 @@
 
                         <span class="flex-1 ms-3 whitespace-nowrap">Address</span>
                         <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">3</span>
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">{{ $totalAddress }}</span>
                     </a>
                 </li>
 

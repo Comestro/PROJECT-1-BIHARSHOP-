@@ -16,6 +16,7 @@ class OrderController extends Controller
         $orders = Order::paginate(4);  
         return view('admin.manageOrder', compact('order'));
     }
+    
 
     public function create()
     {
