@@ -21,7 +21,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen" x-data={sidebar:true}>
+    <div class="flex h-screen" x-data="{ isVisible: false }">
         <!-- ===== Sidebar Start ===== -->
         @include('admin.includes.sidebar')
         <!-- ===== Header Start ===== -->
