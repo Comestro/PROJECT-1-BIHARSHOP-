@@ -385,7 +385,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li x-data="{openGallery:false}">
                     <button type="button" @click="openGallery = !openGallery"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
