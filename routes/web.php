@@ -7,6 +7,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
@@ -79,6 +80,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('product', ProductController::class);
         Route::resource('address', AddressController::class);
         Route::resource('coupon', CouponController::class);
+        Route::resource('gallery', GalleryController::class);
         Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
         Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');

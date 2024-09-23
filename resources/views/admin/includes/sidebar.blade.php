@@ -169,6 +169,39 @@
             </li>
 
             <li>
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 "
+                    aria-controls="dropdown-coupon" data-collapse-toggle="dropdown-coupon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="size-6 text-gray-500 hover:text-gray-950">
+                        <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
+                        <path fill-rule="evenodd"
+                            d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
+                            clip-rule="evenodd" />
+                    </svg>
+
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gallery</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
+                <ul id="dropdown-coupon" class="hidden py-2 space-y-2">
+                    <li>
+                        <a wire:navigate href="{{ route('gallery.create') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Insert
+                            gallery</a>
+                    </li>
+                    <li>
+                        <a wire:navigate href="{{ route('gallery.index') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Manage
+                            gallery</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
                 <a href="#"
                     class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 "
@@ -342,6 +375,36 @@
                         <span
                             class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">3</span>
                     </a>
+                </li>
+
+                <li>
+                    <button type="button" @click="openGallery = !openGallery"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             class="size-6 text-gray-500 hover:text-gray-950" viewBox="0 0 24 24">
+                            <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
+                            <path fill-rule="evenodd"
+                                  d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gallery</span>
+                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul x-show="openGallery" class="py-2 space-y-2">
+                        <li>
+                            <a wire:navigate href="{{ route('gallery.create') }}"
+                               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">
+                                Insert gallery
+                            </a>
+                        </li>
+                        <li>
+                            <a wire:navigate href="{{ route('gallery.index') }}"
+                               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">
+                                Manage gallery
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 {{-- Sign In --}}
