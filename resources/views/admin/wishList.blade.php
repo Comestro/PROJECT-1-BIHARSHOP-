@@ -14,7 +14,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-col lg:flex-row justify-between items-center">
         <h2 class="text-2xl font-bold mb-4">{{ $user->name }}'s Wishlist</h2>
      <a href="{{route('users.index')}}" class="px-3 py-2 text-white rounded-lg  bg-blue-400">Manage User</a>
     </div>
@@ -29,7 +29,7 @@
                     <p class="text-gray-600">No products in the wishlist.</p>
                 @else
                     <div class="overflow-x-auto">
-                        <table class="table-auto w-full bg-white shadow-md rounded-lg">
+                        <table class="table-auto min-w-full bg-white shadow-md rounded-lg">
                             <thead>
                                 <tr class="bg-gray-200 text-left">
                                     <th class="px-4 py-2">Number</th>

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Public;
 
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class PublicHeader extends Component
@@ -19,6 +21,9 @@ class PublicHeader extends Component
     }
     public function render()
     {
-        return view('livewire.public.public-header');
+       
+        $data['countWishlist']=Wishlist::where('user_id',Auth::id())->count();
+       
+        return view('livewire.public.public-header',$data);
     }
 }

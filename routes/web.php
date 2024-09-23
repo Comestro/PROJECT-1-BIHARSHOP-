@@ -43,6 +43,7 @@ Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("c
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/gallery',[PublicController::class,"gallery"])->name("public.gallery");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
+Route::get('/terms-conditions',[PublicController::class,"termsConditions"])->name("public.terms");
 Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');

@@ -39,7 +39,7 @@
             <!-- ====== Chat Card Start -->
             <div
                 class="col-span-12 md:col-span-4 rounded-md shadow-md border border-stroke bg-white py-6  px-4 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
-                <h4 class="mb-6 px-7.5 text-xl font-bold text-black dark:text-white">
+                <h4 class="mb-6 px-7.5 text-xl font-bold text-black ">
                  Recent User
                 </h4>
 
@@ -271,7 +271,7 @@
                     class="col-span-12 rounded-md shadow-md border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
                     <div class="mb-4 justify-between gap-4 sm:flex px-4 py-3">
                         <div>
-                            <h4 class="text-xl font-bold mb-4 text-zinc-800  dark:text-white ">
+                            <h4 class="text-xl font-bold mb-4 text-zinc-800  ">
                                 Premium User
                             </h4>
                         </div>
