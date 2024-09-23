@@ -4,12 +4,15 @@ namespace App\Livewire\Admin;
 use Livewire\WithFileUploads;
 use App\Models\Gallery;
 use Livewire\Component;
+use Storage;
+
 
 class ManageGallery extends Component
 {
     use WithFileUploads;
     public $searchTerm = '';
 
+    public $galleryId;
     public $caption;
     public $image;
     public $existingImage;
@@ -77,27 +80,36 @@ class ManageGallery extends Component
     //     session()->flash('message', 'Category updated successfully.');
     // }
 
-    // public function deleteCategory()
-    // {
-    //     if ($this->confirmingDelete) {
-    //         $category = Gallery::find($this->categoryId);
+    public function deleteGallery()
+    {
+        if ($this->confirmingDelete) {
+            $gallery = Gallery::find($this->galleryId);
 
-    //         // Delete image
-    //         if ($category->image) {
-    //             Storage::delete('public/image/gallery/' . $category->image);
-    //         }
+            // Delete image
+            if ($gallery->image) {
+                Storage::delete('public/image/gallery/' . $gallery->image);
+            }
 
-    //         // Delete category
-    //         $category->delete();
+            // Delete category
+            $gallery->delete();
 
-    //         $this->confirmingDelete = false;
-    //         session()->flash('message', 'Category deleted successfully.');
-    //     }
-    // }
+            $this->confirmingDelete = false;
+            session()->flash('message', 'Data deleted successfully.');
+        }
+    }
 
-    // public function confirmDelete($categoryId)
-    // {
-    //     $this->categoryId = $categoryId;
-    //     $this->confirmingDelete = true;
-    // }
+    public function confirmDelete($galleryId)
+    {
+        $this->galleryId = $galleryId;
+        $this->confirmingDelete = true;
+    }
+
+    public function toggleStatus($galleryId)
+    {
+        $gallery = Gallery::find($galleryId);
+        $gallery->status = !$gallery->status;
+        $gallery->save();
+
+        session()->flash('success', 'Status updated successfully.');
+    }
 }

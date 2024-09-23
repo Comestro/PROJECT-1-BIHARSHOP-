@@ -3,7 +3,7 @@
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <label for="caption" class="block text-gray-700">Code</label>
+                <label for="caption" class="block text-gray-700">Caption</label>
                 <input type="text" id="caption" wire:model="caption" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter Caption" />
                 @error('caption')
                 <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
@@ -11,7 +11,7 @@
             </div>
             <div class="mb-4">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
-                    Category Image
+                    Gallery Image
                 </label>
                 <div class="flex flex-1 md:flex-row flex-col gap-5">
                     <div class="flex-1">
