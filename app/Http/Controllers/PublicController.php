@@ -141,4 +141,8 @@ class PublicController extends Controller
     public function AboutUs(){
         return view('public.about-us');
     }
+
+    public function termsConditions(){
+        return view('public.terms-conditions');
+    }
 }

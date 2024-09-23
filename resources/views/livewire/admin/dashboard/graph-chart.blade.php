@@ -61,8 +61,8 @@
         @endforeach
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-        <div class="flex items-center">
+    <div class="flex flex-row gap-3 sm:gap-0 sm:flex-row items-center justify-center mt-4 space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+        <div class="flex items-center sm:mb-1 mt-1 ">
             <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
             <span class="text-xs md:text-sm text-gray-600">Total Orders</span>
         </div>

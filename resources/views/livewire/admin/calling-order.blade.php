@@ -1,7 +1,7 @@
 <div class="container mx-auto py-8">
     <!-- Header Section -->
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Order List</h2>
+    <div class="flex flex-col lg:flex-row justify-between items-center mb-5">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2 lg:mb-0">Order List</h2>
         
         <!-- Search Bar -->
         <div class="relative">

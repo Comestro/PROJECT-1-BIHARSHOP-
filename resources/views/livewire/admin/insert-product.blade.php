@@ -135,7 +135,7 @@
                 </div> --}}
 
                 <button
-                    class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
+                    class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-white hover:bg-opacity-90">
                     Create
                 </button>
             </div>
