@@ -1,5 +1,5 @@
-<div class="bg-gray-100 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center animate-pop-up">
+<div class="h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center animate-pop-up mb-20">
         <div class="flex justify-center">
             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
                 <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" stroke-width="2"

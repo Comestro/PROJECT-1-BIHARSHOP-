@@ -7,7 +7,7 @@
             <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
                 <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
                     <div class="mx-auto max-w-5xl">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Payment</h2>
+                        <h2 class="text-xl font-semibold text-gray-900  sm:text-2xl">Payment</h2>
 
                         <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
                             <form action="#"
@@ -15,27 +15,27 @@
                                 <div class="mb-6 grid grid-cols-2 gap-4">
                                     <div class="col-span-2 sm:col-span-1">
                                         <label for="full_name"
-                                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                            class="mb-2 block text-sm font-medium text-gray-900 ">
                                             Full name (as displayed on card)* </label>
                                         <input type="text" id="full_name"
-                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700  dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                             placeholder="Bonnie Green" required />
                                     </div>
 
                                     <div class="col-span-2 sm:col-span-1">
                                         <label for="card-number-input"
-                                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Card
+                                            class="mb-2 block text-sm font-medium text-gray-900 "> Card
                                             number*
                                         </label>
                                         <input type="text" id="card-number-input"
-                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500  dark:border-gray-600 dark:bg-gray-700  dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                             placeholder="xxxx-xxxx-xxxx-xxxx" pattern="^4[0-9]{12}(?:[0-9]{3})?$"
                                             required />
                                     </div>
 
                                     <div>
                                         <label for="card-expiration-input"
-                                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Card
+                                            class="mb-2 block text-sm font-medium text-gray-900 ">Card
                                             expiration*
                                         </label>
                                         <div class="relative">
@@ -51,13 +51,13 @@
                                             </div>
                                             <input datepicker datepicker-format="mm/yy" id="card-expiration-input"
                                                 type="text"
-                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700  dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                                 placeholder="12/23" required />
                                         </div>
                                     </div>
                                     <div>
                                         <label for="cvv-input"
-                                            class="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">
+                                            class="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900 ">
                                             CVV*
                                             <button data-tooltip-target="cvv-desc" data-tooltip-trigger="hover"
                                                 class="text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white">
@@ -75,7 +75,7 @@
                                             </div>
                                         </label>
                                         <input type="number" id="cvv-input" aria-describedby="helper-text-explanation"
-                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700  dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                                             placeholder="•••" required />
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                             <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Original
                                                 price
                                             </dt>
-                                            <dd class="text-base font-medium text-gray-900 dark:text-white">$6,592.00</dd>
+                                            <dd class="text-base font-medium text-gray-900 ">$6,592.00</dd>
                                         </dl>
 
                                         <dl class="flex items-center justify-between gap-4">
@@ -104,19 +104,19 @@
                                         <dl class="flex items-center justify-between gap-4">
                                             <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup
                                             </dt>
-                                            <dd class="text-base font-medium text-gray-900 dark:text-white">$99</dd>
+                                            <dd class="text-base font-medium text-gray-900 ">$99</dd>
                                         </dl>
 
                                         <dl class="flex items-center justify-between gap-4">
                                             <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                            <dd class="text-base font-medium text-gray-900 dark:text-white">$799</dd>
+                                            <dd class="text-base font-medium text-gray-900 ">$799</dd>
                                         </dl>
                                     </div>
 
                                     <dl
                                         class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                                        <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                        <dd class="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd>
+                                        <dt class="text-base font-bold text-gray-900 ">Total</dt>
+                                        <dd class="text-base font-bold text-gray-900 ">$7,191.00</dd>
                                     </dl>
                                 </div>
 

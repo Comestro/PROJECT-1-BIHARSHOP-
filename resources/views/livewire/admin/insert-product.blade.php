@@ -1,6 +1,6 @@
 <div>
 
-    <div class="rounded-sm  border bg-white shadow-default dark:borderdark dark:bg-boxdark">
+    <div class="rounded-sm  border bg-white shadow-default">
 
         <form action="#" wire:submit.prevent="store" method="post">
             <div class="p-6">
@@ -9,7 +9,7 @@
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
-                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label class="mb-3 block text-sm font-medium text-black ">
                             Product name
                         </label>
                         <input type="text" wire:model.live="name" placeholder="Enter your Product name"
@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="w-full xl:w-1/2">
-                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black ">
                             Product Slug
                         </label>
                         <input type="text" id="slug" wire:model="slug"
@@ -28,7 +28,7 @@
 
                     <div class="w-full xl:w-1/2">
 
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Category
                     </label>
                     <select class="w-full rounded border border-slate-200  bg-transparent px-5 font-normal py-3" wire:model="category_id" >
@@ -40,7 +40,7 @@
 
                     </div>
                     <div class="w-full xl:w-1/2">
-                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black ">
                             Brand Name
                         </label>
                         <input type="text" id="brand" wire:model="brand"
@@ -54,7 +54,7 @@
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
-                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label class="mb-3 block text-sm font-medium text-black ">
                             Price
                         </label>
                         <input type="number" wire:model.live="price" placeholder="Enter Price"
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="w-full xl:w-1/2">
-                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black ">
                             Discount Price
                         </label>
                         <input type="number" id="slug" wire:model="discount_price" placeholder="Enter Discount Price"
@@ -72,7 +72,7 @@
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
-                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label class="mb-3 block text-sm font-medium text-black ">
                             Quantity
                         </label>
                         <input type="number" wire:model.live="quantity" placeholder="Enter Quantity"
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="w-full xl:w-1/2">
-                        <label for="sku" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="sku" class="mb-3 block text-sm font-medium text-black ">
                             sku
                         </label>
                         <input type="text" id="sku" wire:model="sku" placeholder="Enter SKU"
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Product Image
                     </label>
                     <div class="flex flex-1 md:flex-row flex-col gap-5">
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Product Description
                     </label>
                     <textarea rows="6" placeholder="Type your message"

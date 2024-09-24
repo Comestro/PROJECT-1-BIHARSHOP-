@@ -2,7 +2,7 @@
 <div>
             {{-- <div
                 class="rounded-md shadow-md border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-                <h4 class="mb-6 text-xl font-bold text-black dark:text-white">
+                <h4 class="mb-6 text-xl font-bold text-black ">
                     Top Channels
                 </h4>
 
@@ -31,13 +31,13 @@
                             <div class="flex-shrink-0">
                                 <img src="{{ asset('assets/assets_admin/images/brand/brand-01.svg')}}" alt="Brand" />
                             </div>
-                            <p class="hidden font-medium text-black dark:text-white sm:block">
+                            <p class="hidden font-medium text-black  sm:block">
                                 Google
                             </p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
-                            <p class="font-medium text-black dark:text-white">3.5K</p>
+                            <p class="font-medium text-black ">3.5K</p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p class="font-medium text-black dark:text-white">590</p>
+                            <p class="font-medium text-black ">590</p>
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
@@ -59,13 +59,13 @@
                             <div class="flex-shrink-0">
                                 <img src="{{ asset('assets/assets_admin/images/brand/brand-02.svg')}}" alt="Brand" />
                             </div>
-                            <p class="hidden font-medium text-black dark:text-white sm:block">
+                            <p class="hidden font-medium text-black  sm:block">
                                 Twitter
                             </p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
-                            <p class="font-medium text-black dark:text-white">2.2K</p>
+                            <p class="font-medium text-black ">2.2K</p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p class="font-medium text-black dark:text-white">467</p>
+                            <p class="font-medium text-black ">467</p>
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
@@ -87,13 +87,13 @@
                             <div class="flex-shrink-0">
                                 <img src="{{ asset('assets/assets_admin/images/brand/brand-03.svg')}}" alt="Brand" />
                             </div>
-                            <p class="hidden font-medium text-black dark:text-white sm:block">
+                            <p class="hidden font-medium text-black  sm:block">
                                 Github
                             </p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
-                            <p class="font-medium text-black dark:text-white">2.1K</p>
+                            <p class="font-medium text-black ">2.1K</p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p class="font-medium text-black dark:text-white">420</p>
+                            <p class="font-medium text-black ">420</p>
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
@@ -115,13 +115,13 @@
                             <div class="flex-shrink-0">
                                 <img src="{{ asset('assets/assets_admin/images/brand/brand-04.svg')}}" alt="Brand" />
                             </div>
-                            <p class="hidden font-medium text-black dark:text-white sm:block">
+                            <p class="hidden font-medium text-black  sm:block">
                                 Vimeo
                             </p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
-                            <p class="font-medium text-black dark:text-white">1.5K</p>
+                            <p class="font-medium text-black ">1.5K</p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -129,7 +129,7 @@
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p class="font-medium text-black dark:text-white">389</p>
+                            <p class="font-medium text-black ">389</p>
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
@@ -142,13 +142,13 @@
                             <div class="flex-shrink-0">
                                 <img src="{{ asset('assets/assets_admin/images/brand/brand-05.svg')}}" alt="Brand" />
                             </div>
-                            <p class="hidden font-medium text-black dark:text-white sm:block">
+                            <p class="hidden font-medium text-black  sm:block">
                                 Facebook
                             </p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
-                            <p class="font-medium text-black dark:text-white">1.2K</p>
+                            <p class="font-medium text-black ">1.2K</p>
                         </div>
 
                         <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p class="font-medium text-black dark:text-white">230</p>
+                            <p class="font-medium text-black ">230</p>
                         </div>
 
                         <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
