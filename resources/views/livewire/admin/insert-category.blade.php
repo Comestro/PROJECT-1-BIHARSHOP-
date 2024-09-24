@@ -5,7 +5,7 @@
         <form action="#" wire:submit.prevent="store" method="post">
             <div class="p-6">
                 <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Parent Category
                     </label>
                     <select name="parent_category_id" wire:model="parent_category_id" class="w-full rounded border border-slate-200  bg-transparent px-5 py-3 font-normal">
@@ -22,7 +22,7 @@
                 <div class="mb-4 flex flex-col gap-6 xl:flex-row">
 
                     <div class="w-full xl:w-1/2">
-                        <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label class="mb-3 block text-sm font-medium text-black ">
                             Category name
                         </label>
                         <input type="text" wire:model.live="title" placeholder="Enter your Category name"
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="w-full xl:w-1/2">
-                        <label for="slug" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="slug" class="mb-3 block text-sm font-medium text-black ">
                             Category Slug
                         </label>
                         <input type="text" id="slug" wire:model="slug"
@@ -47,7 +47,7 @@
 
 
                 <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Category Image
                     </label>
                     <div class="flex flex-1 md:flex-row flex-col gap-5">
@@ -107,7 +107,7 @@
 
 
                 <div class="mb-4">
-                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label class="mb-3 block text-sm font-medium text-black ">
                         Category Description
                     </label>
                     <textarea rows="6" placeholder="Type your message"
@@ -117,7 +117,7 @@
                     @enderror</div>
 
                 <button
-                    class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
+                    class="flex text-white w-full justify-center rounded bg-green-500 p-3 font-medium text-gray hover:bg-opacity-90">
                     Create
                 </button>
                  <!-- Success Message -->

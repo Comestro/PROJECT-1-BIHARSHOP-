@@ -9,7 +9,7 @@
                 </div>
                 <div class="flex-1 flex flex-col">
                     <h3 class="text-md font-semibold flex gap-1 items-center">LOGIN
-                        <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true"
+                        <svg class="w-6 h-6 text-green-500 " aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -38,7 +38,7 @@
                         <h3 class="text-md font-semibold flex items-center gap-2">DELIVERY ADDRESS
 
                             @if ($selectedAddress)
-                                <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true"
+                                <svg class="w-6 h-6 text-green-500 " aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -223,7 +223,7 @@
                                 <span class=" rounded-full w-6 h-6 flex justify-center text-slate-100 bg-zinc-800 items-center">3</span>
                                 <div class="flex flex-col flex-1">
                                     <h3 class="text-md font-semibold flex items-center gap-2">ORDER SUMMARY
-                                        <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true"
+                                        <svg class="w-6 h-6 text-green-500 " aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
