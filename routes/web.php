@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
 use Illuminate\Support\Facades\Artisan;
@@ -106,6 +107,8 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'Storage link has been created!';
 });
+
+Route::get('confirm-order',[MailController::class,'index']);
 
 
 
