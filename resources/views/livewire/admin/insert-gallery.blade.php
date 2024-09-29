@@ -1,7 +1,7 @@
-<div>
-    <form wire:submit.prevent="store" method="POST" class="bg-white p-6 rounded-lg shadow-md relative">
+<div class="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-md gap-6">
+    <form wire:submit.prevent="store" method="POST" class="flex-1 bg-white relative">
         @csrf
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 gap-4">
             <div>
                 <label for="caption" class="block text-gray-700">Caption</label>
                 <input type="text" id="caption" wire:model="caption" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter Caption" />
@@ -10,7 +10,7 @@
                 @enderror
             </div>
             <div class="mb-4">
-                <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label class="mb-3 block text-sm font-medium text-black ">
                     Gallery Image
                 </label>
                 <div class="flex flex-1 md:flex-row flex-col gap-5">
@@ -63,15 +63,10 @@
                     
                 </div>
             </div>
-            <div class="col-span-2">
+            <div>
                 <label for="status" class="block text-gray-700">Status</label>
                 <div class="flex items-center">
-                    <input
-                        type="checkbox"
-                        id="status"
-                        wire:model="status"
-                        class="mr-2"
-                        checked />
+                    <input type="checkbox" id="status" wire:model="status" class="mr-2" checked />
                     @error('status')
                     <p class="text-xs text-red-500 font-semibold">{{$message}}</p>
                     @enderror
@@ -79,17 +74,10 @@
                 </div>
             </div>
         </div>
-
         <div class="mt-6 flex justify-end">
-            <button
-                type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Save Gallery
-            </button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save Gallery</button>
         </div>
-
-        <!-- Loading Spinner, only visible when submitting -->
-        <div wire:loading wire:target="store" class="absolute inset-0 top-[50%] left-[50%] bg-white bg-opacity-75 flex flex-col items-center justify-center z-10">
+        <div wire:loading wire:target="store" class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
             <span class="mt-4 text-blue-500 font-semibold">Processing...</span>
         </div>

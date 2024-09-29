@@ -1,12 +1,11 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-5 gap-8">
     @foreach ($datas as $key => $item)
-    <div class="relative group">
-        <img class="w-full h-64 object-cover rounded-lg shadow-lg transform transition duration-300 hover:scale-105" src="{{ asset('storage/image/gallery/' . $item->image) }}" alt="Gallery Image 1">
-        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-            <h3 class="text-white text-lg font-bold">Image {{$key+1}} Description</h3>
+    <div class="relative group overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl transform hover:scale-105" onclick="this.classList.toggle('hovered')">
+        <img class="w-full h-60 sm:h-80 object-cover transition-transform duration-500 transform group-hover:scale-110 hovered:scale-110" src="{{ asset('storage/image/gallery/' . $item->image) }}" alt="Gallery Image {{ $key + 1 }}">
+
+        <div class="absolute flex items-center justify-center inset-0 bg-gradient-to-t from-black via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4 rounded-lg hovered:opacity-100 sm:hovered:opacity-100">
+            <h3 class="text-white text-lg sm:text-2xl font-bold">{{$item->caption}}</h3>
         </div>
-        <h2>{{$item->caption}}</h2>
     </div>
     @endforeach
 </div>

@@ -416,7 +416,7 @@
                         </div>
                         <div class="px-3 mt-2 pb-5">
                             <div>
-                                <h5 class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2">
+                                <h5 class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900  line-clamp-2">
                                     {{ $product->name }}
                                 </h5>
                             </div>
@@ -446,7 +446,7 @@
                             @endif
 
                             <div class="flex justify-between">
-                                <span class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{{ $product->formattedDiscountPrice }}</span>
+                                <span class="text-xl md:text-2xl font-semibold text-gray-900 ">{{ $product->formattedDiscountPrice }}</span>
                             </div>
                         </div>
                     </a>

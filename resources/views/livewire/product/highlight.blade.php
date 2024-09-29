@@ -18,7 +18,7 @@
             <div class="mb-4 flex items-center">
                 <input type="text" wire:model="highlights.{{ $index }}" class="border py-1 p-2 w-full rounded-l-md focus:outline-none border-slate-200 focus:ring-2 focus:ring-blue-500" placeholder="Enter highlight"/>
                 <button type="button" wire:click="removeHighlight({{ $index }})" class="bg-red-500 text-white px-2 py-1 rounded-r-md hover:bg-red-600 transition duration-300">
-                    <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                       </svg>
 

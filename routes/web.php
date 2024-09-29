@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
 use Illuminate\Support\Facades\Artisan;
@@ -120,6 +121,7 @@ Route::get('/clear-cache', function () {
 });
 
 
+Route::get('confirm-order',[MailController::class,'index']);
 
 
 

@@ -1,6 +1,6 @@
 <div class="mx-auto w-full p-4 md:p-6 2xl:p-10 ">
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h2 class="text-title-md2 font-bold text-black dark:text-white">Manage Products</h2>
+        <h2 class="text-title-md2 font-bold text-black ">Manage Products</h2>
         <nav>
             <ol class="flex items-center gap-2">
                 <li><a class="font-medium" href="javascript:void(0)">Products /</a></li>
@@ -38,20 +38,20 @@
         @foreach($products as $product)
         <div class="grid grid-cols-4 border-t p-4 border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
             <div class="col-span-1 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $product->id }}</p>
+                <p class="text-sm font-normal text-black ">{{ $product->id }}</p>
             </div>
             <div class="col-span-1 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white"><img src='{{ $product->image }}' width="50px"/></p>
+                <p class="text-sm font-normal text-black "><img src='{{ $product->image }}' width="50px"/></p>
             </div>
               <div class="col-span-1 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $product->name }}</p>
+                <p class="text-sm font-normal text-black ">{{ $product->name }}</p>
             </div>
             <div class="col-span-2 flex items-center">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $product->slug }}</p>
+                <p class="text-sm font-normal text-black ">{{ $product->slug }}</p>
             </div>
           
             <div class="col-span-3 hidden items-center sm:flex">
-                <p class="text-sm font-normal text-black dark:text-white">{{ $product->description }}</p>
+                <p class="text-sm font-normal text-black ">{{ $product->description }}</p>
             </div>
         </div>
         @endforeach
