@@ -7,6 +7,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\AddressController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductVariationController;
 use App\Livewire\Admin\EditCoupon;
 use Illuminate\Support\Facades\Artisan;
@@ -42,6 +44,7 @@ Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("c
 Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
 Route::get('/gallery',[PublicController::class,"gallery"])->name("public.gallery");
 Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
+Route::get('/terms-conditions',[PublicController::class,"termsConditions"])->name("public.terms");
 Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about");
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
@@ -79,6 +82,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('product', ProductController::class);
         Route::resource('address', AddressController::class);
         Route::resource('coupon', CouponController::class);
+        Route::resource('gallery', GalleryController::class);
         Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
         Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
@@ -105,6 +109,8 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'Storage link has been created!';
 });
+
+Route::get('confirm-order',[MailController::class,'index']);
 
 
 

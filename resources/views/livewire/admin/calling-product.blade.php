@@ -44,34 +44,34 @@
         <table class="min-w-full divide-y mt-5 divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach($products as $product)
                     <tr>
-                        <td class="px-6 py-4 whitespace-wrap text-sm  text-gray-900">{{ $product->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->formattedPrice }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->quantity }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td class="px-4 py-4 whitespace-wrap text-sm  text-gray-900 tracking-tight overflow-hidden line-clamp-2">{{ $product->name }}</td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->formattedPrice }}</td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->quantity }}</td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->sku }}</td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $product->category ? $product->category->name : 'No Category' }}
                         </td>
-                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                             @if($product->image)
                                 <img src="{{ asset('storage/image/product/' . $product->image) }}" alt="Product Image" class="w-16 h-16 object-cover">
                             @else
                                 No Image
                             @endif
                         </td>
-                        <td class="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
+                        <td class="px-4 py-4  whitespace-nowrap text-sm text-gray-500">
                             <button
                             wire:click="toggleStatus({{ $product->id }})"
                             class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
@@ -86,7 +86,7 @@
 
 
                         </td>
-                        <td class="px-6 py-4  items-center whitespace-nowrap text-sm font-medium flex space-x-2">
+                        <td class="px-4 py-4  items-center whitespace-nowrap text-sm font-medium flex space-x-2 mt-3">
                             <a wire:navigate href="{{ route('product.edit', $product->slug) }}" class="flex justify-between border-none ring-1 ring-gray-300 font-bold focus:ring-gray-400 focus:ring-2 bg-white text-blue-500 px-4 py-2 rounded-3xl shadow hover:bg-blue-500 hover:text-white ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z" />

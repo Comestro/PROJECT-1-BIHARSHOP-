@@ -64,14 +64,13 @@ class AddToCart extends Component
           $existingOrderItem = OrderItem::where('order_id', $order->id)
                 ->where('color_variant_id', $validatedData['color_variant_id'])
                 ->where('size_variant_id', $validatedData['size_variant_id'])
+                ->where('product_id',$this->product->id)
                 ->first();
 
             if ($existingOrderItem) {
-                // If the item exists, increase the quantity
                 $existingOrderItem->quantity += $validatedData['quantity'];
                 $existingOrderItem->save();
             } else {
-                // Otherwise, create a new OrderItem
                 OrderItem::create([
                     'color_variant_id' => $validatedData['color_variant_id'],
                     'size_variant_id' => $validatedData['size_variant_id'],

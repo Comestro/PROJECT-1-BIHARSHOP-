@@ -138,7 +138,7 @@
                 
                                             <!-- Price -->
                                             <div class="text-lg font-bold text-gray-900">
-                                                ₹{{ $orderItem->products->price }}</div>
+                                                ₹{{ $orderItem->order->total_amount }}</div>
                                         </div>
                                     </div>
                                 </a>

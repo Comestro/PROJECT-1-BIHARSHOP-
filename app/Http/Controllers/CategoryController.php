@@ -60,8 +60,7 @@ class CategoryController extends Controller
             ], 500);
         }
     
-        // Handle the file upload if a new image is provided
-        $image = $category->image; // Default to current image
+        $image = $category->image;
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
             if ($category->image && file_exists(public_path("image/category/{$category->image}"))) {

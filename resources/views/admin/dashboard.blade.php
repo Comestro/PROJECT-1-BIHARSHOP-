@@ -39,7 +39,7 @@
             <!-- ====== Chat Card Start -->
             <div
                 class="col-span-12 md:col-span-4 rounded-md shadow-md border border-stroke bg-white py-6  px-4 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
-                <h4 class="mb-6 px-7.5 text-xl font-bold text-black dark:text-white">
+                <h4 class="mb-6 px-7.5 text-xl font-bold text-black ">
                  Recent User
                 </h4>
 
@@ -80,15 +80,15 @@
                     <div class="flex w-full max-w-45 justify-end">
                         <div class="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
                             <button
-                                class="rounded bg-white px-3 py-1 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
+                                class="rounded bg-white px-3 py-1 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark  dark:hover:bg-boxdark">
                                 Day
                             </button>
                             <button
-                                class="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+                                class="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card  dark:hover:bg-boxdark">
                                 Week
                             </button>
                             <button
-                                class="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+                                class="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card  dark:hover:bg-boxdark">
                                 Month
                             </button>
                         </div>
@@ -271,7 +271,7 @@
                     class="col-span-12 rounded-md shadow-md border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
                     <div class="mb-4 justify-between gap-4 sm:flex px-4 py-3">
                         <div>
-                            <h4 class="text-xl font-bold mb-4 text-zinc-800  dark:text-white ">
+                            <h4 class="text-xl font-bold mb-4 text-zinc-800  ">
                                 Premium User
                             </h4>
                         </div>
@@ -303,7 +303,7 @@
             class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5 py-5">
             <div class="mb-3 justify-between gap-4 sm:flex">
                 <div>
-                    <h4 class="text-xl font-bold text-black dark:text-white">
+                    <h4 class="text-xl font-bold text-black ">
                         Visitors Analytics
                     </h4>
                 </div>
@@ -326,7 +326,7 @@
                     <div class="flex w-full items-center">
                         <span class="mr-2 block h-3 w-full max-w-3 bg-blue-600 rounded-full bg-primary"></span>
                         <p
-                            class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+                            class="flex w-full justify-between text-sm font-medium text-black ">
                             <span> Desktop </span>
                             <span> 65% </span>
                         </p>
@@ -336,7 +336,7 @@
                     <div class="flex w-full items-center">
                         <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
                         <p
-                            class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+                            class="flex w-full justify-between text-sm font-medium text-black ">
                             <span> Tablet </span>
                             <span> 34% </span>
                         </p>
@@ -346,7 +346,7 @@
                     <div class="flex w-full items-center">
                         <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
                         <p
-                            class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+                            class="flex w-full justify-between text-sm font-medium text-black ">
                             <span> Mobile </span>
                             <span> 45% </span>
                         </p>
@@ -356,7 +356,7 @@
                     <div class="flex w-full items-center">
                         <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
                         <p
-                            class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+                            class="flex w-full justify-between text-sm font-medium text-black ">
                             <span> Unknown </span>
                             <span> 12% </span>
                         </p>
@@ -369,7 +369,7 @@
          <!-- ====== Map One Start -->
          {{-- <div
          class="col-span-12 rounded-md shadow-md border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-7">
-         <h4 class="mb-2 text-xl font-bold px-4 py-2 text-black dark:text-white">
+         <h4 class="mb-2 text-xl font-bold px-4 py-2 text-black ">
              Region labels
          </h4>
          <div id="mapOne" class="mapOne map-btn h-90"></div> --}}
