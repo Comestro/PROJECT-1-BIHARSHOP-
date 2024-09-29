@@ -109,5 +109,17 @@ Route::get('/storage-link', function () {
     return 'Storage link has been created!';
 });
 
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('optimize:clear');
+    return "Cache is cleared by @Roni";
+});
+
+
+
 
 
