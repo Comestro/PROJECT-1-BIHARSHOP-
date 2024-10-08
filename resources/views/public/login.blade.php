@@ -20,7 +20,7 @@
                             <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
                             <p class="text-sm mt-4 text-gray-800">Don't have an account <a href="{{ route('signup') }}"
                                 class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
-                                here</a></p>
+                                here? </a><a href="{{ route('membership.signup') }}"   class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"> Join as Member?</a></p>
                             </div>
 
                             <div>

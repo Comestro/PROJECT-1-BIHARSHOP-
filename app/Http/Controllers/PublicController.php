@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Membership;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -103,7 +105,6 @@ class PublicController extends Controller
         return view('public.signup');
     }
 
-
     // Handle the registration logic
     public function register(Request $request)
     {
@@ -128,6 +129,50 @@ class PublicController extends Controller
             return redirect()->route('login')->with('error', 'Unable to login. Please try again.');
         }
 
+    }
+
+    public function membershipSignup()
+    {
+        return view('membership.signup');
+    }
+
+    // Handle the registration logic
+    public function membershipRegister(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+
+        $uniqueToken = Str::random(40);
+
+        $membership = Membership::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'token' => $uniqueToken,
+        ]);
+        if($membership){
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'isAdmin'=> 0,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            if($user){
+                Auth::login($user);
+                    $membership->update([
+                        'user_id' => $user->id
+                    ]);
+                return redirect('user/membership')->with('success', 'Registration successful!');
+            }
+        }       
+        else{
+            return redirect()->route('login')->with('error', 'Unable to login. Please try again.');
+        }
 
     }
 

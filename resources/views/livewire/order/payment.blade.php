@@ -18,7 +18,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <form action="{{ route('save.online.payment') }}" method="post" id="payment-form">
+    <form action="{{ route('save.membership.payment') }}" method="post" id="payment-form">
         @csrf
         <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id" value="">
         <input type="hidden" value="{{ $orders->id }}" name="order_id" id="order_id">
@@ -51,6 +51,7 @@
                 rzp1.open();
             }
         </script>
+    </form>
         <div class="flex gap-2 mt-6 justify-center">
             <div class="mt-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10" viewBox="0 0 24 24"

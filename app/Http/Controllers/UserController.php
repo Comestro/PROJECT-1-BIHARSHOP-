@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Membership;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,6 +18,9 @@ class UserController extends Controller
       return view('admin.user');
    }
 
+   public function manageMembership(){
+      return view('admin.membership.manageMembership');
+   }
    
    public function viewUserWishlist($userId){
       $data['user']=User::find($userId);
@@ -40,6 +45,34 @@ class UserController extends Controller
    public function MyOrder(){
       return view('users.my-order'); 
      }
+
+   public function membership(){
+      $user = Auth::user();
+      $member = Membership::where('user_id',$user->id)->first();
+      if($member){
+         if($member->isPaid){
+            return view('users.member-view',['member' => $member]); 
+         }
+         else{
+            return view('users.member-edit'); 
+         }
+      }
+      else{
+         return view('users.membership'); 
+      }    
+   }
+   
+   public function membershipPayment($token){
+
+      $user = Auth::user();
+      $member = Membership::where('user_id',$user->id)->where('isPaid',1)->first();
+      if($member){
+         return view('users.member-view',['member' => $member]); 
+      }else{
+         $data = Membership::where('token',$token)->first();
+         return view('users.membership-payment', ['data' => $data]);
+      } 
+   }
 
      public function MyCoupon(){
       return view('users.my-coupons');
