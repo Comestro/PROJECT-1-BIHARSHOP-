@@ -78,6 +78,7 @@ Route::prefix("user")->group(function () {
         Route::get('/membership-payment/{token}', 'membershipPayment')->name('user.membership.payment');
         Route::get('/gift-card', 'GiftCard')->name('user.gift-card');
         Route::get('/payment', 'payment')->name('user.payment');
+        Route::get('/membership', 'membership')->name('user.membership');
     });
 });
 

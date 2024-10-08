@@ -89,4 +89,7 @@ class UserController extends Controller
      public function payment(){
       return view("users.payment");
      }
+     public function membership(){
+      return view("users.membership");
+     }
 }
