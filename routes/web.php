@@ -14,6 +14,7 @@ use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\MailController;
@@ -93,6 +94,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('gallery', GalleryController::class);
         Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
         Route::get('/membership', [UserController::class,"manageMembership"])->name('membership.index');
+        Route::get('/membership/{id}', [MembershipController::class,"viewMembership"])->name('membership.view');
         Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
         Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');

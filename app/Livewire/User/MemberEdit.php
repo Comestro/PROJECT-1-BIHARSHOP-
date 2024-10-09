@@ -40,6 +40,32 @@ class MemberEdit extends Component
     public $existingImage;
     public $image;
 
+
+
+//     protected $rules = [
+//         'name' => 'required|string|max:255',
+//         'date_of_birth' => 'required|string|max:255',
+//         'nationality' => 'required|string|max:255',
+//         'marital_status' => 'required|string|max:255',
+//         'religion' => 'required|string|max:255',
+//         'father_name' => 'required|string|max:255',
+//         'mother_name' => 'required|string|max:255',
+//         'home_address' => 'required|string|max:255',
+//         'mobile' => 'required|string|max:255',
+//         'city' => 'required|string|max:255',
+//         'state' => 'required|string|max:255',
+//         'pincode' => 'required|numeric',
+//         'email' => 'required|email',
+//         'nominee_name' => 'required|string|max:255',
+//         'nominee_relation' => 'required|string|max:255',
+//         'bank_name' => 'required|string|max:255',
+//         'account_no' => 'required|string|max:255',
+//         'ifsc' => 'required|string|max:255',
+//         'pancard' => 'required|string|max:255',
+//         'aadhar_card' => 'required|string|max:255',
+// ];
+
+
     public function update()
     {
         // $validatedData = $this->validate([
@@ -152,7 +178,7 @@ class MemberEdit extends Component
         $this->ifsc = $membership->ifsc;
         $this->pancard = $membership->pancard;
         $this->aadhar_card = $membership->aadhar_card;
-        $this->image = $membership->image;
+        $this->existingImage = $membership->image;
         
         return view('livewire.user.member-edit',['member' => $membership]);
     }

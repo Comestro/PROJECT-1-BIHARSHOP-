@@ -17,34 +17,6 @@ class ManageMembership extends Component
     use WithFileUploads;
     public $searchTerm = '';
     public $membershipId;
-    public $referal_id;
-    public $name;
-    public $date_of_birth;
-    public $nationality;
-    public $marital_status;
-    public $religion;
-    public $father_name;
-    public $mother_name;
-    public $home_address;
-    public $city;
-    public $state;
-    public $pincode;
-    public $mobile;
-    public $whatsapp;
-    public $email;
-    public $nominee_name;
-    public $nominee_relation;
-    public $bank_name;
-    public $branch_name;
-    public $account_no;
-    public $ifsc;
-    public $user_id;
-    public $image;
-    public $pancard;
-    public $aadhar_card;
-    public $photo;
-    public $existingImage;
-    public $isModalOpen = false;
     public $confirmingDelete = false;
 
 
@@ -83,46 +55,8 @@ class ManageMembership extends Component
         ]);
     }
 
-    public function openModal($membershipId)
-    {
-        $this->membershipId = $membershipId;
-        $membership = Membership::find($this->membershipId);
-        $this->name = $membership->name;
-        $this->existingImage = $membership->image;
-        $this->isModalOpen = true;
-    }
 
-    public function closeModal()
-    {
-        $this->isModalOpen = false;
-        $this->reset(['image', 'existingImage']);
-    }
-
-    public function updateMembership()
-    {
-        $this->validate();
-
-        $membership = Membership::find($this->membershipId);
-        $membership->name = $this->name;
-        $membership->cat_slug = $this->slug;
-        $membership->cat_description = $this->description;
-
-        if ($this->image) {
-            // Delete old image
-            if ($this->existingImage) {
-                Storage::delete('public/image/membership/' . $this->existingImage);
-            }
-
-            // Store new image
-            $imagePath = $this->image->store('image/membership', 'public');
-            $membership->image = basename($imagePath);
-        }
-        $membership->save();
-
-        $this->closeModal();
-
-        session()->flash('message', 'Membership updated successfully.');
-    }
+   
 
     public function deleteMembership()
     {

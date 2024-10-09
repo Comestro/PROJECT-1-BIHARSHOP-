@@ -1,14 +1,14 @@
 <div class="w-full mx-auto p-8 bg-white shadow-xl rounded-lg">
     <!-- Membership Form Heading -->
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Membership Form</h2>
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">View Membership Form</h2>
 
     <!-- Form Fields -->
-    <form wire:submit.prevent="update" method="PUT" enctype="multipart/form-data">
+    <form wire:submit.prevent="updateMembership" method="PUT" enctype="multipart/form-data">
         @csrf
         <!-- Applicant Details Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Membership Referal Details</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="referal_id" name="referal_id" placeholder="Referal ID"
+            <input type="text" wire:model="referal_id" name="referal_id" placeholder="Referal ID"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             @error('referal_id')
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
@@ -34,7 +34,7 @@
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
 
-            <select wire:model.live="nationality" name="nationality"
+            <select wire:model="nationality" name="nationality"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Nationality</option>
@@ -46,7 +46,7 @@
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
 
-            <select wire:model.live="marital_status" name="marital_status"
+            <select wire:model="marital_status" name="marital_status"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Marital Status</option>
@@ -58,7 +58,7 @@
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
 
-            <select wire:model.live="religion" name="religion"
+            <select wire:model="religion" name="religion"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Religion</option>
@@ -77,25 +77,25 @@
         <!-- Family Information Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Family Information</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="father_name" name="father_name" placeholder="Father's Name"
+            <input type="text" wire:model="father_name" name="father_name" placeholder="Father's Name"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="text" wire:model.live="mother_name" name="mother_name" placeholder="Mother's Name"
+            <input type="text" wire:model="mother_name" name="mother_name" placeholder="Mother's Name"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
         </div>
 
-        <textarea placeholder="Home Address" wire:.live="home_address" name="home_address" rows="2"
+        <textarea placeholder="Home Address" wire:model="home_address" name="home_address" rows="2"
             class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"
             required></textarea>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="city" name="city" placeholder="City"
+            <input type="text" wire:model="city" name="city" placeholder="City"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <select wire:model.live="state" name="state"
+            <select wire:model="state" name="state"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Select State</option>
@@ -129,7 +129,7 @@
                 <option value="West Bengal">West Bengal</option>
             </select>
 
-            <input type="number" wire:model.live="pincode" name="pincode" placeholder="Pincode"
+            <input type="number" wire:model="pincode" name="pincode" placeholder="Pincode"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
@@ -137,7 +137,7 @@
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="tel" wire:model.live="whatsapp" name="whatsapp" placeholder="WhatsApp (Optional)"
+            <input type="tel" wire:model="whatsapp" name="whatsapp" placeholder="WhatsApp (Optional)"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
 
             <input type="email" name="email" placeholder="Email"
@@ -148,11 +148,11 @@
         <!-- Nominee Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Nominee Information</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="nominee_name" name="nominee_name" placeholder="Nominee Name"
+            <input type="text" wire:model="nominee_name" name="nominee_name" placeholder="Nominee Name"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="text" wire:model.live="nominee_relation" name="nominee_relation"
+            <input type="text" wire:model="nominee_relation" name="nominee_relation"
                 placeholder="Relation with Nominee"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
@@ -161,25 +161,25 @@
         <!-- Bank Details Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Bank Details</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="bank_name" name="bank_name" placeholder="Bank Name"
+            <input type="text" wire:model="bank_name" name="bank_name" placeholder="Bank Name"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
-            <input type="text" wire:model.live="branch_name" name="branch_name" placeholder="Branch Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="number" wire:model.live="account_no" name="account_no" placeholder="Account Number"
+            <input type="text" wire:model="branch_name" name="branch_name" placeholder="Branch Name"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="text" wire:model.live="ifsc" name="ifsc" placeholder="IFSC Code"
+            <input type="number" wire:model="account_no" name="account_no" placeholder="Account Number"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="text" wire:model.live="pancard" name="pancard" placeholder="PAN Card Number"
+            <input type="text" wire:model="ifsc" name="ifsc" placeholder="IFSC Code"
+                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
+
+            <input type="text" wire:model="pancard" name="pancard" placeholder="PAN Card Number"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-            <input type="text" wire:model.live="aadhar_card" name="aadhar_card" placeholder="Aadhar Card Number"
+            <input type="text" wire:model="aadhar_card" name="aadhar_card" placeholder="Aadhar Card Number"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
@@ -199,7 +199,7 @@
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
                         (MAX. 800x400px)</p>
                 </div>
-                <input id="dropzone-file" wire:model.live="photo" type="file" class="hidden" />
+                <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
             </label>
             <div wire:loading wire:target="image"
                 class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">

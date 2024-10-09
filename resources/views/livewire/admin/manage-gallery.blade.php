@@ -64,7 +64,7 @@
                                 </button>
                             </div>
                         </td>
-                        <td class="px-6 py-4 flex gap-2 flex justify-center">
+                        <td class="px-6 py-4 flex gap-2  justify-center">
 
                             <button wire:click="confirmDelete({{ $item->id }})"
                                 class="flex justify-between bg-white text-red-900 px-4 font-bold py-2 rounded-3xl shadow hover:bg-red-500 hover:text-white transition duration-300 border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2">
