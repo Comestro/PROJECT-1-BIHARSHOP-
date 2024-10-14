@@ -46,7 +46,7 @@ class ViewMembership extends Component
     public function mount(Membership $member){
         $this->member = $member;
         
-        $this->referal_id = $member->referal_id;
+        
         $this->name = $member->name;
         $this->date_of_birth = $member->date_of_birth;
         $this->nationality = $member->nationality;
@@ -129,16 +129,16 @@ class ViewMembership extends Component
         $membership->pancard = $this->pancard;
         $membership->aadhar_card = $this->aadhar_card;
 
-        if ($this->image) {
-            // Delete old image
-            if ($this->existingImage) {
-                Storage::delete('public/image/membership/' . $this->existingImage);
-            }
+        // if ($this->image) {
+        //     // Delete old image
+        //     if ($this->existingImage) {
+        //         Storage::store('public/image/membership/' . $this->existingImage);
+        //     }
 
-            // Store new image
-            $imagePath = $this->image->store('image/membership', 'public');
-            $membership->image = basename($imagePath);
-        }
+        //     // Store new image
+        //     $imagePath = $this->image->storeAs('image/membership', 'public');
+        //     $membership->image = basename($imagePath);
+        // }
         
        
         $membership->save();
