@@ -4,7 +4,7 @@
 
 <main>
 
-    <livewire:admin.membership.view-membership :id="$member"/>
+    <livewire:admin.membership.view-membership :member="$member"/>
 
 
 </main>

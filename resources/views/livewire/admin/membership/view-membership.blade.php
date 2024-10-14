@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-6">View Membership Form</h2>
 
     <!-- Form Fields -->
-    <form wire:submit.prevent="updateMembership" method="PUT" enctype="multipart/form-data">
+    <form wire:submit.prevent="updateMembership" >
         @csrf
         <!-- Applicant Details Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Membership Referal Details</h3>

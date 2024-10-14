@@ -10,7 +10,7 @@ use Livewire\Component;
 class ViewMembership extends Component
 {
     use WithFileUploads;
-    public $membershipId;
+    public $member;
     public $referal_id;
     public $name;
     public $date_of_birth;
@@ -41,42 +41,73 @@ class ViewMembership extends Component
     public $existingImage;
 
 
-//     protected $rules = [
-//         'name' => 'required|string|max:255',
-//         'date_of_birth' => 'required|string|max:255',
-//         'nationality' => 'required|string|max:255',
-//         'marital_status' => 'required|string|max:255',
-//         'religion' => 'required|string|max:255',
-//         'father_name' => 'required|string|max:255',
-//         'mother_name' => 'required|string|max:255',
-//         'home_address' => 'required|string|max:255',
-//         'mobile' => 'required|string|max:255',
-//         'city' => 'required|string|max:255',
-//         'state' => 'required|string|max:255',
-//         'pincode' => 'required|numeric',
-//         'email' => 'required|email',
-//         'nominee_name' => 'required|string|max:255',
-//         'nominee_relation' => 'required|string|max:255',
-//         'bank_name' => 'required|string|max:255',
-//         'account_no' => 'required|string|max:255',
-//         'ifsc' => 'required|string|max:255',
-//         'pancard' => 'required|string|max:255',
-//         'aadhar_card' => 'required|string|max:255',
-// ];
 
-    public function mount($id){
-        $this->id = $id;
+
+    public function mount(Membership $member){
+        $this->member = $member;
+        
+        $this->referal_id = $member->referal_id;
+        $this->name = $member->name;
+        $this->date_of_birth = $member->date_of_birth;
+        $this->nationality = $member->nationality;
+        $this->marital_status = $member->marital_status;
+        $this->religion = $member->religion;
+        $this->father_name = $member->father_name;
+        $this->mother_name = $member->mother_name;
+        $this->home_address = $member->home_address;
+        $this->city = $member->city;
+        $this->state = $member->state;
+        $this->pincode = $member->pincode;
+        $this->mobile = $member->mobile;
+        $this->whatsapp = $member->whatsapp;
+        $this->email = $member->email;
+        $this->nominee_name = $member->nominee_name;
+        $this->nominee_relation = $member->nominee_relation;
+        $this->bank_name = $member->bank_name;
+        $this->branch_name = $member->branch_name;
+        $this->account_no = $member->account_no;
+        $this->ifsc = $member->ifsc;
+        $this->user_id = $member->user_id;
+        $this->pancard = $member->pancard;
+        $this->aadhar_card = $member->aadhar_card;
+        $this->photo = $member->photo;
+        $this->existingImage = $member->image;
+
+
     }
 
 
     public function updateMembership()
     {
-        $this->validate();
+         $this->validate(  [
+            'name' => 'required|string|max:255',
+            'date_of_birth' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'marital_status' => 'required|string|max:255',
+            'religion' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'mother_name' => 'required|string|max:255',
+            'home_address' => 'required|string|max:255',
+            'mobile' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'pincode' => 'required|numeric',
+            'email' => 'required|email',
+            'nominee_name' => 'required|string|max:255',
+            'nominee_relation' => 'required|string|max:255',
+            'bank_name' => 'required|string|max:255',
+            'account_no' => 'required|string|max:255',
+            'ifsc' => 'required|string|max:255',
+            'pancard' => 'required|string|max:255',
+            'aadhar_card' => 'required|string|max:255',
+    ]);
 
-        $membership = Membership::find($this->id);
+    
+
+        $membership = Membership::find($this->member->id    );
         $membership->name = $this->name;
         $membership->date_of_birth = $this->date_of_birth;
-        $membership->referalId = $this->referalId;
+        // $membership->referalId = $this->referalId;
         $membership->nationality = $this->nationality;
         $membership->marital_status = $this->marital_status;
         $membership->religion = $this->religion;
@@ -108,7 +139,10 @@ class ViewMembership extends Component
             $imagePath = $this->image->store('image/membership', 'public');
             $membership->image = basename($imagePath);
         }
+        
+       
         $membership->save();
+       
 
         session()->flash('message', 'Membership updated successfully.');
     }
@@ -143,6 +177,6 @@ class ViewMembership extends Component
         // $this->pancard = $membership->pancard;
         // $this->aadhar_card = $membership->aadhar_card;
         // $this->existingImage = $membership->image;
-        return view('livewire.admin.membership.view-membership',$membership);
+        return view('livewire.admin.membership.view-membership');
     }
 }
