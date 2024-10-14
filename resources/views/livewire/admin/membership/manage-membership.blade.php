@@ -49,7 +49,7 @@
                             {{ $member->id }}
                         </th>
                         <td class="px-6 py-4">
-                            <img src="{{ $member->image ? asset('storage/image/membership/' . $member->image) : asset('path/to/default-image.jpg') }}"
+                            <img src="{{ $member->image ? asset('storage/public/image/membership/' . $member->image,) : asset('path/to/default-image.jpg') }}"
                                 alt="Membership Image" class="w-12 h-12 object-cover border border-gray-300 ">
                         </td>
                         <td class="px-6 py-4">{{ $member->name }}</td>

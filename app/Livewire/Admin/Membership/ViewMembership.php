@@ -129,23 +129,29 @@ class ViewMembership extends Component
         $membership->pancard = $this->pancard;
         $membership->aadhar_card = $this->aadhar_card;
 
-        // if ($this->image) {
-        //     // Delete old image
-        //     if ($this->existingImage) {
-        //         Storage::store('public/image/membership/' . $this->existingImage);
-        //     }
+        // image work
+        $image = $this->photo;
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs("public/image/membership", $imageName, "public");
+        $data['image'] = $imageName;
 
-        //     // Store new image
-        //     $imagePath = $this->image->storeAs('image/membership', 'public');
-        //     $membership->image = basename($imagePath);
-        // }
+        $membership->update( $data);
+
+            // // Store new image
+            // $imagePath = $this->image->storeAs('image/membership', 'public');
+            // $membership->image = basename($imagePath);
+
+            $membership->save();
+            
+        session()->flash('message', 'Membership updated successfully.');
+        
+        }
         
        
-        $membership->save();
+      
        
 
-        session()->flash('message', 'Membership updated successfully.');
-    }
+    
 
 
     
