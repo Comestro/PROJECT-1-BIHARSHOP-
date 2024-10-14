@@ -39,12 +39,16 @@ class ViewMembership extends Component
     public $photo;
     public $id;
     public $existingImage;
+    public $status;
+
+    public $currentImage;
 
 
 
 
     public function mount(Membership $member){
         $this->member = $member;
+        $this->currentImage=$member->image;
         
         
         $this->name = $member->name;
@@ -104,7 +108,8 @@ class ViewMembership extends Component
 
     
 
-        $membership = Membership::find($this->member->id    );
+        $membership = Membership::find($this->member->id);
+
         $membership->name = $this->name;
         $membership->date_of_birth = $this->date_of_birth;
         // $membership->referalId = $this->referalId;
@@ -141,10 +146,15 @@ class ViewMembership extends Component
             // $imagePath = $this->image->storeAs('image/membership', 'public');
             // $membership->image = basename($imagePath);
 
-            $membership->save();
-            
-        session()->flash('message', 'Membership updated successfully.');
+           $this->status= $membership->save();
+           if($this->status)
+           {
+            session()->flash('message', 'Membership updated successfully.');
         
+           }
+           
+            
+       
         }
         
        
