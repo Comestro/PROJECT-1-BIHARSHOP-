@@ -74,9 +74,9 @@
                         document.getElementById('payment-form').submit();
                     },
                     "prefill": {
-                        "name": "roni",
-                        "email": "r@gmail.com",
-                        "contact": "9128528958"
+                        "name": "{{ $data->name }}",
+                        "email": "{{ $data->email }}",
+                        "contact": "{{ $data->mobile }}"
                     },
                     "theme": {
                         "color": "#0a64a3"

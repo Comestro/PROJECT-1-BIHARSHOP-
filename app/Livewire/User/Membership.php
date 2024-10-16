@@ -67,7 +67,7 @@ class Membership extends Component
         
         if ($this->photo) {
             $imageName = "M" . time() . '.' . $this->photo->getClientOriginalExtension();
-            $this->photo->storeAs('public/image/membership', $imageName);
+            $this->photo->storeAs("/image/membership", $imageName, "public");
         } else {
             $imageName = null;
         }

@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-6">View Membership Form</h2>
 
     <!-- Form Fields -->
-    <form wire:submit.prevent="updateMembership" >
+    <form wire:submit.prevent="updateMembership">
         @csrf
         <!-- Applicant Details Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Membership Referal Details</h3>
@@ -217,22 +217,27 @@
             <div wire:loading.remove wire:target="photo" class="w-full h-full flex items-center justify-center">
                 @if ($photo)
                     <img src="{{ $photo->temporaryUrl() }}" class="object-cover w-32 h-32">
+                @elseif($currentImage)
+                    <div class="mt-2">
+                        <img src="{{ asset('storage/image/membership/' . $currentImage) }}" alt="Current Image"
+                            class="w-auto h-32 object-cover">
+                    </div>
                 @else
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Image
                             Preview</span></p>
                 @endif
             </div>
-            @if ($photo)
+            {{-- @if ($photo)
                 <div class="mt-2">
                     <img src="{{ $photo->temporaryUrl() }}" alt="Preview"
                         class="w-32 h-32 object-cover border border-gray-300">
                 </div>
             @elseif($currentImage)
                 <div class="mt-2">
-                    <img src="{{ asset('storage/public/image/membership/' .$currentImage) }}" alt="Current Image"
+                    <img src="{{ asset('storage/image/membership/' . $currentImage) }}" alt="Current Image"
                         class="w-auto h-32 object-cover border border-gray-300">
                 </div>
-            @endif
+            @endif --}}
 
         </div>
         @error('image')

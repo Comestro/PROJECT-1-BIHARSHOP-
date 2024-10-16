@@ -86,7 +86,7 @@
                 required>
         </div>
 
-        <textarea placeholder="Home Address" wire:.live="home_address" name="home_address" rows="2"
+        <textarea placeholder="Home Address" wire:model.live="home_address" name="home_address" rows="2"
             class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"
             required></textarea>
 
@@ -133,14 +133,14 @@
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="tel" name="mobile" placeholder="Mobile"
+            <input type="tel" name="mobile" wire:model.live="mobile" placeholder="Mobile"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
             <input type="tel" wire:model.live="whatsapp" name="whatsapp" placeholder="WhatsApp (Optional)"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-            <input type="email" name="email" placeholder="Email"
+            <input type="email" name="email" wire:model.live="email" placeholder="Email"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
         </div>
@@ -183,7 +183,6 @@
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
-        <!-- Applicant Image Section -->
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Upload Applicant Image</h3>
         <div class="flex items-center justify-center w-full p-4">
             <label for="dropzone-file"
@@ -199,9 +198,9 @@
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
                         (MAX. 800x400px)</p>
                 </div>
-                <input id="dropzone-file" wire:model.live="photo" type="file" class="hidden" />
+                <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
             </label>
-            <div wire:loading wire:target="image"
+            <div wire:loading wire:target="photo"
                 class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
                 <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
@@ -214,30 +213,36 @@
 
 
             <!-- Image preview -->
-            <div wire:loading.remove wire:target="image" class="w-full h-full flex items-center justify-center">
-                @if ($image)
-                    <img src="{{ $photo->temporaryUrl() }}" class="object-cover">
+            <div wire:loading.remove wire:target="photo" class="w-full h-full flex items-center justify-center">
+                @if ($photo)
+                    <img src="{{ $photo->temporaryUrl() }}" class="object-cover w-32 h-32">
+                @elseif($existingImage)
+                    <div class="mt-2">
+                        <img src="{{ asset('storage/image/membership/' . $existingImage) }}" alt="Current Image"
+                            class="w-auto h-32 object-cover">
+                    </div>
                 @else
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Image
                             Preview</span></p>
                 @endif
             </div>
-            @if ($image)
+            {{-- @if ($photo)
                 <div class="mt-2">
-                    <img src="{{ $image->temporaryUrl() }}" alt="Preview"
+                    <img src="{{ $photo->temporaryUrl() }}" alt="Preview"
                         class="w-32 h-32 object-cover border border-gray-300">
                 </div>
-            @elseif($existingImage)
+            @elseif($currentImage)
                 <div class="mt-2">
-                    <img src="{{ asset('storage/image/membership/' . $existingImage) }}" alt="Current Image"
-                        class="w-32 h-32 object-cover border border-gray-300">
+                    <img src="{{ asset('storage/image/membership/' . $currentImage) }}" alt="Current Image"
+                        class="w-auto h-32 object-cover border border-gray-300">
                 </div>
-            @endif
+            @endif --}}
 
         </div>
         @error('image')
             <span class="text-red-500 text-xs">{{ $message }}</span>
         @enderror
+
 
         <!-- Terms and Conditions -->
 

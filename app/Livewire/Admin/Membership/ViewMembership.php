@@ -40,17 +40,11 @@ class ViewMembership extends Component
     public $id;
     public $existingImage;
     public $status;
-
     public $currentImage;
-
-
-
 
     public function mount(Membership $member){
         $this->member = $member;
         $this->currentImage=$member->image;
-        
-        
         $this->name = $member->name;
         $this->date_of_birth = $member->date_of_birth;
         $this->nationality = $member->nationality;
@@ -76,8 +70,6 @@ class ViewMembership extends Component
         $this->aadhar_card = $member->aadhar_card;
         $this->photo = $member->photo;
         $this->existingImage = $member->image;
-
-
     }
 
 
@@ -137,7 +129,7 @@ class ViewMembership extends Component
         // image work
         $image = $this->photo;
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs("public/image/membership", $imageName, "public");
+        $image->storeAs("/image/membership", $imageName, "public");
         $data['image'] = $imageName;
 
         $membership->update( $data);
@@ -148,51 +140,14 @@ class ViewMembership extends Component
 
            $this->status= $membership->save();
            if($this->status)
-           {
-            session()->flash('message', 'Membership updated successfully.');
+           {session()->flash('message', 'Membership updated successfully.');
         
            }
-           
-            
-       
         }
         
-       
-      
-       
-
-    
-
-
-    
-
     public function render()
     {
         $membership = Membership::find($this->id);
-        // $this->name = $membership->name;
-        // $this->date_of_birth = $membership->date_of_birth;
-        // $this->referal_id = $membership->referal_id;
-        // $this->nationality = $membership->nationality;
-        // $this->marital_status = $membership->marital_status;
-        // $this->religion = $membership->religion;
-        // $this->father_name = $membership->father_name;
-        // $this->mother_name = $membership->mother_name;
-        // $this->home_address = $membership->home_address;
-        // $this->city = $membership->city;
-        // $this->pincode = $membership->pincode;
-        // $this->state = $membership->state;
-        // $this->mobile = $membership->mobile;
-        // $this->whatsapp = $membership->whatsapp;
-        // $this->email = $membership->email;
-        // $this->nominee_name = $membership->nominee_name;
-        // $this->nominee_relation = $membership->nominee_relation;
-        // $this->bank_name = $membership->bank_name;
-        // $this->branch_name = $membership->branch_name;
-        // $this->account_no = $membership->account_no;
-        // $this->ifsc = $membership->ifsc;
-        // $this->pancard = $membership->pancard;
-        // $this->aadhar_card = $membership->aadhar_card;
-        // $this->existingImage = $membership->image;
         return view('livewire.admin.membership.view-membership');
     }
 }
