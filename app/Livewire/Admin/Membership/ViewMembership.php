@@ -77,25 +77,25 @@ class ViewMembership extends Component
     {
          $this->validate(  [
             'name' => 'required|string|max:255',
-            'date_of_birth' => 'required|string|max:255',
-            'nationality' => 'required|string|max:255',
-            'marital_status' => 'required|string|max:255',
-            'religion' => 'required|string|max:255',
-            'father_name' => 'required|string|max:255',
-            'mother_name' => 'required|string|max:255',
-            'home_address' => 'required|string|max:255',
-            'mobile' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'pincode' => 'required|numeric',
-            'email' => 'required|email',
-            'nominee_name' => 'required|string|max:255',
-            'nominee_relation' => 'required|string|max:255',
-            'bank_name' => 'required|string|max:255',
-            'account_no' => 'required|string|max:255',
-            'ifsc' => 'required|string|max:255',
-            'pancard' => 'required|string|max:255',
-            'aadhar_card' => 'required|string|max:255',
+            // 'date_of_birth' => 'required|string|max:255',
+            // 'nationality' => 'required|string|max:255',
+            // 'marital_status' => 'required|string|max:255',
+            // 'religion' => 'required|string|max:255',
+            // 'father_name' => 'required|string|max:255',
+            // 'mother_name' => 'required|string|max:255',
+            // 'home_address' => 'required|string|max:255',
+            // 'mobile' => 'required|string|max:255',
+            // 'city' => 'required|string|max:255',
+            // 'state' => 'required|string|max:255',
+            // 'pincode' => 'required|numeric',
+            // 'email' => 'required|email',
+            // 'nominee_name' => 'required|string|max:255',
+            // 'nominee_relation' => 'required|string|max:255',
+            // 'bank_name' => 'required|string|max:255',
+            // 'account_no' => 'required|string|max:255',
+            // 'ifsc' => 'required|string|max:255',
+            // 'pancard' => 'required|string|max:255',
+            // 'aadhar_card' => 'required|string|max:255',
     ]);
 
     
@@ -127,21 +127,19 @@ class ViewMembership extends Component
         $membership->aadhar_card = $this->aadhar_card;
 
         // image work
-        $image = $this->photo;
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs("/image/membership", $imageName, "public");
-        $data['image'] = $imageName;
+        if($this->photo){      
+            $image = $this->photo;
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs("/image/membership", $imageName, "public");
+            $data['image'] = $imageName;
+            $membership->update( $data);
+        }       
 
-        $membership->update( $data);
-
-            // // Store new image
-            // $imagePath = $this->image->storeAs('image/membership', 'public');
-            // $membership->image = basename($imagePath);
-
-           $this->status= $membership->save();
-           if($this->status)
-           {session()->flash('message', 'Membership updated successfully.');
-        
+        $this->status = $membership->save();
+           if($this->status){
+                return redirect('/admin/membership')->with('success', 'Membership updated successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Unable to update data.');
            }
         }
         

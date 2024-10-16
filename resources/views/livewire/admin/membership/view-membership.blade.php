@@ -251,7 +251,7 @@
         <div class="flex justify-between space-x-4">
             <button type="submit"
                 class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 rounded-lg hover:from-blue-600 hover:to-indigo-600 shadow-lg">
-                Submit Application
+                Update Details
             </button>
         </div>
     </form>

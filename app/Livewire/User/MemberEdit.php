@@ -138,17 +138,19 @@ class MemberEdit extends Component
         $membership->aadhar_card = $this->aadhar_card;
 
         // image work
-        $image = $this->photo;
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs("/image/membership", $imageName, "public");
-        $data['image'] = $imageName;
 
-        $membership->update( $data);
+        if($this->photo){  
+            $image = $this->photo;
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs("/image/membership", $imageName, "public");
+            $data['image'] = $imageName;
+            $membership->update( $data);
+        }
 
         $this->status= $membership->save();
 
         $uniqueToken = $membership->token;        
-        if ($data) {
+        if ($this->status) {
             return redirect('/user/membership-payment/' . $uniqueToken)->with('success', 'Data added successfully.');
         } else {
             return redirect()->back()->with('error', 'Unable to add data.');
