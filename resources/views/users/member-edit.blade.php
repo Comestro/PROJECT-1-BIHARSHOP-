@@ -7,7 +7,7 @@
         <livewire:user.user-sidebar />
         <div class="flex flex-1 h-auto sm:px-5">
               
-            <livewire:user.member-edit />
+            <livewire:user.member-edit/>
           
         </div>
 
