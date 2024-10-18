@@ -95,6 +95,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
         Route::get('/membership', [UserController::class,"manageMembership"])->name('membership.index');
         Route::get('/membership/{id}', [MembershipController::class,"viewMembership"])->name('membership.view');
+        Route::get('/membership-export', [MembershipController::class,"exportMembership"])->name('membership.export');
         Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
         Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');

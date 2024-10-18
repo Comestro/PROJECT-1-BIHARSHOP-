@@ -5,6 +5,9 @@
         <div>
             <h1 class="text-2xl font-bold mb-4">Manage Membership</h1>
         </div>
+        <div>
+            <a href="{{route('membership.export')}}" class="px-4 py-2 bg-blue-400 text-white hover:bg-blue-600 rounded-lg">Export in Excel</a>
+        </div>
         <div class="">
             <div class="relative flex flex-1">
                 <input type="search"
