@@ -148,7 +148,6 @@ class MemberEdit extends Component
         }
 
         $this->status= $membership->save();
-
         $uniqueToken = $membership->token;        
         if ($this->status) {
             return redirect('/user/membership-payment/' . $uniqueToken)->with('success', 'Data added successfully.');
