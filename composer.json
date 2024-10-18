@@ -11,7 +11,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "*",
         "livewire/volt": "^1.0",
-        "maatwebsite/excel": "^1.1",
+        "maatwebsite/excel": "^3.1",
         "razorpay/razorpay": "^2.9"
     },
     "require-dev": {

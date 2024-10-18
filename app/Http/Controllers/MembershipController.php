@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Membership;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MembershipsExport;
+use Excel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class MembershipController extends Controller 
+class MembershipController extends Controller
 {
     public function viewMembership($id){
         $data['member']=Membership::find($id);
@@ -15,18 +16,8 @@ class MembershipController extends Controller
     }
 
     public function exportMembership(){
-        return Excel::download($this, 'memberships.xlsx');
+        return Excel::download(new MembershipsExport, 'memberships.xlsx');
     }
 
-    // Fetch data to export
-    public function collection()
-    {
-        return Membership::select('id', 'name', 'email')->get(); // Customize as needed
-    }
-
-    // Define headings
-    public function headings(): array
-    {
-        return ['ID', 'Name', 'Email']; // Customize as needed
-    }
+   
 }
