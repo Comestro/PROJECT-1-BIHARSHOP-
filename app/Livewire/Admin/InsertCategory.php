@@ -41,7 +41,7 @@ class InsertCategory extends Component
 
         if ($this->photo) {
             $imageName = "C" . time() . '.' . $this->photo->getClientOriginalExtension();
-            $this->photo->storeAs('public/image/category', $imageName);
+            $this->photo->storeAs('public/image/category', $imageName, "public");
         } else {
             $imageName = null;
         }
