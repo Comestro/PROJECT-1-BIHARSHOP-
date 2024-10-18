@@ -20,11 +20,11 @@ class InsertCategory extends Component
     public function rules()
     {
         return [
-            'parent_category_id' => 'nullable|exists:categories,id',
+            'parent_category_id' => ['nullable', 'exists:categories,id'],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
             'cat_description' => ['required', 'string', 'max:255'],
-            'photo' => ['nullable'],
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048']
         ];
     }
     // Method to update the slug automatically when the title is updated

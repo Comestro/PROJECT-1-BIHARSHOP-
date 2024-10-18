@@ -14,10 +14,12 @@ use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductVariationController;
+use App\Http\Controllers\MembershipPaymentController;
 use App\Livewire\Admin\EditCoupon;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Livewire;
@@ -49,13 +51,17 @@ Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about"
 Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('public.show');
+Route::post('/save-membership-payment', [MembershipPaymentController::class, 'saveMembershipPayment'])->name('save.membership.payment');
+
 // Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
 Route::get('/category/{cat_slug}/{cat_id}',[PublicController::class,"filter"])->name("filter");
 
 Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("login");
 Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("signup");
+Route::match(['get',"post"],'/membership-signup',[PublicController::class,"membershipSignup"])->name("membership.signup");
 Route::post('/public-register',[PublicController::class,"register"])->name("register");
+Route::post('/membership-register',[PublicController::class,"membershipRegister"])->name("membership.register");
 Route::post('/logout',[PublicController::class,"logout"])->name("logout");
 
 // Route::view('/admin', 'admin.dashboard');
@@ -69,8 +75,11 @@ Route::prefix("user")->group(function () {
         Route::get('/my-order',  'MyOrder')->name('user.my-order');
         Route::get('/my-coupon', 'MyCoupon')->name('user.my-coupon');
         Route::get('/address', 'MyAddress')->name('user.address');
+        Route::get('/membership', 'membership')->name('user.membership');
+        Route::get('/membership-payment/{token}', 'membershipPayment')->name('user.membership.payment');
         Route::get('/gift-card', 'GiftCard')->name('user.gift-card');
         Route::get('/payment', 'payment')->name('user.payment');
+        Route::get('/membership', 'membership')->name('user.membership');
     });
 });
 
@@ -84,6 +93,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('coupon', CouponController::class);
         Route::resource('gallery', GalleryController::class);
         Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
+        Route::get('/membership', [UserController::class,"manageMembership"])->name('membership.index');
+        Route::get('/membership/{id}', [MembershipController::class,"viewMembership"])->name('membership.view');
+        Route::get('/membership-export', [MembershipController::class,"exportMembership"])->name('membership.export');
         Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
         Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
@@ -109,6 +121,17 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'Storage link has been created!';
 });
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('optimize:clear');
+    return "All Caches are cleared by @Roni";
+});
+
 
 Route::get('confirm-order',[MailController::class,'index']);
 

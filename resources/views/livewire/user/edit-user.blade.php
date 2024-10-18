@@ -2,16 +2,19 @@
     <!-- Form with Display-Only Fields -->
     <form class="space-y-6">
         <div class="flex justify-end">
-            <button type="button" wire:click="openModal" class="text-blue-500 hover:text-blue-600 font-medium ">Edit</button>
+            <button type="button" wire:click="openModal"
+                class="text-blue-500 hover:text-blue-600 font-medium ">Edit</button>
         </div>
 
         <div class="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0">
             <div class="flex-1 mb-4">
                 <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
                 <input type="text" id="firstName" name="firstName" wire:model="firstName"
-                       class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                       required disabled autocomplete="name">
-                @error('firstName') <span class="text-red-500">{{ $message }}</span> @enderror
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    required disabled autocomplete="name">
+                @error('firstName')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex-1">
                 <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
@@ -60,7 +63,8 @@
                         <div class="flex flex-col gap-4 mb-6">
                             <!-- First Name Input -->
                             <div class="flex-1 mb-4">
-                                <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700">First
+                                    Name</label>
                                 <input type="text" id="firstName" name="firstName" wire:model="firstName"
                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                                     required autocomplete="name">
