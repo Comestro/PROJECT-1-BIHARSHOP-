@@ -50,12 +50,12 @@ class UserController extends Controller
       $user = Auth::user();
       $member = Membership::where('user_id',$user->id)->first();
       if($member){
-         if($member->isPaid){
-            return view('users.member-view',['member' => $member]); 
-         }
-         else{
-            return view('users.member-edit'); 
-         }
+         if ($member->isPaid) {
+            $referals = Membership::where('referal_id', $member->membership_id)->where('isPaid',1)->limit(2)->get();
+               return view('users.member-view', ['member' => $member, 'referals' => $referals]);
+        } else {
+            return view('users.member-edit');
+        }
       }
       else{
          return view('users.membership'); 
