@@ -5,11 +5,12 @@ namespace App\Livewire\User;
 use App\Models\Membership as AddMembership;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
-use Str;
+use Illuminate\Support\Facades\Str;
 
 use Livewire\Component;
 
 class Membership extends Component
+
 
 {
     use WithFileUploads;
@@ -64,7 +65,7 @@ class Membership extends Component
             'aadhar_card' => 'required|string|max:255',
         ]);
 
-        
+
         if ($this->photo) {
             $imageName = "M" . time() . '.' . $this->photo->getClientOriginalExtension();
             $this->photo->storeAs("/image/membership", $imageName, "public");
@@ -102,7 +103,7 @@ class Membership extends Component
             'user_id' => Auth::id(),
             'token' => $uniqueToken,
         ]);
-        
+
         if ($data) {
             return redirect('/user/membership-payment/' . $uniqueToken)->with('success', 'Data added successfully.');
         } else {

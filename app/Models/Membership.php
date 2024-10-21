@@ -10,12 +10,11 @@ class Membership extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function subMembership(){
-        return $this->hasMany(Member::class, 'membership_id','id');
+
+
+    public function user(){
+        return $this->HasOne(User::class,);
     }
 
-    public function parentMembership()
-    {
-        return $this->belongsTo(Member::class, 'membership_id', 'id');
-    }
+
 }

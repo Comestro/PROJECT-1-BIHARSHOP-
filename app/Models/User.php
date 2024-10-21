@@ -71,4 +71,7 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
 
+    public function membership(){
+        return $this->belongsTo(Membership::class, 'id','user_id');
+    }
 }
