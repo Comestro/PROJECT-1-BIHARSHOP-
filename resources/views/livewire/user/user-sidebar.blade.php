@@ -1,8 +1,8 @@
-<div class="w-full lg:w-64 xl:w-1/4 mb-4 sm:mt-0  mt-10">
-    <aside class="bg-white shadow-md rounded-lg p-6 lg:p-8 flex flex-col "> <!-- Adjusted padding here -->
+<div class="w-full lg:w-64 xl:w-1/6 mb-4 sm:mt-0 mt-10">
+    <aside class="bg-white shadow-md rounded-lg p-2 lg:px-2 lg:py-4 flex flex-col "> <!-- Adjusted padding here -->
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->
-            <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+            <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-200">
                 @if (Auth::user() && Auth::user()->image)
                     <!-- Show user's profile image -->
                     <img src="{{ Auth::user()->image }}" alt="User Avatar" class="w-full h-full object-cover">
@@ -21,22 +21,22 @@
 
             <!-- User Info -->
             <div class="mt-4 text-center">
-                <h2 class="text-2xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
                 <p class="text-gray-500 text-sm">Hello!</p>
+                <h2 class="text-lg font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
             </div>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="w-full bg-red-500 text-white px-4 rounded mt-2 py-1 flex text-center font-bold text-lg md:hidden">Logout</button>
             </form>
-    
+
         </div>
-     
+
         <!-- Navigation Buttons (Mobile Friendly) -->
-        <nav class="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-4 sm:flex lg:flex-col">
+        <nav class="grid grid-cols-2 sm:grid-cols-2 sm:flex lg:flex-col">
             <!-- Personal Information -->
             <a wire:navigate href='{{ route('user.index') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center bg-blue-600 text-white font-semibold hover:bg-blue-700 border border-gray-300">
-                Personal Information
+                Personal Info
             </a>
             <a wire:navigate href='{{ route('user.my-order') }}'
                 class="block sm:hidden py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border border-gray-300 flex gap-2 items-center">
@@ -82,11 +82,11 @@
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Membership
             </a>
-           
+
             <a wire:navigate href='{{ route('user.gift-card') }}'
                 class="hidden sm:block py-3 px-4 rounded-md text-center text-gray-700 hover:bg-gray-100 border-none sm:border-none">
                 Gift-Card
-            </a>    
+            </a>
 
 
             <a wire:navigate href='{{ route('user.my-coupon') }}'
