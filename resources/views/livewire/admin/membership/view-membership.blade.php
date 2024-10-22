@@ -1,258 +1,226 @@
-<div class="w-full mx-auto p-8 bg-white shadow-xl rounded-lg">
-    <!-- Membership Form Heading -->
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">View Membership Form</h2>
+@extends('admin.adminBase')
+@section('title', 'Add Product')
+@section('content')
 
-    <!-- Form Fields -->
-    <form wire:submit.prevent="updateMembership">
-        @csrf
-        <!-- Applicant Details Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Membership Referal Details</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model="referal_id" name="referal_id" placeholder="Referal ID"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            @error('referal_id')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
+<div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
+    <!-- Breadcrumb Start -->
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+       
+    </div>
+    <!-- Breadcrumb End -->
 
-            <input type="text" placeholder="Referred By"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                readonly>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Applicant Details</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model.live="name" name="name" placeholder="First Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-            @error('name')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
-
-            <input type="date" wire:model.live="date_of_birth" name="date_of_birth" placeholder="Date of Birth"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-            @error('date_of_birth')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
-
-            <select wire:model="nationality" name="nationality"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-                <option value="">Nationality</option>
-                <option value="Indian">Indian</option>
-                <option value="NRI">NRI</option>
-                <option value="Others">Others</option>
-            </select>
-            @error('nationality')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
-
-            <select wire:model="marital_status" name="marital_status"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-                <option value="">Marital Status</option>
-                <option value="married">Married</option>
-                <option value="unmarried">Unmarried</option>
-                <option value="single">single</option>
-            </select>
-            @error('marital_status')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
-
-            <select wire:model="religion" name="religion"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-                <option value="">Religion</option>
-                <option value="Hindu">Hindu</option>
-                <option value="Muslim">Muslim</option>
-                <option value="Sikh">Sikh</option>
-                <option value="Bodh">Bodh</option>
-                <option value="Christian">Christian</option>
-            </select>
-            @error('religion')
-                <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
-
-        </div>
-
-        <!-- Family Information Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Family Information</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model="father_name" name="father_name" placeholder="Father's Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="text" wire:model="mother_name" name="mother_name" placeholder="Mother's Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <textarea placeholder="Home Address" wire:model="home_address" name="home_address" rows="2"
-            class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"
-            required></textarea>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model="city" name="city" placeholder="City"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <select wire:model="state" name="state"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-                <option value="">Select State</option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                <option value="Assam">Assam</option>
-                <option value="Bihar">Bihar</option>
-                <option value="Chhattisgarh">Chhattisgarh</option>
-                <option value="Goa">Goa</option>
-                <option value="Gujarat">Gujarat</option>
-                <option value="Haryana">Haryana</option>
-                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                <option value="Jharkhand">Jharkhand</option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Kerala">Kerala</option>
-                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Manipur">Manipur</option>
-                <option value="Meghalaya">Meghalaya</option>
-                <option value="Mizoram">Mizoram</option>
-                <option value="Nagaland">Nagaland</option>
-                <option value="Odisha">Odisha</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Rajasthan">Rajasthan</option>
-                <option value="Sikkim">Sikkim</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Telangana">Telangana</option>
-                <option value="Tripura">Tripura</option>
-                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                <option value="Uttarakhand">Uttarakhand</option>
-                <option value="West Bengal">West Bengal</option>
-            </select>
-
-            <input type="number" wire:model="pincode" name="pincode" placeholder="Pincode"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="tel" wire:model="mobile" placeholder="Mobile"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="tel" wire:model="whatsapp" name="whatsapp" placeholder="WhatsApp (Optional)"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-            <input type="email" wire:model="email" placeholder="Email"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Nominee Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Nominee Information</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model="nominee_name" name="nominee_name" placeholder="Nominee Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="text" wire:model="nominee_relation" name="nominee_relation"
-                placeholder="Relation with Nominee"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Bank Details Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Bank Details</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <input type="text" wire:model="bank_name" name="bank_name" placeholder="Bank Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-            <input type="text" wire:model="branch_name" name="branch_name" placeholder="Branch Name"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="number" wire:model="account_no" name="account_no" placeholder="Account Number"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="text" wire:model="ifsc" name="ifsc" placeholder="IFSC Code"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-
-            <input type="text" wire:model="pancard" name="pancard" placeholder="PAN Card Number"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-            <input type="text" wire:model="aadhar_card" name="aadhar_card" placeholder="Aadhar Card Number"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <!-- Applicant Image Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Upload Applicant Image</h3>
-        <div class="flex items-center justify-center w-full p-4">
-            <label for="dropzone-file"
-                class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                    </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to
-                            upload</span> or drag and drop</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                        (MAX. 800x400px)</p>
+    @if (session('error'))
+       <!-- ====== Form Layout Section Start -->
+<div class="grid grid-cols-1 gap-6 sm:gap-9">
+    <div class="flex flex-col gap-6 sm:gap-9">
+        <div class="container p-4 sm:p-6">
+            <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Order Details </h1>
+        
+            @if ($order)
+            <div class="bg-gray-100 shadow-lg rounded-lg p-4 sm:p-6 mx-auto mt-6 sm:mt-8 w-full">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Order: {{ $order->order_number }}</h2>
+        
+                <table class="table-auto w-full text-left border-collapse">
+                    <tbody>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Customer</th>
+                            <td class="py-2 px-2 sm:px-4">{{ $order->user->name }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Address</th>
+                            <td class="py-2 px-2 sm:px-4">{{ $order->address ? $order->address->full_address : 'N/A' }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Status</th>
+                            <td class="py-2 px-2 sm:px-4">{{ ucfirst($order->status) }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Total Amount</th>
+                            <td class="py-2 px-2 sm:px-4">${{ number_format($order->total_amount, 2) }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Shipping Charge</th>
+                            <td class="py-2 px-2 sm:px-4">${{ number_format($order->shipping_charge, 2) }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Payment Status</th>
+                            <td class="py-2 px-2 sm:px-4">{{ ucfirst($order->payment_status) }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Payment Method</th>
+                            <td class="py-2 px-2 sm:px-4">{{ $order->payment_method ?? 'N/A' }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Tracking Number</th>
+                            <td class="py-2 px-2 sm:px-4">{{ $order->tracking_number ?? 'N/A' }}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-200">
+                            <th class="py-2 px-2 sm:px-4 font-semibold text-gray-700">Coupon Code</th>
+                            <td class="py-2 px-2 sm:px-4">{{ $order->coupon_code ?? 'N/A' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <div class="mt-4 sm:mt-6 flex justify-end">
+                    <a href="{{ route('orders.index') }}" class="text-green-600 hover:text-green-800 underline">Back to Orders List</a>
                 </div>
-                <input id="dropzone-file" wire:model="photo" type="file" class="hidden" />
-            </label>
-            <div wire:loading wire:target="photo"
-                class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
-                <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                        stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                </svg>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p>
             </div>
+        
+            @else
+                <p class="text-red-500">Order not found.</p>
+            @endif
+        </div>
+        
+        <!-- Order Items Table -->
+        <div class="mt-6 sm:mt-8">
+            <h3 class="text-lg sm:text-xl font-semibold mb-4 text-gray-900">Order Items</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-2 px-4 border-b text-center">Product</th>
+                            <th class="py-2 px-4 border-b text-center">Color</th>
+                            <th class="py-2 px-4 border-b text-center">Size</th>
+                            <th class="py-2 px-4 border-b text-center">Quantity</th>
+                            <th class="py-2 px-4 border-b text-center">Discount Price</th>
+                            <th class="py-2 px-4 border-b text-center">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($order->orderItems as $item)
+                            <tr>
+                                <td class="py-2 px-4 border-b text-center">{{ $item->products->name }}</td>
+                                <td class="py-2 px-4 border-b text-center">
+                                    @if($item->colorVariant)
+                                        <div class="w-6 h-6 rounded-full" style="background-color: {{ $item->colorVariant->variant_value }};"></div>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td class="py-2 px-4 border-b text-center">{{ $item->sizeVariant->variant_value ?? 'NULL' }}</td>
+                                <td class="py-2 px-4 border-b text-center">{{ $item->quantity }}</td>
+                                <td class="py-2 px-4 border-b text-center">₹{{ number_format($item->products->discount_price, 2) }}</td>
+                                <td class="py-2 px-4 border-b text-center">
+                                    ₹{{ number_format($item->quantity * $item->products->discount_price, 2) }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
+    @endif
 
-            <!-- Image preview -->
-            <div wire:loading.remove wire:target="photo" class="w-full h-full flex items-center justify-center">
-                @if ($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" class="object-cover w-32 h-32">
-                @elseif($currentImage)
-                    <div class="mt-2">
-                        <img src="{{ asset('storage/image/membership/' . $currentImage) }}" alt="Current Image"
-                            class="w-auto h-32 object-cover">
-                    </div>
+    <!-- ====== Form Layout Section Start -->
+    <div class="grid grid-cols-1 gap-9">
+        <div class="flex flex-col gap-9">
+            <div class="container  p-6">
+                <h1 class="text-3xl font-bold mb-6">Order Details </h1>
+            
+                @if ($order)
+                <div class="bg-gray-100 shadow-lg rounded-lg p-6  mx-auto mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Order :{{ $order->order_number }}</h2>
+            
+                    <table class="table-auto w-full text-left border-collapse">
+                        <tbody>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Customer</th>
+                                <td class="py-2 px-4">{{ $order->user->name }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Address</th>
+                                <td class="py-2 px-4">{{ $order->address ? $order->address->full_address : 'N/A' }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Status</th>
+                                <td class="py-2 px-4">{{ ucfirst($order->status) }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Total Amount</th>
+                                <td class="py-2 px-4">${{ number_format($order->total_amount, 2) }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Shipping Charge</th>
+                                <td class="py-2 px-4">${{ number_format($order->shipping_charge, 2) }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Payment Status</th>
+                                <td class="py-2 px-4">{{ ucfirst($order->payment_status) }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Payment Method</th>
+                                <td class="py-2 px-4">{{ $order->payment_method ?? 'N/A' }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Tracking Number</th>
+                                <td class="py-2 px-4">{{ $order->tracking_number ?? 'N/A' }}</td>
+                            </tr>
+                            <tr class="border-b  hover:bg-gray-200">
+                                <th class="py-2 px-4 font-semibold text-gray-700">Coupon Code</th>
+                                <td class="py-2 px-4">{{ $order->coupon_code ?? 'N/A' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            
+                        <div class="mt-6 flex justify-end">
+                            <a href="{{ route('orders.index') }}" class="text-green-600 hover:text-green-800 underline">Back to Orders List</a>
+                        </div>
+                </div>
+            
                 @else
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Image
-                            Preview</span></p>
+                    <p class="text-red-500">Order not found.</p>
                 @endif
             </div>
-            {{-- @if ($photo)
-                <div class="mt-2">
-                    <img src="{{ $photo->temporaryUrl() }}" alt="Preview"
-                        class="w-32 h-32 object-cover border border-gray-300">
-                </div>
-            @elseif($currentImage)
-                <div class="mt-2">
-                    <img src="{{ asset('storage/image/membership/' . $currentImage) }}" alt="Current Image"
-                        class="w-auto h-32 object-cover border border-gray-300">
-                </div>
-            @endif --}}
-
+            
+            {{-- {{dd($order->orderItems)}} --}}
+             <!-- Order Items Table -->
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-900">Order Items</h3>
+                    <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-2 px-4 border-b text-center">Product</th>
+                                <th class="py-2 px-4 border-b text-center">Color</th>
+                                <th class="py-2 px-4 border-b text-center">Size</th>
+                                <th class="py-2 px-4 border-b text-center">Quantity</th>
+                                <th class="py-2 px-4 border-b text-center">Discount Price</th>
+                                <th class="py-2 px-4 border-b text-center">Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($order->orderItems as $item)
+                                <tr>
+                                    <td class="py-2 px-4 border-b text-center">{{$item->products->name}}</td>
+                                    <td class="py-2 px-4 border-b text-center">
+                                        @if($item->colorVariant)
+                                            <div class="w-6 h-6 rounded-full text-center" style="background-color: {{ $item->colorVariant->variant_value }};"></div>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-center">{{$item->sizeVariant->variant_value ?? 'NULL'}}</td>
+                                    <td class="py-2 px-4 border-b text-center">{{$item->quantity}}</td>
+                                    <td class="py-2 px-4 border-b text-center">₹{{ number_format($item->products->discount_price, 2) }}</td>
+                                    <td class="py-2 px-4 border-b text-center">
+                                        ₹{{ number_format($item->quantity * $item->products->discount_price, 2) }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                
+            </div>
+            <!-- Contact Form -->
         </div>
-        @error('image')
-            <span class="text-red-500 text-xs">{{ $message }}</span>
-        @enderror
-
-        <!-- Terms and Conditions -->
 
 
-        <!-- Submit Button -->
-        <div class="flex justify-between space-x-4">
-            <button type="submit"
-                class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 rounded-lg hover:from-blue-600 hover:to-indigo-600 shadow-lg">
-                Update Details
-            </button>
-        </div>
-    </form>
+    </div>
 </div>
+
+
+
+
+@endsection

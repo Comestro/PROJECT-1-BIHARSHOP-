@@ -15,6 +15,11 @@ class MembershipController extends Controller
         return view('admin.membership.viewMembership',$data);
     }
 
+    public function editMembership($id){
+        $data['member']=Membership::find($id);
+        return view('admin.membership.editMembership',$data);
+    }
+
     public function exportMembership(){
         return Excel::download(new MembershipsExport, 'memberships.xlsx');
     }
