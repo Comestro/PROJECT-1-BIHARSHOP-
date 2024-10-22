@@ -60,15 +60,18 @@
         </div>
     </div> --}}
 
-        <div class="w-1/2 mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg h-96 ">
-            <!-- Parent Node -->
-            <div class="text-center mb-6">
-                <div
-                    class="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white rounded-full shadow-lg">
-                    <h2 class="font-bold text-lg">{{ $member->name }}</h2>
-                    <p>Membership ID: {{ $member->membership_id }}</p>
+        <div class="w-1/2 mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg md:h-[30rem] ">
+
+            <div class="flex flex-col text-center items-center gap-4">
+                <img class="w-20 h-20 rounded-full"
+                    src="{{ $member->image ? asset('storage/image/membership/' . $member->image) : asset('path/to/default-image.jpg') }}"
+                    alt="">
+                <div class="font-medium dark:text-white">
+                    <div>{{ $member->name }}</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">M-ID: {{ $member->membership_id }}</div>
                 </div>
             </div>
+
 
             <!-- Vertical Connecting Line from Parent Node -->
             <div class="flex justify-center">
@@ -87,29 +90,40 @@
                 </div>
             </div>
 
-            <div class="flex justify-between items-center mt-10">
-                @if($referals->count()!=0)
-                @foreach($referals as $data)
-                <div class="flex flex-col items-center">
-                    <div
-                        class="inline-block px-7 p-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg cursor-pointer">
-                        <h2 class="font-semibold text-md text-center">{{ $data->name }}</h2>
-                        <p class=" text-center">Membership ID: {{ $data->membership_id }}</p>
-                    </div>
-                </div>
-                @endforeach
+            <div class="flex justify-between items-center text-center mt-10">
+                @if ($referals->count() != 0)
+                    @foreach ($referals as $data)
+                        <div class="flex flex-col items-center">
+                            <img class="w-20 h-20 rounded-full"
+                                src="{{ $data->image ? asset('storage/image/membership/' . $data->image) : asset('path/to/default-image.jpg') }}"
+                                alt="">
+                            <div class="font-medium dark:text-white">
+                                <div>{{ $data->name }}</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">M-ID: {{ $data->membership_id }}</div>
+                            </div>
+                        </div>
+                    @endforeach
                 @else
-                <div class="flex mx-auto items-center">
-                    <div
-                        class="inline-block px-7 p-4 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg cursor-pointer">
-                        <h2 class="font-semibold text-md text-center">Not Found</h2>
+                    <div class="flex flex-col items-center gap-4">
+                        <img class="w-20 h-20 rounded-full" src="{{ asset('path/to/default-image.jpg') }}" alt="">
+                        <div class="font-medium dark:text-white">
+                            <div>Not Found</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">M-ID: Not Found</div>
+                        </div>
                     </div>
-                </div>
+                    <div class="flex mx-auto items-center">
+                        <div
+                            class="inline-block px-7 p-4 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg cursor-pointer">
+                            <h2 class="font-semibold text-md text-center">Not Found</h2>
+                        </div>
+                    </div>
                 @endif
 
-               
+
             </div>
         </div>
+
+
 
     </div>
 @endsection
