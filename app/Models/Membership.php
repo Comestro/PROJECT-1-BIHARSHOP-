@@ -16,5 +16,10 @@ class Membership extends Model
         return $this->HasOne(User::class,);
     }
 
+    public function payment()
+    {
+        return $this->hasOne(MembershipPayment::class, 'membership_id', 'id');
+    }
+
 
 }

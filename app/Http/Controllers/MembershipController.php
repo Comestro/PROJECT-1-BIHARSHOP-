@@ -11,8 +11,17 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class MembershipController extends Controller
 {
     public function viewMembership($id){
-        $data['member']=Membership::find($id);
-        return view('admin.membership.viewMembership',$data);
+        $member=Membership::find($id);
+        // $member = Membership::where('id',$id)->first();
+        if($member){
+           if ($member->isPaid) {
+              $referals = Membership::where('referal_id', $member->membership_id)->where('isPaid',1)->limit(2)->get();
+                 return view('admin.membership.viewMembership', ['member' => $member, 'referals' => $referals]);
+          }
+          else{
+            return view('admin.membership.viewMembership',['member' => $member]);
+          }
+        }
     }
 
     public function editMembership($id){
