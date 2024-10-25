@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     @endforeach
-                @else
+                {{-- @else
                     <div class="flex flex-col items-center gap-4">
                         <img class="w-20 h-20 rounded-full" src="{{ asset('path/to/default-image.jpg') }}" alt="">
                         <div class="font-medium dark:text-white">
@@ -116,7 +116,7 @@
                             class="inline-block px-7 p-4 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg cursor-pointer">
                             <h2 class="font-semibold text-md text-center">Not Found</h2>
                         </div>
-                    </div>
+                    </div> --}}
                 @endif
 
 
