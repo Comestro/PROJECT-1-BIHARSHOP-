@@ -1,4 +1,4 @@
-<div class="w-full lg:w-64 xl:w-1/6 mb-4 sm:mt-0 mt-10">
+<div class="w-full lg:w-64 mb-4 sm:mt-0 mt-10">
     <aside class="bg-white shadow-md rounded-lg p-2 lg:px-2 lg:py-4 flex flex-col "> <!-- Adjusted padding here -->
         <div class="flex flex-col items-center border-b pb-6 mb-6">
             <!-- Avatar -->

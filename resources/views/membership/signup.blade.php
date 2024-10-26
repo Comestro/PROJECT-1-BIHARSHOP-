@@ -29,7 +29,7 @@
                         <label for="name" class="block text-sm font-semibold text-gray-700">Full Name</label>
                         <input type="text" id="name" name="name" value="{{ old('name') }}"
                             class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-                            placeholder="John Doe">
+                            placeholder="Roni Saha">
                         @error('name')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -39,7 +39,7 @@
                         <label for="email" class="block text-sm font-semibold text-gray-700">Email Address</label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}"
                             class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-                            placeholder="example@domain.com">
+                            placeholder="comestro@domain.com">
                         @error('email')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -49,7 +49,7 @@
                         <label for="mobile" class="block text-sm font-semibold text-gray-700">Mobile No.</label>
                         <input type="tel" id="mobile" name="mobile" value="{{ old('mobile') }}"
                             class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-                            placeholder="9876543210">
+                            placeholder="e.g 9546805580">
                         @error('mobile')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror

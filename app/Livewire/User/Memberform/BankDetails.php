@@ -76,7 +76,7 @@ class BankDetails extends Component
         $user = Auth::user();
         $user->membership->bank_name = $this->bank_name;
         $user->membership->branch_name = $this->branch_name;
-        $user->membership->account_no = $this->account_no;
+        $user->membership->account_no = $this->account_no; 
         $user->membership->ifsc = $this->ifsc_code;
         $user->membership->pancard = $this->pancard;
         $user->membership->aadhar_card = $this->aadhar_card;
