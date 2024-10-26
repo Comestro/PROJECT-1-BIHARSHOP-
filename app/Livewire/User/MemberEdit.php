@@ -4,7 +4,7 @@ namespace App\Livewire\User;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Membership;
-use Illuminate\Support\Facades\Str;
+use Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
@@ -34,6 +34,18 @@ class MemberEdit extends Component
 
     public function mount(){
         $user = Auth::user();
+
+          // testing
+        if($user->membership == NULL){
+            $uniqueToken = Str::random(40);
+            $membership = Membership::create([
+                'name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+                'mobile' => Auth::user()->mobile,
+                'token' => $uniqueToken,
+                'user_id' => Auth::user()->id
+            ]);
+        }
         $membership = $user->membership;
         if($membership->referal_id || Auth::user()->isAdmin){
             $this->step = 2;

@@ -102,6 +102,14 @@
                                     <a href="{{ route('membership.index') }}"
                                         class="text-green-600 hover:text-green-800 underline">Back to Membership List</a>
                                 </div>
+                                <div class=" text-center flex justify-end space-x-2 mt-2">
+                                    <a href="{{ route('membership.edit', ['id' => $member->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
+                                        <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                      </svg>
+                                      Edit Now</a>
+                                 </div>
+                                
                             </div>
                         @else
                             <p class="text-red-500">Data not found.</p>
@@ -112,44 +120,52 @@
 
             </div>
 
-            @if($member->isPaid)
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg shadow-lg">
-                    <thead>
-                        <tr class="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-center">Membership Id</th>
-                            <th class="py-3 px-6 text-center">Member Name</th>
-                            <th class="py-3 px-6 text-center">Total Amount</th>
-                            <th class="py-3 px-6 text-center">View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        @foreach ($referals as $item)
-                        <tr class="border-b">
-                            <td class="py-3 px-6 text-center">{{ $item->membership_id }}</td>
-                            <td class="py-3 px-6 text-center">{{ $item->name }}</td>
-                            <td class="py-3 px-6 text-center">  ₹ 
-                                {{ $item->payment->amount ?? 'N/A' }}
-                            </td>
-             
-                                     <td class="py-3 px-6 text-center flex justify-center space-x-2">
-                                        <a href="{{ route('membership.view', ['id' => $item->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
-                                            <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                                          </svg>
-                                          View Member </a>
-                                     </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+
+
+            @if ($member->isPaid)
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg shadow-lg">
+                        <thead>
+                            <tr class="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-center">Membership Id</th>
+                                <th class="py-3 px-6 text-center">Member Name</th>
+                                <th class="py-3 px-6 text-center">Total Amount</th>
+                                <th class="py-3 px-6 text-center">View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($referals as $item)
+                                <tr class="border-b">
+                                    <td class="py-3 px-6 text-center">{{ $item->membership_id }}</td>
+                                    <td class="py-3 px-6 text-center">{{ $item->name }}</td>
+                                    <td class="py-3 px-6 text-center"> ₹
+                                        {{ $item->payment->amount ?? 'N/A' }}
+                                    </td>
+
+                                    <td class="py-3 px-6 text-center flex justify-center space-x-2">
+                                        <a href="{{ route('membership.view', ['id' => $item->id]) }}"
+                                            class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg
+                                                class="w-[22px] h-[22px] text-white-800  " aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-width="2"
+                                                    d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                                <path stroke="currentColor" stroke-width="2"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                            View Member </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @endif
         </div>
 
 
-        
+
 
 
     </main>

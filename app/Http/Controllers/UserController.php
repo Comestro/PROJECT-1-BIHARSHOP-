@@ -48,18 +48,18 @@ class UserController extends Controller
 
    public function membership(){
       $user = Auth::user();
-      $member = Membership::where('user_id',$user->id)->first();
-      if($member){
-         if ($member->isPaid) {
+      $member = Membership::where('user_id',$user->id)->where('isPaid',1)->first();
+      // if($member){
+         if ($member) {
             $referals = Membership::where('referal_id', $member->membership_id)->where('isPaid',1)->limit(2)->get();
                return view('users.member-view', ['member' => $member, 'referals' => $referals]);
         } else {
             return view('users.member-edit');
         }
-      }
-      else{
-         return view('users.membership'); 
-      }    
+      // }
+      // else{
+      //    return view('users.membership'); 
+      // }    
    }
    
    public function membershipPayment($token){
