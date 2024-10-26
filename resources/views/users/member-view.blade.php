@@ -4,11 +4,11 @@
 @endsection
 @section('content')
     <div class="flex flex-wrap  lg:flex-nowrap p-6">
-        <livewire:user.user-sidebar />
+
         {{-- <div class="flex flex-1 h-auto sm:px-5">
         <div class="max-w-7xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
             <h1 class="text-3xl font-bold mb-6 text-center">Membership Information</h1>
-    
+
             <!-- Full Name -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Full Name</label>
@@ -16,7 +16,7 @@
                     {{ $member->name }}
                 </div>
             </div>
-    
+
             <!-- Email Address -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Email Address</label>
@@ -24,7 +24,7 @@
                     {{ $member->email }}
                 </div>
             </div>
-    
+
             <!-- Phone Number -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Phone Number</label>
@@ -32,7 +32,7 @@
                     {{ $member->mobile }}
                 </div>
             </div>
-    
+
             <!-- Address -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Address</label>
@@ -40,7 +40,7 @@
                     {{ $member->home_address }}
                 </div>
             </div>
-    
+
             <!-- Membership Type -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Membership ID</label>
@@ -48,7 +48,7 @@
                     {{ $member->membership_id }}
                 </div>
             </div>
-    
+
             <!-- Join Date -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold">Join Date</label>
@@ -56,7 +56,7 @@
                     {{ $member->updated_at }}
                 </div>
             </div>
-    
+
         </div>
     </div> --}}
 

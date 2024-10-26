@@ -89,13 +89,13 @@
                         <!-- Search Input -->
                         <div class="w-full sm:w-auto flex-grow sm:mb-0">
                             <input type="search" wire:model.live='searchTerm'
-                                class="w-full py-3 border border-gray-300 rounded-full sm:rounded-r-lg text-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
+                                class="w-full py-3 border border-gray-300 rounded-full sm:rounded-r-lg px-3 text-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out"
                                 placeholder="Search your orders here">
                         </div>
-                    
+
                         <!-- Search Button -->
                         <button
-                            class="hidden sm:block flex items-center bg-blue-500 text-white py-4 px-6 rounded-r-lg hover:bg-blue-600 transition duration-200 ease-in-out">
+                            class="hidden sm:block flex items-center bg-blue-500 text-white py-4 ps-6 pe-3 rounded-r-lg hover:bg-blue-600 transition duration-200 ease-in-out">
                             <svg width="16" height="16" viewBox="0 0 17 18" xmlns="http://www.w3.org/2000/svg" class="mr-4">
                                 <g fill="currentColor" fill-rule="evenodd">
                                     <path
@@ -108,9 +108,9 @@
                             </svg>
                         </button>
                     </div>
-                    
+
                 </div>
-                
+
                 <!-- Orders List -->
                 <div class="space-y-6">
                     @forelse ($orders as $order)
@@ -123,7 +123,7 @@
                                         <!-- Product Image -->
                                         <img src="{{ $orderItem->products->image ? asset('storage/image/product/' . $orderItem->products->image) : asset('path/to/default-image.jpg') }}"
                                             class="w-24 h-24 object-cover rounded-lg mx-auto sm:mx-0">
-                
+
                                         <!-- Product Details -->
                                         <div
                                             class="flex flex-col sm:flex-row flex-grow space-y-4 sm:space-y-0 sm:space-x-6 justify-between">
@@ -135,7 +135,7 @@
                                                     {{ $orderItem->colorVariant ? 'Color: ' . $orderItem->colorVariant->variant_value : 'Color: N/A' }}
                                                 </p>
                                             </div>
-                
+
                                             <!-- Price -->
                                             <div class="text-lg font-bold text-gray-900">
                                                 ₹{{ $orderItem->order->total_amount }}</div>

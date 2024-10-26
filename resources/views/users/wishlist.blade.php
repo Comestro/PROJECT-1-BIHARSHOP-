@@ -8,11 +8,11 @@
     <div class="flex flex-wrap lg:flex-nowrap p-6">
 
         <!-- Sidebar -->
-        <livewire:user.user-sidebar/>
+
         <livewire:user.wish-list/>
 
         <!-- Main Content -->
-    
+
 
     </div>
 @endsection
