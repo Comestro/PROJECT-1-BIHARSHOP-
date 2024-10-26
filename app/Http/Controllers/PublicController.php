@@ -142,6 +142,7 @@ class PublicController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['required',"unique:memberships,mobile"],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -161,7 +162,7 @@ class PublicController extends Controller
                 'isAdmin'=> 0,
                 'password' => Hash::make($request->password),
             ]);
-    
+
             if($user){
                 Auth::login($user);
                     $membership->update([
@@ -169,7 +170,7 @@ class PublicController extends Controller
                     ]);
                 return redirect('user/membership')->with('success', 'Registration successful!');
             }
-        }       
+        }
         else{
             return redirect()->route('login')->with('error', 'Unable to login. Please try again.');
         }
