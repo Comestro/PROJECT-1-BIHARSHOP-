@@ -62,7 +62,7 @@
                 <div class="col-span-2 sm:col-span-1">
                     <label for="confirm-password" class="block text-sm font-semibold text-gray-700">Confirm
                         Password</label>
-                    <input type="password" id="confirm-password" name="password_confirmation"
+                    <input type="password" id="confirm-password" name="password_confirmation" wire:model="password_confirmation"
                         class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                         placeholder="••••••••">
                     @error('confirm-password')

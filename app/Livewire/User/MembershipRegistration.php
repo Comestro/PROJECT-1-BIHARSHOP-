@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Livewire\User;
-use App\Models\Membership as AddMembership;
+use App\Models\Membership;
 use App\Models\User;
-use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Str;
-
+use Str;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class MembershipRegistration extends Component
 {
     public $name;
     public $email;
-    public $phone;
+    public $mobile;
     public $password;
+    public $confirmed_password;
 
     public function rules()
     {
@@ -22,7 +22,7 @@ class MembershipRegistration extends Component
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required',"unique:memberships,mobile"],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
         ];
     }
 
@@ -32,17 +32,17 @@ class MembershipRegistration extends Component
          $uniqueToken = Str::random(40);
 
         $membership = Membership::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
+            'name' => $this->name,
+            'email' => $this->email,
+            'mobile' => $this->mobile,
             'token' => $uniqueToken,
         ]);
         if($membership){
             $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
+                'name' => $this->name,
+                'email' => $this->email,
                 'isAdmin'=> 0,
-                'password' => Hash::make($request->password),
+                'password' => Hash::make($this->password),
             ]);
 
             if($user){
