@@ -7,7 +7,7 @@ use Livewire\WithFileUploads;
 use Storage;
 use Livewire\Component;
 
-class ViewMembership extends Component
+class EditMembership extends Component
 {
     use WithFileUploads;
     public $member;
@@ -146,6 +146,6 @@ class ViewMembership extends Component
     public function render()
     {
         $membership = Membership::find($this->id);
-        return view('livewire.admin.membership.view-membership');
+        return view('livewire.admin.membership.edit-membership');
     }
 }
