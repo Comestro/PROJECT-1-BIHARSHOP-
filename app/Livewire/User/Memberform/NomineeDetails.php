@@ -36,9 +36,8 @@ class NomineeDetails extends Component
     {
         return <<<'HTML'
         <div>
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Nominee Information</h3>
-        <form wire:submit.prevent="save" method="post">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <form wire:submit.prevent="save" method="post" class="mt-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <input type="text" wire:model="nominee_name" name="nominee_name" placeholder="Nominee Name"
                     class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
@@ -64,8 +63,8 @@ class NomineeDetails extends Component
                     <option value="Friend">Friend</option>
                 </select>
 
-                <div class="mb-3">
-                    <input type="submit" class="bg-teal-600 px-3 py-2 text-white rounde" value="Next">
+                <div class="mb-3 flex-1 col-span-2">
+                    <input type="submit" class="bg-teal-600 rounded-lg float-end px-3 py-2 text-white hover:cursor-pointer" value="Submit & Next Step">
                 </div>
             </div>
         </form>

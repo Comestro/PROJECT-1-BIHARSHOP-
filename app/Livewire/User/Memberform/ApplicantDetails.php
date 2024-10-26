@@ -65,7 +65,7 @@ class ApplicantDetails extends Component
 
             <input type="date" wire:model="date_of_birth" name="date_of_birth" placeholder="Date of Birth"
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
+                required id="date_of_birth">
             @error('date_of_birth')
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
@@ -95,7 +95,7 @@ class ApplicantDetails extends Component
             @enderror
 
             <select wire:model="religion" name="religion"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 col-span-2"
                 required>
                 <option value="">Religion</option>
                 <option value="Hindu">Hindu</option>
@@ -108,14 +108,21 @@ class ApplicantDetails extends Component
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
 
-            <div class="flex flex-1 justify-end">
-                <input type="submit" class="bg-green-600 text-white px-3 py-2" value="Next">
+            <div class="flex flex-1 col-span-2 justify-end">
+                <input type="submit" class="bg-green-600 text-white px-3 py-2 rounded-lg" value="Submit & Next Step">
             </div>
 
         </form>
         </div>
 
-
+        <script>
+            // Set the max attribute to 12 years ago
+            document.addEventListener('DOMContentLoaded', function() {
+                const today = new Date();
+                const minDate = new Date(today.setFullYear(today.getFullYear() - 12)).toISOString().split('T')[0];
+                document.getElementById('date_of_birth').setAttribute('max', minDate);
+            });
+        </script>
         </div>
         HTML;
     }

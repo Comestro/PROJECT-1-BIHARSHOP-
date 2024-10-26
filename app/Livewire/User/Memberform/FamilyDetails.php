@@ -67,8 +67,7 @@ class FamilyDetails extends Component
     {
         return <<<'HTML'
         <div>
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Family Information</h3>
-        <form wire:submit.prevent="save" method="post">
+        <form wire:submit.prevent="save" method="post" class="mt-3">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <input type="text" wire:model="father_name" name="father_name" placeholder="Father's Name"
@@ -137,7 +136,9 @@ class FamilyDetails extends Component
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
         </div>
-        <input type="submit" value="Next" class="bg-green-500 text-white px-3 py-2">
+        <input type="submit" value="Submit & Next Step" class="bg-green-700 hover:cursor-pointer rounded-lg float-end text-white px-3 py-2">
+        <br>
+        <br>
         </form>
 
         </div>

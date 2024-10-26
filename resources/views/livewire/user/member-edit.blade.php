@@ -9,7 +9,7 @@
 
                 <!-- Step 1: Referral Info -->
                 <li>
-                    <div class="w-full p-4 {{ $step >= 1 ? ($step === 1 ? 'text-blue-700 bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 1 ? ($step === 1 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
+                    <div class="w-full p-4 {{ $step >= 1 ? ($step === 1 ? ' bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 1 ? ($step === 1 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
                         role="alert">
                         <div class="flex items-center justify-between">
                             <h3 class="font-medium">1. Referral Info</h3>
@@ -29,7 +29,7 @@
 
                 <!-- Step 2: Applicant Info -->
                 <li>
-                    <div class="w-full p-4 {{ $step >= 2 ? ($step === 2 ? 'text-blue-700 bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 2 ? ($step === 2 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
+                    <div class="w-full p-4 {{ $step >= 2 ? ($step === 2 ? ' bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 2 ? ($step === 2 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
                         role="alert">
                         <div class="flex items-center justify-between">
                             <h3 class="font-medium">2. Applicant Info</h3>
@@ -49,7 +49,7 @@
 
                 <!-- Step 3: Personal Info -->
                 <li>
-                    <div class="w-full p-4 {{ $step >= 3 ? ($step === 3 ? 'text-blue-700 bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 3 ? ($step === 3 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
+                    <div class="w-full p-4 {{ $step >= 3 ? ($step === 3 ? ' bg-blue-100' : 'text-green-700 bg-green-50') : 'text-gray-900 bg-gray-100' }} border border-{{ $step >= 3 ? ($step === 3 ? 'blue' : 'green') : 'gray' }}-300 rounded-lg"
                         role="alert">
                         <div class="flex items-center justify-between">
                             <h3 class="font-medium">3. Personal Info</h3>

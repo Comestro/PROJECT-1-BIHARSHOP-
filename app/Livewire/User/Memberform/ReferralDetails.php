@@ -69,7 +69,7 @@ class ReferralDetails extends Component
             </div>
             @if($isValidated)
             <div class="flex flex-1 justify-end">
-                <input type="submit" class="bg-green-600 text-white px-3 py-2" value="Next">
+                <input type="submit" class="bg-green-600 text-white px-3 py-2 rounded" value="Submit & Next Step">
             </div>
             @endif
         </div>

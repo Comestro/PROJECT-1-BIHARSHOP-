@@ -30,7 +30,7 @@ class BankDetails extends Component
             'account_no' => 'required|digits_between:9,18',
             'ifsc_code' => 'required',
             'pancard' => ['required', 'regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/'], // PAN card validation
-            'aadhar_card' => ['required', 'regex:/^[0-9]{12}$/'], // Aadhar card validation
+            'aadhar_card' => 'required|regex:/^\d{4}-\d{4}-\d{4}$/',
         ];
     }
 
@@ -68,6 +68,7 @@ class BankDetails extends Component
         }
     }
 
+
     // Save the bank details to the user's membership profile
     public function save()
     {
@@ -76,7 +77,7 @@ class BankDetails extends Component
         $user = Auth::user();
         $user->membership->bank_name = $this->bank_name;
         $user->membership->branch_name = $this->branch_name;
-        $user->membership->account_no = $this->account_no; 
+        $user->membership->account_no = $this->account_no;
         $user->membership->ifsc = $this->ifsc_code;
         $user->membership->pancard = $this->pancard;
         $user->membership->aadhar_card = $this->aadhar_card;
@@ -122,7 +123,10 @@ class BankDetails extends Component
             </div>
             <div class="flex flex-1 flex-col">
             <input wire:model.blur="aadhar_card" type="text" placeholder="Aadhar Card Number"
-                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"         maxlength="14"
+                   id="aadhar_card_input"
+
+                   required/>
                 @error("aadhar_card")
                     <span class="text-red-600">{{ $message }}</span>
                 @enderror
@@ -130,6 +134,24 @@ class BankDetails extends Component
         </div>
         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Submit</button>
         </form>
+
+        <script>
+             document.addEventListener('DOMContentLoaded', function () {
+                const aadharInput = document.getElementById('aadhar_card_input');
+
+                aadharInput.addEventListener('input', function (e) {
+                    // Remove non-digit characters
+                    let value = e.target.value.replace(/\D/g, '');
+
+                    // Add dashes after every 4 digits
+                    const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1-');
+                    e.target.value = formattedValue;
+
+                    // Update Livewire property
+                    @this.set('aadhar_card', formattedValue);
+                });
+            });
+        </script>
         </div>
         HTML;
     }
