@@ -152,10 +152,27 @@
                 class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
 
-            <input type="text" wire:model="nominee_relation" name="nominee_relation"
+            <select type="text" wire:model="nominee_relation" name="nominee_relation"
                 placeholder="Relation with Nominee"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
+                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">Select Relation</option>
+                <option value="Father">Father</option>
+                <option value="Mother">Mother</option>
+                <option value="Brother">Brother</option>
+                <option value="Sister">Sister</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Grandfather">Grandfather</option>
+                <option value="Grandmother">Grandmother</option>
+                <option value="Uncle">Uncle</option>
+                <option value="Aunt">Aunt</option>
+                <option value="Nephew">Nephew</option>
+                <option value="Niece">Niece</option>
+                <option value="Cousin">Cousin</option>
+                <option value="Wife">Wife</option>
+                <option value="Friend">Friend</option>
+            </select>
+
         </div>
 
         <!-- Bank Details Section -->
@@ -206,7 +223,8 @@
                 <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                        stroke-width="4"></circle>
+                        stroke-width="4">
+                    </circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                 </svg>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p>
@@ -245,6 +263,17 @@
         @enderror
 
         <!-- Terms and Conditions -->
+        <td class="px-4 py-4  whitespace-nowrap text-sm text-gray-500">
+            <button wire:model="status"
+                class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
+            {{ $member->status ? 'bg-green-500' : 'bg-red-500' }}">
+                <span class="sr-only">{{ $member->status ? 'Deactivate' : 'Activate' }}</span>
+                <span
+                    class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
+                {{ $member->status ? 'translate-x-5' : 'translate-x-0' }}"></span>
+            </button>
+        </td>
+
 
 
         <!-- Submit Button -->

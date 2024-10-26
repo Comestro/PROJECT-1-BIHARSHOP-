@@ -70,6 +70,7 @@ class EditMembership extends Component
         $this->aadhar_card = $member->aadhar_card;
         $this->photo = $member->photo;
         $this->existingImage = $member->image;
+        $this->status = $member->status;
     }
 
 
@@ -125,6 +126,7 @@ class EditMembership extends Component
         $membership->ifsc = $this->ifsc;
         $membership->pancard = $this->pancard;
         $membership->aadhar_card = $this->aadhar_card;
+        $membership->status = $this->status;
 
         // image work
         if($this->photo){      
@@ -148,4 +150,14 @@ class EditMembership extends Component
         $membership = Membership::find($this->id);
         return view('livewire.admin.membership.edit-membership');
     }
+
+    // public function toggleStatus()
+    // {
+    //     $data = Membership::find($this->id);
+    //     if ($data) {
+    //         $data->status = !$data->status;
+    //         $data->save();
+    //         $this->render();
+    //     }
+    // }
 }
