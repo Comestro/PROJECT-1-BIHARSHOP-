@@ -42,26 +42,28 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Third Member -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person6.png') }}" alt="Team Member 1">
+                
+                  <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person1.png') }}" alt="Team Member 4">
                     <div class="p-6 text-center">
-                        <h3 class="text-lg font-bold text-gray-900">Samit Kumar Das</h3>
+                        <h3 class="text-lg font-bold text-gray-900">Rupesh Kumar Ranjan</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
                         <div class="mt-4 text-start text-sm text-gray-500">
                             <p>
                                 <i class="icon fal fa-phone"></i>
-                                <span>Contact : <a href="tel:+91-9931009735">+91-9931009735</a></span>
+                                <span>Contact : <a href="tel:+91-7903370681">+91-7903370681</a>, <a href="tel:+91-9570226505">+91-9570226505</a></span>
                             </p>
                            <p><i class="icon fal fa-envelope"></i>
-                                <span>Email : <a href="mailto:samitkumar9931@gmail.com">samitkumar9931@gmail.com</a>
+                                <span>Email : <a href="mailto:rupeshkumarranjan7@gmail.com">rupeshkumarranjan7@gmail.com</a>
                                </span>
                             </p>
                             {{-- <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">LinkedIn</a> --}}
                         </div>
                     </div>
                 </div>
+
+                <!-- Third Member -->
+               
 
                 <!-- Fourth Member -->
                 
@@ -86,24 +88,25 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person1.png') }}" alt="Team Member 4">
+                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+                    <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person6.png') }}" alt="Team Member 1">
                     <div class="p-6 text-center">
-                        <h3 class="text-lg font-bold text-gray-900">Rupesh Kumar Ranjan</h3>
+                        <h3 class="text-lg font-bold text-gray-900">Samit Kumar Das</h3>
                         <p class="mt-2 text-sm text-gray-500">Team Developer</p>
                         <div class="mt-4 text-start text-sm text-gray-500">
                             <p>
                                 <i class="icon fal fa-phone"></i>
-                                <span>Contact : <a href="tel:+91-7903370681">+91-7903370681</a>, <a href="tel:+91-9570226505">+91-9570226505</a></span>
+                                <span>Contact : <a href="tel:+91-9931009735">+91-9931009735</a></span>
                             </p>
                            <p><i class="icon fal fa-envelope"></i>
-                                <span>Email : <a href="mailto:rupeshkumarranjan7@gmail.com">rupeshkumarranjan7@gmail.com</a>
+                                <span>Email : <a href="mailto:samitkumar9931@gmail.com">samitkumar9931@gmail.com</a>
                                </span>
                             </p>
                             {{-- <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">LinkedIn</a> --}}
                         </div>
                     </div>
                 </div>
+              
 
                 <!-- Sixth Member -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
