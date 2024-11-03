@@ -93,7 +93,7 @@
                 <div class="mb-2">
                     <label class="flex items-center">
                         <input type="checkbox" wire:model.live="selectedPriceRanges" value="{{ $key }}"
-                            class="mr-2 size-4">
+                            class="mr-2 size-4">                            
                         @if ($key == 'below_500')
                             Below Rs.500 ({{ \App\Models\Product::whereBetween('discount_price', $range)->count() }})
                         @elseif($key == 'above_2500')
