@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="font-[sans-serif]">
-        <div class="h-screen flex flex-col items-center justify-center md:px-[15%]">
+        <div class="h-[90%] flex flex-col items-center justify-center md:px-[15%]">
             <div
-                class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+                class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4">
                 <div class="md:h-full bg-[#000842] rounded-xl lg:p-12 p-8 flex items-center justify-center">
                     <img src="https://readymadeui.com/signin-image.webp" class="md:w-full w-[50%] md:h-full h-[50%] object-contain"
                         alt="login-image" />

@@ -17,15 +17,18 @@
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-2">
                         <h1 class="text-3xl font-thin mb-1">{{ $product->name }}</h1>
-                        <span class="text-sm">{{ $product->category->name }}</span>
+                        <div class="flex justify-between -mt-2 items-center ">
+                            <span class="text-sm">{{ $product->category->name }}</span>
+                            {{-- wishlist --}}
+                            <livewire:wishlist-toggle :productId="$product->id" />
+                        </div>
                         @if ($product->reviews->count() > 0)
                             <a href="#content-1">
                                 <livewire:product.average-child-star :product="$product" />
                             </a>
                         @endif
                     </div>
-                    {{-- wishlist --}}
-                    <livewire:wishlist-toggle :productId="$product->id" />
+                    
 
                 </div>
                 <!-- Price and Discount -->
