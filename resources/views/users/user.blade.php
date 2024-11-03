@@ -6,7 +6,7 @@
 <!-- Main Content Area -->
 <div class="flex flex-wrap lg:flex-nowrap p-6">
     <!-- Sidebar -->
-    <livewire:user.user-sidebar />
+
 
     <!-- Main Content -->
     @auth
@@ -20,8 +20,8 @@
            <livewire:user.edit-user/>
 
 
-           
-                     
+
+
             <!-- Mobile Section -->
             <!-- FAQs (hidden on mobile, visible on larger screens) -->
             <div class="hidden sm:block bg-gray-100 p-4 rounded-lg mb-6 mt-5">

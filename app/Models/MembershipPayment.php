@@ -10,4 +10,9 @@ class MembershipPayment extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class, 'membership_id', 'id');
+    }
 }

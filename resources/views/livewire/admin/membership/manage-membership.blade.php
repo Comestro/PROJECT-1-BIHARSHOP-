@@ -1,17 +1,14 @@
 <div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
     <!-- Other code -->
 
-    <div class="flex flex-1 justify-between">
+    <div class="flex flex-1 justify-between items-center">
         <div>
             <h1 class="text-2xl font-bold mb-4">Manage Membership</h1>
         </div>
-        <div>
-            <a href="{{route('membership.export')}}" class="px-4 py-2 bg-blue-400 text-white hover:bg-blue-600 rounded-lg">Export in Excel</a>
-        </div>
-        <div class="">
+        <div class=" flex gap-2  items-center">
             <div class="relative flex flex-1">
                 <input type="search"
-                    class="border w-[300px] pl-8 pr-2 py-2 rounded-2xl border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2"
+                    class="border w-[300px] pl-8 pr-2 py-2 rounded border-none ring-1 ring-gray-300 focus:ring-gray-400 focus:ring-2"
                     placeholder="search here.." wire:model.live='searchTerm' />
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" width="20"
@@ -21,6 +18,14 @@
                     </path>
                 </svg>
             </div>
+             <a href="{{route('membership.export')}}" class="px-4 py-2 flex items-center bg-orange-400 text-white hover:bg-orange-600 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                  </svg>
+                  
+                
+                Download Report</a>
+           
 
         </div>
         {{-- <div class="bg-blue-500 text-white px-4  hover:bg-blue-600 rounded-full shadow-lg flex items-center">
@@ -83,13 +88,13 @@
                                   </svg>
                                   View</a>
                              </td>
-                            <td class=" text-center flex justify-center space-x-2">
-                                <a href="{{ route('membership.view', ['id' => $member->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            {{-- <td class=" text-center flex justify-center space-x-2">
+                                <a href="{{ route('membership.edit', ['id' => $member->id]) }}" class="bg-blue-400 hover:bg-blue-600 flex px-3 gap-1 py-2 text-white rounded-lg"><svg class="w-[22px] h-[22px] text-white-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
                                     <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                                   </svg>
                                   Edit</a>
-                             </td>
+                             </td> --}}
                         </td>
                     </tr>
                 @endforeach

@@ -67,11 +67,11 @@ class ReferralDetails extends Component
             <div class="flex flex-1">
             <input type="text" value="{{$referred_by}}" readonly class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            @if($isValidated)
+           
             <div class="flex flex-1 justify-end">
-                <input type="submit" class="bg-green-600 text-white px-3 py-2" value="Next">
+                <input type="submit"  @if(!$isValidated) disabled  @endif class="bg-green-600 disabled:bg-green-400 disabled:cursor-not-allowed  text-white px-3 py-2 rounded" value="Submit & Next Step">
             </div>
-            @endif
+          
         </div>
         </form>
         HTML;

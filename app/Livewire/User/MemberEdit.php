@@ -4,7 +4,7 @@ namespace App\Livewire\User;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Membership;
-use Illuminate\Support\Facades\Str;
+use Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
@@ -34,15 +34,31 @@ class MemberEdit extends Component
 
     public function mount(){
         $user = Auth::user();
-        $membership = $user->membership;
-        if($membership->referal_id || Auth::user()->isAdmin){
-            $this->step = 2;
+
+          // testing
+        if($user->membership == NULL){
+            $uniqueToken = Str::random(40);
+            $membership = Membership::create([
+                'referal_id' => null,
+                'name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+                'mobile' => Auth::user()->mobile,
+                'token' => $uniqueToken,
+                'user_id' => Auth::user()->id
+            ]);
         }
+        else{
+            $membership = Membership::where('user_id',$user->id)->first();
+        }
+    
+        if ($membership && ($membership->referal_id || $user->isAdmin)) {
+            $this->step = 2;
+        } 
 
         if($membership->name && $membership->date_of_birth && $membership->nationality && $membership->marital_status && $membership->religion){
             $this->step = 3;
         }
-        if($membership->father_name && $membership->mother_name && $membership->home_address && $membership->city && $membership->state && $membership->pincode && $membership->mobile  && $membership->whatsapp && $membership->email){
+        if($membership->father_name && $membership->mother_name && $membership->home_address && $membership->city && $membership->state && $membership->pincode && $membership->mobile  && $membership->email){
             $this->step = 4;
         }
 
