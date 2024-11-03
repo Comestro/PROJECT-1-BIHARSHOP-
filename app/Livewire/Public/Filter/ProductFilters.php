@@ -153,7 +153,7 @@ class ProductFilters extends Component
     }
 
     public function updatedSelectedColor(){
-        $this->reset('selectedPriceRanges'); // Reset selected price ranges when color is updated
+        $this->reset('selectedPriceRanges'); // Reset selected price range       s when color is updated
 
         $this->filterProducts(); // Filter products based on color
     }
