@@ -14,6 +14,7 @@ class BankDetails extends Component
     public $branch_name;
     public $ifsc_code;
     public $error_message = '';
+    public $isValidated = false;
 
     #[Validate]
     public $account_no;
@@ -34,26 +35,36 @@ class BankDetails extends Component
         ];
     }
 
-    // Trigger the function when the IFSC code is updated
-    public function updatedIfscCode()
+    public function updated($propertyName)
     {
-        if ($this->validateIfscCode($this->ifsc_code)) {
-            $this->fetchBankDetails($this->ifsc_code);
-        } else {
-            $this->error_message = "Invalid IFSC Code. Please enter a valid code.";
-            $this->bank_name = '';
-            $this->branch_name = '';
+        $this->validateFields();
+        
+        if ($propertyName === 'ifsc_code') {
+            if ($this->validateIfscCode($this->ifsc_code)) {
+                $this->fetchBankDetails($this->ifsc_code);
+            } else {
+                $this->error_message = "Invalid IFSC Code. Please enter a valid code.";
+                $this->bank_name = '';
+                $this->branch_name = '';
+            }
         }
     }
 
-    // Validate the IFSC code format using a regex
+    protected function validateFields()
+    {
+        // Check if all required fields are filled correctly
+        $this->isValidated = $this->bank_name && $this->branch_name && 
+                             $this->account_no && $this->ifsc_code &&
+                             preg_match('/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/', $this->pancard) &&
+                             preg_match('/^\d{4}-\d{4}-\d{4}$/', $this->aadhar_card);
+    }
+
     public function validateIfscCode($ifsc_code)
     {
         $ifsc_pattern = "/^[A-Z]{4}0[A-Z0-9]{6}$/";
         return preg_match($ifsc_pattern, $ifsc_code);
     }
 
-    // Fetch bank and branch details based on the IFSC code
     public function fetchBankDetails($ifsc_code)
     {
         $response = Http::get("https://ifsc.razorpay.com/{$ifsc_code}");
@@ -68,8 +79,6 @@ class BankDetails extends Component
         }
     }
 
-
-    // Save the bank details to the user's membership profile
     public function save()
     {
         $this->validate();
@@ -85,73 +94,73 @@ class BankDetails extends Component
 
         $this->dispatch('showNextStep');
         $this->reset(["bank_name", "branch_name", "ifsc_code", "account_no", "pancard", "aadhar_card"]);
+        $this->isValidated = false; // Reset validation status after submission
     }
 
     public function render()
     {
         return <<<'HTML'
         <div>
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Bank Details</h3>
-        <form wire:submit.prevent="save" method="post">
-        <div class="grid grid-cols-1 gap-6 mb-6">
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Bank Details</h3>
+            <form wire:submit.prevent="save" method="post">
+                <div class="grid grid-cols-1 gap-6 mb-6">
+                    <div class="flex flex-1 flex-col">
+                        <input wire:model.live="ifsc_code" type="text" placeholder="IFSC Code"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+                        @if($error_message)
+                            <p class="text-red-600">{{ $error_message }}</p>
+                        @endif
+                        @if($bank_name && $branch_name)
+                            <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
+                        @endif
+                    </div>
 
-            <div class="flex flex-1 flex-col">
-            <input wire:model.live="ifsc_code" type="text" placeholder="IFSC Code"
-                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
-                   @if($error_message)
-                        <p class="text-red-600">{{ $error_message }}</p>
-                   @endif
-                   @if($bank_name && $branch_name)
-                    <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
-                    @endif
-            </div>
+                    <div class="flex flex-1 flex-col">
+                        <input wire:model.blur="account_no" type="number" placeholder="Account Number"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+                        @error("account_no")
+                            <span class="text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-            <div class="flex flex-1 flex-col">
-                <input wire:model.blur="account_no" type="number" placeholder="Account Number"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
-                @error("account_no")
-                    <span class="text-red-600">{{ $message }}</span>
-                @enderror
-            </div>
+                    <div class="flex flex-1 flex-col">
+                        <input wire:model.blur="pancard" type="text" placeholder="PAN Card Number"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+                        @error("pancard")
+                            <span class="text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-            <div class="flex flex-1 flex-col">
-            <input wire:model.blur="pancard" type="text" placeholder="PAN Card Number"
-                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
-                @error("pancard")
-                    <span class="text-red-600">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="flex flex-1 flex-col">
-            <input wire:model.blur="aadhar_card" type="text" placeholder="Aadhar Card Number"
-                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"         maxlength="14"
-                   id="aadhar_card_input"
+                    <div class="flex flex-1 flex-col">
+                        <input wire:model.blur="aadhar_card" type="text" placeholder="Aadhar Card Number"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="14" id="aadhar_card_input" required/>
+                        @error("aadhar_card")
+                            <span class="text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <button type="submit" class="px-4 py-2 float-end bg-green-600 text-white rounded-lg disabled:bg-green-400 disabled:cursor-not-allowed" @if(!$isValidated) disabled @endif>Save & Next Step</button>
+                <br>
+                <br>
+            </form>
 
-                   required/>
-                @error("aadhar_card")
-                    <span class="text-red-600">{{ $message }}</span>
-                @enderror
-            </div>
-        </div>
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Submit</button>
-        </form>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const aadharInput = document.getElementById('aadhar_card_input');
 
-        <script>
-             document.addEventListener('DOMContentLoaded', function () {
-                const aadharInput = document.getElementById('aadhar_card_input');
+                    aadharInput.addEventListener('input', function (e) {
+                        // Remove non-digit characters
+                        let value = e.target.value.replace(/\D/g, '');
 
-                aadharInput.addEventListener('input', function (e) {
-                    // Remove non-digit characters
-                    let value = e.target.value.replace(/\D/g, '');
+                        // Add dashes after every 4 digits
+                        const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1-');
+                        e.target.value = formattedValue;
 
-                    // Add dashes after every 4 digits
-                    const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1-');
-                    e.target.value = formattedValue;
-
-                    // Update Livewire property
-                    @this.set('aadhar_card', formattedValue);
+                        // Update Livewire property
+                        @this.set('aadhar_card', formattedValue);
+                    });
                 });
-            });
-        </script>
+            </script>
         </div>
         HTML;
     }

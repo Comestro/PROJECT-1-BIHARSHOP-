@@ -1,8 +1,8 @@
 <div>
-    <div>
+    <div class="">
         @foreach($users as $user)
         <a href=""
-            class="flex items-center gap-5 px-7.5 py-3 hover:bg-gray-3">
+            class="flex items-center gap-5 px-7.5 py-3 hover:bg-gray-3 ">
             <div class="relative h-14 w-14 rounded-full">
                 @if($user->image) 
                     <img src="{{ $user->image }}" alt="" class="h-full w-full object-cover rounded-full">

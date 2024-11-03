@@ -1,5 +1,5 @@
 <div class="chart-container relative">
-    <h2 class="text-xl font-bold">Total Orders</h2>
+    <h2 class="text-xl font-bold">Total Orders & Total Users</h2>
 
     <svg width="100%" height="300px" class="mt-9" viewBox="0 0 600 300" preserveAspectRatio="none">
         <!-- Background rectangle -->

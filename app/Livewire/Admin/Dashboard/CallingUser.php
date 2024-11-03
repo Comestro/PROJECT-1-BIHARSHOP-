@@ -11,7 +11,7 @@ class CallingUser extends Component
     public $users;
     public function mount()
     {
-        $this->users = User::all();
+        $this->users = User::orderby("id")->limit(5)->get();
     }
     public function render()
 
