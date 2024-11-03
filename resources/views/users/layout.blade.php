@@ -7,6 +7,8 @@
     <title>@yield('title') {{ env('APP_NAME') }}</title>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    @livewireStyles
+
 </head>
 
 <body class="bg-slate-100" x-data="{ sidebarOpen: false }">
@@ -30,6 +32,7 @@
 
  </div>
 
+    @livewireScripts
 
 </body>
 

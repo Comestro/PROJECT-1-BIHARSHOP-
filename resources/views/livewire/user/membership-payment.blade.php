@@ -6,7 +6,7 @@
             <p class="text-gray-700">
                 Biharshop operates as a direct selling e-commerce platform. Sales Executives are independent agents who
                 promote and sell our products. As part of the onboarding process, Sales Executives are required to
-                complete our coding training program, which costs <span class="font-semibold">₹243</span>.
+                complete our coding training program, which costs <span class="font-semibold">₹251</span>.
             </p>
         </div>
 
@@ -58,7 +58,7 @@
         <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id" value="">
         <input type="hidden" value="{{ $data->token }}" name="token" id="token">
         {{-- <input type="hidden" value="{{ number_format($total, 2) }}" name="amount" id="amount"> --}}
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>    
         <script>
             document.getElementById('pay-button').onclick = function(e) {
                 e.preventDefault();
