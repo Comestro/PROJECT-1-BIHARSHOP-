@@ -399,7 +399,7 @@
         </div>
   </div>
 
-  <div class="relative mt-6 w-full">
+  <div class="mt-6 w-full">
     <!-- Products Grid (disabled while loading) -->
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 transition-opacity duration-300"
         wire:loading.class="opacity-50 pointer-events-none">
