@@ -7,13 +7,14 @@
 @section('content')
     <!-- Image Gallery Section -->
     <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 bg-slate-100  p-4 rounded sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="sm:text-4xl text-xl font-extrabold text-gray-900">
+                <h2 class=" text-3xl lg:text-5xl  font-bold text-gray-900">
                     Our Gallery
                 </h2>
-                <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-xl text-gray-400">
-                  Welcome to our Gallery! <br>  A collection of memories and moments from our journey.
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-xl text-zinc-400">
+                  Welcome to our Gallery <br>  A collection of memories and moments from our journey.
                 </p>
             </div>
 
