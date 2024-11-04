@@ -8,7 +8,7 @@
 <x-hero-section/>
 <livewire:public.product.new-arrivals/>
 <livewire:public.product.top-selling/>
-<x-product-category/>
+{{-- <x-product-category/>  --}}
 
 
 @endsection
