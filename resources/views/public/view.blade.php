@@ -115,12 +115,12 @@
         <!-- <button class=" w-full md:w-40 px-2  py-2 rounded-full text-sm font-semibold ring-1 ring-slate-300">View
             All</button> -->
     <!-- You Might Also Like Section -->
-    <h1 class="text-2xl md:text-4xl font-black text-center mb-8">You Might Also Like</h1>
+    {{-- <h1 class="text-2xl md:text-4xl font-black text-center mb-8">You Might Also Like</h1>
     <div class="flex flex-col md:flex-row justify-center mt-10 px-5 md:px-[5%]">
         <button class="w-full md:w-40 px-4 py-2 rounded-full text-sm font-semibold ring-1 ring-slate-300">
             View All
         </button>
-    </div>
+    </div> --}}
 
     <div class="border border-b-0 bg-slate-200 my-12 mx-[5%]"></div>
 @endsection
