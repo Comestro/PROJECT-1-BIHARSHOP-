@@ -107,7 +107,7 @@
     <h1 class="text-4xl font-black text-center mb-8">You Might Also Like</h1>
     <livewire:product.related-product :slug="$slug" :cat="$category"/>
 
-    <div class="flex flex-1 justify-center mt-10 px-[5%]">
+    {{-- <div class="flex flex-1 justify-center mt-10 px-[5%]"> --}}
 
     
    
@@ -122,5 +122,5 @@
         </button>
     </div> --}}
 
-    <div class="border border-b-0 bg-slate-200 my-12 mx-[5%]"></div>
+    {{-- <div class="border border-b-0 bg-slate-200 my-12 mx-[5%]"></div> --}}
 @endsection
