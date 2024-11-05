@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('aadhar_card')->nullable();
             $table->string('image')->nullable();
             $table->string('transaction_no')->nullable();
-            $table->string('terms&condition')->nullable();
+            $table->string('terms_and_condition')->nullable();
             $table->boolean('isPaid')->default(false);
             $table->string('payment_method')->nullable();
             $table->boolean('isVerified')->default(false);
