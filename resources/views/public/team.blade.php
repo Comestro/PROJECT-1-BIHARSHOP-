@@ -20,7 +20,7 @@ Team Page
         {{-- Responsive team members grid with improved design --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <!-- First Member -->
-            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform transform ">
+            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform ">
                 <img class="w-full h-[400px] object-cover object-center md:object-top" src="{{ asset('team-mates/person3.png') }}" alt="Team Member 3">
                 <div class="p-6 text-center">
                     <h3 class="text-xl font-bold text-zinc-900">SANJAY KUMAR</h3>
@@ -30,7 +30,7 @@ Team Page
             </div>
 
             <!-- Second Member -->
-            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform transform ">
+            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform ">
                 <img class="w-full h-[400px] mt-2  md:h-72 object-cover object-top" src="{{ asset('team-mates/person5.png') }}" alt="Team Member 5">
                 <div class="p-6 text-center mt-5 md:mt-16">
                     <h3 class="text-lg font-bold text-zinc-900">Mithun Lakshman</h3>
@@ -38,7 +38,7 @@ Team Page
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform ">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform ">
                 <img class="w-full h-[400px]  md:h-72 object-cover object-top" src="{{ asset('team-mates/person1.png') }}" alt="Team Member 4">
                 <div class="p-6 text-center">
                     <h3 class="text-lg font-bold text-zinc-900">Rupesh Kumar Ranjan</h3>
@@ -66,7 +66,7 @@ Team Page
 
 
             <!-- Fifth Member -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform ">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform ">
                 <img class="w-full  md:h-72 object-cover object-top" src="{{ asset('team-mates/person4.png') }}" alt="Team Member 2">
                 <div class="p-6 text-center">
                     <h3 class="text-lg font-bold text-zinc-900">Subir Kumar Dey</h3>
@@ -87,7 +87,7 @@ Team Page
                 </div>
             </div>
 
-            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform transform ">
+            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform ">
                 <img class="w-full   h-76 md:h-72 object-cover object-top" src="{{ asset('team-mates/person6.png') }}" alt="Team Member 1">
                 <div class="p-6 text-center">
                     <h3 class="text-lg font-bold text-zinc-900">Samit Kumar Das</h3>
@@ -110,7 +110,7 @@ Team Page
 
 
             <!-- Sixth Member -->
-            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform transform">
+            <div class="bg-white  rounded-lg shadow-lg overflow-hidden transition-transform">
                 <img class="w-full md:h-72 object-cover object-top" src="{{ asset('team-mates/person2.png') }}" alt="Team Member 6">
                 <div class="p-6 text-center">
                     <h3 class="text-lg font-bold text-zinc-900">Ranjeet Kumar Ray</h3>
