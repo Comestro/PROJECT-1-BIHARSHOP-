@@ -2,24 +2,24 @@
     <!-- Main Container -->
     <div class="container mx-auto px-[5%] py-12 md:py-20">
         <!-- Hero Section -->
-        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+        <div class="flex flex-row md:items-center md:space-x-8">
             <!-- Left Side: Text Content -->
-            <div class="text-center md:text-left mb-8 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight text-black">
+            <div class="md:flex-[1.5] flex-[2] md:text-left mb-2 md:mb-0">
+                <h1 class="text-xl md:text-6xl font-bold leading-tight text-black">
                     Find Clothes That Matches Your Style
                 </h1>
-                <p class="text-gray-600 text-lg mt-4 max-w-md mx-auto md:mx-0">
+                <p class="text-gray-600 md:text-lg text-xs md:mt-4 mt-2 max-w-md mx-auto md:mx-0">
                     Browse through our diverse range of meticulously crafted garments, designed to bring out your
                     individuality and cater to your sense of style.
                 </p>
                 <button
-                    class="mt-6 px-8 py-3 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
+                    class="md:mt-6 mt-3 md:px-8 md:py-3 px-3 py-2 bg-black text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
                     Shop Now
                 </button>
             </div>
 
             <!-- Right Side: Image -->
-            <div class="w-full md:w-1/2">
+            <div class="flex-1 md:w-1/2">
                 <img src="{{asset('mainhero.png')}}"
                     alt="Hero Image" class="w-full h-auto " />
             </div>
