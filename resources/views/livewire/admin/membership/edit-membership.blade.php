@@ -263,7 +263,7 @@
         @enderror
 
         <!-- Terms and Conditions -->
-        <td class="px-4 py-4  whitespace-nowrap text-sm text-gray-500">
+        {{-- <td class="px-4 py-4  whitespace-nowrap text-sm text-gray-500">
             <button wire:model="status"
                 class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
             {{ $member->status ? 'bg-green-500' : 'bg-red-500' }}">
@@ -272,8 +272,44 @@
                     class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
                 {{ $member->status ? 'translate-x-5' : 'translate-x-0' }}"></span>
             </button>
-        </td>
+        </td> --}}
 
+
+
+        @if ($isVerified == 1)
+            <div class="my-4">
+                <label class="flex items-center space-x-3">
+                    <span class="text-sm text-green-600 font-semibold">Already Verified</span>
+                </label>
+            </div>
+        @else
+            <div class="my-4">
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" wire:model.live="isVerified" required name="terms"
+                        class="w-5 h-5 text-blue-500 focus:ring-blue-500" required>
+                    <span class="text-sm">Verify Membership Details</span>
+                </label>
+            </div>
+        @endif
+
+        @if ($isPaid == 1)
+            <div class="my-4">
+                <label class="flex items-center space-x-3">
+                    <span class="text-sm text-green-600 font-semibold">Payment Already Done</span>
+                </label>
+            </div>
+        @else
+            <div class="my-4">
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" wire:model="isPaid" required name="terms"
+                        class="w-5 h-5 text-blue-500 focus:ring-blue-500" required>
+                    <span class="text-sm">Approve Payment Details</span>
+                </label>
+            </div>
+        @endif
+
+        <input type="text" wire:model="transaction_no" name="transaction_no" placeholder="Transaction No."
+            class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
 
 
         <!-- Submit Button -->
