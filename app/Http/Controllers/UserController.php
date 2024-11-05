@@ -70,8 +70,20 @@ class UserController extends Controller
          return view('users.member-view',['member' => $member]); 
       }else{
          $data = Membership::where('token',$token)->first();
-         return view('users.membership-payment', ['data' => $data]);
+         if($data->terms_and_condition == 1){
+            return view('users.membership-pending');
+         }else{
+            return view('users.membership-payment', ['data' => $data]);
+         }
       } 
+   }
+   public function membershipScanner($token){
+
+      $user = Auth::user();
+      $data = Membership::where('user_id',$user->id)->where('terms_and_condition',1)->first();
+      if($data){
+         return view('users.membership-scanner',['data' => $data]); 
+      }
    }
 
      public function MyCoupon(){

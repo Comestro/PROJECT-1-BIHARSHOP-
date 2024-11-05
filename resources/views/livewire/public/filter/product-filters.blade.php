@@ -423,57 +423,51 @@
         </div>
 
 
-        <div class="mt-6 w-full">
-            <!-- Products Grid (disabled while loading) -->
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 transition-opacity duration-300"
-                wire:loading.class="opacity-50 pointer-events-none">
-                @if ($products->isEmpty())
-                    <p class="col-span-full text-center text-gray-500">No products found in the selected price range.
-                    </p>
-                @else
-                    @foreach ($products as $product)
-                        <div class="w-full max-w-sm rounded-lg " wire:key="product-{{ $product->id }}">
-                            <a wire:navigate
-                                href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
-                                <div class="rounded-2xl flex bg-zinc-100 overflow-hidden">
-                                    <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
-                                        src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
-                                        alt="product image" />
-                                </div>
-                                <div class="px-3 mt-2 pb-5">
-                                    <div>
-                                        <h5
-                                            class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900  line-clamp-2">
-                                            {{ $product->name }}
-                                        </h5>
-                                    </div>
-                                    @if ($product->reviews->count() > 0)
-                                        @php
-                                            $averageRating = $product->reviews->average('rating');
-                                            $totalReviews = $product->reviews->count();
-                                        @endphp
-                                        <div class="flex items-center gap-2" wire:key="{{ $product->id }}">
-                                            <div class="flex flex-col md:flex gap-1 items-center">
-                                                <div class="flex items-center ">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="w-4 h-4 fill-current {{ $i <= $averageRating ? 'text-yellow-500' : 'text-gray-300' }}"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round">
-                                                            <path
-                                                                d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-8.24-.69L12 2 10.24 8.55 2 9.24l5.46 4.73L5.82 21z" />
-                                                        </svg>
-                                                    @endfor
-                                                    <span class="text-normal font-semibold ml-1 text-zinc-800">
-                                                        {{ number_format($averageRating, 1) }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <span class="text-xs md:text-normal text-gray-600">({{ $totalReviews }}
-                                                {{ $totalReviews == 1 ? 'review' : 'reviews' }})</span>
+  <div class="mt-6 w-full">
+    <!-- Products Grid (disabled while loading) -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 transition-opacity duration-300"
+        wire:loading.class="opacity-50 pointer-events-none">
+        @if ($products->isEmpty())
+            <p class="col-span-full text-center text-gray-500">No products found in the selected price range.</p>
+        @else
+            @foreach ($products as $product)
+                <div class="w-full max-w-sm rounded-lg " wire:key="product-{{ $product->id }}">
+                    <a wire:navigate href="{{ route('product.view', ['category' => $product->category->cat_slug, 'slug' => $product->slug]) }}">
+                        <div class="rounded-2xl flex bg-zinc-100 overflow-hidden">
+                            <img class="object-cover object-top h-[250px] lg:h-[450px] w-full rounded-t-lg"
+                                src="{{ $product->image ? asset('storage/image/product/' . $product->image) : asset('path/to/default-image.jpg') }}"
+                                alt="product image" />
+                        </div>
+                        <div class="px-3 mt-2 pb-5">
+                            <div>
+                                <h5 class="lg:text-lg text-sm font-semibold tracking-tight text-gray-900  line-clamp-2">
+                                    {{ $product->name }}
+                                </h5>
+                            </div>
+                            @if ($product->reviews->count() > 0)
+                                @php
+                                    $averageRating = $product->reviews->average('rating');
+                                    $totalReviews = $product->reviews->count();
+                                @endphp
+                                <div class="flex items-center gap-2" wire:key="{{ $product->id }}">
+                                    <div class="flex flex-col md:flex gap-1 items-center">
+                                        <div class="flex items-center ">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="w-4 h-4 fill-current {{ $i <= $averageRating ? 'text-yellow-500' : 'text-gray-300' }}"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-8.24-.69L12 2 10.24 8.55 2 9.24l5.46 4.73L5.82 21z" />
+                                                </svg>
+                                            @endfor
+                                            <span class="text-normal font-semibold ml-1 text-zinc-800">
+                                                {{ number_format($averageRating, 1) }}
+                                            </span>
                                         </div>
-                                    @endif
+                                    </div>
+                                    <span class="text-xs md:text-normal text-gray-600">({{ $totalReviews }} {{ $totalReviews == 1 ? 'review' : 'reviews' }})</span>
+                                </div>
+                            @endif
 
                                     <div class="flex justify-between">
                                         <span
