@@ -1,8 +1,8 @@
-<div class="flex flex-col overflow-y-auto relative">
+<div class="flex flex-col overflow-y-auto ">
     <div class="flex-1 overflow-y-auto">
         <!-- Cart Items -->
         @foreach ($orders->orderItems as $item)
-        <div class="relative flex flex-col lg:flex-row items-center justify-between p-4 py-6 lg:p-6 rounded-lg bg-white border border-slate-200 mb-4 shadow-md">
+        <div class=" flex flex-col lg:flex-row items-center justify-between p-4 py-6 lg:p-6 rounded-lg bg-white border border-slate-200 mb-4 shadow-md">
             <!-- Delete Button -->
             <button wire:click="destroy({{ $item->id }})" class="absolute top-2 right-2 text-red-600 text-xs lg:text-sm flex items-center p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">

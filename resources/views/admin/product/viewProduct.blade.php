@@ -13,7 +13,7 @@
             </a>
         </div>
         </div>
-        <livewire:admin.view-product :slug="$slug"/>
+        <livewire:admin.view-product  :slug="$slug"/>
 
        
     </div>

@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Membership;
 use App\Models\Membership;
+use App\Models\MembershipPayment;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 use Storage;
 use Livewire\Component;
 
@@ -41,6 +43,9 @@ class EditMembership extends Component
     public $existingImage;
     public $status;
     public $currentImage;
+    public $isVerified;
+    public $isPaid;
+    public $transaction_no;
 
     public function mount(Membership $member){
         $this->member = $member;
@@ -70,7 +75,10 @@ class EditMembership extends Component
         $this->aadhar_card = $member->aadhar_card;
         $this->photo = $member->photo;
         $this->existingImage = $member->image;
+        $this->isPaid = $member->isPaid;
+        $this->isVerified = $member->isVerified;
         $this->status = $member->status;
+        $this->transaction_no = $member->transaction_no;
     }
 
 
@@ -125,8 +133,31 @@ class EditMembership extends Component
         $membership->account_no = $this->account_no;
         $membership->ifsc = $this->ifsc;
         $membership->pancard = $this->pancard;
+        $membership->transaction_no = $this->transaction_no;
         $membership->aadhar_card = $this->aadhar_card;
         $membership->status = $this->status;
+        $membership->isVerified = $this->isVerified;
+        $membership->isPaid = $this->isPaid;
+
+        if($this->isPaid){
+            $membership->payment_status = 'captured';
+            $membership->status = 1;
+
+            $newPayment = MembershipPayment::create([
+                'receipt_no' => time() . $this->transaction_no,
+                'payment_id' => $this->transaction_no,
+                'transaction_fee' => 251,
+                'amount' => 251,
+                'transaction_id' => time() . rand(11, 99) . date('yd'),
+                'transaction_date' => now(),
+                'payment_date' => now(),
+                'payment_status' => $this->status,
+                'currency' => 'INR',
+                'ip_address' => 'Admin',
+                'status' => 1,
+                'membership_id'=> $this->member->id
+            ]);
+        }
 
         // image work
         if($this->photo){      
@@ -139,6 +170,7 @@ class EditMembership extends Component
 
         $this->status = $membership->save();
            if($this->status){
+
                 return redirect('/admin/membership')->with('success', 'Membership updated successfully.');
             } else {
                 return redirect()->back()->with('error', 'Unable to update data.');
