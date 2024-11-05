@@ -393,7 +393,7 @@
             <h2 class="text-2xl font-bold flex-1">{{ $category->name }}</h2>
             <div class="flex items-center gap-2">
                 <!-- Sort By Dropdown -->
-                <div class="relative">
+                <div class="">
                     <select wire:model.live="sortBy" id="sort"
                         class="border rounded text-xs px-2 py-2 w-full md:w-auto">
                         <option value="default">Sort By</option>
