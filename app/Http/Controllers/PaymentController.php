@@ -27,7 +27,9 @@ class PaymentController extends Controller
             }
 
             $user = Auth::user();
-
+            if (!$user) {
+                return redirect()->back()->with('error', 'User authentication failed.');
+            }
             if ($user) {
                 // Find the order using the order_id
                 $order = Order::find($request->input('order_id'));
