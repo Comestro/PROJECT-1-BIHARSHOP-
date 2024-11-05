@@ -19,19 +19,26 @@ class CallingOrder extends Component
     }
     public function render()
     {
+        $query = Order::query();
 
-        $data['orders'] = Order::where('order_number', 'LIKE', "%" . $this->search . "%")->get();
-        if ($this->userId) {
-            $data['orders'] = Order::where('order_number', 'LIKE', "%" . $this->search . "%")
-                ->where('user_id', $this->userId)->get();
+        if ($this->search) {
+            $query->where('order_number', 'LIKE', "%" . $this->search . "%");
         }
+
+        if ($this->userId) {
+            $query->where('user_id', $this->userId);
+        }
+
         if ($this->filterStatus) {
-            $data['orders'] = Order::where('status', $this->filterStatus)->get();
+            $query->where('status', $this->filterStatus);
         }
 
         if ($this->filterMonth) {
-            $data['orders'] = Order::whereMonth('created_at', $this->filterMonth)->get();
+            $query->whereMonth('created_at', $this->filterMonth);
         }
+
+        $data['orders'] = $query->get();
+
         return view('livewire.admin.calling-order', $data);
     }
 }

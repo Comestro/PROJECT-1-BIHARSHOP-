@@ -63,7 +63,8 @@
             </thead>
             <tbody>
 
-                @foreach ($orders as $order)
+
+                @forelse ($orders as $order)
                     <tr class="border-b">
                         <td class="py-3 px-6 text-center">{{ $order->order_number }}</td>
                         <td class="py-3 px-6 text-center">{{ $order->status }}</td>
@@ -75,8 +76,8 @@
                             <div class="flex items-center justify-center space-x-2">
                                 <span
                                     class="inline-block w-4 h-4 rounded-full 
-                                @if ($order->payment_status === 'paid') bg-green-500 
-                                @else bg-red-500 @endif">
+                            @if ($order->payment_status === 'paid') bg-green-500 
+                            @else bg-red-500 @endif">
                                 </span>
                                 <span>{{ $order->payment_status }}</span>
                             </div>
@@ -95,8 +96,20 @@
                                 View Order </a>
                         </td>
                     </tr>
-                @endforeach
+
+                @empty
+                    <tr>
+                        <th colspan="5">
+                            <h1>not found any order please try to filter or change search term</h1>
+                        </th>
+                    </tr>
+                @endforelse
+
+
+
+
             </tbody>
         </table>
     </div>
+
 </div>
