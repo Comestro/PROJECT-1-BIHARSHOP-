@@ -1,4 +1,4 @@
-<div class="w-full mx-auto p-8 bg-white shadow-xl rounded-lg">
+<div class="w-full mx-auto p-3 md:p-8 bg-white shadow-xl rounded-lg">
     <!-- Membership Form Heading -->
 
     <div class="flex flex-1 gap-3 lg:flex-row flex-col">
