@@ -6,6 +6,7 @@
     <title>@yield('title') {{env('APP_NAME')}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{ asset('livewire/livewire.js') }}"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/fav.png') }}">
     @livewireStyles
 
 
