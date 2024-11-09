@@ -1,11 +1,23 @@
 <nav class="bg-white fixed  top-0  w-full border-gray-200 ">
     <div class="w-full  flex-col md:flex-row gap-3 flex flex-wrap md:items-center justify-between mx-auto  px-[5%] py-4">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 justify-between">
 
             <a wire:navigate href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-2xl font-black whitespace-nowrap">BiharShop</span>
                 {{-- <img class="w-auto h-24 object-cover" src="{{asset('logo.png')}}" alt=""> --}}
             </a>
+            
+            @if (!Auth::check())
+            <a href="{{ route('login') }}"
+                class="flex border px-3 sm:hidden py-2 cursor-pointer item-center gap-1 hover:shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                </svg>
+                <span>Login</span>
+            </a>
+        @endif
         </div>
 
         <div class="flex flex-1">
