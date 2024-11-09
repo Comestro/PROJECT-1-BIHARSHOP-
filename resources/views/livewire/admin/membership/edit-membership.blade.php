@@ -9,7 +9,7 @@
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Membership Referal Details</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <input type="text" wire:model="referal_id" name="referal_id" placeholder="Referal ID"
-                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" readonly>
             @error('referal_id')
                 <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
             @enderror
@@ -306,6 +306,27 @@
                     <span class="text-sm">Approve Payment Details</span>
                 </label>
             </div>
+        @endif
+
+        @if($isPaid == 1 && $isVerified == 1)
+
+        @if ($membership_id)
+            <div class="my-4">
+                <label class="flex items-center gap-5 ">
+                    <span class="text-sm text-green-600 font-semibold">Already Generated Id </span>
+                    <input type="text" wire:model="membership_id" name="membership_id" 
+                    class=" p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" readonly>
+                </label>
+            </div>
+        @else
+            <div class="my-4">
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" wire:model="membership_id" required name="terms"
+                        class="w-5 h-5 text-blue-500 focus:ring-blue-500" required>
+                    <span class="text-sm">Generate Membership Id</span>
+                </label>
+            </div>
+        @endif
         @endif
 
         <input type="text" wire:model="transaction_no" name="transaction_no" placeholder="Transaction No."
