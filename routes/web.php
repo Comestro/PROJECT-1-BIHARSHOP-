@@ -56,7 +56,7 @@ Route::post('/save-membership-payment', [MembershipPaymentController::class, 'sa
 // Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
 Route::get('/category/{cat_slug}/{cat_id}',[PublicController::class,"filter"])->name("filter");
-
+Route::get('/error',[PublicController::class, "showError"])->name('show.error');
 Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("login");
 Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("signup");
 Route::match(['get',"post"],'/membership-signup',[PublicController::class,"membershipSignup"])->name("membership.signup");
