@@ -125,12 +125,25 @@ class FamilyDetails extends Component
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                     <div class="flex flex-col">
-                        <input type="number" wire:model.live="pincode" name="pincode" placeholder="Pincode"
+                        <input type="number" wire:model.blur="pincode" name="pincode" placeholder="Pincode"
                             class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required>
-                        @if($city && $state)
+                            <div wire:loading wire:target="pincode" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
+                        <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                        </svg>
+                        <!-- <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p> -->
+                    </div>
+
+                    <div wire:loading.remove wire:target="pincode" class="w-full h-full flex items-center justify-start">
+                    @if($city && $state)
                             <p class="text-green-700 text-sm font-semibold">{{ $city }} ({{$state}})</p>
                         @endif
+                    </div>
+                       
                     </div>
 
                     <input type="tel" name="mobile" wire:model.live="mobile" placeholder="Mobile"
