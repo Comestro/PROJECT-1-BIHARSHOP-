@@ -36,11 +36,11 @@ class ApplicantDetails extends Component
     protected function validateFields()
     {
         // Check if all fields are filled
-        $this->isValidated = !empty($this->name) && 
-                             !empty($this->date_of_birth) && 
-                             !empty($this->nationality) && 
-                             !empty($this->marital_status) && 
-                             !empty($this->religion);
+        $this->isValidated = !empty($this->name) &&
+            !empty($this->date_of_birth) &&
+            !empty($this->nationality) &&
+            !empty($this->marital_status) &&
+            !empty($this->religion);
     }
 
     public function save()
@@ -73,63 +73,66 @@ class ApplicantDetails extends Component
         <div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Applicant Details</h3>
             <form wire:submit.prevent="save" class="grid grid-cols-1 gap-6 mb-6">
-                <div class="grid grid-cols-1 gap-6 mb-6">
-                    <input type="text" wire:model.live="name" name="name" placeholder="First Name"
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+                <input type="text" wire:model.live="name" name="name" placeholder="First Name"
+                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                @error('name')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                @enderror
+
+                <input type="date" wire:model.live="date_of_birth" name="date_of_birth" placeholder="Date of Birth"
+                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required id="date_of_birth">
+                @error('date_of_birth')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                @enderror
+
+                <select wire:model.live="nationality" name="nationality"
                         class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
-                    @error('name')
-                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                    @enderror
+                    <option value="">Nationality</option>
+                    <option value="Indian">Indian</option>
+                    <option value="NRI">NRI</option>
+                    <option value="Others">Others</option>
+                </select>
+                @error('nationality')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                @enderror
 
-                    <input type="date" wire:model.live="date_of_birth" name="date_of_birth" placeholder="Date of Birth"
-                        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required id="date_of_birth">
-                    @error('date_of_birth')
-                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                    @enderror
-
-                    <select wire:model.live="nationality" name="nationality"
+                <select wire:model.live="marital_status" name="marital_status"
                         class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
-                        <option value="">Nationality</option>
-                        <option value="Indian">Indian</option>
-                        <option value="NRI">NRI</option>
-                        <option value="Others">Others</option>
-                    </select>
-                    @error('nationality')
-                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                    @enderror
+                    <option value="">Marital Status</option>
+                    <option value="married">Married</option>
+                    <option value="unmarried">Unmarried</option>
+                    <option value="single">Single</option>
+                </select>
+                @error('marital_status')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                @enderror
 
-                    <select wire:model.live="marital_status" name="marital_status"
+                <select wire:model.live="religion" name="religion"
                         class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
-                        <option value="">Marital Status</option>
-                        <option value="married">Married</option>
-                        <option value="unmarried">Unmarried</option>
-                        <option value="single">Single</option>
-                    </select>
-                    @error('marital_status')
-                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                    @enderror
+                    <option value="">Religion</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Muslim">Muslim</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Bodh">Bodh</option>
+                    <option value="Christian">Christian</option>
+                </select>
+                @error('religion')
+                    <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
+                @enderror
 
-                    <select wire:model.live="religion" name="religion"
-                        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 col-span-2"
-                        required>
-                        <option value="">Religion</option>
-                        <option value="Hindu">Hindu</option>
-                        <option value="Muslim">Muslim</option>
-                        <option value="Sikh">Sikh</option>
-                        <option value="Bodh">Bodh</option>
-                        <option value="Christian">Christian</option>
-                    </select>
-                    @error('religion')
-                        <p class="text-xs text-red-500 font-semibold">{{ $message }}</p>
-                    @enderror
-
-                    <div class="flex flex-1 col-span-2 justify-end">
-                        <input type="submit" @if(!$isValidated) disabled @endif class="disabled:bg-green-400 disabled:cursor-not-allowed bg-green-600 text-white px-3 py-2 rounded-lg" value="Submit & Next Step">
-                    </div>
+                <div class="flex md:col-span-2 justify-end">
+                    <input type="submit" @if(!$isValidated) disabled @endif
+                        class="disabled:bg-green-400 disabled:cursor-not-allowed bg-green-600 text-white px-3 py-2 rounded-lg"
+                        value="Submit & Next Step">
                 </div>
+            </div>
+
             </form>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
