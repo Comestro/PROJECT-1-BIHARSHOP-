@@ -46,9 +46,15 @@ class ManageMembership extends Component
     public function render()
     {
         // Fetch categories based on the search term
-        $memberships = Membership::where('name', 'like', '%' . $this->searchTerm . '%')
-            ->orWhere('membership_id', 'like', '%' . $this->searchTerm . '%')
-            ->get();
+        // $memberships = Membership::where('terms_and_condition',1)->where('name', 'like', '%' . $this->searchTerm . '%')
+        //     ->orWhere('membership_id', 'like', '%' . $this->searchTerm . '%')
+        //     ->get();
+
+        $memberships = Membership::where('terms_and_condition', 1)->where(function ($query) {
+        $query->where('name', 'like', '%' . $this->searchTerm . '%')
+              ->orWhere('membership_id', 'like', '%' . $this->searchTerm . '%');
+    })
+    ->get();
 
         return view('livewire.admin.membership.manage-membership', [
             'memberships' => $memberships,
