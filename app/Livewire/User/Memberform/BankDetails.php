@@ -105,7 +105,7 @@ class BankDetails extends Component
             <form wire:submit.prevent="save" method="post">
                 <div class="grid grid-cols-1 gap-6 mb-6">
                     <div class="flex flex-1 flex-col">
-                        <input wire:model.live="ifsc_code" type="text" placeholder="IFSC Code"
+                        <input wire:model.blur="ifsc_code" type="text" placeholder="IFSC Code"
                                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
                         <div wire:loading wire:target="ifsc_code" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
                         <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
