@@ -191,4 +191,8 @@ class PublicController extends Controller
     public function termsConditions(){
         return view('public.terms-conditions');
     }
+
+    public function showError(){
+        return view('public.error');
+    }
 }
