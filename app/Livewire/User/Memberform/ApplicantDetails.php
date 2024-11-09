@@ -73,7 +73,7 @@ class ApplicantDetails extends Component
         <div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Applicant Details</h3>
             <form wire:submit.prevent="save" class="grid grid-cols-1 gap-6 mb-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div class="grid grid-cols-1 gap-6 mb-6">
                     <input type="text" wire:model.live="name" name="name" placeholder="First Name"
                         class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
