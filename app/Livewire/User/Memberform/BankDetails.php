@@ -107,12 +107,27 @@ class BankDetails extends Component
                     <div class="flex flex-1 flex-col">
                         <input wire:model.live="ifsc_code" type="text" placeholder="IFSC Code"
                                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
-                        @if($error_message)
+                        <div wire:loading wire:target="ifsc_code" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
+                        <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                        </svg>
+                        <!-- <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p> -->
+                    </div>
+
+                    <div wire:loading.remove wire:target="ifsc_code" class="w-full h-full flex items-center justify-start">
+                    @if($bank_name && $branch_name)
+                            <!-- <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p> -->
+                    @endif
+                    </div>
+                        <!-- @if($error_message)
                             <p class="text-red-600">{{ $error_message }}</p>
                         @endif
                         @if($bank_name && $branch_name)
                             <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
-                        @endif
+                        @endif -->
                     </div>
 
                     <div class="flex flex-1 flex-col">
