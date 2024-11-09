@@ -114,20 +114,14 @@ class BankDetails extends Component
                                 stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                         </svg>
-                        <!-- <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p> -->
                     </div>
 
                     <div wire:loading.remove wire:target="ifsc_code" class="w-full h-full flex items-center justify-start">
                     @if($bank_name && $branch_name)
-                            <!-- <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p> -->
+                        <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
                     @endif
                     </div>
-                        <!-- @if($error_message)
-                            <p class="text-red-600">{{ $error_message }}</p>
-                        @endif
-                        @if($bank_name && $branch_name)
-                            <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
-                        @endif -->
+               
                     </div>
 
                     <div class="flex flex-1 flex-col">
