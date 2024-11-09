@@ -7,8 +7,9 @@
 @section('content')
     <!-- Signup Page Container -->
     <div class="flex justify-center items-center min-h-screen ">
-        <div class="w-full max-w-lg p-10 bg-white rounded-3xl shadow-lg transform transition-transform duration-500 mt-5 mb-5">
-            
+        <div
+            class="w-full max-w-lg p-10 bg-white rounded-3xl shadow-lg transform transition-transform duration-500 mt-5 mb-5">
+
             <!-- Logo -->
             <div class="flex justify-center mb-8">
                 <img src="/logo.png" alt="E-commerce Logo" class="h-20 w-20">
@@ -25,11 +26,11 @@
 
                 <!-- Social Signup Options -->
                 <div class="flex flex-col space-y-3">
-                    <button type="button"
-                        class="w-full py-3 px-4 flex items-center justify-center border border-gray-300 rounded-2xl text-sm font-semibold text-gray-800 bg-white shadow-sm hover:bg-gray-200 transition-all duration-300">
+                    <a href="{{ route('google.login') }}" type="button"
+                        class="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-100">
                         <img src="/google-logo.png" alt="" class="h-6 w-6 mr-1">
-                        Sign up with Google
-                    </button>
+                        Continue with Google
+                    </a>
                 </div>
 
                 <!-- Divider -->
@@ -75,7 +76,8 @@
                     </div>
 
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="confirm-password" class="block text-sm font-semibold text-gray-700">Confirm Password</label>
+                        <label for="confirm-password" class="block text-sm font-semibold text-gray-700">Confirm
+                            Password</label>
                         <input type="password" id="confirm-password" name="password_confirmation"
                             class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                             placeholder="••••••••">
