@@ -56,7 +56,7 @@ class BankDetails extends Component
         $this->isValidated = $this->bank_name && $this->branch_name && 
                              $this->account_no && $this->ifsc_code &&
                              preg_match('/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/', $this->pancard) &&
-                             preg_match('/^\d{4}-\d{4}-\d{4}$/', $this->aadhar_card);
+                             preg_match('/^\d{12}$/', $this->aadhar_card);
     }
 
     public function validateIfscCode($ifsc_code)
@@ -142,7 +142,7 @@ class BankDetails extends Component
 
                     <div class="flex flex-1 flex-col">
                         <input wire:model.live="aadhar_card" type="text" placeholder="Aadhar Card Number"
-                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="14" id="aadhar_card_input" required/>
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="12" id="aadhar_card_input" required/>
                         @error("aadhar_card")
                             <span class="text-red-600">{{ $message }}</span>
                         @enderror
