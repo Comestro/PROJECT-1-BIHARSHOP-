@@ -9,7 +9,7 @@
             
             @if (!Auth::check())
             <a href="{{ route('login') }}"
-                class="flex border px-3 py-2 cursor-pointer item-center gap-1 hover:shadow-xl">
+                class="flex border px-3 sm:hidden py-2 cursor-pointer item-center gap-1 hover:shadow-xl">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
