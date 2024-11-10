@@ -291,7 +291,7 @@
 
             <div class="my-4">
                 <label class="flex items-center space-x-3">
-                    <input type="checkbox" wire:model.live="isVerified" required name="terms"
+                    <input type="checkbox" wire:model="isVerified" required name="terms"
                         class="w-5 h-5 text-blue-500 focus:ring-blue-500" required>
                     <span class="text-sm">Verify Membership Details</span>
                 </label>
