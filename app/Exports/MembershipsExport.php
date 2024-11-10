@@ -32,12 +32,12 @@ class MembershipsExport implements FromCollection, WithHeadings
     {
         // Filter data based on the date range
         return Membership::whereBetween('created_at', [$this->startDate, $this->endDate])
-            ->select('id', 'name', 'email')
+            ->select('membership_id', 'name', 'email','mobile','mother_name','father_name','pancard','aadhar_card','created_at','home_address')->whereNotNull('membership_id')
             ->get();
     }
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Email'];
+        return ['Membership Id', 'Name', 'Email','Mobile',"Mother's Name","Father's Name",'Pancard','Aadhar Card','Joining Date','Address'];
     }
 }
