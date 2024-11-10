@@ -125,7 +125,7 @@ class FamilyDetails extends Component
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                     <div class="flex flex-col">
-                        <input type="number" wire:model.live="pincode" name="pincode" placeholder="Pincode"
+                        <input type="number" wire:model.blur="pincode" name="pincode" placeholder="Pincode"
                             class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required>
                             <div wire:loading wire:target="pincode" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">

@@ -31,7 +31,7 @@ class BankDetails extends Component
             'account_no' => 'required|digits_between:9,18',
             'ifsc_code' => 'required',
             'pancard' => ['required', 'regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/'], // PAN card validation
-            'aadhar_card' => 'required|regex:/^\d{4}-\d{4}-\d{4}$/',
+            'aadhar_card' => 'required|regex:/^\d{12}$/',
         ];
     }
 
@@ -56,7 +56,7 @@ class BankDetails extends Component
         $this->isValidated = $this->bank_name && $this->branch_name && 
                              $this->account_no && $this->ifsc_code &&
                              preg_match('/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/', $this->pancard) &&
-                             preg_match('/^\d{4}-\d{4}-\d{4}$/', $this->aadhar_card);
+                             preg_match('/^\d{12}$/', $this->aadhar_card);
     }
 
     public function validateIfscCode($ifsc_code)
@@ -105,7 +105,7 @@ class BankDetails extends Component
             <form wire:submit.prevent="save" method="post">
                 <div class="grid grid-cols-1 gap-6 mb-6">
                     <div class="flex flex-1 flex-col">
-                        <input wire:model.live="ifsc_code" type="text" placeholder="IFSC Code"
+                        <input wire:model.blur="ifsc_code" type="text" placeholder="IFSC Code"
                                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
                         <div wire:loading wire:target="ifsc_code" class="flex flex-col items-center mt-24 pl-48 justify-center w-full h-full">
                         <svg class="w-8 h-8 text-gray-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -114,20 +114,14 @@ class BankDetails extends Component
                                 stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                         </svg>
-                        <!-- <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Uploading...</p> -->
                     </div>
 
                     <div wire:loading.remove wire:target="ifsc_code" class="w-full h-full flex items-center justify-start">
                     @if($bank_name && $branch_name)
-                            <!-- <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p> -->
+                        <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
                     @endif
                     </div>
-                        <!-- @if($error_message)
-                            <p class="text-red-600">{{ $error_message }}</p>
-                        @endif
-                        @if($bank_name && $branch_name)
-                            <p class="text-green-700 text-sm font-semibold">{{ $bank_name }} ({{$branch_name}})</p>
-                        @endif -->
+               
                     </div>
 
                     <div class="flex flex-1 flex-col">
@@ -147,8 +141,8 @@ class BankDetails extends Component
                     </div>
 
                     <div class="flex flex-1 flex-col">
-                        <input wire:model.blur="aadhar_card" type="text" placeholder="Aadhar Card Number"
-                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="14" id="aadhar_card_input" required/>
+                        <input wire:model.live="aadhar_card" type="text" placeholder="Aadhar Card Number"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="12" id="aadhar_card_input" required/>
                         @error("aadhar_card")
                             <span class="text-red-600">{{ $message }}</span>
                         @enderror
@@ -159,23 +153,7 @@ class BankDetails extends Component
                 <br>
             </form>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const aadharInput = document.getElementById('aadhar_card_input');
-
-                    aadharInput.addEventListener('input', function (e) {
-                        // Remove non-digit characters
-                        let value = e.target.value.replace(/\D/g, '');
-
-                        // Add dashes after every 4 digits
-                        const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1-');
-                        e.target.value = formattedValue;
-
-                        // Update Livewire property
-                        @this.set('aadhar_card', formattedValue);
-                    });
-                });
-            </script>
+           
         </div>
         HTML;
     }
