@@ -155,7 +155,7 @@ class EditMembership extends Component
                 'transaction_id' => time() . rand(11, 99) . date('yd'),
                 'transaction_date' => now(),
                 'payment_date' => now(),
-                'payment_status' => $this->status,
+                'payment_status' => 1,
                 'currency' => 'INR',
                 'ip_address' => 'Admin',
                 'status' => 1,

@@ -11,6 +11,11 @@ class ViewMembership extends Component
 {
 
     public $id;
+    public $isPaid;
+    public $isVerified;
+    public $membership_id;
+    public $member;
+    public $transaction_no;
     public $isModalOpen = false;
     public $confirmingDelete = false;
 
@@ -34,16 +39,15 @@ class ViewMembership extends Component
         }
     }
 
-    public function openModal($couponId)
+    public function openModal()
     {
-        $this->couponId = $couponId;
-        $coupon = Membership::find($this->id);
+        $membership = Membership::find($this->id);
 
-        if ($coupon) {
-            $this->code = $coupon->code;
-            $this->discount_type = $coupon->discount_type;
-            $this->discount_value = $coupon->discount_value;
-            $this->expiration_date = $coupon->expiration_date;
+        if ($membership) {
+            $this->isPaid = $membership->isPaid;
+            $this->isVerified = $membership->isVerified;
+            $this->membership_id = $membership->membership_id;
+            $this->transaction_no = $membership->transaction_no;
             $this->isModalOpen = true;
         }
     }
@@ -53,16 +57,56 @@ class ViewMembership extends Component
         $this->isModalOpen = false;
     }
 
-    public function approve()
+    public function approveNow()
     {
-        $this->validate();
+        // $this->validate();
 
-        $coupon = Coupon::find($this->id);
-        $coupon->code = $this->code;
-        $coupon->discount_type = $this->discount_type;
-        $coupon->discount_value = $this->discount_value;
-        $coupon->expiration_date = $this->expiration_date;
-        $coupon->save();
+        $membership = Membership::find($this->id);
+        $membership->isVerified = $this->isVerified;
+        $membership->transaction_no = $this->transaction_no;
+        $membership->isPaid = $this->isPaid;
+        $membership->membership_id = $this->membership_id;
+        if ($this->isVerified == 1) {
+            $membership->payment_status = 'captured';
+            $membership->status = 1;
+
+            $newPayment = MembershipPayment::create([
+                'receipt_no' => time() . $this->transaction_no,
+                'payment_id' => $this->transaction_no,
+                'transaction_fee' => 251,
+                'amount' => 251,
+                'transaction_id' => time() . rand(11, 99) . date('yd'),
+                'transaction_date' => now(),
+                'payment_date' => now(),
+                'payment_status' => 1,
+                'currency' => 'INR',
+                'ip_address' => 'Admin',
+                'status' => 1,
+                'membership_id'=> $this->member->id
+            ]);
+
+            if ($this->isVerified == 1 && $this->isPaid == 1) {
+                // Retrieve the last membership_id
+                $lastMembership = $membership->orderBy('membership_id', 'desc')->first();
+        
+                // Check if a last membership exists
+                if ($lastMembership) {
+                    // Extract the numeric part and increment it
+                    preg_match('/\d+/', $lastMembership->membership_id, $matches);
+                    $newId = isset($matches[0]) ? (int)$matches[0] + 1 : 1;
+                } else {
+                    // If no previous ID exists, start from 1
+                    $newId = 1;
+                }
+        
+                // Create new membership_id with prefix
+                $data_id['membership_id'] = 'BSE' . $newId;
+        
+                // Update the membership with new ID
+                $membership->update($data_id);
+            }
+        }
+        $membership->save();
         $this->closeModal();
 
         session()->flash('message', 'Data updated successfully.');
