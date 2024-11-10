@@ -283,6 +283,12 @@
                 </label>
             </div>
         @else
+        {{-- <div class="my-4">
+            <label class="flex items-center space-x-3">
+                <span class="text-sm text-blue-600 font-semibold">Verification Pending</span>
+            </label>
+        </div> --}}
+
             <div class="my-4">
                 <label class="flex items-center space-x-3">
                     <input type="checkbox" wire:model.live="isVerified" required name="terms"
@@ -299,6 +305,11 @@
                 </label>
             </div>
         @else
+        {{-- <div class="my-4">
+            <label class="flex items-center space-x-3">
+                <span class="text-sm text-blue-600 font-semibold">Payment Verification Pending</span>
+            </label>
+        </div> --}}
             <div class="my-4">
                 <label class="flex items-center space-x-3">
                     <input type="checkbox" wire:model="isPaid" required name="terms"
@@ -307,8 +318,6 @@
                 </label>
             </div>
         @endif
-
-        @if($isPaid == 1 && $isVerified == 1)
 
         @if ($membership_id)
             <div class="my-4">
@@ -319,6 +328,11 @@
                 </label>
             </div>
         @else
+        {{-- <div class="my-4">
+            <label class="flex items-center space-x-3">
+                <span class="text-sm text-blue-600 font-semibold">Membership Not Generated </span>
+            </label>
+        </div> --}}
             <div class="my-4">
                 <label class="flex items-center space-x-3">
                     <input type="checkbox" wire:model="membership_id" required name="terms"
@@ -326,7 +340,6 @@
                     <span class="text-sm">Generate Membership Id</span>
                 </label>
             </div>
-        @endif
         @endif
 
         <input type="text" wire:model="transaction_no" name="transaction_no" placeholder="Transaction No."
