@@ -46,6 +46,7 @@ class EditMembership extends Component
     public $isVerified;
     public $isPaid;
     public $transaction_no;
+    public $membership_id;
 
     public function mount(Membership $member){
         $this->member = $member;
@@ -79,12 +80,14 @@ class EditMembership extends Component
         $this->isVerified = $member->isVerified;
         $this->status = $member->status;
         $this->transaction_no = $member->transaction_no;
+        $this->membership_id = $member->membership_id;
+        $this->referal_id = $member->referal_id;
     }
 
 
     public function updateMembership()
     {
-         $this->validate(  [
+        $this->validate(  [
             'name' => 'required|string|max:255',
             // 'date_of_birth' => 'required|string|max:255',
             // 'nationality' => 'required|string|max:255',
@@ -105,7 +108,7 @@ class EditMembership extends Component
             // 'ifsc' => 'required|string|max:255',
             // 'pancard' => 'required|string|max:255',
             // 'aadhar_card' => 'required|string|max:255',
-    ]);
+        ]);
 
     
 
@@ -113,7 +116,7 @@ class EditMembership extends Component
 
         $membership->name = $this->name;
         $membership->date_of_birth = $this->date_of_birth;
-        // $membership->referalId = $this->referalId;
+        $membership->referal_id = $this->referal_id;
         $membership->nationality = $this->nationality;
         $membership->marital_status = $this->marital_status;
         $membership->religion = $this->religion;
@@ -138,6 +141,7 @@ class EditMembership extends Component
         $membership->status = $this->status;
         $membership->isVerified = $this->isVerified;
         $membership->isPaid = $this->isPaid;
+        $membership->membership_id = $this->membership_id;
 
         if($this->isPaid){
             $membership->payment_status = 'captured';
@@ -151,12 +155,34 @@ class EditMembership extends Component
                 'transaction_id' => time() . rand(11, 99) . date('yd'),
                 'transaction_date' => now(),
                 'payment_date' => now(),
-                'payment_status' => $this->status,
+                'payment_status' => 1,
                 'currency' => 'INR',
                 'ip_address' => 'Admin',
                 'status' => 1,
                 'membership_id'=> $this->member->id
             ]);
+        }
+        if ($this->membership_id) {
+            if ($this->isVerified == 1 && $this->isPaid == 1) {
+                // Retrieve the last membership_id
+                $lastMembership = $membership->orderBy('membership_id', 'desc')->first();
+        
+                // Check if a last membership exists
+                if ($lastMembership) {
+                    // Extract the numeric part and increment it
+                    preg_match('/\d+/', $lastMembership->membership_id, $matches);
+                    $newId = isset($matches[0]) ? (int)$matches[0] + 1 : 1;
+                } else {
+                    // If no previous ID exists, start from 1
+                    $newId = 1;
+                }
+        
+                // Create new membership_id with prefix
+                $data_id['membership_id'] = 'BSE' . $newId;
+        
+                // Update the membership with new ID
+                $membership->update($data_id);
+            }
         }
 
         // image work

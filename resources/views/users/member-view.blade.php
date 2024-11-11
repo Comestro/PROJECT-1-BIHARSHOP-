@@ -89,6 +89,7 @@
                     </div>
                 </div>
             </div>
+            {{-- {{dd($referals)}} --}}
 
             <div class="flex justify-between items-center text-center mt-10">
                 @if ($referals->count() != 0)

@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('transaction_no')->nullable();
             $table->string('terms_and_condition')->nullable();
             $table->boolean('isPaid')->default(false);
-            $table->string('payment_method')->nullable();
+            $table->string('payment_status')->nullable();
             $table->boolean('isVerified')->default(false);
             $table->boolean('status')->default(false);
             $table->timestamps();
