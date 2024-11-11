@@ -192,7 +192,15 @@ class PublicController extends Controller
         return view('public.terms-conditions');
     }
 
-    public function showError(){
-        return view('public.error');
+    public function showError404(){
+        return view('public.errors.404');
+    }
+
+    public function showError505(){
+        return view('public.errors.505');
+    }
+
+    public function showError500(){
+        return view('public.errors.500');
     }
 }
