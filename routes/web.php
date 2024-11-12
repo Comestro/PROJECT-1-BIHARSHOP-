@@ -61,7 +61,7 @@ Route::get('/500',[PublicController::class, "showError500"]);
 Route::get('/505',[PublicController::class, "showError505"]);
 
 
-Route::get('/category/{cat_slug}/{cat_id}', [PublicController::class, "filter"])->name("filter");
+Route::get('/category/{cat_slug}', [PublicController::class, "filter"])->name("filter");
 Route::match(['get', "post"], '/public-login', [PublicController::class, "login"])->name("login");
 Route::match(['get', "post"], '/public-signup', [PublicController::class, "signup"])->name("signup");
 Route::match(['get', "post"], '/membership-signup', [PublicController::class, "membershipSignup"])->name("membership.signup");
