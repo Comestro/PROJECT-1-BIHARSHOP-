@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('error_description')->nullable();
             $table->string('payment_status')->nullable();
             $table->string('status')->default('pending');
-            $table->json('notes')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }
