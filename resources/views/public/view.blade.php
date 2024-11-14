@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Product Section -->
-    <section class="max-w-6xl mx-auto p-5 mt-10">
+    <section class="mx-auto p-5 mt-10">
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
