@@ -87,7 +87,7 @@ class EditMembership extends Component
 
     public function updateMembership()
     {
-         $this->validate(  [
+        $this->validate(  [
             'name' => 'required|string|max:255',
             // 'date_of_birth' => 'required|string|max:255',
             // 'nationality' => 'required|string|max:255',
@@ -108,7 +108,7 @@ class EditMembership extends Component
             // 'ifsc' => 'required|string|max:255',
             // 'pancard' => 'required|string|max:255',
             // 'aadhar_card' => 'required|string|max:255',
-    ]);
+        ]);
 
     
 
@@ -155,7 +155,7 @@ class EditMembership extends Component
                 'transaction_id' => time() . rand(11, 99) . date('yd'),
                 'transaction_date' => now(),
                 'payment_date' => now(),
-                'payment_status' => $this->status,
+                'payment_status' => 1,
                 'currency' => 'INR',
                 'ip_address' => 'Admin',
                 'status' => 1,

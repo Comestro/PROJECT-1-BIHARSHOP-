@@ -83,6 +83,7 @@ class NomineeDetails extends Component
                     <option value="Niece">Niece</option>
                     <option value="Cousin">Cousin</option>
                     <option value="Wife">Wife</option>
+                    <option value="Husband">Husband</option>
                     <option value="Friend">Friend</option>
                 </select>
                 @error('nominee_relation')

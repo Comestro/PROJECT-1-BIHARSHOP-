@@ -35,29 +35,29 @@ class MembershipPaymentController extends Controller
                     return redirect()->back()->with('error', 'Data not found.');
                 }  
 
-                $newPayment = MembershipPayment::create([
-                    'receipt_no' => time() . $user->id,
-                    'payment_id' => $request->razorpay_payment_id,
-                    'transaction_fee' => $payment->amount,
-                    'amount' => 250,
-                    'transaction_id' => time() . rand(11, 99) . date('yd'),
-                    'transaction_date' => now(),
-                    'payment_date' => now(),
-                    'payment_status' => $response->status,
-                    'currency' => $response->currency,
-                    'payment_card_id' => $response->card_id ?? null,
-                    'method' => $response->method ?? null,
-                    'wallet' => $response->wallet ?? null,
-                    'bank' => $response->bank ?? null,
-                    'payment_vpa' => $response->vpa ?? null,
-                    'ip_address' => $request->ip(),
-                    'international_payment' => $response->international ?? false,
-                    'error_reason' => $response->error_reason ?? null,
-                    'error_code' => $response->error_code ?? null,
-                    'error_description' => $response->error_description ?? null,
-                    'status' => 1,
-                    'membership_id'=> $membership->id
-                ]);
+                // $newPayment = MembershipPayment::create([
+                //     'receipt_no' => time() . $user->id,
+                //     'payment_id' => $request->razorpay_payment_id,
+                //     'transaction_fee' => $payment->amount,
+                //     'amount' => 250,
+                //     'transaction_id' => time() . rand(11, 99) . date('yd'),
+                //     'transaction_date' => now(),
+                //     'payment_date' => now(),
+                //     'payment_status' => $response->status,
+                //     'currency' => $response->currency,
+                //     'payment_card_id' => $response->card_id ?? null,
+                //     'method' => $response->method ?? null,
+                //     'wallet' => $response->wallet ?? null,
+                //     'bank' => $response->bank ?? null,
+                //     'payment_vpa' => $response->vpa ?? null,
+                //     'ip_address' => $request->ip(),
+                //     'international_payment' => $response->international ?? false,
+                //     'error_reason' => $response->error_reason ?? null,
+                //     'error_code' => $response->error_code ?? null,
+                //     'error_description' => $response->error_description ?? null,
+                //     'status' => 1,
+                //     'membership_id'=> $membership->id
+                // ]);
 
                 if ($newPayment) {
                     $members = Membership::where('id',$membership->id)->first();

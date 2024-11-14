@@ -43,26 +43,31 @@ Route::get('/view', [PublicController::class, "view"])->name("view");
 Route::get('/cart', [PublicController::class, "cart"])->name("cart");
 Route::get('/checkout', [PublicController::class, "checkout"])->name("checkout");
 Route::get('/confirm-order', [PublicController::class, "confirmOrder"])->name("confirm.order");
-Route::get('/our-team',[PublicController::class,"ourTeam"])->name("public.team");
-Route::get('/gallery',[PublicController::class,"gallery"])->name("public.gallery");
-Route::get('/privacy-policy',[PublicController::class,"privacyPolicy"])->name("public.privacy");
-Route::get('/terms-conditions',[PublicController::class,"termsConditions"])->name("public.terms");
-Route::get('/about-us',[PublicController::class,"AboutUs"])->name("public.about");
-Route::get('/refund-policy',[PublicController::class,"refundPolicy"])->name("public.refund");
+Route::get('/our-team', [PublicController::class, "ourTeam"])->name("public.team");
+Route::get('/gallery', [PublicController::class, "gallery"])->name("public.gallery");
+Route::get('/privacy-policy', [PublicController::class, "privacyPolicy"])->name("public.privacy");
+Route::get('/terms-conditions', [PublicController::class, "termsConditions"])->name("public.terms");
+Route::get('/about-us', [PublicController::class, "AboutUs"])->name("public.about");
+Route::get('/refund-policy', [PublicController::class, "refundPolicy"])->name("public.refund");
 Route::post('/save-online-payment', [PaymentController::class, 'saveOnlinePayment'])->name('save.online.payment');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('public.show');
 Route::post('/save-membership-payment', [MembershipPaymentController::class, 'saveMembershipPayment'])->name('save.membership.payment');
 
 // Route::get('/category/{cat_slug}',[PublicController::class,"filter"])->name("filter");
 
-Route::get('/category/{cat_slug}/{cat_id}',[PublicController::class,"filter"])->name("filter");
-Route::fallback([PublicController::class, 'showError']);
-Route::match(['get',"post"],'/public-login',[PublicController::class,"login"])->name("login");
-Route::match(['get',"post"],'/public-signup',[PublicController::class,"signup"])->name("signup");
-Route::match(['get',"post"],'/membership-signup',[PublicController::class,"membershipSignup"])->name("membership.signup");
-Route::post('/public-register',[PublicController::class,"register"])->name("register");
-Route::post('/membership-register',[PublicController::class,"membershipRegister"])->name("membership.register");
-Route::post('/logout',[PublicController::class,"logout"])->name("logout");
+// error's for 505 and 404:
+Route::fallback([PublicController::class, 'showError404']);
+Route::get('/500',[PublicController::class, "showError500"]);
+Route::get('/505',[PublicController::class, "showError505"]);
+
+
+Route::get('/category/{cat_slug}', [PublicController::class, "filter"])->name("filter");
+Route::match(['get', "post"], '/public-login', [PublicController::class, "login"])->name("login");
+Route::match(['get', "post"], '/public-signup', [PublicController::class, "signup"])->name("signup");
+Route::match(['get', "post"], '/membership-signup', [PublicController::class, "membershipSignup"])->name("membership.signup");
+Route::post('/public-register', [PublicController::class, "register"])->name("register");
+Route::post('/membership-register', [PublicController::class, "membershipRegister"])->name("membership.register");
+Route::post('/logout', [PublicController::class, "logout"])->name("logout");
 
 // Route::view('/admin', 'admin.dashboard');
 // require __DIR__ . '/auth.php';
@@ -92,12 +97,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('address', AddressController::class);
         Route::resource('coupon', CouponController::class);
         Route::resource('gallery', GalleryController::class);
-        Route::get('/users', [UserController::class,"manageUser"])->name('users.index');
-        Route::get('/membership', [UserController::class,"manageMembership"])->name('membership.index');
-        Route::get('/membership-view/{id}', [MembershipController::class,"viewMembership"])->name('membership.view');
-        Route::get('/membership/{id}', [MembershipController::class,"editMembership"])->name('membership.edit');
-        Route::get('/membership-export', [MembershipController::class,"exportMembership"])->name('membership.export');
-        Route::get('/orders', [OrderController::class,"manageOrder"])->name('orders.index');
+        Route::get('/users', [UserController::class, "manageUser"])->name('users.index');
+        Route::get('/membership', [UserController::class, "manageMembership"])->name('membership.index');
+        Route::get('/membership-view/{id}', [MembershipController::class, "viewMembership"])->name('membership.view');
+        Route::get('/membership/{id}', [MembershipController::class, "editMembership"])->name('membership.edit');
+        Route::get('/membership-export', [MembershipController::class, "exportMembership"])->name('membership.export');
+        Route::get('/orders', [OrderController::class, "manageOrder"])->name('orders.index');
         Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('order.view');
         Route::get('/users/wishlist/{userId}', [UserController::class, 'viewUserWishlist'])->name('user.wishlist.view');
         Route::get('/users/order/{userId}', [UserController::class, 'viewUserOrder'])->name('user.order.view');
@@ -107,11 +112,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::post('/coupon/toggle-status/{id}', [CouponController::class, 'toggleStatus'])->name('coupon.toggleStatus');
-Route::get('product/{category}/{slug}', [PublicController::class,'productView'])->name('product.view');
+Route::get('product/{category}/{slug}', [PublicController::class, 'productView'])->name('product.view');
 
 
 // login with google-works here:
-Route::get('auth/google', [SocialiteController ::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
 
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
 
@@ -134,7 +139,4 @@ Route::get('/clear-cache', function () {
 });
 
 
-Route::get('confirm-order',[MailController::class,'index']);
-
-
-
+Route::get('confirm-order', [MailController::class, 'index']);

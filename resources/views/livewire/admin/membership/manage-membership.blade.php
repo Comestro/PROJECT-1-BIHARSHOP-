@@ -1,7 +1,7 @@
 <div class="mx-auto w-full p-4 md:p-6 2xl:p-10">
     <!-- Other code -->
 
-    <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-1 justify-between items-center mb-10">
         <div>
             <h1 class="text-2xl font-bold mb-4">Manage Membership</h1>
         </div>
@@ -18,17 +18,10 @@
                     </path>
                 </svg>
             </div>
-             {{-- <a href="{{route('membership.export')}}" class="px-4 py-2 flex items-center bg-orange-400 text-white hover:bg-orange-600 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                  </svg>
-                  
-                
-                Download Report</a> --}}
-
-                <form action="{{ route('membership.export') }}" method="GET" class="mb-6">
-                    <div class="flex space-x-2 mb-4">
-                        <input type="date" name="start_date" class="px-4 py-2 border rounded" required>
+        </div>
+                <form action="{{ route('membership.export') }}" method="GET" class=" flex gap-2">
+                    <div class="flex  items-center space-x-2">
+                        <input type="date" name="start_date" class="px-4 py-2  border rounded" required>
                         <input type="date" name="end_date" class="px-4 py-2 border rounded" required>
                     </div>
                     <button type="submit" class="px-4 py-2 flex items-center bg-orange-400 text-white hover:bg-orange-600 rounded-lg">
@@ -38,42 +31,34 @@
                         Download Report
                     </button>
                 </form>
-           
-
-        </div>
-        {{-- <div class="bg-blue-500 text-white px-4  hover:bg-blue-600 rounded-full shadow-lg flex items-center">
-            <a wire:navigate href="{{ route('category.create') }}" class="flex items-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                <span class="te text-sm">Add Category</span>
-            </a>
-        </div> --}}
+       
     </div>
     <!-- Category Table -->
     <div class="relative overflow-x-auto mt-5">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                 <tr>
-                    <th scope="col" class="px-6 py-3">Membership Id</th>
+                    <th scope="col" class="px-6 py-3">S.no</th>
                     <th scope="col" class="px-6 py-3">Member Image</th>
                     <th scope="col" class="px-6 py-3">Name</th>
+                    <th scope="col" class="px-6 py-3">Membership Id</th>
                     <th scope="col" class="px-6 py-3">Status</th>
                     <th scope="col" class="px-6 py-3">Payment</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($memberships as $member)
+                @foreach ($memberships as $key=>$member)
                     <tr class="bg-white border-b ">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                            {{ $member->id }}
+                            {{$key+1}}
                         </th>
                         <td class="px-6 py-4">
                             <img src="{{ $member->image ? asset('storage/image/membership/'. $member->image,) : asset('path/to/default-image.jpg') }}"
                                 alt="Membership Image" class="w-12 h-12 object-cover border border-gray-300 ">
                         </td>
                         <td class="px-6 py-4">{{ $member->name }}</td>
+                        <td class="px-6 py-4 border text-sm border-gray-200">  {{ $member->membership_id ?? 'Not Found' }}</td>
                         <td class="px-6 py-2 border text-sm border-gray-200">
                             @if($member->status == 1)
                                 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Approved</span>
