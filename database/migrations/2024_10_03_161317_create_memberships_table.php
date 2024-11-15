@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('mobile')->nullable();;
             $table->string('whatsapp')->nullable();
             $table->string('email')->nullable();;
+            $table->enum('gender',["male","female","other"])->nullable();;
             $table->string('nominee_name')->nullable();;
             $table->string('nominee_relation')->nullable();;
             $table->string('bank_name')->nullable();;

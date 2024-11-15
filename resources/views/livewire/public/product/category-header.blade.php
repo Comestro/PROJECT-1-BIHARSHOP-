@@ -1,6 +1,6 @@
 <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
     @forelse ($categories as $category)
-        <a wire:navigate href="{{ route('filter', ['cat_slug' => $category->cat_slug, 'cat_id' => $category->id]) }}">
+        <a wire:navigate href="{{ route('filter', ['cat_slug' => $category->cat_slug]) }}">
             <div class="h-32 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <img src="{{ $category->image ? asset('storage/image/category/' . $category->image) : asset('path/to/default-image.jpg') }}"
                     alt="{{ $category->name }}"

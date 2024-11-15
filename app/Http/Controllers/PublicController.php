@@ -48,7 +48,7 @@ class PublicController extends Controller
         return view('public.confirm-order');
     }
 
-    public function filter($cat_slug, $cat_id)
+    public function filter($cat_slug)
     {
         $category = Category::where('cat_slug', $cat_slug)->first();
         // dd($product);
