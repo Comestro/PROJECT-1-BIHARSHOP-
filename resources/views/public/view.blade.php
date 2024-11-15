@@ -5,11 +5,13 @@
 
 @section('content')
     <!-- Product Section -->
-    <section class="max-w-6xl mx-auto p-5 mt-10">
+    <section class="max-w-6xl mx-auto p-5 mt-10 md:mt-0">
         <!-- Grid for Images and Info -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Left Section: Images -->
-            <livewire:product-image-gallery :product="$product" />
+            <div class="">
+                <livewire:product-image-gallery :product="$product" />
+            </div>
 
             <!-- Right Section: Product Info -->
             <div class="flex flex-col justify-start gap-2">
