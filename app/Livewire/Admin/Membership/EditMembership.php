@@ -152,7 +152,7 @@ class EditMembership extends Component
                 'payment_id' => $this->transaction_no,
                 'transaction_fee' => 251,
                 'amount' => 251,
-                'transaction_id' => time() . rand(11, 99) . date('yd'),
+                'transaction_id' => time() . $this->transaction_no ,
                 'transaction_date' => now(),
                 'payment_date' => now(),
                 'payment_status' => 1,

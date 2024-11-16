@@ -36,13 +36,13 @@
     <!-- Category Table -->
     <div class="relative overflow-x-auto mt-5">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 text-center ">
                 <tr>
-                    <th scope="col" class="px-6 py-3">S.no</th>
-                    <th scope="col" class="px-6 py-3">Member Image</th>
-                    <th scope="col" class="px-6 py-3">Name</th>
-                    <th scope="col" class="px-6 py-3">Membership Id</th>
-                    <th scope="col" class="px-6 py-3">Status</th>
+                    <th scope="col" class="px-6 py-3 text-start">S.no</th>
+                    <th scope="col" class="px-6 py-3 text-start">Name</th>
+                    <th scope="col" class="px-6 py-3 text-start">Membership Id</th>
+                    <th scope="col" class="px-6 py-3">Order Zone</th>
+                    <th scope="col" class="px-6 py-3">Verification Status</th>
                     <th scope="col" class="px-6 py-3">Payment</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                 </tr>
@@ -53,13 +53,20 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                             {{$key+1}}
                         </th>
-                        <td class="px-6 py-4">
+                        {{-- <td class="px-6 py-4">
                             <img src="{{ $member->image ? asset('storage/image/membership/'. $member->image,) : asset('path/to/default-image.jpg') }}"
                                 alt="Membership Image" class="w-12 h-12 object-cover border border-gray-300 ">
-                        </td>
+                        </td> --}}
                         <td class="px-6 py-4">{{ $member->name }}</td>
-                        <td class="px-6 py-4 border text-sm border-gray-200">  {{ $member->membership_id ?? 'Not Found' }}</td>
-                        <td class="px-6 py-2 border text-sm border-gray-200">
+                        <td class="px-6 py-4 border text-sm border-gray-200 ">  {{ $member->membership_id ?? 'Not Found' }}</td>
+                        <td class="px-6 py-2 border text-sm border-gray-200 text-center">
+                            @if($member->isOrdered == 'g')
+                                <span class="bg-green-400 text-white px-3 py-1 rounded-full">Green</span>
+                            @else
+                                <span class="bg-red-400 text-white px-3 py-1 rounded-full">Pending</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-2 border text-sm border-gray-200 text-center">
                             @if($member->status == 1)
                                 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Approved</span>
                            
@@ -71,7 +78,8 @@
                                 <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">Pending</span>
                             @endif
                         </td>
-                        <td class="px-6 py-2 border text-sm border-gray-200">
+                        
+                        <td class="px-6 py-2 border text-sm border-gray-200 text-center">
                             @if($member->isPaid == 1)
                                 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Completed</span>
                             @else
