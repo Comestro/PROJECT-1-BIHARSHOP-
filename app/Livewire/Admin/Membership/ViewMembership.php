@@ -30,7 +30,7 @@ class ViewMembership extends Component
         $member=Membership::find($this->id);
         if($member){
            if ($member->isPaid) {
-              $referals = Membership::where('referal_id', $member->id)->where('isPaid',1)->limit(2)->get();
+              $referals = Membership::where('referal_id', $member->id)->where('isPaid',1)->get();
                  return view('livewire.admin.membership.view-membership', ['member' => $member, 'referals' => $referals]);
           }
           else{

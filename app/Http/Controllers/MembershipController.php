@@ -15,7 +15,7 @@ class MembershipController extends Controller
         // $member = Membership::where('id',$id)->first();
         if($member){
            if ($member->isPaid) {
-              $referals = Membership::where('referal_id', $member->membership_id)->where('isPaid',1)->limit(2)->get();
+              $referals = Membership::where('referal_id', $member->membership_id)->where('isPaid',1)->get();
                  return view('admin.membership.viewMembership', ['member' => $member, 'referals' => $referals]);
           }
           else{

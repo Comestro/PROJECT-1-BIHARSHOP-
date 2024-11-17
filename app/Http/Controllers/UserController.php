@@ -51,7 +51,7 @@ class UserController extends Controller
       $member = Membership::where('user_id',$user->id)->where('isPaid',1)->first();
       // if($member){
          if ($member) {
-            $referals = Membership::where('referal_id', $member->id)->where('isPaid',1)->limit(2)->get();
+            $referals = Membership::where('referal_id', $member->id)->where('isPaid',1)->get();
                return view('users.member-view', ['member' => $member, 'referals' => $referals]);
         } else {
             return view('users.member-edit');

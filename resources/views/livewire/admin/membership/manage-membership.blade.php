@@ -42,7 +42,7 @@
                     <th scope="col" class="px-6 py-3 text-start">Name</th>
                     <th scope="col" class="px-6 py-3 text-start">Membership Id</th>
                     <th scope="col" class="px-6 py-3">Order Zone</th>
-                    <th scope="col" class="px-6 py-3">Verification Status</th>
+                    <th scope="col" class="px-6 py-3">Update Status</th>
                     <th scope="col" class="px-6 py-3">Payment</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                 </tr>
@@ -60,24 +60,26 @@
                         <td class="px-6 py-4">{{ $member->name }}</td>
                         <td class="px-6 py-4 border text-sm border-gray-200 ">  {{ $member->membership_id ?? 'Not Found' }}</td>
                         <td class="px-6 py-2 border text-sm border-gray-200 text-center">
-                            @if($member->isOrdered == 'g')
+                            @if($member->isOrdered == 1)
                                 <span class="bg-green-400 text-white px-3 py-1 rounded-full">Green</span>
                             @else
                                 <span class="bg-red-400 text-white px-3 py-1 rounded-full">Pending</span>
                             @endif
                         </td>
-                        <td class="px-6 py-2 border text-sm border-gray-200 text-center">
-                            @if($member->status == 1)
-                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">Approved</span>
-                           
-                            @elseif($member->status === 'processing')
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Processing</span>
-                            @elseif($member->status === 'canceled')
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full">Canceled</span>
-                            @else()
-                                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">Pending</span>
-                            @endif
+                        <td class="py-2 px-4">
+                            <div class="inline-flex items-center ">
+                                <button
+                                    wire:click="toggleStatus({{ $member->id }})"
+                                    class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-200 focus:outline-none
+                                    {{ $member->isOrdered ? 'bg-green-500' : 'bg-red-500' }}">
+                                    <span class="sr-only">{{ $member->isOrdered ? '1' : '0' }}</span>
+                                    <span
+                                        class="inline-block w-5 h-5 transform bg-white rounded-full transition-transform duration-200 ease-in-out
+                                        {{ $member->isOrdered ? 'translate-x-5' : 'translate-x-0' }}"></span>
+                                </button>
+                            </div>
                         </td>
+                        
                         
                         <td class="px-6 py-2 border text-sm border-gray-200 text-center">
                             @if($member->isPaid == 1)
