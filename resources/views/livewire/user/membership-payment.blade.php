@@ -25,8 +25,9 @@
         <div class="mb-6">
             <h2 class="text-xl font-semibold text-gray-800 mb-3">3. Accidental Death Benefit</h2>
             <p class="text-gray-700">
-                In the unfortunate event of a Sales Executive's death due to an accident within one year from the date
-                of joining, the following benefits apply:
+                Bihar shop is a direct seller business e-commerce the sales executive has coding being paid Rs. 249. If the sales executive dies in an accident within 1 year after being presented the best performance, his nominee will be supported economically paying Rs 2 lakhs (Rs. 2,00,000 /-)
+                {{-- In the unfortunate event of a Sales Executive's death due to an accident within one year from the date
+                of joining, the following benefits apply: --}}
             </p>
             <ul class="list-disc list-inside text-gray-700 mt-2">
                 <li><span class="font-semibold">Best Permanent Salary:</span> The family or nominee will be entitled to

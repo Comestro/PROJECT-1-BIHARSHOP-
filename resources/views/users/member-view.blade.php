@@ -64,7 +64,7 @@
 
             <div class="flex flex-col text-center items-center gap-4">
                 <img class="w-20 h-20 rounded-full"
-                    src="{{ $member->image ? asset('storage/image/membership/' . $member->image) : asset('path/to/default-image.jpg') }}"
+                    src="{{ $member->image ? asset('storage/image/membership/' . $member->image) : 'https://cdn-icons-png.flaticon.com/128/3135/3135715.png' }}"
                     alt="">
                 <div class="font-medium dark:text-white">
                     <div>{{ $member->name }}</div>
@@ -96,7 +96,7 @@
                     @foreach ($referals as $data)
                         <div class="flex flex-col items-center">
                             <img class="w-20 h-20 rounded-full"
-                                src="{{ $data->image ? asset('storage/image/membership/' . $data->image) : asset('path/to/default-image.jpg') }}"
+                                src="{{ $data->image ? asset('storage/image/membership/' . $data->image) : 'https://cdn-icons-png.flaticon.com/128/3135/3135715.png' }}"
                                 alt="">
                             <div class="font-medium dark:text-white">
                                 <div>{{ $data->name }}</div>

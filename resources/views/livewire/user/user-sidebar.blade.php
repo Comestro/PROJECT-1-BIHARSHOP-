@@ -18,7 +18,7 @@
                         class="w-full h-full object-cover">
                 @else
                     <!-- Show an online default avatar -->
-                    <img src="" alt="Online Default Avatar" class="w-full h-full object-cover">
+                    <img src="{{asset('dp.jpg')}}" alt="Online Default Avatar" class="w-full h-full object-cover">
                 @endif
             </div>
             <!-- User Info -->
