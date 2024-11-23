@@ -143,47 +143,47 @@ class EditMembership extends Component
         $membership->isPaid = $this->isPaid;
         $membership->membership_id = $this->membership_id;
 
-        if($this->isPaid){
-            $membership->payment_status = 'captured';
-            $membership->status = 1;
+        // if($this->isPaid){
+        //     $membership->payment_status = 'captured';
+        //     $membership->status = 1;
 
-            $newPayment = MembershipPayment::create([
-                'receipt_no' => time() . $this->transaction_no,
-                'payment_id' => $this->transaction_no,
-                'transaction_fee' => 251,
-                'amount' => 251,
-                'transaction_id' => time() . $this->transaction_no ,
-                'transaction_date' => now(),
-                'payment_date' => now(),
-                'payment_status' => 1,
-                'currency' => 'INR',
-                'ip_address' => 'Admin',
-                'status' => 1,
-                'membership_id'=> $this->member->id
-            ]);
-        }
-        if ($this->membership_id) {
-            if ($this->isVerified == 1 && $this->isPaid == 1) {
-                // Retrieve the last membership_id
-                $lastMembership = $membership->orderBy('membership_id', 'desc')->first();
+        //     $newPayment = MembershipPayment::create([
+        //         'receipt_no' => time() . $this->transaction_no,
+        //         'payment_id' => $this->transaction_no,
+        //         'transaction_fee' => 251,
+        //         'amount' => 251,
+        //         'transaction_id' => time() . $this->transaction_no ,
+        //         'transaction_date' => now(),
+        //         'payment_date' => now(),
+        //         'payment_status' => 1,
+        //         'currency' => 'INR',
+        //         'ip_address' => 'Admin',
+        //         'status' => 1,
+        //         'membership_id'=> $this->member->id
+        //     ]);
+        // }
+        // if ($this->membership_id) {
+        //     if ($this->isVerified == 1 && $this->isPaid == 1) {
+        //         // Retrieve the last membership_id
+        //         $lastMembership = $membership->orderBy('membership_id', 'desc')->first();
         
-                // Check if a last membership exists
-                if ($lastMembership) {
-                    // Extract the numeric part and increment it
-                    preg_match('/\d+/', $lastMembership->membership_id, $matches);
-                    $newId = isset($matches[0]) ? (int)$matches[0] + 1 : 1;
-                } else {
-                    // If no previous ID exists, start from 1
-                    $newId = 1;
-                }
+        //         // Check if a last membership exists
+        //         if ($lastMembership) {
+        //             // Extract the numeric part and increment it
+        //             preg_match('/\d+/', $lastMembership->membership_id, $matches);
+        //             $newId = isset($matches[0]) ? (int)$matches[0] + 1 : 1;
+        //         } else {
+        //             // If no previous ID exists, start from 1
+        //             $newId = 1;
+        //         }
         
-                // Create new membership_id with prefix
-                $data_id['membership_id'] = 'BSE' . $newId;
+        //         // Create new membership_id with prefix
+        //         $data_id['membership_id'] = 'BSE' . $newId;
         
-                // Update the membership with new ID
-                $membership->update($data_id);
-            }
-        }
+        //         // Update the membership with new ID
+        //         $membership->update($data_id);
+        //     }
+        // }
 
         // image work
         if($this->photo){      
